@@ -1,93 +1,1655 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090d2c">
-<meta name="description" content="Fluento — Learn, Play, Grow with Ollie.">
-<title>Fluento — Learn • Play • Grow</title>
+<meta name="theme-color" content="#080c24">
+<meta name="description" content="Fluento — Learn, Play, Grow">
+<title>FLUENTO ULTIMATE</title>
+
+<link rel="icon" href="fluento-icon.png">
+
 <style>
-:root{--bg:#080c24;--panel:#111936;--panel2:#151f45;--ink:#f2f5ff;--muted:#a5b1d4;--cyan:#50eaff;--blue:#397bff;--purple:#a56bff;--pink:#ff6bd6;--gold:#ffd66b;--green:#53e6a3;--red:#ff6d88;--line:#33416d;--shadow:0 14px 45px #0008}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b2860 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#27154e 0,transparent 34%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-header{position:sticky;top:0;z-index:10;background:#080c24eF;backdrop-filter:blur(18px);border-bottom:1px solid #35416b;padding:11px max(14px,calc((100vw - 1200px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:1000;font-size:1.35rem;letter-spacing:-.7px}.brandmark{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#783bff,#00cfff);box-shadow:0 0 22px #5b6cff88}.stats{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.pill{background:#141d3c;border:1px solid #46558c;padding:6px 10px;border-radius:99px;font-size:.84rem;font-weight:850;box-shadow:inset 0 0 12px #253b7655}
-.layout{max-width:1200px;margin:auto;padding:18px 14px 100px;display:grid;grid-template-columns:205px minmax(0,1fr);gap:18px}.side{position:sticky;top:82px;align-self:start;background:#0e1532cc;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:var(--shadow)}.side button{display:flex;gap:10px;align-items:center;width:100%;padding:12px;border-radius:13px;background:transparent;text-align:left;color:var(--muted);font-weight:800;margin:3px 0}.side button.active,.side button:hover{background:#1a2b57;color:white;box-shadow:inset 0 0 18px #3478ff30}.side .tinybrand{padding:12px 8px 16px;text-align:center;color:var(--muted);font-size:.78rem}.main{min-width:0}.hero{border:1px solid #5365b0;border-radius:25px;padding:22px;background:linear-gradient(120deg,#141c53,#172d63 55%,#3a1760);box-shadow:0 0 32px #4368ff24;display:flex;align-items:center;justify-content:space-between;gap:16px;overflow:hidden}.hero h1{font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.08;margin:6px 0 9px}.hero p{color:#d2ddff;margin:0;max-width:570px}.eyebrow{font-size:.72rem;letter-spacing:1.5px;font-weight:950;color:var(--cyan);text-transform:uppercase}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 0 12px}.section-head h2{margin:0}.muted{color:var(--muted);font-size:.9rem}.panel{background:linear-gradient(145deg,#121c3a,#0e1732);border:1px solid var(--line);border-radius:19px;padding:16px;box-shadow:var(--shadow)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:11px}.metric{padding:14px;border:1px solid var(--line);border-radius:15px;background:#121e40}.metric strong{display:block;font-size:1.45rem}.metric span{color:var(--muted);font-size:.82rem}.track{height:9px;background:#263355;border-radius:99px;overflow:hidden;margin:10px 0}.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:99px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.row>*{min-width:0}.primary,.secondary,.danger{padding:10px 14px;border-radius:12px;font-weight:900}.primary{background:linear-gradient(110deg,#554cff,#087fca);box-shadow:0 0 17px #426bff55;color:white}.secondary{background:#1b2a50;border:1px solid #4a5d92;color:#dce9ff}.danger{background:#4b1d36;border:1px solid #9c385b;color:#ffdbe4}.primary:disabled,.secondary:disabled{opacity:.45;cursor:not-allowed}input,select,textarea{background:#0b1430;color:var(--ink);border:1px solid #465580;border-radius:11px;padding:10px;width:100%}textarea{min-height:110px;resize:vertical}.stage-list{display:grid;gap:9px}.stage{display:grid;grid-template-columns:45px 1fr auto;gap:11px;align-items:center;background:#111b39;border:1px solid var(--line);border-radius:15px;padding:11px}.stage.locked{opacity:.5}.stage-icon{height:44px;width:44px;border-radius:13px;display:grid;place-items:center;background:#25316b;font-size:23px}.stage h3{font-size:.98rem;margin:0}.stage p{font-size:.82rem;color:var(--muted);margin:2px 0 0}.quiz{max-width:720px;margin:auto}.quiztop{display:flex;align-items:center;gap:10px;margin-bottom:13px}.question{font-size:clamp(1.3rem,4vw,1.8rem);margin:12px 0 18px}.option{width:100%;text-align:left;padding:13px;border:1px solid #42517b;background:#121d3d;border-radius:13px;margin:5px 0;font-weight:800}.option.selected{border-color:var(--cyan);background:#18365b}.option.correct{border-color:var(--green);background:#123c3b}.option.wrong{border-color:var(--red);background:#461f3c}.option:disabled{opacity:1}.feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800}.good{background:#103c38;color:#9dffda}.bad{background:#4a1e35;color:#ffd2dd}.ollie-wrap{position:relative;width:175px;flex:0 0 175px;perspective:700px}.ollie{width:100%;display:block;border-radius:28px;filter:drop-shadow(0 0 25px #4b6bff77);transform-style:preserve-3d;animation:floaty 3s ease-in-out infinite;transition:transform .35s}.ollie.celebrate{animation:celebrate .55s ease-in-out 5}.speech{position:absolute;right:-12px;top:-12px;background:linear-gradient(120deg,#1b9de7,#7b45ff);border:1px solid #9deaff;border-radius:18px;padding:8px 11px;font-weight:950;box-shadow:0 0 20px #34cfff88;transform:rotate(3deg);max-width:160px;text-align:center}.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-15px;width:8px;height:13px;background:var(--gold);animation:fall 1.8s linear infinite}.confetti i:nth-child(2n){background:var(--cyan);animation-delay:.4s}.confetti i:nth-child(3n){background:var(--pink);animation-delay:.8s}@keyframes floaty{50%{transform:translateY(-8px) rotateY(7deg) rotateX(4deg)}}@keyframes celebrate{0%,100%{transform:translateY(0) rotate(0) scale(1)}25%{transform:translateY(-24px) rotate(-9deg) scale(1.06)}50%{transform:translateY(-7px) rotate(9deg) scale(1.1)}75%{transform:translateY(-19px) rotate(-5deg) scale(1.04)}}@keyframes fall{to{transform:translateY(520px) rotate(360deg);opacity:0}}.gift{border:1px solid #8267c6;background:linear-gradient(135deg,#241b58,#39265f);border-radius:17px;padding:15px;text-align:center;margin:13px 0}.gift .big{font-size:52px}.friend{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #2c3a60}.avatar{width:42px;height:42px;display:grid;place-items:center;background:#26315f;border-radius:14px;font-size:23px}.friendinfo{flex:1}.friendinfo small{display:block;color:var(--muted)}.shield{font-weight:900;color:var(--gold)}.hidden{display:none!important}.notice{padding:12px;border:1px solid #806c32;background:#342c1a;color:#ffe8a4;border-radius:13px;margin:12px 0;font-size:.87rem}.bottom{display:none}.authbox{max-width:470px;margin:7vh auto;padding:22px}.authbox h1{margin:5px 0}.authbox form{display:grid;gap:10px}.admin-table{width:100%;border-collapse:collapse;font-size:.84rem}.admin-table th,.admin-table td{text-align:left;padding:9px;border-bottom:1px solid #34436b;overflow-wrap:anywhere}.status{color:var(--green);font-weight:900}
-@media(max-width:760px){.layout{grid-template-columns:1fr;padding:12px 10px 95px}.side{display:none}.bottom{display:flex;position:fixed;z-index:10;bottom:0;left:0;right:0;background:#080d25f2;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:6px max(5px,env(safe-area-inset-right)) max(7px,env(safe-area-inset-bottom));justify-content:space-around}.bottom button{background:transparent;color:var(--muted);font-size:.7rem;font-weight:850;padding:5px}.bottom span{display:block;font-size:1.25rem}.hero{padding:16px}.ollie-wrap{width:112px;flex-basis:112px}.speech{font-size:.7rem;right:-5px}.stats{gap:4px}.pill{font-size:.72rem;padding:5px 7px}.brand{font-size:1.08rem}.stage{grid-template-columns:40px 1fr}.stage button{grid-column:2;justify-self:start}.admin-table{font-size:.72rem}}
+:root{
+ --bg:#080c24;--panel:#111936;--panel2:#17234a;
+ --ink:#f2f5ff;--muted:#a5b1d4;
+ --cyan:#50eaff;--blue:#397bff;--purple:#a56bff;
+ --pink:#ff6bd6;--gold:#ffd66b;--green:#53e6a3;
+ --red:#ff6d88;--line:#33416d;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;width:100%}
+body{
+ background:radial-gradient(ellipse at 15% 0%,#1b2860,transparent 38%),
+ radial-gradient(ellipse at 90% 20%,#27154e,transparent 34%),var(--bg);
+ color:var(--ink);font:15px/1.5 system-ui,sans-serif;
+ min-height:100vh;min-height:100dvh;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;color:inherit}
+button:disabled{opacity:.45;cursor:not-allowed}
+input,select,textarea{
+ background:#0b1430;color:white;border:1px solid #465580;
+ border-radius:11px;padding:12px;width:100%;margin:4px 0;
+}
+button:focus-visible,input:focus-visible{
+ outline:2px solid var(--cyan);outline-offset:3px
+}
+.hidden{display:none!important}
+
+header{
+ position:sticky;top:0;z-index:20;
+ display:flex;justify-content:space-between;align-items:center;
+ gap:10px;padding:10px 14px;
+ background:#080c24ed;backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--line);
+}
+.brand{font-size:1.35rem;font-weight:1000;display:flex;align-items:center;gap:9px}
+.brandmark{
+ width:40px;height:40px;display:grid;place-items:center;
+ border-radius:13px;background:linear-gradient(135deg,#783bff,#00cfff)
+}
+.stats{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.pill{
+ background:#141d3c;border:1px solid #46558c;
+ padding:5px 9px;border-radius:30px;font-weight:850;font-size:.8rem
+}
+.layout{
+ width:100%;min-height:calc(100dvh - 62px);
+ display:grid;grid-template-columns:205px minmax(0,1fr);
+ gap:18px;padding:18px;max-width:1450px;margin:auto
+}
+.side{
+ position:sticky;top:80px;align-self:start;
+ background:#0e1532;border:1px solid var(--line);
+ border-radius:20px;padding:12px
+}
+.side button{
+ display:block;width:100%;padding:12px;margin:3px 0;
+ border-radius:12px;background:transparent;color:var(--muted);
+ text-align:left;font-weight:850
+}
+.side button.active,.side button:hover{background:#1a2b57;color:white}
+.main{min-width:0;width:100%}
+.panel{
+ background:linear-gradient(145deg,#121c3a,#0e1732);
+ border:1px solid var(--line);border-radius:19px;padding:16px;
+ margin:12px 0;box-shadow:0 12px 35px #0005
+}
+.hero{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:15px;padding:22px;border-radius:24px;
+ border:1px solid #5365b0;
+ background:linear-gradient(120deg,#141c53,#172d63 55%,#3a1760);
+ overflow:hidden
+}
+.hero h1{font-size:clamp(1.7rem,4vw,2.7rem);margin:5px 0;line-height:1.1}
+.hero p{color:#d2ddff}
+.eyebrow{
+ font-size:.72rem;letter-spacing:1.5px;
+ font-weight:950;color:var(--cyan)
+}
+.muted{color:var(--muted);font-size:.9rem}
+.section-head{margin:22px 0 10px}
+.section-head h2{margin:0}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.row>*{min-width:0}
+.primary,.secondary,.danger{
+ padding:10px 15px;border-radius:12px;font-weight:900
+}
+.primary{background:linear-gradient(110deg,#554cff,#087fca)}
+.secondary{background:#1b2a50;border:1px solid #4a5d92}
+.danger{background:#4b1d36;border:1px solid #9c385b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
+.metric{background:#121e40;border:1px solid var(--line);padding:14px;border-radius:15px}
+.metric strong{font-size:1.5rem;display:block}
+.metric span{color:var(--muted);font-size:.8rem}
+.track{height:9px;background:#263355;border-radius:30px;overflow:hidden;margin:12px 0}
+.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan))}
+.stage{
+ display:grid;grid-template-columns:44px 1fr auto;
+ gap:10px;align-items:center;padding:12px;
+ background:#111b39;border:1px solid var(--line);
+ border-radius:15px;margin:9px 0
+}
+.stage.locked{opacity:.45}
+.stage-icon{
+ width:44px;height:44px;display:grid;place-items:center;
+ background:#25316b;border-radius:13px;font-size:23px
+}
+.stage h3{margin:0;font-size:1rem}
+.stage p{margin:2px 0;color:var(--muted);font-size:.8rem}
+.quiz{max-width:750px;margin:15px auto}
+.question{font-size:clamp(1.35rem,4vw,1.9rem)}
+.option{
+ width:100%;text-align:left;padding:14px;
+ border:1px solid #42517b;background:#121d3d;
+ border-radius:13px;margin:5px 0;font-weight:800
+}
+.option.selected{border-color:var(--cyan);background:#18365b}
+.option.correct{border-color:var(--green);background:#123c3b}
+.option.wrong{border-color:var(--red);background:#461f3c}
+.option:disabled{opacity:1}
+.feedback{padding:12px;border-radius:12px;margin-top:12px;font-weight:850}
+.good{background:#103c38;color:#9dffda}
+.bad{background:#4a1e35;color:#ffd2dd}
+.ollie-wrap{position:relative;width:145px;flex-shrink:0}
+.ollie{
+ width:100%;border-radius:20px;
+ animation:float 3s ease-in-out infinite;
+ filter:drop-shadow(0 0 20px #4b6bff77)
+}
+.speech{
+ position:absolute;top:-12px;right:-10px;
+ background:linear-gradient(120deg,#1b9de7,#7b45ff);
+ padding:7px 10px;border-radius:15px;
+ font-weight:900;max-width:145px;font-size:.8rem
+}
+@keyframes float{50%{transform:translateY(-9px)}}
+@keyframes bounce{
+ 0%,100%{transform:translateY(0) rotate(0)}
+ 30%{transform:translateY(-25px) rotate(-8deg)}
+ 65%{transform:translateY(-8px) rotate(8deg)}
+}
+.celebrate{animation:bounce .5s ease 5}
+.gift{
+ background:linear-gradient(135deg,#241b58,#39265f);
+ border:1px solid #8267c6;border-radius:17px;
+ padding:18px;text-align:center;margin:15px 0
+}
+.gift .big{font-size:55px}
+.friend{
+ display:flex;align-items:center;gap:10px;
+ padding:12px 0;border-bottom:1px solid #2c3a60
+}
+.avatar{
+ width:44px;height:44px;display:grid;place-items:center;
+ background:#26315f;border-radius:14px;font-size:23px
+}
+.friendinfo{flex:1;min-width:0}
+.friendinfo small{display:block;color:var(--muted)}
+.friend-card{cursor:pointer}
+.request{
+ padding:12px;border:1px solid var(--line);
+ border-radius:14px;margin:9px 0;background:#142044
+}
+.weekly{
+ border:1px solid #8267c6;
+ background:linear-gradient(120deg,#25205d,#132f64);
+ border-radius:15px;padding:15px;margin:12px 0
+}
+.notice{
+ padding:12px;background:#342c1a;color:#ffe8a4;
+ border:1px solid #806c32;border-radius:12px;margin:10px 0
+}
+.bottom{display:none}
+.authbox{max-width:460px;margin:6vh auto;padding:22px}
+.authbox form{display:grid;gap:9px}
+
+/* WELCOME SCREEN */
+.splash{
+ position:fixed;inset:0;z-index:9999;
+ display:grid;place-items:center;padding:15px;
+ background:radial-gradient(circle at center,#192c83,#050817 75%);
+ animation:fadeOut .6s ease 3s forwards
+}
+.splash-content{text-align:center;width:min(95vw,500px)}
+.splash-director{
+ color:#ffe37b;font-size:13px;font-weight:900;
+ letter-spacing:2px;margin-bottom:12px
+}
+.splash-logo{
+ width:min(85vw,420px);max-height:65dvh;
+ object-fit:contain;animation:logoFloat 2s infinite;
+ filter:drop-shadow(0 0 25px #328cff88)
+}
+.splash-tag{font-weight:900;letter-spacing:3px;margin-top:10px}
+@keyframes logoFloat{50%{transform:translateY(-9px)}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+/* MOBILE FULL SCREEN */
+@media(max-width:760px){
+ .layout{display:block;padding:10px 10px 90px}
+ .side{display:none}
+ .main{width:100%;min-height:calc(100dvh - 65px)}
+ .hero{padding:15px}
+ .ollie-wrap{width:105px}
+ header{padding:8px}
+ .brand{font-size:1.05rem}
+ .pill{font-size:.68rem;padding:5px 6px}
+ .bottom{
+  display:flex;position:fixed;bottom:0;left:0;right:0;
+  z-index:50;justify-content:space-around;
+  background:#080d25f5;border-top:1px solid var(--line);
+  padding:7px 3px max(7px,env(safe-area-inset-bottom))
+ }
+ .bottom button{
+  background:transparent;color:var(--muted);
+  font-size:.7rem;font-weight:850
+ }
+ .bottom span{display:block;font-size:1.25rem}
+ .stage{grid-template-columns:40px 1fr}
+ .stage button{grid-column:2;justify-self:start}
+ .authbox{margin:18px 10px;max-width:none}
+}
 </style>
 </head>
+
 <body>
-<header><div class="brand"><div class="brandmark">🦉</div>FLUENTO</div><div class="stats"><div class="pill">🔥 <b id="streak">0</b></div><div class="pill">⚡ <b id="xp">0</b></div><div class="pill">🪙 <b id="coins">0</b></div><div class="pill">💎 <b id="gems">0</b></div><div class="pill">❤️ <b id="hearts">3</b></div></div></header>
-<section id="authScreen" class="authbox panel"><div class="eyebrow">LEARN • PLAY • GROW</div><h1>Welcome to Fluento</h1><p class="muted">Sign in to sync your learning, rewards and friends across devices.</p><div class="notice">Use a nickname in public profiles. Your email is private and is never shown to friends.</div><form id="authForm"><input id="authName" placeholder="Your nickname (for new accounts)" maxlength="24"><input id="authEmail" type="email" autocomplete="email" placeholder="Email address" required><input id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="Password (8+ characters)" required><div class="row"><button class="primary" type="submit" id="signInBtn">Sign in</button><button class="secondary" type="button" id="signUpBtn">Create account</button></div></form><p id="authMessage" class="muted"></p><button class="secondary" id="guestBtn" type="button">Continue as guest (this device only)</button></section>
-<div id="appShell" class="hidden"><div class="layout"><aside class="side"><div class="tinybrand">🦉 OLLIE'S LEARNING CLUB</div><button data-tab="learn" class="active">🗺️ Learn</button><button data-tab="friends">👥 Friends</button><button data-tab="rewards">🎁 Rewards</button><button data-tab="profile">🏆 Profile</button><button data-tab="feedback">✉️ Feedback</button><button data-tab="dashboard" id="adminNav" class="hidden">📊 Director dashboard</button><button id="signOutBtn">↪ Sign out</button></aside><main id="app" class="main"></main></div><nav class="bottom"><button data-tab="learn"><span>🗺️</span>Learn</button><button data-tab="friends"><span>👥</span>Friends</button><button data-tab="rewards"><span>🎁</span>Gifts</button><button data-tab="profile"><span>🏆</span>Profile</button><button data-tab="feedback"><span>✉️</span>Feedback</button></nav></div>
+
+<!-- WELCOME ANIMATION -->
+<div class="splash" id="splash">
+ <div class="splash-content">
+  <div class="splash-director">DIRECTED BY MR. NIRMIT POHANE</div>
+  <img class="splash-logo" src="fluento-icon.png" alt="Fluento">
+  <div class="splash-tag">LEARN • PLAY • GROW</div>
+ </div>
+</div>
+
+<header>
+ <div class="brand"><div class="brandmark">🦉</div> FLUENTO</div>
+ <div class="stats">
+  <div class="pill">🔥 <b id="streak">0</b></div>
+  <div class="pill">⚡ <b id="xp">0</b></div>
+  <div class="pill">🪙 <b id="coins">0</b></div>
+  <div class="pill">💎 <b id="gems">0</b></div>
+  <div class="pill">❤️ <b id="hearts">3</b></div>
+ </div>
+</header>
+
+<section id="authScreen" class="authbox panel">
+ <div class="eyebrow">LEARN • PLAY • GROW</div>
+ <h1>Welcome to Fluento!</h1>
+ <p class="muted">Learn a little every day with Ollie.</p>
+ <form id="authForm">
+  <input id="authName" placeholder="Nickname (new account)" maxlength="24">
+  <input id="authEmail" type="email" placeholder="Email address" required>
+  <input id="authPassword" type="password" minlength="8" placeholder="Password (8+ characters)" required>
+  <div class="row">
+   <button class="primary" type="submit">Sign in</button>
+   <button class="secondary" type="button" id="signup">Create account</button>
+  </div>
+ </form>
+ <p id="authMessage" class="muted"></p>
+ <button class="secondary" id="guest">Continue as guest</button>
+</section>
+
+<div id="appShell" class="hidden">
+ <div class="layout">
+  <aside class="side">
+   <div style="text-align:center;padding:12px">🦉 OLLIE'S CLUB</div>
+   <button data-tab="learn">🗺️ Learn</button>
+   <button data-tab="friends">👥 Friends</button>
+   <button data-tab="rewards">🎁 Rewards</button>
+   <button data-tab="profile">🏆 Profile</button>
+   <button data-tab="feedback">✉️ Feedback</button>
+   <button data-tab="dashboard" id="adminNav" class="hidden">📊 Director</button>
+   <button id="logout">↪ Sign out</button>
+  </aside>
+  <main id="app" class="main"></main>
+ </div>
+ <nav class="bottom">
+  <button data-tab="learn"><span>🗺️</span>Learn</button>
+  <button data-tab="friends"><span>👥</span>Friends</button>
+  <button data-tab="rewards"><span>🎁</span>Gifts</button>
+  <button data-tab="profile"><span>🏆</span>Profile</button>
+ </nav>
+</div>
+
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,updateProfile,sendEmailVerification} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
-import {getFirestore,doc,setDoc,getDoc,updateDoc,collection,query,where,getDocs,addDoc,onSnapshot,serverTimestamp,limit,orderBy,runTransaction} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
-/* Replace every value below with the Firebase web-app config from Firebase Console. */
-const firebaseConfig={apiKey:"PASTE_API_KEY",authDomain:"PASTE_PROJECT.firebaseapp.com",projectId:"PASTE_PROJECT_ID",appId:"PASTE_APP_ID"};
-const ADMIN_UID="PASTE_YOUR_FIREBASE_AUTH_UID";
-const firebaseReady=Object.values(firebaseConfig).every(v=>v&&!String(v).startsWith("PASTE_"));
-let auth=null,db=null,user=null,guest=false,profile={},unsubscribeUsers=null;
-if(firebaseReady){const fb=initializeApp(firebaseConfig);auth=getAuth(fb);db=getFirestore(fb);}
-const $=id=>document.getElementById(id), app=$("app");
-const localKey="fluento-cloud-guest";
-const base={nickname:"Learner",course:"Spanish",xp:0,coins:0,gems:0,hearts:3,streak:0,done:{},worlds:1,shield:"None",practiceDays:[],stage:1,tab:"learn",sound:true};
-let data={...base,...JSON.parse(localStorage.getItem(localKey)||"{}")},stageNo=1,qi=0,score=0,chosen=-1,lockedAnswer=false,audio=null;
-const banks={
- Spanish:[["How do you say Hello?",["Hola","Adiós","Gracias","Agua"],"Hola","Hola means hello."],["What does Gracias mean?",["Please","Thank you","Good night","Friend"],"Thank you","Gracias means thank you."],["Choose water in Spanish.",["Pan","Agua","Casa","Libro"],"Agua","Agua means water."],["What does Por favor mean?",["Please","Goodbye","Sorry","Welcome"],"Please","Por favor means please."],["Complete Buenos ____.",["días","libros","amigos","agua"],"días","Buenos días means good morning."]],
- English:[["Choose a greeting.",["Hello","Because","Under","Quickly"],"Hello","Hello is a greeting."],["Opposite of cold?",["Hot","Slow","Small","Quiet"],"Hot","Hot is the opposite of cold."],["Complete: How ____ you?",["are","is","am","be"],"are","Use are with you."],["Choose a polite word.",["Please","Never","Maybe","Under"],"Please","Please makes a request polite."],["Past tense of go?",["Went","Goed","Going","Gone yesterday"],"Went","Go → went → gone."]],
- Hindi:[["“नमस्ते” का अर्थ?",["अभिवादन","पानी","किताब","घर"],"अभिवादन","नमस्ते अभिवादन है।"],["“पानी” का अर्थ?",["Water","Book","Friend","School"],"Water","पानी = Water."],["“धन्यवाद” का अर्थ?",["Thank you","Goodbye","Please","Friend"],"Thank you","धन्यवाद = Thank you."],["“मित्र” का अर्थ?",["Friend","Food","House","Book"],"Friend","मित्र = Friend."],["“घर” का अर्थ?",["House","School","Water","Day"],"House","घर = House."]]
+import {
+ getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,signOut,updateProfile
+} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+import {
+ getFirestore,doc,setDoc,getDoc,updateDoc,
+ collection,query,where,getDocs,addDoc,onSnapshot,
+ serverTimestamp,limit,runTransaction
+} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+/* =====================================
+   1. FIREBASE CONFIGURATION
+===================================== */
+
+const firebaseConfig={
+ apiKey:"PASTE_API_KEY",
+ authDomain:"PASTE_PROJECT.firebaseapp.com",
+ projectId:"PASTE_PROJECT_ID",
+ appId:"PASTE_APP_ID"
 };
-const giftTiers=[["🌟","Star sparkle",5,2],["🍪","Ollie's cookie",8,3],["🎨","Colour badge",12,5],["🎁","Mystery gift",18,8],["🏆","Golden trophy",25,12],["💎","Diamond chest",40,20],["👑","Royal crown",60,30],["🦉","Ollie's grand gift",100,50]];
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function saveLocal(){localStorage.setItem(localKey,JSON.stringify(data));stats();}
-function stats(){$("xp").textContent=data.xp||0;$("coins").textContent=data.coins||0;$("gems").textContent=data.gems||0;$("hearts").textContent=data.hearts??3;$("streak").textContent=data.streak||0;}
-function key(n){return `${data.course}:${n}`;}function done(n){return !!data.done[key(n)];}
-function shieldFor(days){return days>=35?"Diamond":days>=28?"Platinum":days>=21?"Gold":days>=14?"Silver":days>=7?"Bronze":"None";}
-function recordDay(){const d=new Date().toISOString().slice(0,10);if(!data.practiceDays.includes(d)){data.practiceDays=[...data.practiceDays,d].slice(-60);const y=new Date(Date.now()-86400000).toISOString().slice(0,10);data.streak=data.lastPractice===y?(data.streak||0)+1:1;data.lastPractice=d;data.shield=shieldFor(data.streak);}}
-function sound(kind){if(!data.sound)return;try{const C=AudioContext||webkitAudioContext;audio??=new C();audio.resume();const p={ok:[523,659,784],bad:[220,185],gift:[523,659,784,1046],tap:[440]}[kind]||[440];p.forEach((f,i)=>{let o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.12;o.frequency.value=f;g.gain.setValueAtTime(.001,t);g.gain.linearRampToValueAtTime(.08,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.16);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+.18);});}catch{}}
-async function cloudSave(){if(!user||guest||!db)return;const publicData={uid:user.uid,nickname:data.nickname,friendCode:`FL-${user.uid.slice(0,8).toUpperCase()}`,course:data.course,xp:data.xp,coins:data.coins,gems:data.gems,stage:highestStage(),shield:data.shield,streak:data.streak,updatedAt:serverTimestamp()};await setDoc(doc(db,"publicProfiles",user.uid),publicData,{merge:true});await setDoc(doc(db,"privateProfiles",user.uid),{email:user.email||"",createdAt:profile.createdAt||serverTimestamp()},{merge:true});await setDoc(doc(db,"userProgress",user.uid),{...data,updatedAt:serverTimestamp()},{merge:true});}
-function highestStage(){let n=1;while(done(n))n++;return n;}
-async function loadCloud(){if(!user||!db)return;const snap=await getDoc(doc(db,"userProgress",user.uid));if(snap.exists())data={...base,...snap.data(),...data,...snap.data()};const p=await getDoc(doc(db,"publicProfiles",user.uid));profile=p.exists()?p.data():{};if(!profile.nickname){await updateProfile(user,{displayName:data.nickname});}await cloudSave();if(user.uid===ADMIN_UID)$("adminNav").classList.remove("hidden");}
-function showApp(){ $("authScreen").classList.add("hidden");$("appShell").classList.remove("hidden");render(); }
-function showAuth(){ $("authScreen").classList.remove("hidden");$("appShell").classList.add("hidden"); }
-$("authForm").addEventListener("submit",async e=>{e.preventDefault();if(!firebaseReady){$("authMessage").textContent="Add your Firebase config first, then reload.";return;}try{const c=await signInWithEmailAndPassword(auth,$("authEmail").value.trim(),$("authPassword").value);user=c.user;guest=false;await loadCloud();showApp();}catch(err){$("authMessage").textContent=err.message;}});
-$("signUpBtn").onclick=async()=>{if(!firebaseReady){$("authMessage").textContent="Add Firebase config first.";return;}try{const email=$("authEmail").value.trim(),pw=$("authPassword").value,name=$("authName").value.trim()||"Learner";if(pw.length<8)throw Error("Use a password with at least 8 characters.");const c=await createUserWithEmailAndPassword(auth,email,pw);user=c.user;await updateProfile(user,{displayName:name});await sendEmailVerification(user);data.nickname=name;guest=false;await loadCloud();showApp();$("authMessage").textContent="Verification email sent. Please verify your email."; }catch(err){$("authMessage").textContent=err.message;}};
-$("guestBtn").onclick=()=>{guest=true;user=null;data={...base,...JSON.parse(localStorage.getItem(localKey)||"{}")};showApp();};
-$("signOutBtn").onclick=async()=>{if(auth&&user)await signOut(auth);user=null;guest=false;showAuth();};
-if(auth)onAuthStateChanged(auth,async u=>{if(u){user=u;guest=false;try{await loadCloud();showApp();}catch(e){$("authMessage").textContent="Could not load profile: "+e.message;}}});
-function persist(){saveLocal();cloudSave().catch(e=>console.warn("Cloud sync:",e));}
-function nav(tab){data.tab=tab;persist();render();}
-document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>nav(b.dataset.tab)));
-function render(){stats();document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===data.tab));const views={learn:learnView,friends:friendsView,rewards:rewardsView,profile:profileView,feedback:feedbackView,dashboard:dashboardView};app.innerHTML=(views[data.tab]||learnView)();}
-function learnView(){let n=highestStage(),end=Math.max(100,Math.ceil(n/100)*100);let rows="";for(let i=Math.max(1,Math.floor((n-1)/100)*100+1);i<=Math.min(end,Math.floor((n-1)/100)*100+100);i++){let isD=done(i),unlocked=i<=n;rows+=`<article class="stage ${unlocked?"":"locked"}"><div class="stage-icon">${isD?"✅":i%10===0?"🏁":"✨"}</div><div><h3>Stage ${i} ${i%10===0?"· Checkpoint":""}</h3><p>${isD?"Completed · replay anytime":unlocked?"Complete this lesson to earn a gift":"Complete the previous stage to unlock"}</p></div><button class="${unlocked?"primary":"secondary"}" ${unlocked?"":"disabled"} data-start="${i}">${isD?"Replay": "Start"}</button></article>`;}
-return `<section class="hero"><div><div class="eyebrow">YOUR DAILY LANGUAGE QUEST</div><h1>Small steps. Big fluency.</h1><p>Ollie is ready to cheer for every new word you learn. Complete 100 stages to unlock the next world.</p><div class="row" style="margin-top:14px"><span class="pill">🌍 World ${Math.ceil(n/100)}</span><span class="pill">🛡️ ${esc(data.shield)} Shield</span></div></div><div class="ollie-wrap"><img class="ollie" src="./ollie.png" alt="Ollie the blue owl"><div class="speech">Let's learn! ✨</div></div></section><div class="section-head"><h2>Learning path</h2><span class="muted">${esc(data.course)} · ${Object.keys(data.done).filter(k=>k.startsWith(data.course+":")&&data.done[k]).length} completed</span></div><div class="panel"><div class="row"><b>Language</b><select id="courseSelect" style="max-width:180px"><option>Spanish</option><option>English</option><option>Hindi</option></select><span class="muted">100 stages per world</span></div><div class="track"><div class="fill" style="width:${((n-1)%100+1)}%"></div></div><p class="muted">Next stage: ${n} · ${data.xp} XP earned</p></div><div class="section-head"><h2>World ${Math.ceil(n/100)} · Stages ${Math.floor((n-1)/100)*100+1}–${Math.floor((n-1)/100)*100+100}</h2></div><div class="stage-list">${rows}</div>`;}
-function start(n){stageNo=n;qi=0;score=0;chosen=-1;lockedAnswer=false;data.hearts=3;stats();showQuestion();}
-function questionFor(i){const pool=banks[data.course]||banks.English;return pool[(stageNo*3+i)%pool.length];}
-function showQuestion(){const q=questionFor(qi);app.innerHTML=`<div class="quiz"><div class="quiztop"><button class="secondary" id="quit">✕ Exit</button><div class="track" style="flex:1"><div class="fill" style="width:${qi/5*100}%"></div></div><b>${"❤️".repeat(data.hearts)}${"🖤".repeat(3-data.hearts)}</b></div><div class="panel"><div class="eyebrow">WORLD ${Math.ceil(stageNo/100)} · STAGE ${stageNo} · QUESTION ${qi+1}/5</div><h2 class="question">${esc(q[0])}</h2><div id="opts">${q[1].map((v,i)=>`<button class="option" data-opt="${i}">${esc(v)}</button>`).join("")}</div><div id="feedback"></div><div class="row" style="justify-content:flex-end;margin-top:13px"><button class="primary" id="check" disabled>Check answer</button></div></div></div>`;$("quit").onclick=()=>nav("learn");document.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{if(lockedAnswer)return;chosen=+b.dataset.opt;document.querySelectorAll("[data-opt]").forEach(x=>x.classList.toggle("selected",x===b));$("check").disabled=false;});$("check").onclick=check;}
-function check(){if(chosen<0||lockedAnswer)return;lockedAnswer=true;const q=questionFor(qi),correct=q[1][chosen]===q[2];document.querySelectorAll("[data-opt]").forEach((b,i)=>{b.disabled=true;if(q[1][i]===q[2])b.classList.add("correct");else if(i===chosen)b.classList.add("wrong");});if(correct){score++;sound("ok");$("feedback").className="feedback good";$("feedback").textContent="Correct! "+q[3];}else{data.hearts--;sound("bad");$("feedback").className="feedback bad";$("feedback").textContent="Not quite. "+q[3];}stats();const b=$("check");b.disabled=false;b.textContent=data.hearts===0?"Out of hearts":qi===4?"Finish stage":"Continue";b.onclick=()=>{if(data.hearts===0){heartChoice();return;}qi++;chosen=-1;lockedAnswer=false;if(qi<5)showQuestion();else finish();};}
-function heartChoice(){app.innerHTML=`<div class="quiz panel" style="text-align:center"><div style="font-size:55px">💔</div><h2>Out of hearts!</h2><p class="muted">You can buy one heart using 10 coins or restart this stage. Your progress in this stage will restart.</p><div class="row" style="justify-content:center"><button class="primary" id="buy">🪙 Buy 1 heart · 10 coins</button><button class="secondary" id="restart">↻ Restart stage</button></div><p class="muted">Coins are earned by completing stages; no real-money purchase is needed.</p></div>`;$("buy").onclick=()=>{if(data.coins<10){alert("You need 10 coins. Restart this stage or earn coins from another completed stage.");return;}data.coins-=10;data.hearts=1;persist();qi=0;score=0;chosen=-1;lockedAnswer=false;showQuestion();};$("restart").onclick=()=>start(stageNo);}
-function finish(){const already=done(stageNo);if(!already){const gift=giftTiers[(stageNo-1)%giftTiers.length];data.done[key(stageNo)]=true;data.xp+=score*10+gift[2];data.coins+=gift[2];data.gems+=gift[3];data.stage=stageNo+1;recordDay();persist();celebrate(gift);}else{app.innerHTML=`<div class="panel quiz"><h2>Stage replay complete!</h2><p>You scored ${score}/5. Rewards are only given once per stage.</p><button class="primary" id="back">Back to learning</button></div>`;$("back").onclick=()=>nav("learn");}}
-function celebrate(g){const msg=["Hurray! You did it! 🎉","Amazing! You're brilliant! ✨","Wow! Ollie is proud of you! 🦉","You got it! Super learner! 🚀","Fantastic work! Keep shining! 🌟"][Math.floor(Math.random()*5)];sound("gift");app.innerHTML=`<div class="quiz panel" style="text-align:center;position:relative;overflow:hidden"><div class="confetti">${Array.from({length:18},()=>"<i></i>").join("")}</div><div class="ollie-wrap" style="margin:auto"><img class="ollie celebrate" src="./ollie.png" alt="Ollie celebrating"><div class="speech">${msg}</div></div><div class="eyebrow">STAGE ${stageNo} COMPLETED</div><h1 style="color:var(--gold)">YOU DID IT!</h1><p>You answered ${score}/5 correctly. Ollie has a special gift for you.</p><div class="gift"><div class="big">${g[0]}</div><h2>${g[1]}</h2><b>+${g[2]} coins · +${g[3]} diamonds · +${score*10+g[2]} XP</b></div><p class="muted">Your weekly shield: ${esc(data.shield)} · ${data.streak} day streak</p><button class="primary" id="next">Continue to next stage →</button>`;$("next").onclick=()=>nav("learn");}
-function friendsView(){return `<div class="hero"><div><div class="eyebrow">FLUENTO FRIENDS</div><h1>Learn together.</h1><p>Find friends by their Fluento ID, send requests and compare progress.</p></div><div style="font-size:54px">👥</div></div><div class="section-head"><h2>Find a learner</h2></div><div class="panel"><div class="row"><input id="friendSearch" placeholder="Enter exact Fluento ID" style="flex:1"><button class="primary" id="searchFriend">Search</button></div><div id="friendResult"></div><p class="muted">Your email address is private. Friends see only your nickname, stage, shield and learning stats.</p></div><div class="section-head"><h2>Friend requests</h2></div><div class="panel" id="requests">Sign in with Firebase to use real friend requests.</div><div class="section-head"><h2>Your friends leaderboard</h2></div><div class="panel" id="leaderboard">Your accepted friends appear here.</div>`;}
-async function loadFriends(){if(!user||!db){$("leaderboard").textContent="Guest mode has no online friends.";return;}const q=query(collection(db,"friendships"),where("members","array-contains",user.uid));const snap=await getDocs(q);let rows=[];for(const d of snap.docs){const f=d.data(),other=f.members.find(x=>x!==user.uid);if(!other)continue;const p=await getDoc(doc(db,"publicProfiles",other));if(p.exists())rows.push(p.data());}rows.sort((a,b)=>(b.xp||0)-(a.xp||0));$("leaderboard").innerHTML=rows.length?rows.map((p,i)=>`<div class="friend"><div class="avatar">🦉</div><div class="friendinfo"><b>#${i+1} ${esc(p.nickname)}</b><small>Stage ${p.stage||1} · ${esc(p.shield||"None")} shield</small></div><b>${p.xp||0} XP · 💎${p.gems||0}</b></div>`).join(""):"No friends yet. Search by Fluento ID.";const rq=query(collection(db,"friendRequests"),where("to","==",user.uid),where("status","==","pending"));const rs=await getDocs(rq);$("requests").innerHTML=rs.empty?"No pending requests.":rs.docs.map(d=>`<div class="row"><span>${esc(d.data().fromName)} wants to connect</span><button class="primary" data-accept="${d.id}">Accept</button></div>`).join("");document.querySelectorAll("[data-accept]").forEach(b=>b.onclick=()=>acceptRequest(b.dataset.accept));}
-async function searchFriend(){const id=$("friendSearch").value.trim();if(!user||!db){$("friendResult").textContent="Sign in to search real accounts.";return;}if(!id)return;const q=query(collection(db,"publicProfiles"),where("friendCode","==",id),limit(1));const s=await getDocs(q);if(s.empty){$("friendResult").textContent="No learner found with that ID.";return;}const p=s.docs[0].data();if(p.uid===user.uid){$("friendResult").textContent="That's your own ID.";return;}$("friendResult").innerHTML=`<div class="friend"><div class="friendinfo"><b>${esc(p.nickname)}</b><small>Stage ${p.stage||1} · ${esc(p.shield||"No")} shield · ${p.xp||0} XP</small></div><button class="primary" id="sendReq">Send request</button></div>`;$("sendReq").onclick=async()=>{await addDoc(collection(db,"friendRequests"),{from:user.uid,to:p.uid,fromName:data.nickname,status:"pending",createdAt:serverTimestamp()});$("friendResult").textContent="Friend request sent!";};}
-async function acceptRequest(id){const r=await getDoc(doc(db,"friendRequests",id));if(!r.exists()||r.data().to!==user.uid)return;await updateDoc(doc(db,"friendRequests",id),{status:"accepted"});await addDoc(collection(db,"friendships"),{members:[user.uid,r.data().from],createdAt:serverTimestamp()});loadFriends();}
-function rewardsView(){const gifts=Object.entries(data.giftHistory||{});return `<div class="hero"><div><div class="eyebrow">OLLIE'S TREASURE ROOM</div><h1>Your rewards.</h1><p>Collect coins, diamonds, XP and weekly shields as you progress.</p></div><div style="font-size:58px">🎁</div></div><div class="grid" style="margin-top:15px"><div class="metric"><strong>🪙 ${data.coins}</strong><span>Coins</span></div><div class="metric"><strong>💎 ${data.gems}</strong><span>Diamonds</span></div><div class="metric"><strong>🛡️ ${esc(data.shield)}</strong><span>Weekly shield</span></div></div><div class="section-head"><h2>Shield ladder</h2></div><div class="grid">${[["🥉","Bronze","7 day streak"],["🥈","Silver","14 day streak"],["🥇","Gold","21 day streak"],["💠","Platinum","28 day streak"],["💎","Diamond","35 day streak"]].map(x=>`<div class="panel"><div style="font-size:30px">${x[0]}</div><b>${x[1]}</b><p class="muted">${x[2]}</p></div>`).join("")}</div>`;}
-function profileView(){return `<div class="hero"><div><div class="eyebrow">YOUR LEARNING IDENTITY</div><h1>${esc(data.nickname)}</h1><p>Fluento ID: <b>${user?"FL-"+user.uid.slice(0,8).toUpperCase():"GUEST"}</b></p></div><div style="font-size:54px">🦉</div></div><div class="grid" style="margin-top:15px"><div class="metric"><strong>${data.xp} ⚡</strong><span>XP</span></div><div class="metric"><strong>${data.coins} 🪙</strong><span>Coins</span></div><div class="metric"><strong>${data.gems} 💎</strong><span>Diamonds</span></div><div class="metric"><strong>${data.streak} 🔥</strong><span>Day streak</span></div><div class="metric"><strong>${highestStage()}</strong><span>Next stage</span></div><div class="metric"><strong>${esc(data.shield)}</strong><span>Shield</span></div></div><div class="section-head"><h2>Profile settings</h2></div><div class="panel"><label>Nickname<input id="newNickname" maxlength="24" value="${esc(data.nickname)}"></label><div class="row" style="margin-top:10px"><button class="primary" id="saveNickname">Save nickname</button><label><input type="checkbox" id="soundToggle" ${data.sound?"checked":""} style="width:auto"> Sounds on</label></div><p class="muted">Only your nickname and learning statistics are shared with accepted friends.</p></div>`;}
-function feedbackView(){return `<div class="hero"><div><div class="eyebrow">HELP FLUENTO GROW</div><h1>Send feedback.</h1><p>Tell the Fluento team what works and what we should improve.</p></div><div style="font-size:55px">✉️</div></div><div class="panel" style="margin-top:15px"><label>Feedback type<select id="feedbackType"><option>Suggestion</option><option>Bug report</option><option>Lesson correction</option><option>Other</option></select></label><label style="display:block;margin-top:10px">Your message<textarea id="feedbackText" maxlength="1500" placeholder="Write your feedback here..."></textarea></label><button class="primary" style="margin-top:12px" id="sendFeedback">Send feedback</button><p id="feedbackStatus" class="muted"></p></div>`;}
-async function sendFeedback(){const msg=$("feedbackText").value.trim();if(msg.length<5){$("feedbackStatus").textContent="Please write a little more detail.";return;}if(!user||!db){$("feedbackStatus").textContent="Sign in to submit feedback.";return;}await addDoc(collection(db,"feedback"),{uid:user.uid,nickname:data.nickname,type:$("feedbackType").value,message:msg,createdAt:serverTimestamp(),status:"new"});$("feedbackStatus").textContent="Thanks! Your feedback was sent."; $("feedbackText").value="";}
-function dashboardView(){if(!user||user.uid!==ADMIN_UID)return `<div class="notice">Director dashboard is available only to the account whose UID is configured as ADMIN_UID.</div>`;return `<div class="hero"><div><div class="eyebrow">DIRECTOR CONTROL ROOM</div><h1>Welcome, Nirmit.</h1><p>Live registration and engagement overview. User email addresses are visible only to this admin account.</p></div><div style="font-size:52px">📊</div></div><div id="adminStats" class="grid" style="margin-top:15px"><div class="metric"><strong>Loading…</strong><span>Users</span></div></div><div class="section-head"><h2>Registered users</h2><span class="status">● Live updates</span></div><div class="panel" style="overflow:auto"><table class="admin-table"><thead><tr><th>Nickname</th><th>Email</th><th>Stage</th><th>Shield</th><th>XP</th></tr></thead><tbody id="userRows"><tr><td colspan="5">Loading user list…</td></tr></tbody></table></div><div class="section-head"><h2>Latest feedback</h2></div><div class="panel" id="adminFeedback">Loading…</div><div class="notice">This dashboard shows registrations and learning activity. Revenue remains zero until you add a compliant payment provider and a trusted server-side payment webhook. Never calculate payments from browser-side values.</div>`;}
-async function loadAdmin(){if(!user||user.uid!==ADMIN_UID||!db)return;if(unsubscribeUsers)unsubscribeUsers();unsubscribeUsers=onSnapshot(collection(db,"publicProfiles"),async snap=>{let profiles=snap.docs.map(d=>d.data());$("adminStats").innerHTML=`<div class="metric"><strong>${profiles.length}</strong><span>Total registered learners</span></div><div class="metric"><strong>${profiles.filter(p=>p.updatedAt?.toDate&&Date.now()-p.updatedAt.toDate().getTime()<7*864e5).length}</strong><span>Active in last 7 days</span></div><div class="metric"><strong>${profiles.reduce((a,p)=>a+(p.xp||0),0)}</strong><span>Total learner XP</span></div><div class="metric"><strong>₹0</strong><span>Verified revenue (not connected)</span></div>`;let rows=[];for(const p of profiles){let priv=await getDoc(doc(db,"privateProfiles",p.uid));rows.push(`<tr><td>${esc(p.nickname)}</td><td>${esc(priv.exists()?priv.data().email:"")}</td><td>${p.stage||1}</td><td>${esc(p.shield||"None")}</td><td>${p.xp||0}</td></tr>`);}$("userRows").innerHTML=rows.join("")||'<tr><td colspan="5">No users yet.</td></tr>';});const fq=query(collection(db,"feedback"),orderBy("createdAt","desc"),limit(10));onSnapshot(fq,s=>{$("adminFeedback").innerHTML=s.empty?"No feedback yet.":s.docs.map(d=>`<div class="friend"><div class="friendinfo"><b>${esc(d.data().type)} · ${esc(d.data().nickname)}</b><small>${esc(d.data().message)}</small></div></div>`).join("");});}
-document.addEventListener("click",e=>{const startBtn=e.target.closest("[data-start]");if(startBtn)start(+startBtn.dataset.start);});
-document.addEventListener("change",e=>{if(e.target.id==="courseSelect"){data.course=e.target.value;persist();render();}if(e.target.id==="soundToggle"){data.sound=e.target.checked;persist();}});
-document.addEventListener("click",e=>{if(e.target.id==="searchFriend")searchFriend();if(e.target.id==="sendFeedback")sendFeedback();if(e.target.id==="saveNickname"){const v=$("newNickname").value.trim();if(v){data.nickname=v;persist();render();}}});
-document.addEventListener("click",e=>{if(e.target.id==="adminNav"||e.target.closest('[data-tab="dashboard"]')){data.tab="dashboard";render();loadAdmin();}});
-const originalRender=render;
-render=function(){originalRender();if(data.tab==="friends")loadFriends().catch(console.warn);if(data.tab==="dashboard")loadAdmin().catch(console.warn);};
-stats();
-if(!firebaseReady){$("authMessage").textContent="Firebase setup needed for real accounts. You can still try Guest mode on this device.";}
-else if(!auth.currentUser){/* auth observer below controls the screen */}
-if(firebaseReady){onAuthStateChanged(auth,async u=>{if(u){user=u;guest=false;try{await loadCloud();showApp();}catch(e){console.error(e);showApp();}}});}
+
+const ADMIN_UID="PASTE_YOUR_FIREBASE_AUTH_UID";
+
+const firebaseReady=Object.values(firebaseConfig).every(
+ v=>v&&!String(v).startsWith("PASTE_")
+);
+
+let auth=null,db=null,user=null,guest=false;
+if(firebaseReady){
+ const fb=initializeApp(firebaseConfig);
+ auth=getAuth(fb);
+ db=getFirestore(fb);
+}
+
+/* =====================================
+   2. APP DATA
+===================================== */
+
+const $=id=>document.getElementById(id);
+const app=$("app");
+const localKey="fluento-ultimate-v3";
+
+const base={
+ nickname:"Learner",
+ course:"English",
+ xp:0,coins:0,gems:0,hearts:3,
+ streak:0,shield:"None",
+ stage:1,done:{},practiceDays:[],
+ lastPractice:"",weeklyClaimed:[],
+ sound:true,music:true,volume:0.12,
+ notificationsEnabled:false
+};
+
+let data={
+ ...base,
+ ...JSON.parse(localStorage.getItem(localKey)||"{}")
+};
+
+let currentStage=1;
+let questionIndex=0;
+let score=0;
+let selected=-1;
+let answered=false;
+let audio=null;
+let musicNodes=null;
+let unsubFriends=null;
+let unsubRequests=null;
+let unsubProfile=null;
+
+/* =====================================
+   3. QUESTION BANK
+   Each stage selects a different set.
+===================================== */
+
+const banks={
+
+ English:[
+ ["Choose a greeting.",["Hello","Under","Because","Quickly"],0,"Hello is a greeting."],
+ ["Opposite of cold?",["Hot","Slow","Small","Quiet"],0,"Hot is the opposite of cold."],
+ ["Complete: How ___ you?",["are","is","am","be"],0,"Use are with you."],
+ ["Past tense of go?",["Went","Goed","Going","Go"],0,"Go becomes went."],
+ ["Choose a polite word.",["Please","Never","Maybe","Under"],0,"Please is polite."],
+ ["Plural of child?",["Children","Childs","Childes","Child"],0,"Children is the plural."],
+ ["Which is a noun?",["Teacher","Quickly","Beautiful","Run"],0,"Teacher names a person."],
+ ["Choose the correct article: ___ apple.",["An","A","Thee","No"],0,"Use an before a vowel sound."],
+ ["Opposite of ancient?",["Modern","Old","Past","Historic"],0,"Modern is the opposite."],
+ ["Which is a verb?",["Jump","Blue","Table","Happy"],0,"Jump is an action."],
+ ["Complete: She ___ singing.",["is","are","am","be"],0,"Use is with she."],
+ ["Past tense of eat?",["Ate","Eated","Eating","Eats"],0,"Eat becomes ate."],
+ ["Synonym of happy?",["Joyful","Angry","Tired","Sad"],0,"Joyful means happy."],
+ ["Which is an adjective?",["Beautiful","Slowly","Run","Chair"],0,"Beautiful describes something."],
+ ["Choose the correct spelling.",["Because","Becaus","Beacause","Becose"],0,"Because is correct."],
+ ["Complete: They ___ playing.",["are","is","am","was"],0,"Use are with they."],
+ ["Opposite of victory?",["Defeat","Success","Win","Prize"],0,"Defeat is the opposite."],
+ ["Which is a pronoun?",["They","School","Running","Green"],0,"They is a pronoun."],
+ ["Choose the future tense.",["Will go","Went","Goes","Going"],0,"Will go expresses the future."],
+ ["What is the plural of mouse?",["Mice","Mouses","Mousees","Mices"],0,"Mice is the plural."]
+ ],
+
+ Spanish:[
+ ["How do you say Hello?",["Hola","Adiós","Gracias","Agua"],0,"Hola means hello."],
+ ["What does Gracias mean?",["Please","Thank you","Good night","Friend"],1,"Gracias means thank you."],
+ ["Choose water in Spanish.",["Pan","Agua","Casa","Libro"],1,"Agua means water."],
+ ["What does Por favor mean?",["Please","Goodbye","Sorry","Welcome"],0,"Por favor means please."],
+ ["Complete Buenos ___.",["días","libros","amigos","agua"],0,"Buenos días means good morning."],
+ ["What does Adiós mean?",["Goodbye","Hello","Thanks","Water"],0,"Adiós means goodbye."],
+ ["What is friend in Spanish?",["Amigo","Casa","Libro","Agua"],0,"Amigo means friend."],
+ ["What does Casa mean?",["House","Food","Water","Book"],0,"Casa means house."],
+ ["Choose book.",["Libro","Perro","Gato","Sol"],0,"Libro means book."],
+ ["What does Sí mean?",["Yes","No","Maybe","Please"],0,"Sí means yes."],
+ ["What is dog?",["Perro","Gato","Pájaro","Pez"],0,"Perro means dog."],
+ ["What is cat?",["Gato","Perro","Casa","Flor"],0,"Gato means cat."],
+ ["What does Rojo mean?",["Red","Blue","Green","Yellow"],0,"Rojo means red."],
+ ["What does Azul mean?",["Blue","Red","Black","White"],0,"Azul means blue."],
+ ["Choose one.",["Uno","Dos","Tres","Cuatro"],0,"Uno means one."],
+ ["What does Dos mean?",["Two","One","Three","Four"],0,"Dos means two."],
+ ["What is school?",["Escuela","Casa","Agua","Libro"],0,"Escuela means school."],
+ ["What is good night?",["Buenas noches","Buenos días","Hola","Gracias"],0,"Buenas noches means good night."],
+ ["What is mother?",["Madre","Padre","Amigo","Hermana"],0,"Madre means mother."],
+ ["What is father?",["Padre","Madre","Amiga","Casa"],0,"Padre means father."]
+ ],
+
+ Hindi:[
+ ["“नमस्ते” का अर्थ?",["अभिवादन","पानी","किताब","घर"],0,"नमस्ते अभिवादन है."],
+ ["“पानी” का अर्थ?",["Water","Book","Friend","School"],0,"पानी means water."],
+ ["“धन्यवाद” का अर्थ?",["Thank you","Goodbye","Please","Friend"],0,"धन्यवाद means thank you."],
+ ["“मित्र” का अर्थ?",["Friend","Food","House","Book"],0,"मित्र means friend."],
+ ["“घर” का अर्थ?",["House","School","Water","Day"],0,"घर means house."],
+ ["“विद्यालय” का अर्थ?",["School","River","Garden","Book"],0,"विद्यालय means school."],
+ ["“सूरज” का अर्थ?",["Sun","Moon","Star","Cloud"],0,"सूरज means sun."],
+ ["“चंद्रमा” का अर्थ?",["Moon","Sun","Rain","Wind"],0,"चंद्रमा means moon."],
+ ["“पुस्तक” का अर्थ?",["Book","Pen","Chair","Table"],0,"पुस्तक means book."],
+ ["“सुंदर” का अर्थ?",["Beautiful","Ugly","Angry","Slow"],0,"सुंदर means beautiful."],
+ ["“तेज़” का अर्थ?",["Fast","Slow","Weak","Quiet"],0,"तेज़ means fast."],
+ ["“दिन” का अर्थ?",["Day","Night","Morning","Evening"],0,"दिन means day."],
+ ["“रात” का अर्थ?",["Night","Day","Sun","Cloud"],0,"रात means night."],
+ ["“आकाश” का अर्थ?",["Sky","Earth","Water","Fire"],0,"आकाश means sky."],
+ ["“पेड़” का अर्थ?",["Tree","Flower","Fruit","Leaf"],0,"पेड़ means tree."],
+ ["“फल” का अर्थ?",["Fruit","Tree","Flower","Water"],0,"फल means fruit."],
+ ["“खुशी” का अर्थ?",["Happiness","Sadness","Anger","Fear"],0,"खुशी means happiness."],
+ ["“साहस” का अर्थ?",["Courage","Fear","Sleep","Food"],0,"साहस means courage."],
+ ["“परिवार” का अर्थ?",["Family","School","Friend","Village"],0,"परिवार means family."],
+ ["“प्रेम” का अर्थ?",["Love","Hate","Anger","Fear"],0,"प्रेम means love."]
+ ]
+};
+
+/* Stage-specific deterministic question selection.
+   Consecutive stages use different questions. */
+
+function stageQuestions(stage){
+ const bank=banks[data.course]||banks.English;
+ const start=((stage-1)*5)%bank.length;
+ const result=[];
+ for(let i=0;i<5;i++){
+  result.push(bank[(start+i)%bank.length]);
+ }
+ return result;
+}
+
+/* =====================================
+   4. BASIC HELPERS
+===================================== */
+
+function esc(s){
+ return String(s??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function save(){
+ localStorage.setItem(localKey,JSON.stringify(data));
+ updateStats();
+}
+
+function updateStats(){
+ $("xp").textContent=data.xp||0;
+ $("coins").textContent=data.coins||0;
+ $("gems").textContent=data.gems||0;
+ $("hearts").textContent=data.hearts??3;
+ $("streak").textContent=data.streak||0;
+}
+
+function stageKey(n){return data.course+":"+n}
+function completed(n){return !!data.done[stageKey(n)]}
+
+function highestStage(){
+ let n=1;
+ while(completed(n))n++;
+ return n;
+}
+
+function shieldFor(n){
+ if(n>=35)return "Diamond";
+ if(n>=28)return "Platinum";
+ if(n>=21)return "Gold";
+ if(n>=14)return "Silver";
+ if(n>=7)return "Bronze";
+ return "None";
+}
+
+/* =====================================
+   5. AUDIO SYSTEM
+===================================== */
+
+function startAudio(){
+ if(!data.sound)return;
+ const C=window.AudioContext||window.webkitAudioContext;
+ if(!C)return;
+ audio??=new C();
+ audio.resume();
+}
+
+function playTone(freq,duration=.16,type="sine",volume=.06){
+ if(!data.sound)return;
+ startAudio();
+ if(!audio)return;
+ const o=audio.createOscillator();
+ const g=audio.createGain();
+ o.type=type;
+ o.frequency.value=freq;
+ const now=audio.currentTime;
+ g.gain.setValueAtTime(.001,now);
+ g.gain.linearRampToValueAtTime(volume,now+.02);
+ g.gain.exponentialRampToValueAtTime(.001,now+duration);
+ o.connect(g);g.connect(audio.destination);
+ o.start(now);o.stop(now+duration+.02);
+}
+
+function sound(kind){
+ const notes={
+  ok:[523,659,784],
+  bad:[220,185],
+  gift:[523,659,784,1046],
+  tap:[440],
+  level:[392,523,659,784]
+ };
+ (notes[kind]||[440]).forEach((n,i)=>
+  setTimeout(()=>playTone(n,.2),i*130)
+ );
+}
+
+/* Original ambient synthesised music.
+   It is not copied from another app or song. */
+
+function startMusic(){
+ if(!data.music||musicNodes)return;
+ startAudio();
+ if(!audio)return;
+ const osc1=audio.createOscillator();
+ const osc2=audio.createOscillator();
+ const gain=audio.createGain();
+ const filter=audio.createBiquadFilter();
+
+ osc1.type="sine";
+ osc2.type="triangle";
+ osc1.frequency.value=110;
+ osc2.frequency.value=164.81;
+ filter.type="lowpass";
+ filter.frequency.value=350;
+ gain.gain.value=Math.max(0,Math.min(.035,data.volume));
+
+ osc1.connect(filter);
+ osc2.connect(filter);
+ filter.connect(gain);
+ gain.connect(audio.destination);
+ osc1.start();osc2.start();
+ musicNodes={osc1,osc2,gain};
+}
+
+function stopMusic(){
+ if(!musicNodes)return;
+ try{
+  musicNodes.osc1.stop();
+  musicNodes.osc2.stop();
+ }catch{}
+ musicNodes=null;
+}
+
+/* Sound and music need a user interaction on many phones. */
+document.addEventListener("pointerdown",()=>{
+ startAudio();
+ startMusic();
+},{once:true});
+
+$("splash").addEventListener("click",()=>{
+ $("splash").remove();
+ startAudio();
+ startMusic();
+});
+
+/* =====================================
+   6. STREAKS AND WEEKLY REWARDS
+===================================== */
+
+function recordDay(){
+ const today=new Date().toISOString().slice(0,10);
+ if(data.practiceDays.includes(today))return;
+
+ const yesterday=new Date(Date.now()-86400000)
+  .toISOString().slice(0,10);
+
+ data.streak=data.lastPractice===yesterday
+  ?(data.streak||0)+1:1;
+
+ data.lastPractice=today;
+ data.practiceDays.push(today);
+ data.practiceDays=data.practiceDays.slice(-100);
+ data.shield=shieldFor(data.streak);
+
+ if(data.streak%7===0&&!data.weeklyClaimed.includes(data.streak)){
+  data.weeklyClaimed.push(data.streak);
+  data.coins+=50;
+  data.gems+=10;
+  data.xp+=100;
+  data.weeklyGift={
+   streak:data.streak,
+   date:today
+  };
+ }
+}
+
+/* =====================================
+   7. FIREBASE CLOUD SYNC
+===================================== */
+
+async function cloudSave(){
+ if(!user||guest||!db)return;
+
+ await setDoc(doc(db,"publicProfiles",user.uid),{
+  uid:user.uid,
+  nickname:data.nickname,
+  nicknameLower:data.nickname.toLowerCase(),
+  friendCode:"FL-"+user.uid.slice(0,8).toUpperCase(),
+  course:data.course,
+  xp:data.xp,
+  stage:highestStage(),
+  shield:data.shield,
+  streak:data.streak,
+  gems:data.gems,
+  updatedAt:serverTimestamp()
+ },{merge:true});
+
+ await setDoc(doc(db,"userProgress",user.uid),{
+  ...data,
+  updatedAt:serverTimestamp()
+ },{merge:true});
+}
+
+function persist(){
+ save();
+ cloudSave().catch(console.error);
+}
+
+async function loadCloud(){
+ if(!user||!db)return;
+ const snap=await getDoc(doc(db,"userProgress",user.uid));
+ if(snap.exists()){
+  data={...base,...snap.data()};
+ }
+ const p=await getDoc(doc(db,"publicProfiles",user.uid));
+ if(!p.exists()){
+  await cloudSave();
+ }
+ if(user.uid===ADMIN_UID){
+  $("adminNav").classList.remove("hidden");
+ }
+}
+
+/* =====================================
+   8. AUTHENTICATION
+===================================== */
+
+function showApp(){
+ $("authScreen").classList.add("hidden");
+ $("appShell").classList.remove("hidden");
+ render();
+}
+
+function showAuth(){
+ $("authScreen").classList.remove("hidden");
+ $("appShell").classList.add("hidden");
+}
+
+$("authForm").onsubmit=async e=>{
+ e.preventDefault();
+ if(!firebaseReady){
+  $("authMessage").textContent="Please configure Firebase first.";
+  return;
+ }
+ try{
+  const c=await signInWithEmailAndPassword(
+   auth,$("authEmail").value.trim(),
+   $("authPassword").value
+  );
+  user=c.user;guest=false;
+  await loadCloud();showApp();
+ }catch(err){
+  $("authMessage").textContent=err.message;
+ }
+};
+
+$("signup").onclick=async()=>{
+ if(!firebaseReady){
+  $("authMessage").textContent="Please configure Firebase first.";
+  return;
+ }
+ try{
+  const name=$("authName").value.trim()||"Learner";
+  const email=$("authEmail").value.trim();
+  const password=$("authPassword").value;
+  if(password.length<8)throw Error("Password must have 8 characters.");
+
+  const c=await createUserWithEmailAndPassword(auth,email,password);
+  user=c.user;
+  await updateProfile(user,{displayName:name});
+  data.nickname=name;
+  guest=false;
+  await cloudSave();
+  showApp();
+ }catch(err){
+  $("authMessage").textContent=err.message;
+ }
+};
+
+$("guest").onclick=()=>{
+ guest=true;user=null;
+ data={...base,...JSON.parse(localStorage.getItem(localKey)||"{}")};
+ showApp();
+};
+
+$("logout").onclick=async()=>{
+ if(auth&&user)await signOut(auth);
+ user=null;guest=false;stopListeners();showAuth();
+};
+
+function stopListeners(){
+ if(unsubFriends)unsubFriends();
+ if(unsubRequests)unsubRequests();
+ if(unsubProfile)unsubProfile();
+}
+
+if(auth){
+ onAuthStateChanged(auth,async u=>{
+  if(u){
+   user=u;guest=false;
+   try{await loadCloud();showApp();}
+   catch(e){console.error(e);showApp();}
+  }
+ });
+}
+
+/* =====================================
+   9. NAVIGATION
+===================================== */
+
+function nav(tab){
+ data.tab=tab;
+ render();
+}
+
+document.querySelectorAll("[data-tab]").forEach(b=>{
+ b.onclick=()=>nav(b.dataset.tab);
+});
+
+function render(){
+ updateStats();
+ document.querySelectorAll("[data-tab]").forEach(b=>{
+  b.classList.toggle("active",b.dataset.tab===data.tab);
+ });
+
+ const views={
+  learn:learnView,
+  friends:friendsView,
+  rewards:rewardsView,
+  profile:profileView,
+  feedback:feedbackView,
+  dashboard:dashboardView
+ };
+
+ app.innerHTML=(views[data.tab]||learnView)();
+
+ if(data.tab==="friends")loadFriends();
+ if(data.tab==="dashboard")loadAdmin();
+}
+
+/* =====================================
+   10. LEARNING PATH
+===================================== */
+
+function learnView(){
+ const next=highestStage();
+ let html="";
+
+ for(let i=Math.max(1,next-3);i<next+12;i++){
+  const done=completed(i);
+  const unlocked=i<=next;
+
+  html+=`
+   <div class="stage ${unlocked?"":"locked"}">
+    <div class="stage-icon">${done?"✅":"✨"}</div>
+    <div>
+     <h3>Stage ${i}</h3>
+     <p>${done?"Completed":unlocked?"Ready to learn":"Locked"}</p>
+    </div>
+    <button class="${unlocked?"primary":"secondary"}"
+     data-start="${i}" ${unlocked?"":"disabled"}>
+     ${done?"Replay":"Start"}
+    </button>
+   </div>`;
+ }
+
+ return `
+ <section class="hero">
+  <div>
+   <div class="eyebrow">YOUR DAILY LANGUAGE QUEST</div>
+   <h1>Small steps. Big fluency.</h1>
+   <p>Ollie is ready to celebrate your progress!</p>
+   <span class="pill">🌍 World ${Math.ceil(next/100)}</span>
+   <span class="pill">🛡️ ${esc(data.shield)}</span>
+  </div>
+  <div class="ollie-wrap">
+   <img class="ollie" src="ollie.png" alt="Ollie">
+   <div class="speech">Let's learn! ✨</div>
+  </div>
+ </section>
+
+ <div class="section-head"><h2>Learning path</h2></div>
+ <div class="panel">
+  <label>Choose language</label>
+  <select id="courseSelect">
+   ${["English","Spanish","Hindi"].map(x=>
+    `<option ${data.course===x?"selected":""}>${x}</option>`
+   ).join("")}
+  </select>
+  <div class="track">
+   <div class="fill" style="width:${((next-1)%100)+1}%"></div>
+  </div>
+  <p class="muted">Next stage: ${next} · ${data.xp} XP</p>
+ </div>
+ <div class="section-head"><h2>World ${Math.ceil(next/100)}</h2></div>
+ ${html}
+ `;
+}
+
+/* =====================================
+   11. QUIZ ENGINE
+===================================== */
+
+function startStage(n){
+ currentStage=n;
+ questionIndex=0;
+ score=0;
+ selected=-1;
+ answered=false;
+ data.hearts=3;
+ showQuestion();
+}
+
+function currentQuestion(){
+ return stageQuestions(currentStage)[questionIndex];
+}
+
+function showQuestion(){
+ const q=currentQuestion();
+
+ app.innerHTML=`
+ <div class="quiz">
+  <div class="row">
+   <button class="secondary" id="quit">✕ Exit</button>
+   <div class="track" style="flex:1">
+    <div class="fill" style="width:${questionIndex*20}%"></div>
+   </div>
+   <b>❤️ ${data.hearts}</b>
+  </div>
+
+  <div class="panel">
+   <div class="eyebrow">
+    STAGE ${currentStage} · QUESTION ${questionIndex+1}/5
+   </div>
+   <h2 class="question">${esc(q[0])}</h2>
+
+   <div id="options">
+    ${q[1].map((v,i)=>`
+     <button class="option" data-option="${i}">
+      ${esc(v)}
+     </button>
+    `).join("")}
+   </div>
+
+   <div id="feedback"></div>
+   <div class="row" style="justify-content:flex-end">
+    <button class="primary" id="check" disabled>Check answer</button>
+   </div>
+  </div>
+ </div>`;
+
+ $("quit").onclick=()=>nav("learn");
+
+ document.querySelectorAll("[data-option]").forEach(b=>{
+  b.onclick=()=>{
+   if(answered)return;
+   selected=+b.dataset.option;
+   document.querySelectorAll("[data-option]").forEach(x=>
+    x.classList.toggle("selected",x===b)
+   );
+   $("check").disabled=false;
+  };
+ });
+
+ $("check").onclick=checkAnswer;
+}
+
+function checkAnswer(){
+ if(selected<0||answered)return;
+ answered=true;
+
+ const q=currentQuestion();
+ const correct=selected===q[2];
+
+ document.querySelectorAll("[data-option]").forEach((b,i)=>{
+  b.disabled=true;
+  if(i===q[2])b.classList.add("correct");
+  if(i===selected&&!correct)b.classList.add("wrong");
+ });
+
+ if(correct){
+  score++;
+  sound("ok");
+  $("feedback").className="feedback good";
+  $("feedback").textContent="Correct! "+q[3];
+ }else{
+  data.hearts--;
+  sound("bad");
+  $("feedback").className="feedback bad";
+  $("feedback").textContent="Not quite. "+q[3];
+ }
+
+ updateStats();
+
+ const button=$("check");
+ button.disabled=false;
+ button.textContent=data.hearts===0?"Out of hearts":
+  questionIndex===4?"Finish stage":"Continue";
+
+ button.onclick=()=>{
+  if(data.hearts===0){heartChoice();return;}
+  questionIndex++;
+  selected=-1;
+  answered=false;
+  if(questionIndex<5)showQuestion();
+  else finishStage();
+ };
+}
+
+function heartChoice(){
+ app.innerHTML=`
+ <div class="panel quiz" style="text-align:center">
+  <div style="font-size:55px">💔</div>
+  <h2>Out of hearts!</h2>
+  <p>Buy one heart for 10 coins or restart this stage.</p>
+  <button class="primary" id="buyHeart">🪙 Buy heart · 10 coins</button>
+  <button class="secondary" id="restartStage">Restart stage</button>
+ </div>`;
+
+ $("buyHeart").onclick=()=>{
+  if(data.coins<10){alert("You need 10 coins.");return;}
+  data.coins-=10;
+  data.hearts=1;
+  persist();
+  questionIndex=0;score=0;selected=-1;answered=false;
+  showQuestion();
+ };
+ $("restartStage").onclick=()=>startStage(currentStage);
+}
+
+/* =====================================
+   12. STAGE REWARDS
+===================================== */
+
+const gifts=[
+ ["🌟","Star gift",5,2],
+ ["🍪","Ollie's cookie",8,3],
+ ["🎨","Colour badge",12,5],
+ ["🎁","Mystery gift",18,8],
+ ["🏆","Golden trophy",25,12],
+ ["💎","Diamond chest",40,20],
+ ["👑","Royal crown",60,30],
+ ["🦉","Ollie's grand gift",100,50]
+];
+
+function finishStage(){
+ if(completed(currentStage)){
+  nav("learn");return;
+ }
+
+ const gift=gifts[(currentStage-1)%gifts.length];
+
+ data.done[stageKey(currentStage)]=true;
+ data.xp+=score*10+gift[2];
+ data.coins+=gift[2];
+ data.gems+=gift[3];
+
+ recordDay();
+ persist();
+ celebrate(gift);
+}
+
+function celebrate(gift){
+ sound("gift");
+
+ const messages=[
+  "Hurray! You did it! 🎉",
+  "Amazing! You're brilliant!",
+  "Wow! Ollie is proud of you!",
+  "You got it! Super learner!",
+  "Fantastic work! Keep shining!"
+ ];
+
+ const message=messages[Math.floor(Math.random()*messages.length)];
+
+ app.innerHTML=`
+ <div class="panel quiz" style="text-align:center">
+  <div class="ollie-wrap" style="margin:auto">
+   <img class="ollie celebrate" src="ollie.png" alt="Ollie celebrating">
+   <div class="speech">${message}</div>
+  </div>
+
+  <div class="eyebrow">STAGE ${currentStage} COMPLETED</div>
+  <h1 style="color:var(--gold)">YOU DID IT!</h1>
+  <p>You answered ${score}/5 correctly.</p>
+
+  <div class="gift">
+   <div class="big">${gift[0]}</div>
+   <h2>${gift[1]}</h2>
+   <b>+${gift[2]} coins · +${gift[3]} diamonds</b>
+   <p>+${score*10+gift[2]} XP</p>
+  </div>
+
+  ${data.weeklyGift?.date===new Date().toISOString().slice(0,10)?
+   '<div class="weekly">🎖️ Weekly reward unlocked! +50 coins +10 diamonds +100 XP</div>':""}
+
+  <button class="primary" id="continue">Continue →</button>
+ </div>`;
+
+ $("continue").onclick=()=>nav("learn");
+}
+
+/* =====================================
+   13. FRIENDS SYSTEM
+===================================== */
+
+function friendsView(){
+ return `
+ <section class="hero">
+  <div>
+   <div class="eyebrow">FLUENTO FRIENDS</div>
+   <h1>Learn together!</h1>
+   <p>Find learners, send requests and celebrate each other's progress.</p>
+  </div>
+  <div style="font-size:55px">👥</div>
+ </section>
+
+ <div class="weekly">
+  <b>Your Fluento ID</b>
+  <h2>${user?"FL-"+user.uid.slice(0,8).toUpperCase():"GUEST"}</h2>
+  <button class="secondary" id="copyID">Copy ID</button>
+ </div>
+
+ <div class="section-head"><h2>Find friends</h2></div>
+ <div class="panel">
+  <input id="friendNickname" placeholder="Search by exact nickname">
+  <button class="primary" id="findFriend">Search nickname</button>
+  <div id="searchResults"></div>
+ </div>
+
+ <div class="section-head"><h2>Friend requests</h2></div>
+ <div class="panel" id="incomingRequests">Loading requests...</div>
+
+ <div class="section-head"><h2>Sent requests</h2></div>
+ <div class="panel" id="sentRequests">Loading...</div>
+
+ <div class="section-head"><h2>My friends</h2></div>
+ <div class="panel" id="myFriends">Loading friends...</div>
+
+ <div id="friendDetails"></div>
+ `;
+}
+
+async function findFriend(){
+ if(!user||!db){
+  alert("Online friends require a Firebase account.");
+  return;
+ }
+
+ const name=$("friendNickname").value.trim().toLowerCase();
+ if(!name)return;
+
+ const q=query(
+  collection(db,"publicProfiles"),
+  where("nicknameLower","==",name),
+  limit(10)
+ );
+
+ const snap=await getDocs(q);
+ const results=snap.docs.map(d=>d.data())
+  .filter(p=>p.uid!==user.uid);
+
+ if(!results.length){
+  $("searchResults").textContent="No learner found.";
+  return;
+ }
+
+ $("searchResults").innerHTML=results.map(p=>`
+  <div class="friend">
+   <div class="avatar">🦉</div>
+   <div class="friendinfo">
+    <b>${esc(p.nickname)}</b>
+    <small>Stage ${p.stage||1} · ${p.xp||0} XP</small>
+   </div>
+   <button class="primary" data-send="${esc(p.uid)}">Add friend</button>
+  </div>
+ `).join("");
+
+ document.querySelectorAll("[data-send]").forEach(b=>{
+  b.onclick=()=>sendFriendRequest(b.dataset.send);
+ });
+}
+
+async function sendFriendRequest(to){
+ if(!user||!db)return;
+ if(to===user.uid)return;
+
+ const existing=query(
+  collection(db,"friendRequests"),
+  where("from","==",user.uid),
+  where("to","==",to),
+  where("status","==","pending"),
+  limit(1)
+ );
+
+ const found=await getDocs(existing);
+ if(!found.empty){
+  alert("Request already sent.");
+  return;
+ }
+
+ const incoming=query(
+  collection(db,"friendRequests"),
+  where("from","==",to),
+  where("to","==",user.uid),
+  where("status","==","pending"),
+  limit(1)
+ );
+
+ const incomingSnap=await getDocs(incoming);
+ if(!incomingSnap.empty){
+  alert("This learner has already sent you a request. Accept it in Friend requests.");
+  return;
+ }
+
+ await addDoc(collection(db,"friendRequests"),{
+  from:user.uid,
+  to:to,
+  fromName:data.nickname,
+  status:"pending",
+  createdAt:serverTimestamp()
+ });
+
+ alert("Friend request sent!");
+}
+
+/* A recipient can accept or reject.
+   Accepted requests create one mutual friendship document. */
+
+async function handleRequest(requestId,action){
+ if(!user||!db)return;
+
+ const ref=doc(db,"friendRequests",requestId);
+
+ await runTransaction(db,async tx=>{
+  const snap=await tx.get(ref);
+  if(!snap.exists())throw Error("Request no longer exists.");
+
+  const r=snap.data();
+  if(r.to!==user.uid||r.status!=="pending")
+   throw Error("This request is no longer available.");
+
+  tx.update(ref,{
+   status:action,
+   respondedAt:serverTimestamp()
+  });
+
+  if(action==="accepted"){
+   const friendshipId=[r.from,user.uid].sort().join("_");
+   tx.set(doc(db,"friendships",friendshipId),{
+    members:[r.from,user.uid],
+    createdAt:serverTimestamp()
+   });
+  }
+ });
+
+ await loadFriends();
+}
+
+function listenFriendRequests(){
+ if(!user||!db)return;
+
+ if(unsubRequests)unsubRequests();
+
+ unsubRequests=onSnapshot(
+  query(collection(db,"friendRequests"),
+   where("to","==",user.uid),
+   where("status","==","pending")),
+  snap=>{
+   const box=$("incomingRequests");
+   if(!box)return;
+
+   if(snap.empty){
+    box.textContent="No new friend requests.";
+    return;
+   }
+
+   box.innerHTML=snap.docs.map(d=>{
+    const r=d.data();
+    return `
+     <div class="request">
+      <b>${esc(r.fromName||"A learner")}</b>
+      <p>Sent you a friend request!</p>
+      <div class="row">
+       <button class="primary" data-accept="${d.id}">✓ Accept</button>
+       <button class="danger" data-reject="${d.id}">✕ Reject</button>
+      </div>
+     </div>`;
+   }).join("");
+
+   box.querySelectorAll("[data-accept]").forEach(b=>{
+    b.onclick=()=>handleRequest(b.dataset.accept,"accepted");
+   });
+   box.querySelectorAll("[data-reject]").forEach(b=>{
+    b.onclick=()=>handleRequest(b.dataset.reject,"rejected");
+   });
+  }
+ );
+
+ onSnapshot(
+  query(collection(db,"friendRequests"),
+   where("from","==",user.uid),
+   where("status","==","pending")),
+  snap=>{
+   const box=$("sentRequests");
+   if(box)box.innerHTML=snap.empty?"No pending sent requests.":
+    snap.docs.map(d=>`<p>Request sent · Waiting for response</p>`).join("");
+  }
+ );
+}
+
+async function loadFriends(){
+ if(!user||!db){
+  $("myFriends").textContent="Sign in to add online friends.";
+  return;
+ }
+
+ listenFriendRequests();
+
+ if(unsubFriends)unsubFriends();
+
+ unsubFriends=onSnapshot(
+  query(collection(db,"friendships"),
+   where("members","array-contains",user.uid)),
+  async snap=>{
+   const box=$("myFriends");
+   if(!box)return;
+
+   const friendIds=[];
+   snap.docs.forEach(d=>{
+    const id=d.data().members.find(x=>x!==user.uid);
+    if(id)friendIds.push(id);
+   });
+
+   if(!friendIds.length){
+    box.textContent="No friends yet. Search by nickname!";
+    return;
+   }
+
+   const profiles=await Promise.all(friendIds.map(async id=>{
+    const p=await getDoc(doc(db,"publicProfiles",id));
+    return p.exists()?p.data():null;
+   }));
+
+   const valid=profiles.filter(Boolean).sort((a,b)=>(b.xp||0)-(a.xp||0));
+
+   box.innerHTML=valid.map((p,i)=>`
+    <div class="friend friend-card" data-viewfriend="${esc(p.uid)}">
+     <div class="avatar">🦉</div>
+     <div class="friendinfo">
+      <b>#${i+1} ${esc(p.nickname)}</b>
+      <small>Stage ${p.stage||1} · ${p.xp||0} XP · ${esc(p.shield||"None")}</small>
+     </div>
+     <span>💎 ${p.gems||0}</span>
+    </div>
+   `).join("");
+
+   box.querySelectorAll("[data-viewfriend]").forEach(b=>{
+    b.onclick=()=>showFriend(b.dataset.viewfriend);
+   });
+  }
+ );
+}
+
+/* Live progress listener */
+function showFriend(uid){
+ const box=$("friendDetails");
+ if(!box||!db)return;
+
+ if(unsubProfile)unsubProfile();
+
+ box.innerHTML='<div class="panel">Loading friend progress...</div>';
+
+ unsubProfile=onSnapshot(doc(db,"publicProfiles",uid),snap=>{
+  if(!snap.exists()){
+   box.innerHTML="<div class='panel'>Profile unavailable.</div>";
+   return;
+  }
+
+  const p=snap.data();
+
+  box.innerHTML=`
+   <div class="panel">
+    <div class="eyebrow">FRIEND PROFILE</div>
+    <h2>🦉 ${esc(p.nickname)}</h2>
+    <div class="grid">
+     <div class="metric"><strong>${p.stage||1}</strong><span>Stage</span></div>
+     <div class="metric"><strong>${p.xp||0}</strong><span>XP</span></div>
+     <div class="metric"><strong>${p.streak||0} 🔥</strong><span>Streak</span></div>
+     <div class="metric"><strong>${esc(p.shield||"None")}</strong><span>Shield</span></div>
+    </div>
+    <p class="muted">Progress updates when your friend syncs their account.</p>
+   </div>`;
+ });
+}
+
+/* =====================================
+   14. REWARDS
+===================================== */
+
+function rewardsView(){
+ return `
+ <section class="hero">
+  <div><div class="eyebrow">OLLIE'S TREASURE ROOM</div>
+  <h1>Your rewards!</h1>
+  <p>Keep learning to unlock more treasures.</p></div>
+  <div style="font-size:55px">🎁</div>
+ </section>
+
+ <div class="grid">
+  <div class="metric"><strong>🪙 ${data.coins}</strong><span>Coins</span></div>
+  <div class="metric"><strong>💎 ${data.gems}</strong><span>Diamonds</span></div>
+  <div class="metric"><strong>⚡ ${data.xp}</strong><span>XP</span></div>
+ </div>
+
+ <div class="weekly">
+  <h2>🎖️ Weekly rewards</h2>
+  <p>Reach a 7-day streak to earn your weekly gift.</p>
+  <h3>${data.streak}/7 days</h3>
+  <div class="track"><div class="fill" style="width:${Math.min(100,data.streak%7/7*100)}%"></div></div>
+  ${data.weeklyGift?`Last gift: ${data.weeklyGift.streak}-day medal 🏅`:"Your next reward is waiting!"}
+ </div>
+
+ <div class="grid">
+  ${[
+   ["🥉","Bronze",7],["🥈","Silver",14],
+   ["🥇","Gold",21],["💠","Platinum",28],
+   ["💎","Diamond",35]
+  ].map(x=>`
+   <div class="panel">
+    <div style="font-size:30px">${x[0]}</div>
+    <b>${x[1]}</b>
+    <p class="muted">${x[2]} day streak</p>
+   </div>`).join("")}
+ </div>`;
+}
+
+/* =====================================
+   15. PROFILE AND MUSIC
+===================================== */
+
+function profileView(){
+ return `
+ <section class="hero">
+  <div><div class="eyebrow">YOUR PROFILE</div>
+  <h1>${esc(data.nickname)}</h1>
+  <p>${user?"FL-"+user.uid.slice(0,8).toUpperCase():"GUEST"}</p></div>
+  <div style="font-size:55px">🦉</div>
+ </section>
+
+ <div class="grid">
+  <div class="metric"><strong>${data.xp}</strong><span>XP</span></div>
+  <div class="metric"><strong>${data.coins}</strong><span>Coins</span></div>
+  <div class="metric"><strong>${data.gems}</strong><span>Diamonds</span></div>
+  <div class="metric"><strong>${data.streak}</strong><span>Streak</span></div>
+ </div>
+
+ <div class="panel">
+  <h2>Profile settings</h2>
+  <label>Nickname</label>
+  <input id="nickname" maxlength="24" value="${esc(data.nickname)}">
+  <button class="primary" id="saveNickname">Save nickname</button>
+
+  <hr style="border-color:var(--line);margin:18px 0">
+
+  <h3>🔊 Sound settings</h3>
+  <label><input id="soundToggle" type="checkbox" ${data.sound?"checked":""} style="width:auto"> Sound effects</label>
+  <label><input id="musicToggle" type="checkbox" ${data.music?"checked":""} style="width:auto"> Background music</label>
+  <label>Music volume</label>
+  <input id="volume" type="range" min="0" max="0.3" step="0.01" value="${data.volume}" style="padding:0">
+  <p class="muted">Soft original ambient music. You can turn it off anytime.</p>
+
+  <hr style="border-color:var(--line);margin:18px 0">
+  <h3>🔔 Notifications</h3>
+  <label><input type="checkbox" id="notificationToggle" ${data.notificationsEnabled?"checked":""} style="width:auto"> Enable reminders</label>
+  <button class="secondary" id="enableNotifications">Allow browser notifications</button>
+ </div>`;
+}
+
+/* =====================================
+   16. NOTIFICATIONS
+===================================== */
+
+async function enableNotifications(){
+ if(!("Notification"in window)){
+  alert("This browser does not support notifications.");
+  return;
+ }
+ const permission=await Notification.requestPermission();
+ if(permission==="granted"){
+  data.notificationsEnabled=true;
+  persist();
+  alert("Notifications enabled!");
+ }else{
+  alert("Please allow notifications in your browser settings.");
+ }
+}
+
+function notify(message){
+ if(!data.notificationsEnabled)return;
+ if(!("Notification"in window))return;
+ if(Notification.permission==="granted"){
+  new Notification("Fluento 🦉",{body:message,icon:"fluento-icon.png"});
+ }
+}
+
+function dailyReminder(){
+ const today=new Date().toISOString().slice(0,10);
+ if(data.lastReminder===today)return;
+ data.lastReminder=today;
+ save();
+
+ if(!data.practiceDays.includes(today)){
+  setTimeout(()=>{
+   notify("You haven't completed today's lesson. I believe in you! Keep your progress going! 🦉");
+  },3000);
+ }
+}
+
+/* Foreground reminders only.
+   Reliable background notifications need a service worker and push server. */
+
+/* =====================================
+   17. FEEDBACK
+===================================== */
+
+function feedbackView(){
+ return `
+ <div class="hero">
+  <div><div class="eyebrow">HELP FLUENTO GROW</div>
+  <h1>Send feedback</h1>
+  <p>Help us improve your learning experience.</p></div>
+  <div style="font-size:50px">✉️</div>
+ </div>
+ <div class="panel">
+  <select id="feedbackType">
+   <option>Suggestion</option>
+   <option>Bug report</option>
+   <option>Lesson correction</option>
+  </select>
+  <textarea id="feedbackText" placeholder="Write your feedback..."></textarea>
+  <button class="primary" id="sendFeedback">Send</button>
+  <p id="feedbackStatus"></p>
+ </div>`;
+}
+
+async function sendFeedback(){
+ const message=$("feedbackText").value.trim();
+ if(message.length<5)return;
+ if(!user||!db){
+  $("feedbackStatus").textContent="Sign in to submit feedback.";
+  return;
+ }
+ await addDoc(collection(db,"feedback"),{
+  uid:user.uid,
+  nickname:data.nickname,
+  type:$("feedbackType").value,
+  message,
+  createdAt:serverTimestamp()
+ });
+ $("feedbackStatus").textContent="Thank you for your feedback!";
+}
+
+/* =====================================
+   18. DIRECTOR ANALYTICS
+===================================== */
+
+function dashboardView(){
+ if(!user||user.uid!==ADMIN_UID){
+  return '<div class="notice">Director access only.</div>';
+ }
+
+ return `
+ <div class="hero">
+  <div><div class="eyebrow">DIRECTOR CONTROL ROOM</div>
+  <h1>Welcome, Nirmit.</h1>
+  <p>Fluento learning analytics.</p></div>
+  <div style="font-size:50px">📊</div>
+ </div>
+ <div id="adminStats" class="grid"></div>
+ <div class="panel">
+  <h2>Registered learners</h2>
+  <div id="userRows">Loading...</div>
+ </div>
+ <div class="notice">
+  Private email addresses are not exposed in this client-side dashboard.
+  Secure email administration requires a protected server-side Firebase Admin service.
+ </div>`;
+}
+
+let adminUnsub=null;
+
+function loadAdmin(){
+ if(!user||user.uid!==ADMIN_UID||!db)return;
+ if(adminUnsub)adminUnsub();
+
+ adminUnsub=onSnapshot(collection(db,"publicProfiles"),snap=>{
+  const profiles=snap.docs.map(d=>d.data());
+
+  $("adminStats").innerHTML=`
+   <div class="metric"><strong>${profiles.length}</strong><span>Total learners</span></div>
+   <div class="metric"><strong>${profiles.filter(p=>
+    p.updatedAt?.toDate&&Date.now()-p.updatedAt.toDate().getTime()<604800000
+   ).length}</strong><span>Active this week</span></div>
+   <div class="metric"><strong>${profiles.reduce((a,p)=>a+(p.xp||0),0)}</strong><span>Total XP</span></div>
+   <div class="metric"><strong>${profiles.filter(p=>p.stage>1).length}</strong><span>Progressing learners</span></div>
+  `;
+
+  $("userRows").innerHTML=profiles.map(p=>`
+   <div class="friend">
+    <div class="avatar">🦉</div>
+    <div class="friendinfo">
+     <b>${esc(p.nickname)}</b>
+     <small>Stage ${p.stage||1} · ${p.xp||0} XP · ${esc(p.shield||"None")}</small>
+    </div>
+   </div>
+  `).join("");
+ });
+}
+
+/* =====================================
+   19. EVENT HANDLERS
+===================================== */
+
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-start]");
+ if(b)startStage(+b.dataset.start);
+
+ if(e.target.id==="findFriend")findFriend();
+ if(e.target.id==="sendFeedback")sendFeedback();
+ if(e.target.id==="enableNotifications")enableNotifications();
+
+ if(e.target.id==="copyID"){
+  const id=user?"FL-"+user.uid.slice(0,8).toUpperCase():"GUEST";
+  navigator.clipboard?.writeText(id)
+   .then(()=>alert("Fluento ID copied!"))
+   .catch(()=>alert(id));
+ }
+
+ if(e.target.id==="saveNickname"){
+  const name=$("nickname").value.trim();
+  if(name.length<2){alert("Nickname is too short.");return;}
+  data.nickname=name;
+  persist();
+  cloudSave().then(render);
+ }
+});
+
+document.addEventListener("change",e=>{
+ if(e.target.id==="courseSelect"){
+  data.course=e.target.value;
+  persist();render();
+ }
+
+ if(e.target.id==="soundToggle"){
+  data.sound=e.target.checked;
+  persist();
+ }
+
+ if(e.target.id==="musicToggle"){
+  data.music=e.target.checked;
+  if(data.music)startMusic();else stopMusic();
+  persist();
+ }
+
+ if(e.target.id==="volume"){
+  data.volume=+e.target.value;
+  if(musicNodes)musicNodes.gain.gain.value=data.volume;
+  persist();
+ }
+
+ if(e.target.id==="notificationToggle"){
+  data.notificationsEnabled=e.target.checked;
+  persist();
+  if(data.notificationsEnabled)enableNotifications();
+ }
+});
+
+/* =====================================
+   20. START APP
+===================================== */
+
+updateStats();
+
+if(!firebaseReady){
+ $("authMessage").textContent=
+  "Firebase configuration is required for online accounts and friends. Guest mode is available.";
+}
+
+if(firebaseReady){
+ onAuthStateChanged(auth,async u=>{
+  if(u){
+   user=u;guest=false;
+   try{
+    await loadCloud();
+    showApp();
+    dailyReminder();
+   }catch(e){
+    console.error(e);
+    showApp();
+   }
+  }
+ });
+}
+
 </script>
-</body></html>
+</body>
+</html>
