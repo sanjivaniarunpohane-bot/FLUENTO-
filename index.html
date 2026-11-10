@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Fluento – Learn Languages</title>
+<title>Fluento – Complete Language Master</title>
 <style>
 :root{
   --green:#58cc02;--darkgreen:#46a302;--blue:#1cb0f6;--darkblue:#1899d6;
@@ -25,7 +25,7 @@ header{background:var(--header-bg);border-bottom:1px solid var(--line);padding:1
 .stats{display:flex;gap:8px;font-weight:800;font-size:13px}
 .stat{background:var(--line);padding:6px 10px;border-radius:12px;display:flex;align-items:center;gap:4px}
 .stat.hearts{color:var(--red)}
-main{max-width:760px;margin:20px auto;padding:0 14px 60px}
+main{max-width:760px;margin:20px auto;padding:0 14px 70px}
 .panel{background:var(--card-bg);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 3px 12px #00000008;transition:background .3s,border .3s}
 h1{font-size:24px;margin:0 0 6px}
 h2{font-size:18px;margin:0 0 10px}
@@ -69,11 +69,13 @@ select,input[type="text"]{width:100%;padding:13px;border:2px solid var(--line);b
 .result{text-align:center;padding:25px 10px}
 .result .big{font-size:48px}
 .result h2{font-size:26px}
-.leaderboard-item{display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid var(--line);font-weight:800}
 .friend-card{display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--line);border-radius:12px;margin-bottom:8px}
+.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.badge-item{background:var(--line);padding:12px;border-radius:12px;text-align:center;font-size:13px;font-weight:800}
+.notification-banner{background:#1cb0f6;color:white;padding:10px 16px;border-radius:12px;margin-bottom:14px;font-weight:800;display:flex;align-items:center;justify-content:between}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 @media(max-width:480px){
- main{margin:12px auto;padding-bottom:80px}
+ main{margin:12px auto;padding-bottom:90px}
  .panel{padding:16px;border-radius:16px}
  .stage-grid{grid-template-columns:repeat(2,1fr);gap:8px}
  .stage{min-height:65px;font-size:12px}
@@ -83,30 +85,35 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 <body>
 <header>
  <div class="top">
-  <div class="logo">🦉 Fluento</div>
+  <div class="logo"><span id="headerAvatar">🦉</span> Fluento</div>
   <div class="stats">
-   <div class="stat hearts">❤️ <span id="hearts">5</span></div>
-   <div class="stat">⚡ <span id="xp">0</span> XP</div>
-   <div class="stat">🪙 <span id="coins">100</span></div>
-   <div class="stat">💎 <span id="diamonds">10</span></div>
+   <div class="stat hearts">❤️ <span id="hearts">3</span>/3</div>
+   <div class="stat">⚡ <span id="xp">0</span></div>
+   <div class="stat">🪙 <span id="coins">50</span></div>
+   <div class="stat">💎 <span id="diamonds">5</span></div>
   </div>
  </div>
 </header>
 
 <main>
+ <!-- NOTIFICATION BANNER -->
+ <div id="notificationBanner" class="notification-banner hidden">
+  <span id="notificationText">🔔 Daily Reminder: Keep your streak alive!</span>
+ </div>
+
  <!-- LEARN TAB -->
  <section id="tab-learn">
   <div class="panel">
    <span class="tag">DIRECTED BY NIRMIT POHANE</span>
    <h1>Fluento Academy 🌍</h1>
-   <p>Master languages step by step with Ollie your 3D owl companion.</p>
-   <label for="languageSelect"><b>Active Learning Course</b></label>
+   <p>Select your course and master progressive stages with Ollie.</p>
+   <label for="languageSelect"><b>Active Learning Language</b></label>
    <select id="languageSelect" onchange="changeLanguage()"></select>
    <button class="primary" onclick="startLearningPath()">Continue Learning →</button>
   </div>
 
   <div class="panel">
-   <h2>📚 Learning Journey: World 1 (Beginner)</h2>
+   <h2>📚 Learning Path: World 1 (Beginner)</h2>
    <div id="courseTitle">Select a stage to begin.</div>
    <div class="progress"><div id="progressBar"></div></div>
    <div id="stageGrid" class="stage-grid"></div>
@@ -118,19 +125,20 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
  <!-- PRACTICE TAB -->
  <section id="tab-practice" class="hidden">
   <div class="panel">
-   <h1>🎯 Skill Practice</h1>
-   <p>Strengthen your weak areas, review vocabulary, and sharpen grammar.</p>
-   <button class="primary" style="margin-bottom:10px" onclick="startPractice('mistakes')">🔄 Mistake Revision</button>
+   <h1>🎯 Skill Practice & Revision</h1>
+   <p>Strengthen weak concepts, review vocabulary, and practice grammar.</p>
+   <button class="primary" style="margin-bottom:10px" onclick="startPractice('mistakes')">🔄 Mistake Revision Drills</button>
    <button class="primary" style="margin-bottom:10px;background:var(--blue)" onclick="startPractice('vocab')">📖 Vocabulary Flashcards</button>
-   <button class="primary" style="background:var(--purple)" onclick="startPractice('listening')">🎧 Listening & Pronunciation Drills</button>
+   <button class="primary" style="background:var(--purple)" onclick="startPractice('listening')">🎧 Listening & Audio Training</button>
   </div>
  </section>
 
  <!-- LEAGUE TAB -->
  <section id="tab-league" class="hidden">
   <div class="panel" style="text-align:center">
-   <h1>🏆 Diamond League</h1>
-   <p>Weekly competition ends in <b>3 days</b>. Top 10 advance!</p>
+   <h1>🏆 Weekly Leagues & Trophies</h1>
+   <p>Shield Tier: <b id="currentShield">Bronze Shield 🛡️</b> | Weekly Medal: <b id="currentMedal">Silver Medal 🥈</b></p>
+   <p class="small">Compete with friends and learners worldwide. Top ranks earn Gold and Diamond rewards!</p>
   </div>
   <div class="panel" id="leaderboardList"></div>
  </section>
@@ -138,13 +146,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
  <!-- FRIENDS TAB -->
  <section id="tab-friends" class="hidden">
   <div class="panel">
-   <h1>👥 Friends & Community</h1>
-   <p>Connect with fellow learners, share XP, and challenge friends.</p>
-   <input type="text" id="friendSearch" placeholder="Search username or friend code...">
+   <h1>👥 Friends Network</h1>
+   <p>Add friends by ID to inspect their progress, stage number, rewards, and rank.</p>
+   <input type="text" id="friendSearchId" placeholder="Enter Friend ID (e.g. USER-9821)">
    <button class="primary" onclick="addFriend()">Add Friend</button>
   </div>
   <div class="panel">
-   <h2>Your Study Squad</h2>
+   <h2>Your Friends Activity & Progress</h2>
    <div id="friendsList"></div>
   </div>
  </section>
@@ -152,23 +160,42 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
  <!-- PROFILE TAB -->
  <section id="tab-profile" class="hidden">
   <div class="panel" style="text-align:center">
-   <div style="font-size:50px">🦉</div>
-   <h1 id="profileName">Nirmit Pohane</h1>
-   <p class="small">Director & Fluento Champion • Level <span id="userLevel">3</span></p>
+   <div style="font-size:60px" id="displayProfileAvatar">🦉</div>
+   <h1 id="displayProfileName">Nirmit Pohane</h1>
+   <p class="small">ID: <b id="myUserId">FL-7789</b> • Level <span id="userLevel">1</span> Learner</p>
    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px">
     <div class="stat" style="justify-content:center">🔥 <span id="streakCount">1</span> Day Streak</div>
     <div class="stat" style="justify-content:center">⚡ <span id="profileXp">0</span> Total XP</div>
-    <div class="stat" style="justify-content:center">🎯 <span id="accuracyStat">95%</span> Accuracy</div>
+    <div class="stat" style="justify-content:center">🎯 <span id="accuracyStat">100%</span> Accuracy</div>
    </div>
   </div>
+
   <div class="panel">
-   <h2>⚙️ Settings & Preferences</h2>
-   <label for="themeSelect"><b>Interface Theme</b></label>
+   <h2>📊 Daily Progress Graph</h2>
+   <p class="small">Your XP earned over the last 5 days:</p>
+   <div id="dailyGraph" style="display:flex;align-items:flex-end;gap:12px;height:120px;padding-top:20px;border-bottom:2px solid var(--line)"></div>
+  </div>
+
+  <div class="panel">
+   <h2>⚙️ Profile Settings & Customization</h2>
+   <label for="inputProfileName"><b>Your Name</b></label>
+   <input type="text" id="inputProfileName" placeholder="Enter your name">
+   
+   <label for="selectAvatar"><b>Choose Profile Icon / Mascot</b></label>
+   <select id="selectAvatar">
+    <option value="🦉">🦉 Wise Owl</option>
+    <option value="🦊">🦊 Clever Fox</option>
+    <option value="🐼">🐼 Cute Panda</option>
+    <option value="🦁">🦁 Brave Lion</option>
+    <option value="🦅">🦅 Soaring Eagle</option>
+   </select>
+   <button class="primary" onclick="saveProfileSettings()" style="margin-top:10px">Save Profile Settings</button>
+   
+   <label for="themeSelect" style="margin-top:20px;display:block"><b>Interface Theme</b></label>
    <select id="themeSelect" onchange="toggleTheme()">
     <option value="light">Light Mode</option>
     <option value="dark">Dark Mode</option>
    </select>
-   <button class="secondary" onclick="resetProgress()" style="color:var(--red);border-color:var(--red);margin-top:10px">Reset Learning Progress</button>
   </div>
  </section>
 
@@ -186,7 +213,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
    
    <div class="ollie-box">
     <div class="ollie-avatar" id="ollieAvatar">🦉</div>
-    <div class="ollie-speech" id="ollieSpeech">Let's learn together! Choose the correct answer.</div>
+    <div class="ollie-speech" id="ollieSpeech">Stay focused! You have 3 lives in this stage.</div>
    </div>
 
    <div class="prompt" id="prompt"></div>
@@ -196,6 +223,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
    <div class="bottom-actions">
     <button class="secondary" onclick="leaveLesson()">Exit</button>
     <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check Answer</button>
+   </div>
+  </div>
+ </section>
+
+ <!-- OUT OF HEARTS MODAL SCREEN -->
+ <section id="outOfHeartsScreen" class="hidden">
+  <div class="panel result">
+   <div class="big">💔</div>
+   <h2>Out of Hearts!</h2>
+   <p>You have made 3 mistakes in this stage. Choose how you would like to proceed:</p>
+   <div style="display:grid;gap:12px;margin:20px 0">
+    <button class="primary" onclick="buyHeart()">Buy 1 Heart for 15 Coins 🪙</button>
+    <button class="secondary" onclick="restartStageOption()">Restart Stage 🔄</button>
    </div>
   </div>
  </section>
@@ -253,11 +293,28 @@ const STAGE_NAMES = [
   "Real-Life Conversations", "Unit Examination"
 ];
 
-const STORAGE_KEY = "fluento_master_v3";
+const STORAGE_KEY = "fluento_real_master_v4";
 let saved = {
-  lang: "Spanish", xp: 0, coins: 100, diamonds: 10, hearts: 5, streak: 1,
-  level: 3, completed: [], theme: "light", friends: ["Vedant", "Chaitali Ma'am"]
+  name: "Nirmit Pohane",
+  avatar: "🦉",
+  userId: "FL-7789",
+  lang: "Spanish",
+  xp: 0,
+  coins: 50,
+  diamonds: 5,
+  hearts: 3,
+  streak: 1,
+  level: 1,
+  completed: [],
+  theme: "light",
+  dailyXp: [10, 25, 40, 15, 0], // Last 5 days history
+  friends: [
+    {id: "USER-9821", name: "Vedant", stage: 6, xp: 1450, reward: "Gold Medal 🥇", rank: 2},
+    {id: "USER-4432", name: "Chaitali Ma'am", stage: 8, xp: 1280, reward: "Silver Medal 🥈", rank: 3},
+    {id: "USER-1029", name: "Aarav", stage: 4, xp: 950, reward: "Bronze Shield 🛡️", rank: 4}
+  ]
 };
+
 try {
   const loaded = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (loaded) saved = {...saved, ...loaded};
@@ -268,6 +325,7 @@ let questions = [];
 let qIndex = 0;
 let selectedOption = -1;
 let correctCount = 0;
+let mistakeCount = 0; // Max 3 mistakes allowed per stage
 let mode = "stage";
 let stageNumber = 1;
 let currentQuestion = null;
@@ -287,6 +345,20 @@ function updateTopStats() {
   document.getElementById("streakCount").textContent = saved.streak;
   document.getElementById("profileXp").textContent = saved.xp;
   document.getElementById("userLevel").textContent = saved.level;
+  document.getElementById("displayProfileName").textContent = saved.name;
+  document.getElementById("displayProfileAvatar").textContent = saved.avatar;
+  document.getElementById("headerAvatar").textContent = saved.avatar;
+  document.getElementById("myUserId").textContent = saved.userId;
+  
+  // Calculate Shield & Medal tiers based on XP
+  let shield = "Bronze Shield 🛡️";
+  let medal = "Bronze Medal 🥉";
+  if(saved.xp > 1000) { shield = "Diamond Shield 💎"; medal = "Gold Medal 🥇"; }
+  else if(saved.xp > 500) { shield = "Gold Shield 🏆"; medal = "Silver Medal 🥈"; }
+  else if(saved.xp > 200) { shield = "Silver Shield 🛡️"; medal = "Bronze Medal 🥉"; }
+  
+  document.getElementById("currentShield").textContent = shield;
+  document.getElementById("currentMedal").textContent = medal;
 }
 
 function shuffle(arr) {
@@ -306,10 +378,26 @@ function initApp() {
   document.getElementById("themeSelect").value = saved.theme;
   document.body.setAttribute("data-theme", saved.theme);
   
+  document.getElementById("inputProfileName").value = saved.name;
+  document.getElementById("selectAvatar").value = saved.avatar;
+
   renderHome();
   renderLeaderboard();
   renderFriends();
+  renderDailyGraph();
   updateTopStats();
+  triggerNotification();
+}
+
+function triggerNotification() {
+  const banner = document.getElementById("notificationBanner");
+  const msgs = [
+    "🔔 Daily Reminder: Complete a stage to keep your streak burning!",
+    "⭐ Daily Challenge: Earn 50 XP today to claim bonus coins!",
+    "🏆 Your weekly league competition is active. Climb the ranks!"
+  ];
+  document.getElementById("notificationText").textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  banner.classList.remove("hidden");
 }
 
 function switchTab(tabId) {
@@ -320,6 +408,7 @@ function switchTab(tabId) {
   
   document.querySelectorAll(".nav-tab").forEach(b => b.classList.remove("active"));
   event.currentTarget.classList.add("active");
+  if(tabId === 'profile') renderDailyGraph();
 }
 
 function changeLanguage() {
@@ -361,45 +450,63 @@ function renderHome() {
 function buildStageQuestions(stgNum) {
   const base = LANGUAGES[currentLang] || LANGUAGES["English"];
   const list = [];
+  // Questions scale in complexity based on stage level up
   for (let i = 0; i < 10; i++) {
     const pair = base[i % base.length];
     const others = base.filter(p => p[0] !== pair[0]).map(p => p[0]);
     const distractors = shuffle(others).slice(0, 3);
     
+    let promptText = `Translate to ${currentLang}: "${pair[0]}"`;
+    let ans = pair[1];
+    
+    if (stgNum > 3 && stgNum <= 7) {
+      promptText = `Level ${stgNum} Phrase Match — Select correct meaning for: "${pair[1]}"`;
+      ans = pair[0];
+      const engDistractors = shuffle(base.filter(p => p[0] !== pair[0]).map(p => p[0])).slice(0,3);
+      list.push({
+        prompt: promptText,
+        answer: ans,
+        options: shuffle([ans, ...engDistractors])
+      });
+      continue;
+    } else if (stgNum > 7) {
+      promptText = `Advanced Context (${currentLang}): How to express "${pair[0]}" properly?`;
+      ans = pair[1];
+    }
+    
     list.push({
-      prompt: `Translate to ${currentLang}: "${pair[0]}"`,
-      answer: pair[1],
-      options: shuffle([pair[1], ...distractors])
+      prompt: promptText,
+      answer: ans,
+      options: shuffle([ans, ...distractors])
     });
   }
   return list;
 }
 
 function startStage(n) {
-  if (saved.hearts <= 0) {
-    alert("You have 0 hearts! Restore hearts or wait to continue.");
-    return;
-  }
   stageNumber = n;
   mode = "stage";
   qIndex = 0;
   correctCount = 0;
+  mistakeCount = 0;
+  saved.hearts = 3; // Reset hearts to 3 at start of stage
+  updateTopStats();
+  
   questions = buildStageQuestions(n);
   
   showScreen("lessonScreen");
   document.getElementById("timer").classList.add("hidden");
-  setOllie("happy", `Stage ${n}: ${STAGE_NAMES[n-1]}. Let's go!`);
+  setOllie("happy", `Stage ${n}: ${STAGE_NAMES[n-1]}. 3 mistakes allowed. Let's go!`);
   showQuestion();
 }
 
 function startCheckpoint() {
-  if (saved.hearts <= 0) {
-    alert("You have 0 hearts! Restore hearts to take the unit test.");
-    return;
-  }
   mode = "checkpoint";
   qIndex = 0;
   correctCount = 0;
+  mistakeCount = 0;
+  saved.hearts = 3;
+  updateTopStats();
   timeLeft = 600;
   
   let pool = [];
@@ -412,7 +519,7 @@ function startCheckpoint() {
   document.getElementById("lessonTag").textContent = "UNIT TEST CHECKPOINT";
   document.getElementById("timer").classList.remove("hidden");
   startTimer();
-  setOllie("thinking", "Unit Test Checkpoint! 40 questions in 10 minutes. You can do this!");
+  setOllie("thinking", "Unit Test Checkpoint! 40 questions in 10 minutes. Stay sharp!");
   showQuestion();
 }
 
@@ -469,7 +576,7 @@ function showQuestion() {
 function selectOpt(idx) {
   if (document.getElementById("continueButton").textContent === "Continue") return;
   selectedOption = idx;
-  document.querySelectorAll(".option").forEach((b, i) => b.classList.toggle("selected", i === j));
+  document.querySelectorAll(".option").forEach((b, j) => b.classList.toggle("selected", idx === j));
   document.getElementById("continueButton").disabled = false;
 }
 
@@ -491,13 +598,40 @@ function checkAnswer() {
     setOllie("excited", "Amazing! You got it right!");
     fb.textContent = "✓ Excellent! Perfect answer.";
   } else {
+    mistakeCount++;
     saved.hearts = Math.max(0, saved.hearts - 1);
     updateTopStats();
-    setOllie("thinking", `Almost! The correct answer is: ${currentQuestion.answer}`);
-    fb.textContent = `✗ Incorrect. Correct answer: ${currentQuestion.answer}`;
+    
+    if (mistakeCount >= 3) {
+      // Trigger Out of Hearts Modal
+      setTimeout(() => {
+        showScreen("outOfHeartsScreen");
+      }, 1000);
+      return;
+    }
+    
+    setOllie("thinking", `Mistake ${mistakeCount}/3. Correct answer: ${currentQuestion.answer}`);
+    fb.textContent = `✗ Incorrect. Correct answer: ${currentQuestion.answer} (Mistake ${mistakeCount}/3)`;
   }
   
   document.getElementById("continueButton").textContent = "Continue";
+}
+
+function buyHeart() {
+  if (saved.coins >= 15) {
+    saved.coins -= 15;
+    saved.hearts = 1;
+    mistakeCount = 2; // give 1 more buffer mistake
+    saveState();
+    showScreen("lessonScreen");
+    setOllie("happy", "Heart restored! Keep going!");
+  } else {
+    alert("Not enough coins! You need 15 coins to buy a heart.");
+  }
+}
+
+function restartStageOption() {
+  startStage(stageNumber);
 }
 
 function nextQuestion() {
@@ -520,15 +654,26 @@ function finishStage() {
     saved.completed.sort((a,b)=>a-b);
     saved.xp += 50;
     saved.coins += 25;
-    if(stageNumber % 5 === 0) saved.diamonds += 2;
+    saved.diamonds += 2;
+    if(stageNumber % 5 === 0) saved.level++;
   }
+  
+  // Record today's XP in graph
+  saved.dailyXp[saved.dailyXp.length - 1] += 50;
   saveState();
   
   showScreen("resultScreen");
-  document.getElementById("resultEmoji").textContent = "🦉🎉";
+  document.getElementById("resultEmoji").textContent = "🎁🦉";
   document.getElementById("resultTitle").textContent = `Stage ${stageNumber} Completed!`;
   document.getElementById("resultMessage").textContent = `Score: ${correctCount}/${questions.length} correct answers.`;
-  document.getElementById("resultRewards").innerHTML = "<h2>+50 XP ⚡</h2><h2>+25 Coins 🪙</h2>";
+  document.getElementById("resultRewards").innerHTML = `
+    <h2>+50 XP ⚡</h2>
+    <h2>+25 Coins 🪙</h2>
+    <h2>+2 Diamonds 💎</h2>
+    <div style="background:var(--line);padding:12px;border-radius:12px;margin-top:10px">
+      <b>🎁 Mystery Gift Unlocked!</b><br>Received bonus rewards for completing Stage ${stageNumber}.
+    </div>
+  `;
 }
 
 function finishCheckpoint(timedOut) {
@@ -538,6 +683,7 @@ function finishCheckpoint(timedOut) {
     saved.xp += 200;
     saved.coins += 100;
     saved.diamonds += 10;
+    saved.level++;
     saveState();
   }
   
@@ -549,7 +695,7 @@ function finishCheckpoint(timedOut) {
 }
 
 function startPractice(type) {
-  alert(`Launching ${type} practice session! (Fully integrated with your learning history)`);
+  alert(`Launching ${type} practice session! (Synced with your mistake history)`);
 }
 
 function leaveLesson() {
@@ -565,7 +711,7 @@ function backHome() {
 }
 
 function showScreen(screenKey) {
-  ["tab-learn", "tab-practice", "tab-league", "tab-friends", "tab-profile", "lessonScreen", "resultScreen"].forEach(s => {
+  ["tab-learn", "tab-practice", "tab-league", "tab-friends", "tab-profile", "lessonScreen", "outOfHeartsScreen", "resultScreen"].forEach(s => {
     document.getElementById(s).classList.add("hidden");
   });
   if(screenKey === "learn") document.getElementById("tab-learn").classList.remove("hidden");
@@ -573,20 +719,17 @@ function showScreen(screenKey) {
 }
 
 function renderLeaderboard() {
-  const users = [
-    {name: "Nirmit Pohane (You)", xp: saved.xp, rank: 1},
-    {name: "Vedant", xp: 1450, rank: 2},
-    {name: "Chaitali Ma'am", xp: 1280, rank: 3},
-    {name: "Aarav", xp: 950, rank: 4},
-    {name: "Rohan", xp: 820, rank: 5}
+  let allUsers = [
+    {name: `${saved.name} (You)`, xp: saved.xp, stage: saved.completed.length, rank: 1, reward: "Gold Medal 🥇"}
   ];
-  users.sort((a,b) => b.xp - a.xp);
-  users.forEach((u, idx) => u.rank = idx + 1);
+  saved.friends.forEach(f => allUsers.push(f));
+  allUsers.sort((a,b) => b.xp - a.xp);
+  allUsers.forEach((u, idx) => u.rank = idx + 1);
   
-  document.getElementById("leaderboardList").innerHTML = users.map(u => `
-    <div class="leaderboard-item">
-     <div>#${u.rank} ${escapeHTML(u.name)}</div>
-     <div>⚡ ${u.xp} XP</div>
+  document.getElementById("leaderboardList").innerHTML = allUsers.map(u => `
+    <div class="friend-card" style="background:var(--card-bg);border:1px solid var(--line)">
+     <div><b>#${u.rank} ${escapeHTML(u.name)}</b><br><span class="small">Stage ${u.stage || 1} • ${u.reward || 'Shield Tier'}</span></div>
+     <div style="font-weight:900;color:var(--green)">⚡ ${u.xp} XP</div>
     </div>
   `).join("");
 }
@@ -595,35 +738,69 @@ function renderFriends() {
   const list = document.getElementById("friendsList");
   list.innerHTML = saved.friends.map(f => `
     <div class="friend-card">
-     <div><b>👤 ${escapeHTML(f)}</b></div>
-     <button class="secondary" style="width:auto;padding:6px 12px" onclick="alert('Challenge sent to ${f}!')">Challenge</button>
+     <div>
+      <b>👤 ${escapeHTML(f.name)}</b> (${f.id})<br>
+      <span class="small">Stage: ${f.stage} | Reward: ${f.reward} | Rank: #${f.rank}</span>
+     </div>
+     <button class="secondary" style="width:auto;padding:6px 12px" onclick="alert('Challenge sent to ${f.name}!')">Challenge</button>
     </div>
   `).join("");
 }
 
 function addFriend() {
-  const input = document.getElementById("friendSearch");
-  const val = input.value.trim();
-  if(val && !saved.friends.includes(val)) {
-    saved.friends.push(val);
+  const input = document.getElementById("friendSearchId");
+  const val = input.value.trim().toUpperCase();
+  if(val) {
+    // Check if friend exists in mock database or add simulated friend
+    const simulatedNames = ["Rohan", "Priya", "Amit", "Sneha", "Karan"];
+    const randomName = simulatedNames[Math.floor(Math.random()*simulatedNames.length)];
+    saved.friends.push({
+      id: val,
+      name: randomName,
+      stage: Math.floor(Math.random() * 8) + 1,
+      xp: Math.floor(Math.random() * 1200) + 200,
+      reward: "Silver Medal 🥈",
+      rank: saved.friends.length + 2
+    });
     input.value = "";
     saveState();
     renderFriends();
-    alert("Friend added successfully!");
+    renderLeaderboard();
+    alert(`Successfully added friend ID ${val} (${randomName})!`);
   }
+}
+
+function saveProfileSettings() {
+  const nameInput = document.getElementById("inputProfileName").value.trim();
+  const avatarSelect = document.getElementById("selectAvatar").value;
+  if(nameInput) saved.name = nameInput;
+  saved.avatar = avatarSelect;
+  saveState();
+  renderLeaderboard();
+  alert("Profile settings updated successfully!");
+}
+
+function renderDailyGraph() {
+  const graphContainer = document.getElementById("dailyGraph");
+  const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Today"];
+  const maxVal = Math.max(...saved.dailyXp, 50);
+  
+  graphContainer.innerHTML = saved.dailyXp.map((val, idx) => {
+    const heightPercent = Math.max(15, (val / maxVal) * 100);
+    return `
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end">
+        <span class="small" style="font-size:10px;margin-bottom:4px">${val} XP</span>
+        <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:${heightPercent}%"></div>
+        <span class="small" style="font-size:11px;margin-top:6px">${days[idx]}</span>
+      </div>
+    `;
+  }).join("");
 }
 
 function toggleTheme() {
   saved.theme = document.getElementById("themeSelect").value;
   document.body.setAttribute("data-theme", saved.theme);
   saveState();
-}
-
-function resetProgress() {
-  if(confirm("Are you sure you want to reset your learning progress?")) {
-    localStorage.removeItem(STORAGE_KEY);
-    location.reload();
-  }
 }
 
 function escapeHTML(s) {
@@ -634,3 +811,4 @@ initApp();
 </script>
 </body>
 </html>
+
