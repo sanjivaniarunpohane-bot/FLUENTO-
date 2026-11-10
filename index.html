@@ -1,94 +1,154 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#58cc02">
 <title>Fluento – Ultimate Language Academy</title>
+
 <style>
 :root{
-  --green:#58cc02;--darkgreen:#46a302;--blue:#1cb0f6;--darkblue:#1899d6;
-  --ink:#263238;--muted:#718096;--bg:#f7f9fc;--line:#e5eaf0;
-  --gold:#ffc800;--red:#ff4b4b;--darkred:#ea2b2b;--purple:#ce82ff;
-  --card-bg:#ffffff;--header-bg:#ffffff;
+ --green:#58cc02;--green2:#46a302;--blue:#1cb0f6;
+ --ink:#263238;--muted:#718096;--bg:#f7f9fc;
+ --card:#fff;--line:#e5eaf0;--gold:#ffc800;
+ --red:#ff4b4b;--purple:#a855f7;
 }
 [data-theme="dark"]{
-  --bg:#121824;--card-bg:#1e293b;--header-bg:#1a2332;--ink:#f1f5f9;
-  --muted:#94a3b8;--line:#334155;
+ --bg:#121824;--card:#1e293b;--ink:#f1f5f9;
+ --muted:#a0aec0;--line:#334155;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);transition:background .3s,color .3s}
-button,select,input{font:inherit}
+body{
+ margin:0;background:var(--bg);color:var(--ink);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+ transition:.2s;
+}
+button,input,select{font:inherit}
 button{cursor:pointer}
-header{background:var(--header-bg);border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:50}
-.top{max-width:850px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.logo{font-size:24px;font-weight:900;color:var(--green);letter-spacing:-1px;display:flex;align-items:center;gap:6px}
-.stats{display:flex;gap:8px;font-weight:800;font-size:13px}
-.stat{background:var(--line);padding:6px 10px;border-radius:12px;display:flex;align-items:center;gap:4px}
-.stat.hearts{color:var(--red)}
-main{max-width:760px;margin:20px auto;padding:0 14px 70px}
-.panel{background:var(--card-bg);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 3px 12px #00000008;transition:background .3s,border .3s}
-h1{font-size:24px;margin:0 0 6px}
-h2{font-size:18px;margin:0 0 10px}
-p{color:var(--muted);line-height:1.5;margin:6px 0 14px}
-select,input[type="text"]{width:100%;padding:13px;border:2px solid var(--line);border-radius:12px;background:var(--card-bg);color:var(--ink);margin:6px 0 14px}
-.primary{border:0;background:var(--green);color:white;font-weight:900;padding:14px 18px;border-radius:13px;width:100%;box-shadow:0 4px 0 var(--darkgreen);transition:transform .1s}
-.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--darkgreen)}
-.secondary{border:2px solid var(--line);background:var(--card-bg);color:var(--ink);font-weight:800;padding:12px;border-radius:12px;width:100%}
-.nav-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:var(--header-bg);border-top:1px solid var(--line);padding:10px 14px;position:fixed;bottom:0;left:0;right:0;z-index:50}
-.nav-tab{background:none;border:0;color:var(--muted);font-weight:800;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px;border-radius:10px}
-.nav-tab.active{color:var(--green);background:var(--line)}
-.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
-.stage{border:0;border-radius:15px;background:var(--line);min-height:80px;font-weight:900;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px}
-.stage .lbl{font-size:10px;font-weight:700}
+header{
+ position:sticky;top:0;z-index:10;
+ background:var(--card);border-bottom:1px solid var(--line);
+ padding:12px;
+}
+.top{
+ max-width:900px;margin:auto;display:flex;
+ justify-content:space-between;align-items:center;gap:8px;
+}
+.logo{font-size:25px;font-weight:950;color:var(--green)}
+.stats{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.stat{
+ background:var(--line);padding:7px 9px;border-radius:12px;
+ font-size:13px;font-weight:900;white-space:nowrap;
+}
+main{max-width:850px;margin:18px auto;padding:0 13px 100px}
+.panel{
+ background:var(--card);border:1px solid var(--line);
+ border-radius:20px;padding:19px;margin-bottom:15px;
+ box-shadow:0 3px 12px #00000008;
+}
+h1{font-size:25px;margin:0 0 7px}
+h2{font-size:19px;margin:0 0 10px}
+p{color:var(--muted);line-height:1.5}
+label{font-size:14px;font-weight:800}
+select,input{
+ width:100%;padding:13px;border:2px solid var(--line);
+ border-radius:12px;background:var(--card);color:var(--ink);
+ margin:7px 0 13px;
+}
+.primary,.secondary{
+ width:100%;border-radius:13px;padding:13px;
+ font-weight:900;
+}
+.primary{
+ background:var(--green);color:white;border:0;
+ box-shadow:0 4px 0 var(--green2);
+}
+.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--green2)}
+.secondary{background:var(--card);color:var(--ink);border:2px solid var(--line)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.tag{
+ display:inline-block;background:#e8f8dc;color:#398500;
+ padding:5px 10px;border-radius:30px;font-size:11px;font-weight:950;
+}
+.progress{height:11px;background:var(--line);border-radius:20px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;width:0;background:var(--green);transition:.3s}
+.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.stage{
+ min-height:76px;border:0;border-radius:14px;background:var(--line);
+ color:var(--muted);font-weight:900;padding:7px;
+}
 .stage.unlocked{background:#e8f8dc;color:#398500;border-bottom:4px solid #a4dc79}
 .stage.done{background:#fff3c4;color:#8b6900;border-bottom:4px solid #e5bd36}
-.stage:disabled{opacity:.5;cursor:not-allowed}
-.progress{height:12px;border-radius:20px;background:var(--line);overflow:hidden;margin:12px 0}
-.progress>div{height:100%;background:var(--green);width:0%;transition:.3s}
-.tag{display:inline-block;background:#eef8e8;color:#408b00;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:900}
+.stage small{display:block;font-size:10px;margin-top:4px}
+.nav{
+ position:fixed;bottom:0;left:0;right:0;z-index:20;
+ display:grid;grid-template-columns:repeat(5,1fr);
+ background:var(--card);border-top:1px solid var(--line);
+ padding:7px 5px calc(7px + env(safe-area-inset-bottom));
+}
+.nav button{
+ border:0;background:none;color:var(--muted);
+ font-size:11px;font-weight:850;padding:6px 2px;
+ border-radius:10px;
+}
+.nav button.active{color:var(--green);background:var(--line)}
+.nav span{display:block;font-size:20px}
 .hidden{display:none!important}
-.question-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.timer{font-weight:900;color:var(--red);background:#fff0f0;padding:6px 10px;border-radius:10px;font-variant-numeric:tabular-nums}
-.ollie-box{display:flex;align-items:center;gap:12px;background:var(--line);padding:12px 16px;border-radius:16px;margin:14px 0}
-.ollie-avatar{font-size:36px;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.ollie-speech{font-weight:800;font-size:14px}
-.prompt{font-size:20px;font-weight:900;text-align:center;margin:20px 0;line-height:1.4}
+.question-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.timer{background:#fff0f0;color:#c62828;padding:8px 11px;border-radius:10px;font-weight:950}
+.ollie{
+ display:flex;align-items:center;gap:12px;
+ padding:12px;background:var(--line);border-radius:15px;margin:15px 0;
+}
+.owl{font-size:37px;animation:bounce 2s infinite}
+@keyframes bounce{50%{transform:translateY(-5px)}}
+.speech{font-weight:850;font-size:14px}
+.prompt{text-align:center;font-size:21px;font-weight:950;line-height:1.4;margin:22px 0}
 .options{display:grid;gap:10px}
-.option{border:2px solid var(--line);background:var(--card-bg);color:var(--ink);border-radius:14px;padding:15px;text-align:left;font-weight:800;min-height:55px}
-.option:active{background:var(--line)}
-.option.selected{border-color:var(--blue);background:#edf9ff}
-.option.correct{border-color:var(--green);background:#efffe6;color:#2e6900}
+.option,.match-btn{
+ padding:14px;border:2px solid var(--line);border-radius:13px;
+ background:var(--card);color:var(--ink);font-weight:850;text-align:left;
+ min-height:52px;
+}
+.option.selected,.match-btn.selected{border-color:var(--blue);background:#eaf8ff;color:#174d68}
+.option.correct,.match-btn.correct{border-color:var(--green);background:#eaffdf;color:#286b00}
 .option.wrong{border-color:var(--red);background:#fff0f0;color:#a81919}
-.feedback{padding:13px;border-radius:12px;margin:14px 0;font-weight:800}
-.feedback.good{background:#eaffdf;color:#327600}
-.feedback.bad{background:#fff0f0;color:#b52d2d}
-.bottom-actions{display:flex;gap:10px;margin-top:15px}
-.bottom-actions button{flex:1}
-.small{font-size:13px;color:var(--muted)}
+.feedback{padding:13px;border-radius:12px;margin-top:13px;font-weight:850}
+.good{background:#eaffdf;color:#327600}
+.bad{background:#fff0f0;color:#b52d2d}
+.actions{display:flex;gap:10px;margin-top:15px}
+.actions button{flex:1}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.small{font-size:12px;color:var(--muted)}
 .result{text-align:center;padding:25px 10px}
-.result .big{font-size:48px}
-.result h2{font-size:26px}
-.friend-card{display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--line);border-radius:12px;margin-bottom:8px}
-.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.match-btn{padding:12px;border:2px solid var(--line);background:var(--card-bg);border-radius:12px;font-weight:800;text-align:center;cursor:pointer}
-.match-btn.selected{border-color:var(--blue);background:#edf9ff}
-.notification-banner{background:#1cb0f6;color:white;padding:10px 16px;border-radius:12px;margin-bottom:14px;font-weight:800;display:flex;align-items:center;justify-content:between}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
-@media(max-width:480px){
- main{margin:12px auto;padding-bottom:90px}
- .panel{padding:16px;border-radius:16px}
- .stage-grid{grid-template-columns:repeat(2,1fr);gap:8px}
- .stage{min-height:65px;font-size:12px}
+.big{font-size:55px}
+.reward{font-size:18px;font-weight:950;margin:8px}
+.friend{
+ background:var(--line);border-radius:12px;padding:12px;margin:8px 0;
+ display:flex;justify-content:space-between;gap:8px;align-items:center;
+}
+.banner{padding:12px;border-radius:12px;background:#e9f7ff;color:#17638c;font-weight:800;margin-bottom:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:15px}
+@media(max-width:500px){
+ main{margin:12px auto}
+ .panel{padding:15px}
+ .stage-grid{grid-template-columns:repeat(2,1fr)}
+ .stage{min-height:65px}
+ .stats{gap:3px}
+ .stat{font-size:11px;padding:6px}
+ .logo{font-size:21px}
+ .prompt{font-size:19px}
 }
 </style>
 </head>
+
 <body>
 <header>
  <div class="top">
   <div class="logo"><span id="headerAvatar">🦉</span> Fluento</div>
   <div class="stats">
-   <div class="stat hearts">❤️ <span id="hearts">3</span>/3</div>
+   <div class="stat">❤️ <span id="hearts">3</span></div>
    <div class="stat">⚡ <span id="xp">0</span></div>
    <div class="stat">🪙 <span id="coins">50</span></div>
    <div class="stat">💎 <span id="diamonds">5</span></div>
@@ -97,170 +157,153 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 </header>
 
 <main>
- <!-- NOTIFICATION BANNER -->
- <div id="notificationBanner" class="notification-banner hidden">
-  <span id="notificationText">🔔 Daily Reminder: Complete your next stage to keep your streak alive!</span>
- </div>
+ <div id="notification" class="banner">🦉 Welcome back! Your next lesson is waiting.</div>
 
- <!-- LEARN TAB -->
+ <!-- LEARN -->
  <section id="tab-learn">
   <div class="panel">
    <span class="tag">DIRECTED BY NIRMIT POHANE</span>
-   <h1>Fluento Academy 🌍</h1>
-   <p>Select your language and master upgraded progressive stages with built-in Text-to-Speech pronunciation, matching pairs, typing translation, and MCQ exercises.</p>
-   <label for="languageSelect"><b>Active Learning Language (20 Available)</b></label>
+   <h1>Fluento Language Academy 🌍</h1>
+   <p>Learn new words, practise pronunciation, build sentences and unlock new stages.</p>
+   <label>Choose your learning language</label>
    <select id="languageSelect" onchange="changeLanguage()"></select>
-   <button class="primary" onclick="startLearningPath()">Continue Learning →</button>
+   <button class="primary" onclick="renderHome()">Continue Learning →</button>
   </div>
 
   <div class="panel">
-   <h2>📚 Learning Path: World 1 (Progressive Master)</h2>
-   <div id="courseTitle">Select a stage to begin.</div>
+   <h2>📚 Your Learning Journey</h2>
+   <div id="courseTitle"></div>
    <div class="progress"><div id="progressBar"></div></div>
-   <div id="stageGrid" class="stage-grid"></div>
    <p id="progressText" class="small"></p>
-   <button id="checkpointButton" class="primary hidden" onclick="startCheckpoint()">📝 Take Unit 1 Checkpoint (40 Questions / 10 Mins)</button>
+   <div class="stage-grid" id="stageGrid"></div>
+   <button id="checkpointButton" class="primary hidden" style="margin-top:15px" onclick="startCheckpoint()">
+    📝 Unit Checkpoint • 40 Questions • 10 Minutes
+   </button>
+  </div>
+
+  <div class="panel">
+   <h2>🏅 Your Achievements</h2>
+   <p id="achievementText"></p>
   </div>
  </section>
 
- <!-- PRACTICE TAB -->
+ <!-- PRACTICE -->
  <section id="tab-practice" class="hidden">
   <div class="panel">
-   <h1>🎯 Skill Practice & Revision</h1>
-   <p>Strengthen weak concepts, review vocabulary, and practice grammar.</p>
-   <button class="primary" style="margin-bottom:10px" onclick="startPractice('mistakes')">🔄 Mistake Revision Drills</button>
-   <button class="primary" style="margin-bottom:10px;background:var(--blue)" onclick="startPractice('vocab')">📖 Vocabulary Flashcards</button>
-   <button class="primary" style="background:var(--purple)" onclick="startPractice('listening')">🎧 Listening & Audio Training</button>
+   <h1>🎯 Practice Centre</h1>
+   <p>Revise the vocabulary you have already learned.</p>
+   <button class="primary" onclick="startPractice()">Start Vocabulary Revision</button>
   </div>
  </section>
 
- <!-- LEAGUE TAB -->
+ <!-- LEAGUE -->
  <section id="tab-league" class="hidden">
-  <div class="panel" style="text-align:center">
-   <h1>🏆 Weekly Leagues & Trophies</h1>
-   <p>Shield Tier: <b id="currentShield">Bronze Shield 🛡️</b> | Weekly Medal: <b id="currentMedal">Silver Medal 🥈</b></p>
-   <p class="small">Compete with friends and global learners. Top ranks earn Gold and Diamond rewards!</p>
+  <div class="panel">
+   <h1>🏆 Weekly League</h1>
+   <p>Your personal XP ranking on this device.</p>
+   <div id="leaderboardList"></div>
+   <p class="small">This is a local leaderboard. A real global league needs an online database and user accounts.</p>
   </div>
-  <div class="panel" id="leaderboardList"></div>
  </section>
 
- <!-- FRIENDS TAB -->
+ <!-- FRIENDS -->
  <section id="tab-friends" class="hidden">
   <div class="panel">
    <h1>👥 Friends Network</h1>
-   <p>Add friends by ID to inspect their progress, stage number, rewards, and rank.</p>
-   <input type="text" id="friendSearchId" placeholder="Enter Friend ID (e.g. USER-9821)">
-   <button class="primary" onclick="addFriend()">Add Friend</button>
+   <p>Your Fluento ID: <b id="myUserId"></b></p>
+   <input id="friendSearchId" placeholder="Enter your friend's real Fluento ID">
+   <button class="primary" onclick="addFriend()">Send Friend Request</button>
+   <p class="small">Friend requests need online accounts and a secure database. This offline demo does not create fake users.</p>
   </div>
   <div class="panel">
-   <h2>Your Friends Activity & Progress</h2>
+   <h2>Your Friends</h2>
    <div id="friendsList"></div>
   </div>
  </section>
 
- <!-- PROFILE TAB -->
+ <!-- PROFILE -->
  <section id="tab-profile" class="hidden">
   <div class="panel" style="text-align:center">
-   <div style="font-size:60px" id="displayProfileAvatar">🦉</div>
-   <h1 id="displayProfileName">Nirmit Pohane</h1>
-   <p class="small">ID: <b id="myUserId">FL-7789</b> • Level <span id="userLevel">1</span> Learner</p>
-   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px">
-    <div class="stat" style="justify-content:center">🔥 <span id="streakCount">1</span> Day Streak</div>
-    <div class="stat" style="justify-content:center">⚡ <span id="profileXp">0</span> Total XP</div>
-    <div class="stat" style="justify-content:center">🎯 <span id="accuracyStat">100%</span> Accuracy</div>
-   </div>
+   <div id="displayProfileAvatar" style="font-size:60px">🦉</div>
+   <h1 id="displayProfileName">Learner</h1>
+   <p class="small">ID: <b id="profileId"></b> • Level <b id="userLevel">1</b></p>
+   <p>🔥 <span id="streak">1</span> day streak • ⚡ <span id="profileXp">0</span> XP</p>
+   <p>Completed stages: <b id="profileStages">0</b></p>
   </div>
-
   <div class="panel">
-   <h2>📊 Daily Progress Graph</h2>
-   <p class="small">Your XP earned over the last 5 days:</p>
-   <div id="dailyGraph" style="display:flex;align-items:flex-end;gap:12px;height:120px;padding-top:20px;border-bottom:2px solid var(--line)"></div>
-  </div>
-
-  <div class="panel">
-   <h2>⚙️ Profile Settings & Customization</h2>
-   <label for="inputProfileName"><b>Your Name</b></label>
-   <input type="text" id="inputProfileName" placeholder="Enter your name">
-   
-   <label for="selectAvatar"><b>Choose Profile Icon / Mascot</b></label>
-   <select id="selectAvatar">
-    <option value="🦉">🦉 Wise Owl</option>
-    <option value="🦊">🦊 Clever Fox</option>
-    <option value="🐼">🐼 Cute Panda</option>
-    <option value="🦁">🦁 Brave Lion</option>
-    <option value="🦅">🦅 Soaring Eagle</option>
+   <h2>⚙️ Profile Settings</h2>
+   <label>Your name</label>
+   <input id="nameInput" maxlength="30" placeholder="Enter your name">
+   <label>Choose your avatar</label>
+   <select id="avatarSelect">
+    <option>🦉</option><option>🦊</option><option>🐼</option>
+    <option>🦁</option><option>🦅</option><option>🐯</option>
    </select>
-   <button class="primary" onclick="saveProfileSettings()" style="margin-top:10px">Save Profile Settings</button>
-   
-   <label for="themeSelect" style="margin-top:20px;display:block"><b>Interface Theme</b></label>
-   <select id="themeSelect" onchange="toggleTheme()">
+   <button class="primary" onclick="saveProfile()">Save Profile</button>
+   <label style="display:block;margin-top:18px">App theme</label>
+   <select id="themeSelect" onchange="setTheme()">
     <option value="light">Light Mode</option>
     <option value="dark">Dark Mode</option>
    </select>
   </div>
+  <div class="panel">
+   <h2>📊 Learning Statistics</h2>
+   <p id="statistics"></p>
+  </div>
  </section>
 
- <!-- LESSON ACTIVE SCREEN -->
+ <!-- LESSON -->
  <section id="lessonScreen" class="hidden">
   <div class="panel">
    <div class="question-head">
     <div>
      <span class="tag" id="lessonTag">STAGE 1</span>
-     <div class="small" id="questionCount">Question 1 of 10</div>
+     <div class="small" id="questionCount"></div>
     </div>
-    <div class="timer hidden" id="timer">10:00</div>
+    <div id="timer" class="timer hidden">10:00</div>
    </div>
    <div class="progress"><div id="lessonProgress"></div></div>
-   
-   <div class="ollie-box">
-    <div class="ollie-avatar" id="ollieAvatar">🦉</div>
-    <div class="ollie-speech" id="ollieSpeech">Stay focused! You have 3 lives in this stage.</div>
+   <div class="ollie">
+    <div class="owl" id="ollieAvatar">🦉</div>
+    <div class="speech" id="ollieSpeech">Let's learn something new!</div>
    </div>
-
    <div class="prompt" id="prompt"></div>
-   
-   <!-- Audio Pronunciation Button -->
-   <div id="audioContainer" class="hidden" style="text-align:center;margin-bottom:15px">
-    <button class="secondary" onclick="playAudioPronunciation()" style="width:auto;display:inline-flex;align-items:center;gap:6px">🔊 Listen to Pronunciation</button>
+   <div id="audioContainer" class="hidden" style="text-align:center;margin-bottom:12px">
+    <button class="secondary" style="width:auto" onclick="playPronunciation()">🔊 Listen</button>
    </div>
-
-   <!-- Dynamic Answer Containers -->
-   <div class="options" id="optionsContainer"></div>
-   <div id="typeAnswerContainer" class="hidden" style="margin:15px 0">
-    <input type="text" id="typeAnswerInput" placeholder="Type your translation here..." style="width:100%;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:16px">
+   <div id="optionsContainer" class="options"></div>
+   <div id="typeContainer" class="hidden">
+    <input id="typeInput" placeholder="Type your answer">
    </div>
-   <div id="matchContainer" class="hidden" style="margin:15px 0">
-    <p class="small">Tap matching pairs to clear them:</p>
+   <div id="matchContainer" class="hidden">
+    <p class="small">Select the matching pairs.</p>
     <div class="match-grid" id="matchGrid"></div>
    </div>
-
    <div id="feedback" class="hidden"></div>
-   
-   <div class="bottom-actions">
+   <div class="actions">
     <button class="secondary" onclick="leaveLesson()">Exit</button>
     <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check Answer</button>
    </div>
   </div>
  </section>
 
- <!-- OUT OF HEARTS MODAL SCREEN -->
- <section id="outOfHeartsScreen" class="hidden">
+ <!-- HEARTS -->
+ <section id="heartsScreen" class="hidden">
   <div class="panel result">
    <div class="big">💔</div>
    <h2>Out of Hearts!</h2>
-   <p>You have made 3 mistakes in this stage. Choose how you would like to proceed:</p>
-   <div style="display:grid;gap:12px;margin:20px 0">
-    <button class="primary" onclick="buyHeart()">Buy 1 Heart for 15 Coins 🪙</button>
-    <button class="secondary" onclick="restartStageOption()">Restart Stage 🔄</button>
-   </div>
+   <p>You have used all three hearts in this lesson.</p>
+   <button class="primary" onclick="buyHeart()">Buy one heart • 10 coins 🪙</button>
+   <button class="secondary" style="margin-top:12px" onclick="restartStage()">Restart this stage</button>
+   <button class="secondary" style="margin-top:12px" onclick="leaveLesson()">Return home</button>
   </div>
  </section>
 
- <!-- RESULT SCREEN -->
+ <!-- RESULTS -->
  <section id="resultScreen" class="hidden">
   <div class="panel result">
    <div class="big" id="resultEmoji">🎉</div>
-   <h2 id="resultTitle">Stage Completed!</h2>
+   <h2 id="resultTitle">Completed!</h2>
    <p id="resultMessage"></p>
    <div id="resultRewards"></div>
    <button class="primary" onclick="backHome()">Continue Journey →</button>
@@ -268,688 +311,474 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
  </section>
 </main>
 
-<!-- BOTTOM NAVIGATION -->
-<nav class="nav-tabs">
- <button class="nav-tab active" onclick="switchTab('learn')"><span>📖</span>Learn</button>
- <button class="nav-tab" onclick="switchTab('practice')"><span>🎯</span>Practice</button>
- <button class="nav-tab" onclick="switchTab('league')"><span>🏆</span>League</button>
- <button class="nav-tab" onclick="switchTab('friends')"><span>👥</span>Friends</button>
- <button class="nav-tab" onclick="switchTab('profile')"><span>⚙️</span>Profile</button>
+<nav class="nav">
+ <button class="active" onclick="switchTab('learn',this)"><span>📖</span>Learn</button>
+ <button onclick="switchTab('practice',this)"><span>🎯</span>Practice</button>
+ <button onclick="switchTab('league',this)"><span>🏆</span>League</button>
+ <button onclick="switchTab('friends',this)"><span>👥</span>Friends</button>
+ <button onclick="switchTab('profile',this)"><span>⚙️</span>Profile</button>
 </nav>
 
-<footer>Fluento • Director: Nirmit Pohane • Learn Languages. Unlock Your World. 🌱</footer>
+<footer>Fluento • Director: Nirmit Pohane • Learn Languages. Unlock Your World.</footer>
 
 <script>
-const LANGUAGES = {
-"English": [["Hello", "Hello"], ["Thank you", "Thank you"], ["Yes", "Yes"], ["No", "No"], ["Water", "Water"], ["Book", "Book"], ["House", "House"], ["Friend", "Friend"], ["Good morning", "Good morning"], ["Goodbye", "Goodbye"]],
-"Hindi": [["Hello", "नमस्ते"], ["Thank you", "धन्यवाद"], ["Yes", "हाँ"], ["No", "नहीं"], ["Water", "पानी"], ["Book", "किताब"], ["House", "घर"], ["Friend", "दोस्त"], ["Good morning", "सुप्रभात"], ["Goodbye", "अलविदा"]],
-"Marathi": [["Hello", "नमस्कार"], ["Thank you", "धन्यवाद"], ["Yes", "हो"], ["No", "नाही"], ["Water", "पाणी"], ["Book", "पुस्तक"], ["House", "घर"], ["Friend", "मित्र"], ["Good morning", "शुभ सकाळ"], ["Goodbye", "पुन्हा भेटू"]],
-"Sanskrit": [["Hello", "नमस्ते"], ["Thank you", "धन्यवाद"], ["Yes", "आम्"], ["No", "न"], ["Water", "जलम्"], ["Book", "पुस्तकम्"], ["House", "गृहम्"], ["Friend", "मित्रम्"], ["Good morning", "सुप्रभातम्"], ["Goodbye", "पुनः मिलामः"]],
-"Spanish": [["Hello", "Hola"], ["Thank you", "Gracias"], ["Yes", "Sí"], ["No", "No"], ["Water", "Agua"], ["Book", "Libro"], ["House", "Casa"], ["Friend", "Amigo"], ["Good morning", "Buenos días"], ["Goodbye", "Adiós"]],
-"French": [["Hello", "Bonjour"], ["Thank you", "Merci"], ["Yes", "Oui"], ["No", "Non"], ["Water", "Eau"], ["Book", "Livre"], ["House", "Maison"], ["Friend", "Ami"], ["Good morning", "Bonjour"], ["Goodbye", "Au revoir"]],
-"German": [["Hello", "Hallo"], ["Thank you", "Danke"], ["Yes", "Ja"], ["No", "Nein"], ["Water", "Wasser"], ["Book", "Buch"], ["House", "Haus"], ["Friend", "Freund"], ["Good morning", "Guten Morgen"], ["Goodbye", "Auf Wiedersehen"]],
-"Italian": [["Hello", "Ciao"], ["Thank you", "Grazie"], ["Yes", "Sì"], ["No", "No"], ["Water", "Acqua"], ["Book", "Libro"], ["House", "Casa"], ["Friend", "Amico"], ["Good morning", "Buongiorno"], ["Goodbye", "Arrivederci"]],
-"Portuguese": [["Hello", "Olá"], ["Thank you", "Obrigado"], ["Yes", "Sim"], ["No", "Não"], ["Water", "Água"], ["Book", "Livro"], ["House", "Casa"], ["Friend", "Amigo"], ["Good morning", "Bom dia"], ["Goodbye", "Tchau"]],
-"Japanese": [["Hello", "こんにちは"], ["Thank you", "ありがとう"], ["Yes", "はい"], ["No", "いいえ"], ["Water", "水"], ["Book", "本"], ["House", "家"], ["Friend", "友達"], ["Good morning", "おはよう"], ["Goodbye", "さようなら"]],
-"Korean": [["Hello", "안녕하세요"], ["Thank you", "감사합니다"], ["Yes", "네"], ["No", "아니요"], ["Water", "물"], ["Book", "책"], ["House", "집"], ["Friend", "친구"], ["Good morning", "좋은 아침"], ["Goodbye", "안녕히 가세요"]],
-"Chinese": [["Hello", "你好"], ["Thank you", "谢谢"], ["Yes", "是"], ["No", "不是"], ["Water", "水"], ["Book", "书"], ["House", "房子"], ["Friend", "朋友"], ["Good morning", "早上好"], ["Goodbye", "再见"]],
-"Arabic": [["Hello", "مرحبا"], ["Thank you", "شكرا"], ["Yes", "نعم"], ["No", "لا"], ["Water", "ماء"], ["Book", "كتاب"], ["House", "منزل"], ["Friend", "صديق"], ["Good morning", "صباح الخير"], ["Goodbye", "مع السلامة"]],
-"Russian": [["Hello", "Здравствуйте"], ["Thank you", "Спасибо"], ["Yes", "Да"], ["No", "Нет"], ["Water", "Вода"], ["Book", "Книга"], ["House", "Дом"], ["Friend", "Друг"], ["Good morning", "Доброе утро"], ["Goodbye", "До свидания"]],
-"Turkish": [["Hello", "Merhaba"], ["Thank you", "Teşekkürler"], ["Yes", "Evet"], ["No", "Hayır"], ["Water", "Su"], ["Book", "Kitap"], ["House", "Ev"], ["Friend", "Arkadaş"], ["Good morning", "Günaydın"], ["Goodbye", "Hoşça kal"]],
-"Dutch": [["Hello", "Hallo"], ["Thank you", "Dank je"], ["Yes", "Ja"], ["No", "Nee"], ["Water", "Water"], ["Book", "Boek"], ["House", "Huis"], ["Friend", "Vriend"], ["Good morning", "Goedemorgen"], ["Goodbye", "Tot ziens"]],
-"Indonesian": [["Hello", "Halo"], ["Thank you", "Terima kasih"], ["Yes", "Ya"], ["No", "Tidak"], ["Water", "Air"], ["Book", "Buku"], ["House", "Rumah"], ["Friend", "Teman"], ["Good morning", "Selamat pagi"], ["Goodbye", "Selamat tinggal"]],
-"Thai": [["Hello", "สวัสดี"], ["Thank you", "ขอบคุณ"], ["Yes", "ใช่"], ["No", "ไม่"], ["Water", "น้ำ"], ["Book", "หนังสือ"], ["House", "บ้าน"], ["Friend", "เพื่อน"], ["Good morning", "อรุณสวัสดิ์"], ["Goodbye", "ลาก่อน"]],
-"Vietnamese": [["Hello", "Xin chào"], ["Thank you", "Cảm ơn"], ["Yes", "Vâng"], ["No", "Không"], ["Water", "Nước"], ["Book", "Sách"], ["House", "Nhà"], ["Friend", "Bạn"], ["Good morning", "Chào buổi sáng"], ["Goodbye", "Tạm biệt"]],
-"Bengali": [["Hello", "নমস্কার"], ["Thank you", "ধন্যবাদ"], ["Yes", "হ্যাঁ"], ["No", "না"], ["Water", "জল"], ["Book", "বই"], ["House", "বাড়ি"], ["Friend", "বন্ধু"], ["Good morning", "সুপ্রভাত"], ["Goodbye", "বিদায়"]]
+/* ---------------- LANGUAGE STARTER DATA ----------------
+   English meanings are the base language.
+   Translation data should be reviewed by native speakers
+   before a public course launch.
+--------------------------------------------------------- */
+
+const LANGUAGES={
+"English":[["Hello","Hello"],["Thank you","Thank you"],["Yes","Yes"],["No","No"],["Water","Water"],["Book","Book"],["House","House"],["Friend","Friend"],["Good morning","Good morning"],["Goodbye","Goodbye"]],
+"Hindi":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","हाँ"],["No","नहीं"],["Water","पानी"],["Book","किताब"],["House","घर"],["Friend","दोस्त"],["Good morning","सुप्रभात"],["Goodbye","अलविदा"]],
+"Marathi":[["Hello","नमस्कार"],["Thank you","धन्यवाद"],["Yes","हो"],["No","नाही"],["Water","पाणी"],["Book","पुस्तक"],["House","घर"],["Friend","मित्र"],["Good morning","शुभ सकाळ"],["Goodbye","पुन्हा भेटू"]],
+"Sanskrit":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","आम्"],["No","न"],["Water","जलम्"],["Book","पुस्तकम्"],["House","गृहम्"],["Friend","मित्रम्"],["Good morning","सुप्रभातम्"],["Goodbye","पुनः मिलामः"]],
+"Spanish":[["Hello","Hola"],["Thank you","Gracias"],["Yes","Sí"],["No","No"],["Water","Agua"],["Book","Libro"],["House","Casa"],["Friend","Amigo"],["Good morning","Buenos días"],["Goodbye","Adiós"]],
+"French":[["Hello","Bonjour"],["Thank you","Merci"],["Yes","Oui"],["No","Non"],["Water","Eau"],["Book","Livre"],["House","Maison"],["Friend","Ami"],["Good morning","Bonjour"],["Goodbye","Au revoir"]],
+"German":[["Hello","Hallo"],["Thank you","Danke"],["Yes","Ja"],["No","Nein"],["Water","Wasser"],["Book","Buch"],["House","Haus"],["Friend","Freund"],["Good morning","Guten Morgen"],["Goodbye","Auf Wiedersehen"]],
+"Italian":[["Hello","Ciao"],["Thank you","Grazie"],["Yes","Sì"],["No","No"],["Water","Acqua"],["Book","Libro"],["House","Casa"],["Friend","Amico"],["Good morning","Buongiorno"],["Goodbye","Arrivederci"]],
+"Portuguese":[["Hello","Olá"],["Thank you","Obrigado"],["Yes","Sim"],["No","Não"],["Water","Água"],["Book","Livro"],["House","Casa"],["Friend","Amigo"],["Good morning","Bom dia"],["Goodbye","Tchau"]],
+"Japanese":[["Hello","こんにちは"],["Thank you","ありがとうございます"],["Yes","はい"],["No","いいえ"],["Water","水"],["Book","本"],["House","家"],["Friend","友達"],["Good morning","おはようございます"],["Goodbye","さようなら"]],
+"Korean":[["Hello","안녕하세요"],["Thank you","감사합니다"],["Yes","네"],["No","아니요"],["Water","물"],["Book","책"],["House","집"],["Friend","친구"],["Good morning","좋은 아침입니다"],["Goodbye","안녕히 가세요"]],
+"Chinese":[["Hello","你好"],["Thank you","谢谢"],["Yes","是"],["No","不是"],["Water","水"],["Book","书"],["House","房子"],["Friend","朋友"],["Good morning","早上好"],["Goodbye","再见"]],
+"Arabic":[["Hello","مرحبا"],["Thank you","شكرا"],["Yes","نعم"],["No","لا"],["Water","ماء"],["Book","كتاب"],["House","منزل"],["Friend","صديق"],["Good morning","صباح الخير"],["Goodbye","مع السلامة"]],
+"Russian":[["Hello","Здравствуйте"],["Thank you","Спасибо"],["Yes","Да"],["No","Нет"],["Water","Вода"],["Book","Книга"],["House","Дом"],["Friend","Друг"],["Good morning","Доброе утро"],["Goodbye","До свидания"]],
+"Turkish":[["Hello","Merhaba"],["Thank you","Teşekkürler"],["Yes","Evet"],["No","Hayır"],["Water","Su"],["Book","Kitap"],["House","Ev"],["Friend","Arkadaş"],["Good morning","Günaydın"],["Goodbye","Hoşça kal"]],
+"Dutch":[["Hello","Hallo"],["Thank you","Dank je"],["Yes","Ja"],["No","Nee"],["Water","Water"],["Book","Boek"],["House","Huis"],["Friend","Vriend"],["Good morning","Goedemorgen"],["Goodbye","Tot ziens"]],
+"Indonesian":[["Hello","Halo"],["Thank you","Terima kasih"],["Yes","Ya"],["No","Tidak"],["Water","Air"],["Book","Buku"],["House","Rumah"],["Friend","Teman"],["Good morning","Selamat pagi"],["Goodbye","Selamat tinggal"]],
+"Thai":[["Hello","สวัสดี"],["Thank you","ขอบคุณ"],["Yes","ใช่"],["No","ไม่"],["Water","น้ำ"],["Book","หนังสือ"],["House","บ้าน"],["Friend","เพื่อน"],["Good morning","อรุณสวัสดิ์"],["Goodbye","ลาก่อน"]],
+"Vietnamese":[["Hello","Xin chào"],["Thank you","Cảm ơn"],["Yes","Vâng"],["No","Không"],["Water","Nước"],["Book","Sách"],["House","Nhà"],["Friend","Bạn"],["Good morning","Chào buổi sáng"],["Goodbye","Tạm biệt"]],
+"Bengali":[["Hello","নমস্কার"],["Thank you","ধন্যবাদ"],["Yes","হ্যাঁ"],["No","না"],["Water","জল"],["Book","বই"],["House","বাড়ি"],["Friend","বন্ধু"],["Good morning","সুপ্রভাত"],["Goodbye","বিদায়"]]
 };
 
-const STAGE_NAMES = [
-  "First Words", "Greetings", "Everyday Vocabulary", "Basic Grammar",
-  "Sentence Building", "Listening Skills", "Speaking Skills", "Reading Skills",
-  "Real-Life Conversations", "Unit Examination"
+const STAGE_NAMES=[
+ "First Words","Greetings","Everyday Words","Useful Expressions",
+ "People & Places","Daily Conversation","Listening Practice",
+ "Speaking Practice","Revision Challenge","Mastery Review"
 ];
 
-const STORAGE_KEY = "fluento_real_master_v6";
-let saved = {
-  name: "Nirmit Pohane",
-  avatar: "🦉",
-  userId: "FL-7789",
-  lang: "Spanish",
-  xp: 0,
-  coins: 50,
-  diamonds: 5,
-  hearts: 3,
-  streak: 1,
-  level: 1,
-  completed: [],
-  theme: "light",
-  dailyXp: [10, 25, 40, 15, 0],
-  friends: [
-    {id: "USER-9821", name: "Vedant", stage: 6, xp: 1450, reward: "Gold Medal 🥇", rank: 2},
-    {id: "USER-4432", name: "Chaitali Ma'am", stage: 8, xp: 1280, reward: "Silver Medal 🥈", rank: 3},
-    {id: "USER-1029", name: "Aarav", stage: 4, xp: 950, reward: "Bronze Shield 🛡️", rank: 4}
-  ]
+const KEY="fluento_ultimate_v1";
+const defaultState={
+ name:"Learner",avatar:"🦉",userId:"FL-"+Math.random().toString(36).slice(2,7).toUpperCase(),
+ lang:"Spanish",xp:0,coins:50,diamonds:5,hearts:3,streak:1,
+ theme:"light",friends:[],dailyXp:[0,0,0,0,0],accuracy:{right:0,total:0},
+ courses:{}
 };
+let saved={...defaultState};
+try{
+ const data=JSON.parse(localStorage.getItem(KEY)||"null");
+ if(data)saved={...saved,...data};
+}catch(e){}
+if(!LANGUAGES[saved.lang])saved.lang="Spanish";
 
-try {
-  const loaded = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  if (loaded) saved = {...saved, ...loaded};
-} catch(e) {}
+let currentLang=saved.lang;
+let stageNumber=1,mode="stage",questions=[],qIndex=0;
+let currentQuestion=null,selectedOption=-1,correctCount=0;
+let mistakes=0,answered=false,timerInterval=null,timeLeft=600;
+let matchFirst=null,matchRemaining=0,matchComplete=false;
 
-let currentLang = saved.lang;
-let questions = [];
-let qIndex = 0;
-let selectedOption = -1;
-let correctCount = 0;
-let mistakeCount = 0;
-let mode = "stage";
-let stageNumber = 1;
-let currentQuestion = null;
-let timerInterval = null;
-let timeLeft = 600;
-
-// Match Pair game variables
-let matchSelectedCard = null;
-let matchPairsRemaining = 0;
-
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-  updateTopStats();
+function course(){
+ if(!saved.courses[currentLang]){
+  saved.courses[currentLang]={completed:[],checkpointPassed:false};
+ }
+ return saved.courses[currentLang];
 }
-
-function updateTopStats() {
-  document.getElementById("hearts").textContent = saved.hearts;
-  document.getElementById("xp").textContent = saved.xp;
-  document.getElementById("coins").textContent = saved.coins;
-  document.getElementById("diamonds").textContent = saved.diamonds;
-  document.getElementById("streakCount").textContent = saved.streak;
-  document.getElementById("profileXp").textContent = saved.xp;
-  document.getElementById("userLevel").textContent = saved.level;
-  document.getElementById("displayProfileName").textContent = saved.name;
-  document.getElementById("displayProfileAvatar").textContent = saved.avatar;
-  document.getElementById("headerAvatar").textContent = saved.avatar;
-  document.getElementById("myUserId").textContent = saved.userId;
-  
-  let shield = "Bronze Shield 🛡️";
-  let medal = "Bronze Medal 🥉";
-  if(saved.xp > 1000) { shield = "Diamond Shield 💎"; medal = "Gold Medal 🥇"; }
-  else if(saved.xp > 500) { shield = "Gold Shield 🏆"; medal = "Silver Medal 🥈"; }
-  else if(saved.xp > 200) { shield = "Silver Shield 🛡️"; medal = "Bronze Medal 🥉"; }
-  
-  document.getElementById("currentShield").textContent = shield;
-  document.getElementById("currentMedal").textContent = medal;
+function save(){
+ localStorage.setItem(KEY,JSON.stringify(saved));
+ updateStats();
 }
+function shuffle(a){
+ const b=[...a];
+ for(let i=b.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [b[i],b[j]]=[b[j],b[i]];
+ }
+ return b;
+}
+function esc(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+function updateStats(){
+ document.getElementById("hearts").textContent=saved.hearts;
+ document.getElementById("xp").textContent=saved.xp;
+ document.getElementById("coins").textContent=saved.coins;
+ document.getElementById("diamonds").textContent=saved.diamonds;
+ document.getElementById("headerAvatar").textContent=saved.avatar;
+ document.getElementById("displayProfileAvatar").textContent=saved.avatar;
+ document.getElementById("displayProfileName").textContent=saved.name;
+ document.getElementById("profileId").textContent=saved.userId;
+ document.getElementById("myUserId").textContent=saved.userId;
+ document.getElementById("profileXp").textContent=saved.xp;
+ document.getElementById("userLevel").textContent=1+Math.floor(saved.xp/250);
+ document.getElementById("streak").textContent=saved.streak;
+ document.getElementById("profileStages").textContent=Object.values(saved.courses).reduce((n,c)=>n+c.completed.length,0);
+ document.getElementById("statistics").textContent=
+  `${saved.accuracy.right} correct answers from ${saved.accuracy.total} attempts.`;
+}
+function init(){
+ const sel=document.getElementById("languageSelect");
+ sel.innerHTML=Object.keys(LANGUAGES).map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join("");
+ sel.value=currentLang;
+ document.getElementById("nameInput").value=saved.name;
+ document.getElementById("avatarSelect").value=saved.avatar;
+ document.getElementById("themeSelect").value=saved.theme;
+ document.body.dataset.theme=saved.theme;
+ renderHome();renderFriends();renderLeaderboard();updateStats();
+}
+function changeLanguage(){
+ currentLang=document.getElementById("languageSelect").value;
+ saved.lang=currentLang;save();renderHome();
+}
+function renderHome(){
+ const c=course();
+ const count=c.completed.length;
+ document.getElementById("courseTitle").innerHTML=`<b>${esc(currentLang)}</b> • ${count}/10 stages completed`;
+ document.getElementById("progressBar").style.width=(count*10)+"%";
+ document.getElementById("progressText").textContent=`${count*10}% course progress`;
+ const grid=document.getElementById("stageGrid");grid.innerHTML="";
+ for(let n=1;n<=10;n++){
+  const done=c.completed.includes(n);
+  const unlocked=n===1||c.completed.includes(n-1);
+  const b=document.createElement("button");
+  b.className="stage "+(done?"done":unlocked?"unlocked":"");
+  b.disabled=!unlocked;
+  b.innerHTML=`${done?"⭐":unlocked?"📖":"🔒"}<small>STAGE ${n}</small><small>${STAGE_NAMES[n-1]}</small>`;
+  b.onclick=()=>startStage(n);grid.appendChild(b);
+ }
+ document.getElementById("checkpointButton").classList.toggle("hidden",count<10);
+ document.getElementById("achievementText").textContent=
+  `${count} stages completed in ${currentLang}. Total XP: ${saved.xp}.`;
+ updateStats();
+}
+function changeTab(tab,button){
+ ["learn","practice","league","friends","profile"].forEach(t=>{
+  document.getElementById("tab-"+t).classList.add("hidden");
+ });
+ document.getElementById("tab-"+tab).classList.remove("hidden");
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ if(tab==="profile")updateStats();
+ if(tab==="league")renderLeaderboard();
+ if(tab==="friends")renderFriends();
+}
+function switchTab(tab,button){changeTab(tab,button)}
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+/* Every stage introduces a different vocabulary item.
+   Four distinct question formats are generated per item.
+   The checkpoint revises all 40 earlier questions. */
+function questionsForWord(index){
+ const base=LANGUAGES[currentLang];
+ const pair=base[index];
+ const english=pair[0],foreign=pair[1];
+ const other=base.filter((_,i)=>i!==index);
+ const wrongEnglish=shuffle(other.map(p=>p[0])).slice(0,3);
+ const wrongForeign=shuffle(other.map(p=>p[1])).slice(0,3);
+
+ const items=[
+  {
+   id:`${currentLang}-${index}-meaning`,
+   type:"mcq",
+   prompt:`What is the English meaning of “${foreign}”?`,
+   answer:english,
+   options:shuffle([english,...wrongEnglish]),
+   audio:foreign
+  },
+  {
+   id:`${currentLang}-${index}-translation`,
+   type:"mcq",
+   prompt:`How do you say “${english}” in ${currentLang}?`,
+   answer:foreign,
+   options:shuffle([foreign,...wrongForeign]),
+   audio:foreign
+  },
+  {
+   id:`${currentLang}-${index}-typing`,
+   type:"type",
+   prompt:`Type the ${currentLang} translation for “${english}”.`,
+   answer:foreign,
+   audio:foreign
+  },
+  {
+   id:`${currentLang}-${index}-listening`,
+   type:"listening",
+   prompt:`Listen to the pronunciation. Choose its meaning.`,
+   answer:english,
+   options:shuffle([english,...wrongEnglish]),
+   audio:foreign
   }
-  return a;
+ ];
+ return items;
 }
-
-function initApp() {
-  const select = document.getElementById("languageSelect");
-  select.innerHTML = Object.keys(LANGUAGES).map(l => `<option value="${l}">${l}</option>`).join("");
-  select.value = currentLang;
-  
-  document.getElementById("themeSelect").value = saved.theme;
-  document.body.setAttribute("data-theme", saved.theme);
-  
-  document.getElementById("inputProfileName").value = saved.name;
-  document.getElementById("selectAvatar").value = saved.avatar;
-
-  renderHome();
-  renderLeaderboard();
-  renderFriends();
-  renderDailyGraph();
-  updateTopStats();
-  triggerNotification();
+function buildStageQuestions(n){
+ return questionsForWord(n-1);
 }
-
-function triggerNotification() {
-  const banner = document.getElementById("notificationBanner");
-  const msgs = [
-    "🔔 Daily Reminder: Complete your next stage to keep your streak alive!",
-    "⭐ Daily Challenge: Earn 50 XP today to claim bonus coins!",
-    "🏆 Your weekly league competition is active. Climb the ranks!"
-  ];
-  document.getElementById("notificationText").textContent = msgs[Math.floor(Math.random()*msgs.length)];
-  banner.classList.remove("hidden");
+function startStage(n){
+ clearInterval(timerInterval);
+ stageNumber=n;mode="stage";qIndex=0;correctCount=0;mistakes=0;
+ saved.hearts=3;save();
+ questions=buildStageQuestions(n);
+ showScreen("lessonScreen");
+ document.getElementById("timer").classList.add("hidden");
+ setOllie("Stage "+n+"! Let's learn a new word.");
+ showQuestion();
 }
-
-function switchTab(tabId) {
-  ["learn", "practice", "league", "friends", "profile"].forEach(t => {
-    document.getElementById("tab-" + t).classList.add("hidden");
+function startCheckpoint(){
+ if(course().completed.length<10)return;
+ clearInterval(timerInterval);
+ mode="checkpoint";qIndex=0;correctCount=0;mistakes=0;
+ timeLeft=600;
+ // All ten units, four question types each: exactly 40 questions.
+ questions=shuffle(LANGUAGES[currentLang].flatMap((_,i)=>questionsForWord(i)));
+ showScreen("lessonScreen");
+ document.getElementById("timer").classList.remove("hidden");
+ setOllie("Checkpoint time! You have 10 minutes for 40 questions.");
+ startTimer();showQuestion();
+}
+function startTimer(){
+ clearInterval(timerInterval);updateTimer();
+ timerInterval=setInterval(()=>{
+  timeLeft--;updateTimer();
+  if(timeLeft<=0){clearInterval(timerInterval);finishCheckpoint(true);}
+ },1000);
+}
+function updateTimer(){
+ document.getElementById("timer").textContent=
+  `${Math.floor(timeLeft/60)}:${String(timeLeft%60).padStart(2,"0")}`;
+}
+function setOllie(message){
+ document.getElementById("ollieSpeech").textContent=message;
+}
+function showQuestion(){
+ answered=false;selectedOption=-1;matchFirst=null;matchComplete=false;
+ currentQuestion=questions[qIndex];
+ const q=currentQuestion;
+ const feedback=document.getElementById("feedback");
+ feedback.className="hidden";feedback.textContent="";
+ const btn=document.getElementById("continueButton");
+ btn.disabled=true;btn.textContent="Check Answer";
+ document.getElementById("lessonTag").textContent=
+  mode==="checkpoint"?"UNIT CHECKPOINT":`STAGE ${stageNumber} • ${currentLang}`;
+ document.getElementById("questionCount").textContent=
+  `Question ${qIndex+1} of ${questions.length}`;
+ document.getElementById("lessonProgress").style.width=(qIndex/questions.length*100)+"%";
+ document.getElementById("prompt").textContent=q.prompt;
+ ["optionsContainer","typeContainer","matchContainer","audioContainer"].forEach(id=>
+  document.getElementById(id).classList.add("hidden")
+ );
+ if(q.audio)document.getElementById("audioContainer").classList.remove("hidden");
+ if(q.type==="mcq"||q.type==="listening"){
+  const box=document.getElementById("optionsContainer");
+  box.classList.remove("hidden");box.innerHTML="";
+  q.options.forEach((option,i)=>{
+   const b=document.createElement("button");
+   b.className="option";b.textContent=option;
+   b.onclick=()=>selectOption(i);box.appendChild(b);
   });
-  document.getElementById("tab-" + tabId).classList.remove("hidden");
-  
-  document.querySelectorAll(".nav-tab").forEach(b => b.classList.remove("active"));
-  event.currentTarget.classList.add("active");
-  if(tabId === 'profile') renderDailyGraph();
+ }else if(q.type==="type"){
+  document.getElementById("typeContainer").classList.remove("hidden");
+  const input=document.getElementById("typeInput");input.value="";
+  input.oninput=()=>btn.disabled=!input.value.trim();
+ }else if(q.type==="match"){
+  document.getElementById("matchContainer").classList.remove("hidden");
+  setupMatch(q.pairs);
+ }
 }
-
-function changeLanguage() {
-  currentLang = document.getElementById("languageSelect").value;
-  saved.lang = currentLang;
-  saveState();
-  renderHome();
+function selectOption(i){
+ if(answered)return;
+ selectedOption=i;
+ document.querySelectorAll(".option").forEach((b,j)=>b.classList.toggle("selected",i===j));
+ document.getElementById("continueButton").disabled=false;
 }
-
-function startLearningPath() {
-  document.getElementById("courseTitle").scrollIntoView({behavior:"smooth", block:"center"});
+function playPronunciation(){
+ if(!currentQuestion?.audio)return;
+ if(!("speechSynthesis" in window)){
+  alert("Text-to-speech is not supported in this browser.");return;
+ }
+ window.speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(currentQuestion.audio);
+ const map={
+  Spanish:"es-ES",French:"fr-FR",German:"de-DE",Italian:"it-IT",
+  Portuguese:"pt-PT",Japanese:"ja-JP",Korean:"ko-KR",Chinese:"zh-CN",
+  Hindi:"hi-IN",Marathi:"mr-IN",Sanskrit:"hi-IN",Arabic:"ar-SA",
+  Russian:"ru-RU",Turkish:"tr-TR",Dutch:"nl-NL",Indonesian:"id-ID",
+  Thai:"th-TH",Vietnamese:"vi-VN",Bengali:"bn-IN",English:"en-US"
+ };
+ utterance.lang=map[currentLang]||"en-US";
+ speechSynthesis.speak(utterance);
 }
-
-function renderHome() {
-  if(!saved.completed) saved.completed = [];
-  const compCount = saved.completed.length;
-  document.getElementById("courseTitle").innerHTML = `<b>${currentLang}</b> • ${compCount}/10 Stages Completed`;
-  document.getElementById("progressBar").style.width = (compCount * 10) + "%";
-  document.getElementById("progressText").textContent = `${compCount * 10}% World Progress`;
-  
-  const grid = document.getElementById("stageGrid");
-  grid.innerHTML = "";
-  
-  for (let n = 1; n <= 10; n++) {
-    const done = saved.completed.includes(n);
-    const unlocked = n === 1 || saved.completed.includes(n - 1);
-    const b = document.createElement("button");
-    b.className = "stage " + (done ? "done" : unlocked ? "unlocked" : "");
-    b.disabled = !unlocked;
-    b.innerHTML = `<span>${done ? "⭐" : unlocked ? "📖" : "🔒"} Stage ${n}</span><span class="lbl">${STAGE_NAMES[n-1]}</span>`;
-    b.onclick = () => startStage(n);
-    grid.appendChild(b);
-  }
-  
-  const cpBtn = document.getElementById("checkpointButton");
-  cpBtn.classList.toggle("hidden", compCount < 10);
-}
-
-// Generates 10 unique questions per stage without repeating or duplicating across stages
-function buildStageQuestions(stgNum) {
-  const base = LANGUAGES[currentLang] || LANGUAGES["English"];
-  const list = [];
-  
-  const startIdx = ((stgNum - 1) * 2) % base.length;
-  const stagePairs = [];
-  for(let i=0; i<4; i++) {
-    stagePairs.push(base[(startIdx + i) % base.length]);
-  }
-  
-  for (let i = 0; i < 10; i++) {
-    const pair = stagePairs[i % stagePairs.length];
-    const others = base.filter(p => p[0] !== pair[0]);
-    const distractors = shuffle(others.map(p => p[0])).slice(0, 3);
-    
-    // Stage-specific exercises matching Duolingo difficulty and formats
-    let qType = i % 4;
-    
-    if (qType === 0) {
-      list.push({
-        type: "mcq",
-        prompt: `Select the correct English meaning for "${pair[1]}" in ${currentLang}:`,
-        answer: pair[0],
-        options: shuffle([pair[0], ...distractors]),
-        audioText: pair[1]
-      });
-    } else if (qType === 1) {
-      list.push({
-        type: "mcq",
-        prompt: `🔊 [Pronunciation & Listening] What does this sound like? "${pair[1]}"`,
-        answer: pair[0],
-        options: shuffle([pair[0], ...distractors]),
-        audioText: pair[1]
-      });
-    } else if (qType === 2) {
-      list.push({
-        type: "type",
-        prompt: `✍️ Type the exact translation in ${currentLang} for: "${pair[0]}"`,
-        answer: pair[1],
-        options: [],
-        audioText: pair[0]
-      });
-    } else {
-      let matchPairs = [
-        {left: stagePairs[0][0], right: stagePairs[0][1]},
-        {left: stagePairs[1][0], right: stagePairs[1][1]}
-      ];
-      list.push({
-        type: "match",
-        prompt: `🔗 Match the following pairs correctly:`,
-        pairs: matchPairs,
-        answer: "MATCHED",
-        audioText: ""
-      });
-    }
-  }
-  return list;
-}
-
-function playAudioPronunciation() {
-  if (currentQuestion && currentQuestion.audioText && 'speechSynthesis' in window) {
-    const utterance = new SpeechSynthesisUtterance(currentQuestion.audioText);
-    window.speechSynthesis.speak(utterance);
-  } else {
-    alert("Audio pronunciation is initializing or not supported on this browser.");
-  }
-}
-
-function startStage(n) {
-  stageNumber = n;
-  mode = "stage";
-  qIndex = 0;
-  correctCount = 0;
-  mistakeCount = 0;
-  saved.hearts = 3;
-  updateTopStats();
-  
-  questions = buildStageQuestions(n);
-  
-  showScreen("lessonScreen");
-  document.getElementById("timer").classList.add("hidden");
-  setOllie("happy", `Stage ${n}: ${STAGE_NAMES[n-1]}. 3 mistakes allowed. Let's go!`);
-  showQuestion();
-}
-
-function startCheckpoint() {
-  mode = "checkpoint";
-  qIndex = 0;
-  correctCount = 0;
-  mistakeCount = 0;
-  saved.hearts = 3;
-  updateTopStats();
-  timeLeft = 600;
-  
-  let pool = [];
-  for(let i=1; i<=10; i++) {
-    pool = pool.concat(buildStageQuestions(i));
-  }
-  questions = shuffle(pool).slice(0, 40);
-  
-  showScreen("lessonScreen");
-  document.getElementById("lessonTag").textContent = "UNIT TEST CHECKPOINT";
-  document.getElementById("timer").classList.remove("hidden");
-  startTimer();
-  setOllie("thinking", "Unit Test Checkpoint! 40 questions in 10 minutes. Stay sharp!");
-  showQuestion();
-}
-
-function startTimer() {
-  clearInterval(timerInterval);
-  updateTimerDisplay();
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    updateTimerDisplay();
-    if(timeLeft <= 0) {
-      clearInterval(timerInterval);
-      finishCheckpoint(true);
-    }
-  }, 1000);
-}
-
-function updateTimerDisplay() {
-  const m = Math.floor(timeLeft / 60);
-  const s = timeLeft % 60;
-  document.getElementById("timer").textContent = `${m}:${String(s).padStart(2,"0")}`;
-}
-
-function setOllie(mood, speech) {
-  const avatars = { happy: "🦉", excited: "🎉", thinking: "🤔", surprised: "😲" };
-  document.getElementById("ollieAvatar").textContent = avatars[mood] || "🦉";
-  document.getElementById("ollieSpeech").textContent = speech;
-}
-
-function showQuestion() {
-  selectedOption = -1;
-  currentQuestion = questions[qIndex];
-  
-  document.getElementById("feedback").className = "hidden";
-  document.getElementById("feedback").textContent = "";
-  document.getElementById("continueButton").disabled = true;
-  document.getElementById("continueButton").textContent = "Check Answer";
-  
-  const optContainer = document.getElementById("optionsContainer");
-  const typeContainer = document.getElementById("typeAnswerContainer");
-  const matchContainer = document.getElementById("matchContainer");
-  const audioContainer = document.getElementById("audioContainer");
-  
-  optContainer.classList.add("hidden");
-  typeContainer.classList.add("hidden");
-  matchContainer.classList.add("hidden");
-  audioContainer.classList.add("hidden");
-  
-  document.getElementById("lessonTag").textContent = mode === "checkpoint" ? "CHECKPOINT TEST" : `STAGE ${stageNumber}`;
-  document.getElementById("questionCount").textContent = `Question ${qIndex + 1} of ${questions.length}`;
-  document.getElementById("lessonProgress").style.width = ((qIndex / questions.length) * 100) + "%";
-  document.getElementById("prompt").textContent = currentQuestion.prompt;
-  
-  if (currentQuestion.audioText) {
-    audioContainer.classList.remove("hidden");
-  }
-  
-  if (currentQuestion.type === "mcq") {
-    optContainer.classList.remove("hidden");
-    optContainer.innerHTML = "";
-    currentQuestion.options.forEach((opt, idx) => {
-      const b = document.createElement("button");
-      b.className = "option";
-      b.textContent = opt;
-      b.onclick = () => selectOpt(idx);
-      optContainer.appendChild(b);
-    });
-  } else if (currentQuestion.type === "type") {
-    typeContainer.classList.remove("hidden");
-    const input = document.getElementById("typeAnswerInput");
-    input.value = "";
-    input.oninput = () => {
-      document.getElementById("continueButton").disabled = input.value.trim() === "";
-    };
-  } else if (currentQuestion.type === "match") {
-    matchContainer.classList.remove("hidden");
-    setupMatchGame(currentQuestion.pairs);
-  }
-}
-
-function selectOpt(idx) {
-  if (document.getElementById("continueButton").textContent === "Continue") return;
-  selectedOption = idx;
-  document.querySelectorAll(".option").forEach((b, j) => b.classList.toggle("selected", j === idx));
-  document.getElementById("continueButton").disabled = false;
-}
-
-function setupMatchGame(pairs) {
-  const grid = document.getElementById("matchGrid");
-  grid.innerHTML = "";
-  matchPairsRemaining = pairs.length;
-  matchSelectedCard = null;
-  
-  let leftItems = shuffle(pairs.map(p => ({text: p.left, pairId: p.left, type: 'left'})));
-  let rightItems = shuffle(pairs.map(p => ({text: p.right, pairId: p.left, type: 'right'})));
-  
-  let allCards = shuffle([...leftItems, ...rightItems]);
-  
-  allCards.forEach(card => {
-    const btn = document.createElement("button");
-    btn.className = "match-btn";
-    btn.textContent = card.text;
-    btn.onclick = () => handleMatchClick(btn, card);
-    grid.appendChild(btn);
+function checkAnswer(){
+ if(answered)return;
+ const q=currentQuestion;
+ let correct=false;
+ if(q.type==="mcq"||q.type==="listening"){
+  if(selectedOption<0)return;
+  correct=q.options[selectedOption]===q.answer;
+  document.querySelectorAll(".option").forEach((b,i)=>{
+   if(q.options[i]===q.answer)b.classList.add("correct");
+   else if(i===selectedOption)b.classList.add("wrong");
   });
+ }else if(q.type==="type"){
+  const val=document.getElementById("typeInput").value.trim();
+  correct=normalise(val)===normalise(q.answer);
+ }
+ processAnswer(correct);
 }
-
-function handleMatchClick(btn, card) {
-  if (btn.classList.contains("correct")) return;
-  
-  if (!matchSelectedCard) {
-    matchSelectedCard = {btn, card};
-    btn.classList.add("selected");
-  } else {
-    if (matchSelectedCard.btn === btn) {
-      btn.classList.remove("selected");
-      matchSelectedCard = null;
-      return;
-    }
-    
-    if (matchSelectedCard.card.type !== card.type && matchSelectedCard.card.pairId === card.pairId) {
-      matchSelectedCard.btn.classList.remove("selected");
-      matchSelectedCard.btn.classList.add("correct");
-      btn.classList.add("correct");
-      matchSelectedCard = null;
-      matchPairsRemaining--;
-      
-      if (matchPairsRemaining === 0) {
-        document.getElementById("continueButton").disabled = false;
-        setOllie("excited", "All pairs matched successfully!");
-      }
-    } else {
-      matchSelectedCard.btn.classList.remove("selected");
-      btn.classList.add("wrong");
-      setTimeout(() => btn.classList.remove("wrong"), 500);
-      matchSelectedCard = null;
-    }
+function normalise(s){
+ return String(s).normalize("NFC").trim().toLocaleLowerCase()
+ .replace(/[.!?،,؛؛]/g,"").replace(/\s+/g," ");
+}
+function processAnswer(correct){
+ answered=true;
+ saved.accuracy.total++;
+ if(correct){
+  correctCount++;saved.accuracy.right++;
+  setOllie("Wonderful! You got it right! 🎉");
+ }else{
+  if(mode==="stage"){
+   mistakes++;saved.hearts=Math.max(0,3-mistakes);
   }
+  setOllie("Good try! Learn from the correction and keep going.");
+ }
+ save();
+ const fb=document.getElementById("feedback");
+ fb.className="feedback "+(correct?"good":"bad");
+ fb.textContent=correct?"✓ Correct! Excellent work.":"✗ Correct answer: "+currentQuestion.answer;
+ document.getElementById("continueButton").textContent="Continue";
+ document.getElementById("continueButton").disabled=false;
+ if(!correct&&mode==="stage"&&mistakes>=3){
+  document.getElementById("continueButton").textContent="Continue";
+ }
 }
-
-function checkAnswer() {
-  const btnContinue = document.getElementById("continueButton");
-  if (btnContinue.textContent === "Continue") return;
-  
-  let correct = false;
-  const fb = document.getElementById("feedback");
-  
-  if (currentQuestion.type === "mcq") {
-    if (selectedOption < 0) return;
-    const chosen = currentQuestion.options[selectedOption];
-    correct = chosen === currentQuestion.answer;
-    
-    document.querySelectorAll(".option").forEach((b, i) => {
-      if (currentQuestion.options[i] === currentQuestion.answer) b.classList.add("correct");
-      else if (i === selectedOption && !correct) b.classList.add("wrong");
-    });
-  } else if (currentQuestion.type === "type") {
-    const typedVal = document.getElementById("typeAnswerInput").value.trim().toLowerCase();
-    const correctVal = currentQuestion.answer.toLowerCase();
-    correct = typedVal === correctVal;
-  } else if (currentQuestion.type === "match") {
-    correct = matchPairsRemaining === 0;
+function nextQuestion(){
+ if(!answered){checkAnswer();return;}
+ if(mode==="stage"&&mistakes>=3){
+  showScreen("heartsScreen");return;
+ }
+ qIndex++;
+ if(qIndex>=questions.length){
+  if(mode==="checkpoint")finishCheckpoint(false);
+  else finishStage();
+ }else showQuestion();
+}
+function finishStage(){
+ const c=course();
+ const isNew=!c.completed.includes(stageNumber);
+ let xpReward=0;
+ if(isNew){
+  c.completed.push(stageNumber);c.completed.sort((a,b)=>a-b);
+  xpReward=30+correctCount*5;
+  saved.xp+=xpReward;saved.coins+=15;saved.diamonds+=1;
+  if(stageNumber===5||stageNumber===10)saved.diamonds+=2;
+ }
+ saved.dailyXp[4]=(saved.dailyXp[4]||0)+xpReward;
+ save();
+ showScreen("resultScreen");
+ document.getElementById("resultEmoji").textContent="🎉🦉";
+ document.getElementById("resultTitle").textContent=`Stage ${stageNumber} completed!`;
+ document.getElementById("resultMessage").textContent=
+  `You answered ${correctCount} of ${questions.length} questions correctly.`;
+ document.getElementById("resultRewards").innerHTML=isNew?
+  `<div class="reward">+${xpReward} XP ⚡</div>
+   <div class="reward">+15 Coins 🪙</div>
+   <div class="reward">+${stageNumber===5||stageNumber===10?3:1} Diamonds 💎</div>
+   <p>🎁 Stage reward unlocked!</p>`:
+  `<p>You have already earned this stage's first-time rewards. Great revision!</p>`;
+ renderHome();
+}
+function finishCheckpoint(timedOut){
+ clearInterval(timerInterval);
+ const passed=correctCount>=32;
+ if(passed){
+  const c=course();
+  if(!c.checkpointPassed){
+   c.checkpointPassed=true;saved.xp+=200;saved.coins+=100;saved.diamonds+=10;
   }
-  
-  fb.className = "feedback " + (correct ? "good" : "bad");
-  
-  if(correct) {
-    correctCount++;
-    setOllie("excited", "Amazing! You got it right!");
-    fb.textContent = "✓ Excellent! Perfect answer.";
-  } else {
-    mistakeCount++;
-    saved.hearts = Math.max(0, saved.hearts - 1);
-    updateTopStats();
-    
-    if (mistakeCount >= 3) {
-      setTimeout(() => {
-        showScreen("outOfHeartsScreen");
-      }, 1000);
-      return;
-    }
-    
-    setOllie("thinking", `Mistake ${mistakeCount}/3. Correct answer: ${currentQuestion.answer || 'Matched pairs'}`);
-    fb.textContent = `✗ Incorrect. Correct answer: ${currentQuestion.answer || 'Check your pairs'} (Mistake ${mistakeCount}/3)`;
-  }
-  
-  btnContinue.textContent = "Continue";
+  save();
+ }
+ showScreen("resultScreen");
+ document.getElementById("resultEmoji").textContent=passed?"🏆":"📘";
+ document.getElementById("resultTitle").textContent=passed?"Checkpoint Passed!":"Keep Practising!";
+ document.getElementById("resultMessage").textContent=
+  `${timedOut?"Time is up. ":""}Your score: ${correctCount}/40. ${passed?"You passed!":"You need at least 32 correct answers to pass."}`;
+ document.getElementById("resultRewards").innerHTML=passed?
+  "<div class='reward'>+200 XP ⚡</div><div class='reward'>+100 Coins 🪙</div><div class='reward'>+10 Diamonds 💎</div>":
+  "<p>Review your previous stages and try again.</p>";
+ renderHome();
 }
-
-function buyHeart() {
-  if (saved.coins >= 15) {
-    saved.coins -= 15;
-    saved.hearts = 1;
-    mistakeCount = 2;
-    saveState();
-    showScreen("lessonScreen");
-    setOllie("happy", "Heart restored! Keep going!");
-  } else {
-    alert("Not enough coins! You need 15 coins to buy a heart.");
-  }
+function buyHeart(){
+ if(saved.coins<10){alert("You need 10 coins to buy a heart.");return;}
+ saved.coins-=10;saved.hearts=1;mistakes=2;save();
+ showScreen("lessonScreen");setOllie("One heart restored! You can continue.");
 }
-
-function restartStageOption() {
-  startStage(stageNumber);
+function restartStage(){
+ startStage(stageNumber);
 }
-
-function nextQuestion() {
-  const btnContinue = document.getElementById("continueButton");
-  if (btnContinue.textContent === "Check Answer") {
-    checkAnswer();
-    return;
-  }
-  qIndex++;
-  if (qIndex >= questions.length) {
-    if (mode === "checkpoint") finishCheckpoint(false);
-    else finishStage();
-  } else {
-    showQuestion();
-  }
+function startPractice(){
+ const learned=course().completed;
+ if(!learned.length){alert("Complete a stage first to unlock revision.");return;}
+ mode="practice";qIndex=0;correctCount=0;
+ questions=shuffle(learned.flatMap(n=>questionsForWord(n-1))).slice(0,Math.min(10,learned.length*4));
+ showScreen("lessonScreen");
+ document.getElementById("timer").classList.add("hidden");
+ setOllie("Let's revise what you have learned!");
+ showQuestion();
 }
-
-function finishStage() {
-  if (!saved.completed.includes(stageNumber)) {
-    saved.completed.push(stageNumber);
-    saved.completed.sort((a,b)=>a-b);
-    saved.xp += 50;
-    saved.coins += 25;
-    saved.diamonds += 2;
-    if(stageNumber % 5 === 0) saved.level++;
-  }
-  
-  saved.dailyXp[saved.dailyXp.length - 1] += 50;
-  saveState();
-  
-  showScreen("resultScreen");
-  document.getElementById("resultEmoji").textContent = "🎁🦉";
-  document.getElementById("resultTitle").textContent = `Stage ${stageNumber} Completed!`;
-  document.getElementById("resultMessage").textContent = `Score: ${correctCount}/${questions.length} correct answers.`;
-  document.getElementById("resultRewards").innerHTML = `
-    <h2>+50 XP ⚡</h2>
-    <h2>+25 Coins 🪙</h2>
-    <h2>+2 Diamonds 💎</h2>
-    <div style="background:var(--line);padding:12px;border-radius:12px;margin-top:10px">
-      <b>🎁 Mystery Gift Unlocked!</b><br>Received bonus rewards for completing Stage ${stageNumber}.
-    </div>
-  `;
+function leaveLesson(){
+ clearInterval(timerInterval);
+ if("speechSynthesis" in window)speechSynthesis.cancel();
+ showScreen("tab-learn");renderHome();
 }
-
-function finishCheckpoint(timedOut) {
-  clearInterval(timerInterval);
-  const passed = correctCount >= 32;
-  if(passed) {
-    saved.xp += 200;
-    saved.coins += 100;
-    saved.diamonds += 10;
-    saved.level++;
-    saveState();
-  }
-  
-  showScreen("resultScreen");
-  document.getElementById("resultEmoji").textContent = passed ? "🏆" : "📘";
-  document.getElementById("resultTitle").textContent = passed ? "Checkpoint Passed!" : "Checkpoint Failed";
-  document.getElementById("resultMessage").textContent = `${timedOut?"Time's up! ":""}Score: ${correctCount}/40. ${passed?"You unlocked the next world!":"You need at least 32 correct answers to pass."}`;
-  document.getElementById("resultRewards").innerHTML = passed ? "<h2>+200 XP ⚡</h2><h2>+100 Coins 🪙</h2><h2>+10 Diamonds 💎</h2>" : "<p>Review your lessons and try again!</p>";
+function backHome(){
+ clearInterval(timerInterval);
+ if("speechSynthesis" in window)speechSynthesis.cancel();
+ showScreen("tab-learn");renderHome();
 }
-
-function startPractice(type) {
-  alert(`Launching ${type} practice session! (Synced with your mistake history)`);
+function showScreen(id){
+ ["tab-learn","tab-practice","tab-league","tab-friends","tab-profile",
+  "lessonScreen","heartsScreen","resultScreen"].forEach(s=>
+  document.getElementById(s).classList.add("hidden")
+ );
+ document.getElementById(id).classList.remove("hidden");
 }
-
-function leaveLesson() {
-  clearInterval(timerInterval);
-  showScreen("learn");
-  renderHome();
+function saveProfile(){
+ const name=document.getElementById("nameInput").value.trim();
+ if(name)saved.name=name;
+ saved.avatar=document.getElementById("avatarSelect").value;
+ save();alert("Profile saved!");
 }
-
-function backHome() {
-  clearInterval(timerInterval);
-  showScreen("learn");
-  renderHome();
+function setTheme(){
+ saved.theme=document.getElementById("themeSelect").value;
+ document.body.dataset.theme=saved.theme;save();
 }
-
-function showScreen(screenKey) {
-  ["tab-learn", "tab-practice", "tab-league", "tab-friends", "tab-profile", "lessonScreen", "outOfHeartsScreen", "resultScreen"].forEach(s => {
-    document.getElementById(s).classList.add("hidden");
-  });
-  if(screenKey === "learn") document.getElementById("tab-learn").classList.remove("hidden");
-  else document.getElementById(screenKey).classList.remove("hidden");
+function renderLeaderboard(){
+ const box=document.getElementById("leaderboardList");
+ box.innerHTML=`<div class="friend">
+  <b>🥇 ${esc(saved.name)} (You)</b><b>⚡ ${saved.xp} XP</b>
+ </div>`;
 }
-
-function renderLeaderboard() {
-  let allUsers = [
-    {name: `${saved.name} (You)`, xp: saved.xp, stage: saved.completed.length, rank: 1, reward: "Gold Medal 🥇"}
-  ];
-  saved.friends.forEach(f => allUsers.push(f));
-  allUsers.sort((a,b) => b.xp - a.xp);
-  allUsers.forEach((u, idx) => u.rank = idx + 1);
-  
-  document.getElementById("leaderboardList").innerHTML = allUsers.map(u => `
-    <div class="friend-card" style="background:var(--card-bg);border:1px solid var(--line)">
-     <div><b>#${u.rank} ${escapeHTML(u.name)}</b><br><span class="small">Stage ${u.stage || 1} • ${u.reward || 'Shield Tier'}</span></div>
-     <div style="font-weight:900;color:var(--green)">⚡ ${u.xp} XP</div>
-    </div>
-  `).join("");
+function renderFriends(){
+ const box=document.getElementById("friendsList");
+ if(!saved.friends.length){
+  box.innerHTML="<p>No friends added yet.</p>";return;
+ }
+ box.innerHTML=saved.friends.map(f=>`<div class="friend">
+  <b>${esc(f.id)}</b><span class="small">Friend request sent</span>
+ </div>`).join("");
 }
-
-function renderFriends() {
-  const list = document.getElementById("friendsList");
-  list.innerHTML = saved.friends.map(f => `
-    <div class="friend-card">
-     <div>
-      <b>👤 ${escapeHTML(f.name)}</b> (${f.id})<br>
-      <span class="small">Stage: ${f.stage} | Reward: ${f.reward} | Rank: #${f.rank}</span>
-     </div>
-     <button class="secondary" style="width:auto;padding:6px 12px" onclick="alert('Challenge sent to ${f.name}!')">Challenge</button>
-    </div>
-  `).join("");
+function addFriend(){
+ const id=document.getElementById("friendSearchId").value.trim().toUpperCase();
+ if(!id){alert("Enter a friend ID first.");return;}
+ if(id===saved.userId){alert("You cannot add your own ID.");return;}
+ if(saved.friends.some(f=>f.id===id)){alert("You already sent a request to this ID.");return;}
+ saved.friends.push({id});
+ document.getElementById("friendSearchId").value="";
+ save();renderFriends();
+ alert("Request saved locally. Real friend requests require online backend setup.");
 }
-
-function addFriend() {
-  const input = document.getElementById("friendSearchId");
-  const val = input.value.trim().toUpperCase();
-  if(val) {
-    const simulatedNames = ["Rohan", "Priya", "Amit", "Sneha", "Karan"];
-    const randomName = simulatedNames[Math.floor(Math.random()*simulatedNames.length)];
-    saved.friends.push({
-      id: val,
-      name: randomName,
-      stage: Math.floor(Math.random() * 8) + 1,
-      xp: Math.floor(Math.random() * 1200) + 200,
-      reward: "Silver Medal 🥈",
-      rank: saved.friends.length + 2
-    });
-    input.value = "";
-    saveState();
-    renderFriends();
-    renderLeaderboard();
-    alert(`Successfully added friend ID ${val} (${randomName})!`);
-  }
-}
-
-function saveProfileSettings() {
-  const nameInput = document.getElementById("inputProfileName").value.trim();
-  const avatarSelect = document.getElementById("selectAvatar").value;
-  if(nameInput) saved.name = nameInput;
-  saved.avatar = avatarSelect;
-  saveState();
-  renderLeaderboard();
-  alert("Profile settings updated successfully!");
-}
-
-function renderDailyGraph() {
-  const graphContainer = document.getElementById("dailyGraph");
-  const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Today"];
-  const maxVal = Math.max(...saved.dailyXp, 50);
-  
-  graphContainer.innerHTML = saved.dailyXp.map((val, idx) => {
-    const heightPercent = Math.max(15, (val / maxVal) * 100);
-    return `
-      <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end">
-        <span class="small" style="font-size:10px;margin-bottom:4px">${val} XP</span>
-        <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:${heightPercent}%"></div>
-        <span class="small" style="font-size:11px;margin-top:6px">${days[idx]}</span>
-      </div>
-    `;
-  }).join("");
-}
-
-function toggleTheme() {
-  saved.theme = document.getElementById("themeSelect").value;
-  document.body.setAttribute("data-theme", saved.theme);
-  saveState();
-}
-
-function escapeHTML(s) {
-  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
-}
-
-initApp();
+function renderDailyGraph(){}
+init();
 </script>
 </body>
 </html>
