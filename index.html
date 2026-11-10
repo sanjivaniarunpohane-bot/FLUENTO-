@@ -3,1295 +3,397 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090d2c">
-<title>Fluento | Learn • Play • Grow</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Fluento – Learn Languages</title>
 <style>
-:root{
---bg:#080c24;--panel:#111936;--panel2:#19264d;
---ink:#f2f5ff;--muted:#a5b1d4;--cyan:#50eaff;
---blue:#397bff;--purple:#a56bff;--pink:#ff6bd6;
---gold:#ffd66b;--green:#53e6a3;--red:#ff6d88;
---line:#33416d;
-}
+:root{--green:#58cc02;--darkgreen:#46a302;--blue:#1cb0f6;--ink:#263238;--muted:#718096;--bg:#f7f9fc;--line:#e5eaf0;--gold:#ffc800;--red:#ff4b4b}
 *{box-sizing:border-box}
-body{
-margin:0;min-height:100vh;
-background:radial-gradient(ellipse at 15% 0%,#1b2860,transparent 40%),
-radial-gradient(ellipse at 90% 20%,#27154e,transparent 35%),var(--bg);
-color:var(--ink);font:15px/1.5 system-ui,sans-serif;
-}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;color:inherit}
-button:disabled{opacity:.45;cursor:not-allowed}
+body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Arial,sans-serif;color:var(--ink)}
+button,select{font:inherit}
+button{cursor:pointer}
+header{background:white;border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:5}
+.top{max-width:850px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-size:25px;font-weight:900;color:var(--green);letter-spacing:-1px}
+.stats{display:flex;gap:12px;font-weight:800;font-size:14px}
+.stat{background:#f3f6f9;padding:8px 10px;border-radius:12px}
+main{max-width:760px;margin:20px auto;padding:0 14px 40px}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 3px 12px #00000008}
+h1{font-size:26px;margin:0 0 8px}
+h2{font-size:20px;margin:0 0 12px}
+p{color:var(--muted);line-height:1.5}
+select{width:100%;padding:13px;border:2px solid var(--line);border-radius:12px;background:white;margin:8px 0 14px}
+.primary{border:0;background:var(--green);color:white;font-weight:900;padding:14px 18px;border-radius:13px;width:100%;box-shadow:0 4px 0 var(--darkgreen)}
+.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--darkgreen)}
+.secondary{border:2px solid var(--line);background:white;color:var(--ink);font-weight:800;padding:12px;border-radius:12px;width:100%}
+.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+.stage{border:0;border-radius:15px;background:#edf1f5;min-height:75px;font-weight:900;color:#89939e}
+.stage.unlocked{background:#e8f8dc;color:#398500;border-bottom:4px solid #a4dc79}
+.stage.done{background:#fff3c4;color:#8b6900;border-bottom:4px solid #e5bd36}
+.stage:disabled{opacity:.55;cursor:not-allowed}
+.progress{height:12px;border-radius:20px;background:#edf1f5;overflow:hidden;margin:12px 0}
+.progress>div{height:100%;background:var(--green);width:0%;transition:.3s}
+.tag{display:inline-block;background:#eef8e8;color:#408b00;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:900}
 .hidden{display:none!important}
-header{
-position:sticky;top:0;z-index:10;
-background:#080c24ee;backdrop-filter:blur(15px);
-border-bottom:1px solid var(--line);
-padding:10px 14px;display:flex;
-justify-content:space-between;align-items:center;gap:8px;
-}
-.brand{font-size:23px;font-weight:1000;letter-spacing:-1px}
-.brandmark{
-display:inline-grid;place-items:center;
-width:38px;height:38px;border-radius:12px;
-background:linear-gradient(135deg,#783bff,#00cfff);
-}
-.stats{display:flex;gap:5px;flex-wrap:wrap;justify-content:end}
-.pill{
-background:#141d3c;border:1px solid #46558c;
-padding:5px 9px;border-radius:99px;font-weight:850;font-size:12px;
-}
-.layout{
-max-width:1100px;margin:auto;padding:15px 12px 100px;
-display:grid;grid-template-columns:190px minmax(0,1fr);gap:15px;
-}
-.side{
-position:sticky;top:75px;align-self:start;
-background:#0e1532;border:1px solid var(--line);
-border-radius:20px;padding:10px;
-}
-.side button{
-display:block;width:100%;text-align:left;
-background:transparent;color:var(--muted);
-padding:12px;border-radius:12px;margin:3px 0;font-weight:800;
-}
-.side button.active,.side button:hover{
-background:#1a2b57;color:white;
-}
-.main{min-width:0}
-.hero{
-border:1px solid #5365b0;border-radius:23px;padding:20px;
-background:linear-gradient(120deg,#141c53,#172d63 55%,#3a1760);
-display:flex;align-items:center;justify-content:space-between;
-gap:12px;overflow:hidden;
-}
-.hero h1{font-size:clamp(25px,5vw,39px);line-height:1.1;margin:7px 0}
-.hero p{color:#d2ddff}
-.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:950;color:var(--cyan)}
-.panel{
-background:linear-gradient(145deg,#121c3a,#0e1732);
-border:1px solid var(--line);border-radius:18px;
-padding:16px;margin:12px 0;
-}
-.section-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0 10px;gap:10px}
-.muted{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.metric{background:#121e40;border:1px solid var(--line);border-radius:14px;padding:13px}
-.metric strong{font-size:22px;display:block}
-.metric span{color:var(--muted);font-size:12px}
-.track{height:9px;background:#263355;border-radius:20px;overflow:hidden;margin:10px 0}
-.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:20px}
-button.primary,button.secondary,button.danger{
-border-radius:11px;padding:10px 14px;font-weight:900;
-}
-.primary{background:linear-gradient(110deg,#554cff,#087fca);color:white}
-.secondary{background:#1b2a50;border:1px solid #4a5d92}
-.danger{background:#4b1d36;border:1px solid #9c385b}
-input,select,textarea{
-width:100%;background:#0b1430;color:white;
-border:1px solid #465580;border-radius:10px;padding:11px;
-margin:5px 0;
-}
-textarea{min-height:100px}
-.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.row>*{min-width:0}
-.stage{
-display:grid;grid-template-columns:42px 1fr auto;
-gap:10px;align-items:center;background:#111b39;
-border:1px solid var(--line);border-radius:14px;
-padding:11px;margin:8px 0;
-}
-.stage.locked{opacity:.45}
-.stage-icon{width:42px;height:42px;border-radius:12px;background:#25316b;display:grid;place-items:center;font-size:22px}
-.stage h3{margin:0;font-size:15px}
-.stage p{margin:2px 0;color:var(--muted);font-size:12px}
-.quiz{max-width:700px;margin:auto}
-.question{font-size:clamp(21px,4vw,30px);margin:20px 0}
-.option{
-display:block;width:100%;text-align:left;
-padding:14px;margin:7px 0;border-radius:12px;
-border:1px solid #42517b;background:#121d3d;font-weight:800;
-}
-.option.selected{border-color:var(--cyan);background:#18365b}
-.option.correct{border-color:var(--green);background:#123c3b}
-.option.wrong{border-color:var(--red);background:#461f3c}
-.option:disabled{opacity:1}
-.feedback{padding:12px;margin-top:12px;border-radius:11px;font-weight:800}
-.good{background:#103c38;color:#9dffda}
-.bad{background:#4a1e35;color:#ffd2dd}
-.ollie-wrap{width:140px;flex-shrink:0;position:relative}
-.ollie{width:100%;border-radius:20px;animation:float 3s ease-in-out infinite}
-.speech{
-position:absolute;right:-5px;top:-12px;
-background:#2869d7;padding:7px 10px;
-border-radius:13px;font-size:12px;font-weight:900;
-}
-@keyframes float{50%{transform:translateY(-9px) rotate(3deg)}}
-@keyframes celebrate{
-0%,100%{transform:translateY(0) rotate(0)}
-30%{transform:translateY(-25px) rotate(-10deg)}
-60%{transform:translateY(-5px) rotate(10deg)}
-}
-.celebrate{animation:celebrate .55s ease-in-out 5}
-.gift{
-background:linear-gradient(135deg,#241b58,#39265f);
-border:1px solid #8267c6;border-radius:16px;
-padding:17px;text-align:center;margin:15px 0;
-}
-.gift .big{font-size:55px}
-.friend{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #33416d}
-.avatar{width:43px;height:43px;background:#26315f;border-radius:13px;display:grid;place-items:center;font-size:22px}
-.friendinfo{flex:1;min-width:0}
-.friendinfo small{display:block;color:var(--muted)}
-.notice{background:#342c1a;border:1px solid #806c32;color:#ffe8a4;padding:12px;border-radius:12px;margin:12px 0}
-.bottom{display:none}
-#splash{
-position:fixed;inset:0;z-index:100;
-display:flex;align-items:center;justify-content:center;
-flex-direction:column;text-align:center;
-background:radial-gradient(circle,#202c67,#090d2c 70%);
-animation:splashfade .5s ease;
-}
-#splash img{width:170px;height:170px;object-fit:contain;animation:float 1.5s infinite}
-#splash h1{font-size:35px;letter-spacing:3px;margin:12px}
-#splash p{color:var(--muted)}
-@keyframes splashfade{from{opacity:0}to{opacity:1}}
-#authScreen{max-width:440px;margin:5vh auto;padding:22px}
-#authScreen form{display:grid;gap:8px}
-@media(max-width:700px){
-.layout{grid-template-columns:1fr;padding:10px 9px 95px}
-.side{display:none}
-.bottom{
-display:flex;position:fixed;bottom:0;left:0;right:0;
-z-index:20;background:#080d25f5;
-border-top:1px solid var(--line);
-justify-content:space-around;padding:8px 3px max(8px,env(safe-area-inset-bottom));
-}
-.bottom button{background:transparent;color:var(--muted);font-size:11px;font-weight:850;padding:3px}
-.bottom span{display:block;font-size:20px}
-.hero{padding:14px}
-.ollie-wrap{width:95px}
-.stats .pill{font-size:10px;padding:4px 6px}
-.stage{grid-template-columns:38px 1fr}
-.stage button{grid-column:2;justify-self:start}
+.question-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.timer{font-weight:900;color:var(--red);background:#fff0f0;padding:8px 12px;border-radius:10px}
+.prompt{font-size:23px;font-weight:900;text-align:center;margin:30px 0 20px;line-height:1.4}
+.options{display:grid;gap:10px}
+.option{border:2px solid var(--line);background:white;border-radius:14px;padding:15px;text-align:left;font-weight:800;min-height:55px}
+.option:active{background:#f4f8fb}
+.option.selected{border-color:var(--blue);background:#edf9ff}
+.option.correct{border-color:var(--green);background:#efffe6}
+.option.wrong{border-color:var(--red);background:#fff0f0}
+.feedback{padding:13px;border-radius:12px;margin:14px 0;font-weight:800}
+.feedback.good{background:#eaffdf;color:#327600}
+.feedback.bad{background:#fff0f0;color:#b52d2d}
+.bottom-actions{display:flex;gap:10px;margin-top:15px}
+.bottom-actions button{flex:1}
+.small{font-size:13px;color:var(--muted)}
+.result{text-align:center;padding:25px 10px}
+.result .big{font-size:48px}
+.result h2{font-size:27px}
+footer{text-align:center;color:#9aa3ad;font-size:12px;padding:20px}
+@media(max-width:480px){
+ main{margin:12px auto}
+ .panel{padding:16px;border-radius:16px}
+ .logo{font-size:22px}
+ .stats{gap:5px;font-size:12px}
+ .stat{padding:7px}
+ .stage-grid{gap:7px}
+ .stage{min-height:65px;font-size:12px}
+ .prompt{font-size:21px;margin:24px 0 18px}
+ .option{padding:13px}
 }
 </style>
 </head>
-
 <body>
-
-<div id="splash">
-<div class="eyebrow">DIRECTED BY MR. NIRMIT POHANE</div>
-<img src="./fluento-icon.png" onerror="this.src='./ollie.png'" alt="Fluento logo">
-<h1>FLUENTO</h1>
-<p>LEARN • PLAY • GROW</p>
-<p>Meet Ollie. Your learning journey begins!</p>
-</div>
-
 <header>
-<div class="brand"><span class="brandmark">🦉</span> FLUENTO</div>
-<div class="stats">
-<div class="pill">🔥 <b id="streak">0</b></div>
-<div class="pill">⚡ <b id="xp">0</b></div>
-<div class="pill">🪙 <b id="coins">0</b></div>
-<div class="pill">💎 <b id="gems">0</b></div>
-<div class="pill">❤️ <b id="hearts">3</b></div>
-</div>
+ <div class="top">
+  <div class="logo">🦉 Fluento</div>
+  <div class="stats">
+   <div class="stat">⚡ <span id="xp">0</span> XP</div>
+   <div class="stat">🪙 <span id="coins">0</span></div>
+   <div class="stat">💎 <span id="diamonds">0</span></div>
+  </div>
+ </div>
 </header>
 
-<section id="authScreen" class="panel">
-<div class="eyebrow">WELCOME TO FLUENTO</div>
-<h1>Let's start learning!</h1>
-<p class="muted">Create an account to save your progress and connect with friends.</p>
-<form id="authForm">
-<input id="authName" placeholder="Your nickname" maxlength="24">
-<input id="authEmail" type="email" placeholder="Email address" required>
-<input id="authPassword" type="password" placeholder="Password (8+ characters)" minlength="8" required>
-<div class="row">
-<button class="primary" type="submit">Sign in</button>
-<button class="secondary" type="button" id="signUpBtn">Create account</button>
-</div>
-</form>
-<p id="authMessage" class="muted"></p>
-<button class="secondary" id="guestBtn">Continue as guest</button>
-</section>
+<main>
+ <section id="home">
+  <div class="panel">
+   <span class="tag">DIRECTED BY MR. NIRMIT POHANE</span>
+   <h1>Welcome to Fluento! 🌍</h1>
+   <p>Choose a language, learn step by step, earn rewards and test your knowledge.</p>
+   <label for="language"><b>Choose your learning language</b></label>
+   <select id="language"></select>
+   <button class="primary" onclick="startLanguage()">Start learning →</button>
+   <p class="small">Your progress is saved on this device.</p>
+  </div>
 
-<div id="appShell" class="hidden">
-<div class="layout">
+  <div class="panel">
+   <h2>📚 Your learning journey</h2>
+   <div id="courseTitle">Choose a language to begin.</div>
+   <div class="progress"><div id="progressBar"></div></div>
+   <div id="stageGrid" class="stage-grid"></div>
+   <p id="progressText" class="small"></p>
+   <button id="checkpointButton" class="primary hidden" onclick="startCheckpoint()">📝 Take the 40-question checkpoint</button>
+  </div>
+  <div class="panel">
+   <h2>🏆 Your achievements</h2>
+   <p id="achievementText">Complete stages to earn XP, coins and diamonds.</p>
+  </div>
+ </section>
 
-<aside class="side">
-<div class="muted" style="text-align:center;padding:12px">🦉 OLLIE'S CLUB</div>
-<button data-tab="learn">🗺️ Learn</button>
-<button data-tab="friends">👥 Friends</button>
-<button data-tab="rewards">🎁 Rewards</button>
-<button data-tab="profile">🏆 Profile</button>
-<button data-tab="dashboard" id="adminNav" class="hidden">📊 Director dashboard</button>
-<button id="signOutBtn">↪ Sign out</button>
-</aside>
+ <section id="lesson" class="hidden">
+  <div class="panel">
+   <div class="question-head">
+    <div>
+     <span class="tag" id="lessonTag">STAGE 1</span>
+     <div class="small" id="questionCount">Question 1 of 4</div>
+    </div>
+    <div class="timer hidden" id="timer">10:00</div>
+   </div>
+   <div class="progress"><div id="lessonProgress"></div></div>
+   <div class="prompt" id="prompt"></div>
+   <div class="options" id="options"></div>
+   <div id="feedback" class="hidden"></div>
+   <div class="bottom-actions">
+    <button class="secondary" onclick="leaveLesson()">Exit</button>
+    <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check answer</button>
+   </div>
+  </div>
+  <p class="small" id="lessonNote">Choose the correct answer.</p>
+ </section>
 
-<main id="app" class="main"></main>
-</div>
+ <section id="resultScreen" class="hidden">
+  <div class="panel result">
+   <div class="big" id="resultEmoji">🎉</div>
+   <h2 id="resultTitle">Stage completed!</h2>
+   <p id="resultMessage"></p>
+   <div id="resultRewards"></div>
+   <button class="primary" onclick="backHome()">Continue</button>
+  </div>
+ </section>
+</main>
+<footer>Fluento • Learn a little every day 🌱</footer>
 
-<nav class="bottom">
-<button data-tab="learn"><span>🗺️</span>Learn</button>
-<button data-tab="friends"><span>👥</span>Friends</button>
-<button data-tab="rewards"><span>🎁</span>Gifts</button>
-<button data-tab="profile"><span>🏆</span>Profile</button>
-</nav>
-</div>
-
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-
-import {
-getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
-signInWithEmailAndPassword,signOut,updateProfile
-} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
-
-import {
-getFirestore,doc,setDoc,getDoc,updateDoc,
-collection,query,where,getDocs,addDoc,onSnapshot,
-serverTimestamp,limit
-} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
-
-/* =====================================
-   1. FIREBASE CONFIGURATION
-===================================== */
-
-const firebaseConfig={
-apiKey:"PASTE_API_KEY",
-authDomain:"PASTE_PROJECT.firebaseapp.com",
-projectId:"PASTE_PROJECT_ID",
-appId:"PASTE_APP_ID"
+<script>
+/*
+  FLUENTO STARTER CURRICULUM
+  Each language contains 10 vocabulary units.
+  Each unit generates four differently worded exercises.
+  Checkpoint: 40 questions from the 10 previously completed units.
+*/
+const LANGUAGES = {
+"Spanish":[["Hello","Hola"],["Thank you","Gracias"],["Yes","Sí"],["No","No"],["Water","Agua"],["Book","Libro"],["House","Casa"],["Friend","Amigo"],["Good morning","Buenos días"],["Goodbye","Adiós"]],
+"French":[["Hello","Bonjour"],["Thank you","Merci"],["Yes","Oui"],["No","Non"],["Water","Eau"],["Book","Livre"],["House","Maison"],["Friend","Ami"],["Good morning","Bonjour"],["Goodbye","Au revoir"]],
+"German":[["Hello","Hallo"],["Thank you","Danke"],["Yes","Ja"],["No","Nein"],["Water","Wasser"],["Book","Buch"],["House","Haus"],["Friend","Freund"],["Good morning","Guten Morgen"],["Goodbye","Auf Wiedersehen"]],
+"Italian":[["Hello","Ciao"],["Thank you","Grazie"],["Yes","Sì"],["No","No"],["Water","Acqua"],["Book","Libro"],["House","Casa"],["Friend","Amico"],["Good morning","Buongiorno"],["Goodbye","Arrivederci"]],
+"Portuguese":[["Hello","Olá"],["Thank you","Obrigado / Obrigada"],["Yes","Sim"],["No","Não"],["Water","Água"],["Book","Livro"],["House","Casa"],["Friend","Amigo"],["Good morning","Bom dia"],["Goodbye","Tchau"]],
+"Japanese":[["Hello","こんにちは"],["Thank you","ありがとうございます"],["Yes","はい"],["No","いいえ"],["Water","水"],["Book","本"],["House","家"],["Friend","友達"],["Good morning","おはようございます"],["Goodbye","さようなら"]],
+"Korean":[["Hello","안녕하세요"],["Thank you","감사합니다"],["Yes","네"],["No","아니요"],["Water","물"],["Book","책"],["House","집"],["Friend","친구"],["Good morning","좋은 아침입니다"],["Goodbye","안녕히 가세요"]],
+"Chinese (Mandarin)":[["Hello","你好"],["Thank you","谢谢"],["Yes","是"],["No","不是"],["Water","水"],["Book","书"],["House","房子"],["Friend","朋友"],["Good morning","早上好"],["Goodbye","再见"]],
+"Hindi":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","हाँ"],["No","नहीं"],["Water","पानी"],["Book","किताब"],["House","घर"],["Friend","दोस्त"],["Good morning","सुप्रभात"],["Goodbye","अलविदा"]],
+"Marathi":[["Hello","नमस्कार"],["Thank you","धन्यवाद"],["Yes","हो"],["No","नाही"],["Water","पाणी"],["Book","पुस्तक"],["House","घर"],["Friend","मित्र"],["Good morning","शुभ सकाळ"],["Goodbye","पुन्हा भेटू"]],
+"Arabic":[["Hello","مرحبا"],["Thank you","شكرا"],["Yes","نعم"],["No","لا"],["Water","ماء"],["Book","كتاب"],["House","منزل"],["Friend","صديق"],["Good morning","صباح الخير"],["Goodbye","مع السلامة"]],
+"Russian":[["Hello","Здравствуйте"],["Thank you","Спасибо"],["Yes","Да"],["No","Нет"],["Water","Вода"],["Book","Книга"],["House","Дом"],["Friend","Друг"],["Good morning","Доброе утро"],["Goodbye","До свидания"]],
+"Turkish":[["Hello","Merhaba"],["Thank you","Teşekkürler"],["Yes","Evet"],["No","Hayır"],["Water","Su"],["Book","Kitap"],["House","Ev"],["Friend","Arkadaş"],["Good morning","Günaydın"],["Goodbye","Hoşça kal"]],
+"Dutch":[["Hello","Hallo"],["Thank you","Dank je"],["Yes","Ja"],["No","Nee"],["Water","Water"],["Book","Boek"],["House","Huis"],["Friend","Vriend"],["Good morning","Goedemorgen"],["Goodbye","Tot ziens"]],
+"Swedish":[["Hello","Hej"],["Thank you","Tack"],["Yes","Ja"],["No","Nej"],["Water","Vatten"],["Book","Bok"],["House","Hus"],["Friend","Vän"],["Good morning","God morgon"],["Goodbye","Hej då"]],
+"Greek":[["Hello","Γεια σας"],["Thank you","Ευχαριστώ"],["Yes","Ναι"],["No","Όχι"],["Water","Νερό"],["Book","Βιβλίο"],["House","Σπίτι"],["Friend","Φίλος"],["Good morning","Καλημέρα"],["Goodbye","Αντίο"]],
+"Thai":[["Hello","สวัสดี"],["Thank you","ขอบคุณ"],["Yes","ใช่"],["No","ไม่"],["Water","น้ำ"],["Book","หนังสือ"],["House","บ้าน"],["Friend","เพื่อน"],["Good morning","อรุณสวัสดิ์"],["Goodbye","ลาก่อน"]],
+"Indonesian":[["Hello","Halo"],["Thank you","Terima kasih"],["Yes","Ya"],["No","Tidak"],["Water","Air"],["Book","Buku"],["House","Rumah"],["Friend","Teman"],["Good morning","Selamat pagi"],["Goodbye","Selamat tinggal"]],
+"Bengali":[["Hello","নমস্কার"],["Thank you","ধন্যবাদ"],["Yes","হ্যাঁ"],["No","না"],["Water","জল"],["Book","বই"],["House","বাড়ি"],["Friend","বন্ধু"],["Good morning","সুপ্রভাত"],["Goodbye","বিদায়"]],
+"Urdu":[["Hello","السلام علیکم"],["Thank you","شکریہ"],["Yes","ہاں"],["No","نہیں"],["Water","پانی"],["Book","کتاب"],["House","گھر"],["Friend","دوست"],["Good morning","صبح بخیر"],["Goodbye","خدا حافظ"]]
 };
 
-/* Your Firebase Authentication UID */
-const ADMIN_UID="PASTE_YOUR_FIREBASE_UID";
+const STORAGE_KEY="fluento_progress_v2";
+let saved={};
+try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}catch(e){saved={}}
+let language="Spanish",questions=[],qIndex=0,selected=-1,correctCount=0;
+let mode="stage",stageNumber=1,currentQuestion=null,timerInterval=null,timeLeft=600;
+let checkpointQuestions=[];
 
-const firebaseReady=Object.values(firebaseConfig)
-.every(v=>v&&!String(v).startsWith("PASTE_"));
-
-let auth=null,db=null,user=null,guest=false;
-if(firebaseReady){
-const fb=initializeApp(firebaseConfig);
-auth=getAuth(fb);
-db=getFirestore(fb);
+function save(){
+ localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
+ updateStats();
 }
-
-/* =====================================
-   2. APP DATA
-===================================== */
-
-const $=id=>document.getElementById(id);
-const app=$("app");
-
-const base={
-nickname:"Learner",course:"English",
-xp:0,coins:0,gems:0,hearts:3,
-streak:0,shield:"None",done:{},
-practiceDays:[],lastPractice:"",
-sound:true,stage:1
-};
-
-let data={...base};
-let stageNo=1,qi=0,score=0,chosen=-1;
-let lockedAnswer=false,activeQuestion=null;
-let audio=null,ambientOscillators=[];
-let unsubscribeUsers=null;
-
-const localKey="fluento-final-data";
-
-try{
-data={...base,...JSON.parse(localStorage.getItem(localKey)||"{}")};
-}catch{}
-
-function esc(s){
-return String(s??"").replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
+function courseData(){
+ if(!saved[language])saved[language]={completed:[],xp:0,coins:0,diamonds:0,checkpoint:false};
+ return saved[language];
 }
-
-function saveLocal(){
-localStorage.setItem(localKey,JSON.stringify(data));
-stats();
+function updateStats(){
+ const c=courseData();
+ document.getElementById("xp").textContent=c.xp;
+ document.getElementById("coins").textContent=c.coins;
+ document.getElementById("diamonds").textContent=c.diamonds;
 }
-
-function stats(){
-$("xp").textContent=data.xp||0;
-$("coins").textContent=data.coins||0;
-$("gems").textContent=data.gems||0;
-$("hearts").textContent=data.hearts??3;
-$("streak").textContent=data.streak||0;
+function shuffle(arr){
+ const a=[...arr];
+ for(let i=a.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
 }
-
-function stageKey(n){
-return data.course+":"+n;
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-
-function done(n){
-return !!data.done[stageKey(n)];
+function buildQuestions(wordIndex){
+ const pair=LANGUAGES[language][wordIndex];
+ const meaning=pair[0],translated=pair[1];
+ const others=LANGUAGES[language].filter((x,i)=>i!==wordIndex);
+ const wrongMeanings=shuffle(others.map(x=>x[0])).slice(0,3);
+ const wrongTranslations=shuffle(others.map(x=>x[1])).slice(0,3);
+ const forms=[
+  {prompt:`What does “${translated}” mean?`,answer:meaning,options:[meaning,...wrongMeanings]},
+  {prompt:`How do you say “${meaning}” in ${language}?`,answer:translated,options:[translated,...wrongTranslations]},
+  {prompt:`Choose the correct meaning of this ${language} word: “${translated}”.`,answer:meaning,options:[meaning,...wrongMeanings]},
+  {prompt:`You want to say “${meaning}”. Which ${language} expression should you use?`,answer:translated,options:[translated,...wrongTranslations]}
+ ];
+ return forms.map((f,n)=>({
+  id:`${language}-${wordIndex}-${n}`,
+  prompt:f.prompt,answer:f.answer,options:shuffle(f.options)
+ }));
 }
-
-function highestStage(){
-let n=1;
-while(done(n))n++;
-return n;
+function allCourseQuestions(){
+ return LANGUAGES[language].flatMap((_,i)=>buildQuestions(i));
 }
-
-function shieldFor(days){
-return days>=35?"Diamond":
-days>=28?"Platinum":
-days>=21?"Gold":
-days>=14?"Silver":
-days>=7?"Bronze":"None";
+function init(){
+ const select=document.getElementById("language");
+ select.innerHTML=Object.keys(LANGUAGES).map(l=>`<option>${escapeHTML(l)}</option>`).join("");
+ select.value=language;
+ select.addEventListener("change",()=>{language=select.value;renderHome()});
+ renderHome();
 }
-
-function recordDay(){
-const d=new Date().toLocaleDateString("en-CA");
-if(!data.practiceDays.includes(d)){
-const y=new Date(Date.now()-86400000).toLocaleDateString("en-CA");
-data.streak=data.lastPractice===y?(data.streak||0)+1:1;
-data.lastPractice=d;
-data.practiceDays=[...data.practiceDays,d].slice(-60);
-data.shield=shieldFor(data.streak);
+function startLanguage(){
+ language=document.getElementById("language").value;
+ renderHome();
+ document.getElementById("courseTitle").scrollIntoView({behavior:"smooth",block:"center"});
 }
+function renderHome(){
+ const c=courseData();
+ document.getElementById("language").value=language;
+ document.getElementById("courseTitle").innerHTML=`<b>${escapeHTML(language)}</b> • ${c.completed.length}/10 stages completed`;
+ document.getElementById("progressBar").style.width=(c.completed.length*10)+"%";
+ document.getElementById("progressText").textContent=`${c.completed.length*10}% course progress`;
+ document.getElementById("stageGrid").innerHTML="";
+ for(let n=1;n<=10;n++){
+  const done=c.completed.includes(n);
+  const unlocked=n===1||c.completed.includes(n-1);
+  const b=document.createElement("button");
+  b.className="stage "+(done?"done":unlocked?"unlocked":"");
+  b.disabled=!unlocked;
+  b.innerHTML=(done?"⭐":unlocked?"📖":"🔒")+`<br>Stage ${n}`;
+  b.onclick=()=>startStage(n);
+  document.getElementById("stageGrid").appendChild(b);
+ }
+ const cp=document.getElementById("checkpointButton");
+ cp.classList.toggle("hidden",c.completed.length<10);
+ document.getElementById("achievementText").textContent=
+  `${c.completed.length} stages completed • ${c.xp} XP earned • ${c.coins} coins collected.`;
+ updateStats();
 }
-
-/* =====================================
-   3. SOUND SYSTEM
-===================================== */
-
-function sound(kind){
-if(!data.sound)return;
-try{
-const C=window.AudioContext||window.webkitAudioContext;
-audio??=new C();
-audio.resume();
-
-const tones={
-ok:[523,659,784],
-bad:[220,185],
-gift:[523,659,784,1046],
-tap:[440]
-};
-
-(tones[kind]||tones.tap).forEach((f,i)=>{
-const o=audio.createOscillator();
-const g=audio.createGain();
-const t=audio.currentTime+i*.12;
-o.frequency.value=f;
-g.gain.setValueAtTime(.001,t);
-g.gain.linearRampToValueAtTime(.07,t+.02);
-g.gain.exponentialRampToValueAtTime(.001,t+.2);
-o.connect(g);
-g.connect(audio.destination);
-o.start(t);
-o.stop(t+.22);
-});
-}catch{}
+function startStage(n){
+ stageNumber=n;mode="stage";qIndex=0;correctCount=0;
+ // Each stage teaches one new vocabulary unit through four different exercises.
+ questions=buildQuestions(n-1);
+ showScreen("lesson");
+ document.getElementById("timer").classList.add("hidden");
+ document.getElementById("lessonNote").textContent="Learn the new word carefully. Each stage introduces a new vocabulary unit.";
+ showQuestion();
 }
-
-function startAmbient(){
-if(!data.sound||!audio||ambientOscillators.length)return;
-[110,164.81].forEach((frequency,i)=>{
-const o=audio.createOscillator();
-const g=audio.createGain();
-o.type="sine";
-o.frequency.value=frequency;
-g.gain.value=i===0?.009:.004;
-o.connect(g);
-g.connect(audio.destination);
-o.start();
-ambientOscillators.push(o);
-});
+function startCheckpoint(){
+ const c=courseData();
+ if(c.completed.length<10)return;
+ mode="checkpoint";qIndex=0;correctCount=0;timeLeft=600;
+ // All 40 questions are generated from the 10 earlier learning units.
+ // They are not taken from future stages.
+ checkpointQuestions=allCourseQuestions();
+ questions=shuffle(checkpointQuestions);
+ showScreen("lesson");
+ document.getElementById("lessonTag").textContent="CHECKPOINT UNIT TEST";
+ document.getElementById("timer").classList.remove("hidden");
+ document.getElementById("lessonNote").textContent="40 questions • 10 minutes • Review of all 10 completed stages.";
+ startTimer();
+ showQuestion();
 }
-
-function stopAmbient(){
-ambientOscillators.forEach(o=>{
-try{o.stop()}catch{}
-});
-ambientOscillators=[];
+function startTimer(){
+ clearInterval(timerInterval);
+ updateTimer();
+ timerInterval=setInterval(()=>{
+  timeLeft--;
+  updateTimer();
+  if(timeLeft<=0){
+   clearInterval(timerInterval);
+   finishCheckpoint(true);
+  }
+ },1000);
 }
-
-document.addEventListener("pointerdown",()=>{
-if(!data.sound)return;
-try{
-const C=window.AudioContext||window.webkitAudioContext;
-audio??=new C();
-audio.resume();
-startAmbient();
-}catch{}
-},{once:true});
-
-/* =====================================
-   4. FIREBASE ACCOUNT SYSTEM
-===================================== */
-
-async function cloudSave(){
-if(!user||guest||!db)return;
-
-await setDoc(doc(db,"publicProfiles",user.uid),{
-uid:user.uid,
-nickname:data.nickname,
-friendCode:"FL-"+user.uid.slice(0,8).toUpperCase(),
-course:data.course,
-xp:data.xp,
-stage:highestStage(),
-shield:data.shield,
-streak:data.streak,
-gems:data.gems,
-updatedAt:serverTimestamp()
-},{merge:true});
-
-await setDoc(doc(db,"userProgress",user.uid),{
-...data,
-updatedAt:serverTimestamp()
-},{merge:true});
+function updateTimer(){
+ const m=Math.floor(timeLeft/60),s=timeLeft%60;
+ document.getElementById("timer").textContent=`${m}:${String(s).padStart(2,"0")}`;
 }
-
-async function loadCloud(){
-if(!user||!db)return;
-
-const snap=await getDoc(doc(db,"userProgress",user.uid));
-
-if(snap.exists()){
-data={...base,...snap.data()};
-}else{
-data={...base,nickname:user.displayName||"Learner"};
-}
-
-const p=await getDoc(doc(db,"publicProfiles",user.uid));
-
-if(p.exists())data.nickname=p.data().nickname||data.nickname;
-
-if(user.uid===ADMIN_UID){
-$("adminNav").classList.remove("hidden");
-}
-
-await cloudSave();
-}
-
-function persist(){
-saveLocal();
-cloudSave().catch(console.error);
-}
-
-function showApp(){
-$("authScreen").classList.add("hidden");
-$("appShell").classList.remove("hidden");
-render();
-}
-
-function showAuth(){
-$("authScreen").classList.remove("hidden");
-$("appShell").classList.add("hidden");
-}
-
-$("authForm").onsubmit=async e=>{
-e.preventDefault();
-if(!firebaseReady){
-$("authMessage").textContent="Please configure Firebase first.";
-return;
-}
-try{
-const result=await signInWithEmailAndPassword(
-auth,$("authEmail").value.trim(),
-$("authPassword").value
-);
-user=result.user;
-guest=false;
-await loadCloud();
-showApp();
-}catch(err){
-$("authMessage").textContent=err.message;
-}
-};
-
-$("signUpBtn").onclick=async()=>{
-if(!firebaseReady){
-$("authMessage").textContent="Configure Firebase first.";
-return;
-}
-try{
-const name=$("authName").value.trim()||"Learner";
-const result=await createUserWithEmailAndPassword(
-auth,$("authEmail").value.trim(),
-$("authPassword").value
-);
-user=result.user;
-await updateProfile(user,{displayName:name});
-data={...base,nickname:name};
-await cloudSave();
-showApp();
-}catch(err){
-$("authMessage").textContent=err.message;
-}
-};
-
-$("guestBtn").onclick=()=>{
-guest=true;
-user=null;
-showApp();
-};
-
-$("signOutBtn").onclick=async()=>{
-if(auth&&user)await signOut(auth);
-user=null;
-guest=false;
-showAuth();
-};
-
-if(auth){
-onAuthStateChanged(auth,async u=>{
-if(u){
-user=u;
-try{
-await loadCloud();
-showApp();
-}catch(e){
-$("authMessage").textContent=e.message;
-}
-}
-});
-}
-
-/* =====================================
-   5. ORIGINAL QUESTION BANK
-===================================== */
-
-const banks={
-English:[
-["Choose a greeting.",["Hello","Because","Under","Quickly"],"Hello","Hello is a greeting."],
-["Opposite of cold?",["Hot","Slow","Small","Quiet"],"Hot","Hot is the opposite of cold."],
-["Complete: How ____ you?",["are","is","am","be"],"are","Use are with you."],
-["Choose a polite word.",["Please","Never","Maybe","Under"],"Please","Please makes a request polite."],
-["Past tense of go?",["Went","Goed","Going","Gone yesterday"],"Went","Go → went → gone."],
-["Which is a noun?",["Teacher","Quickly","Beautiful","Run"],"Teacher","Teacher is a noun."],
-["Plural of child?",["Children","Childs","Childes","Childrens"],"Children","Children is the plural."],
-["Choose the correct article.",["An apple","A apple","The an apple","An a apple"],"An apple","Use an before a vowel sound."],
-["Opposite of happy?",["Sad","Glad","Joyful","Excited"],"Sad","Sad is the opposite of happy."],
-["Complete: She ____ singing.",["is","are","am","be"],"is","She takes is."],
-["Synonym of big?",["Large","Tiny","Short","Weak"],"Large","Large means big."],
-["Choose the verb.",["Jump","Blue","Table","Beautiful"],"Jump","Jump is an action word."],
-["Past tense of eat?",["Ate","Eated","Eating","Eats"],"Ate","Eat becomes ate."],
-["Which is an adjective?",["Beautiful","Run","Slowly","School"],"Beautiful","Beautiful describes something."],
-["Complete: I ____ a student.",["am","is","are","be"],"am","I takes am."],
-["Opposite of early?",["Late","Soon","Fast","Quick"],"Late","Late is the opposite."],
-["Plural of mouse?",["Mice","Mouses","Mouse","Mices"],"Mice","Mice is the plural."],
-["Choose a question word.",["Where","Blue","Table","Jump"],"Where","Where asks about a place."],
-["Which is an adverb?",["Slowly","Slow","Slowness","Slower"],"Slowly","Slowly describes an action."],
-["Complete: They ____ playing.",["are","is","am","be"],"are","They takes are."]
-],
-Spanish:[
-["How do you say Hello?",["Hola","Adiós","Gracias","Agua"],"Hola","Hola means hello."],
-["What does Gracias mean?",["Please","Thank you","Good night","Friend"],"Thank you","Gracias means thank you."],
-["Choose water in Spanish.",["Pan","Agua","Casa","Libro"],"Agua","Agua means water."],
-["What does Por favor mean?",["Please","Goodbye","Sorry","Welcome"],"Please","Por favor means please."],
-["Complete Buenos ____.",["días","libros","amigos","agua"],"días","Buenos días means good morning."],
-["What does Adiós mean?",["Goodbye","Hello","Thanks","Water"],"Goodbye","Adiós means goodbye."],
-["How do you say friend?",["Amigo","Agua","Casa","Libro"],"Amigo","Amigo means friend."],
-["What does Casa mean?",["House","Book","Water","Food"],"House","Casa means house."],
-["Choose the Spanish word for book.",["Libro","Pan","Gato","Agua"],"Libro","Libro means book."],
-["What does Gracias mean?",["Thank you","Sorry","Hello","Friend"],"Thank you","Gracias means thank you."]
-],
-Hindi:[
-["“नमस्ते” का अर्थ?",["अभिवादन","पानी","किताब","घर"],"अभिवादन","नमस्ते अभिवादन है।"],
-["“पानी” का अर्थ?",["Water","Book","Friend","School"],"Water","पानी = Water."],
-["“धन्यवाद” का अर्थ?",["Thank you","Goodbye","Please","Friend"],"Thank you","धन्यवाद = Thank you."],
-["“मित्र” का अर्थ?",["Friend","Food","House","Book"],"Friend","मित्र = Friend."],
-["“घर” का अर्थ?",["House","School","Water","Day"],"House","घर = House."],
-["“विद्यालय” का अर्थ?",["School","Garden","Water","Book"],"School","विद्यालय = School."],
-["“सुंदर” का अर्थ?",["Beautiful","Small","Cold","Fast"],"Beautiful","सुंदर = Beautiful."],
-["“सूर्य” का अर्थ?",["Sun","Moon","Star","Earth"],"Sun","सूर्य = Sun."],
-["“पुस्तक” का अर्थ?",["Book","Pen","School","Friend"],"Book","पुस्तक = Book."],
-["“आकाश” का अर्थ?",["Sky","Water","Earth","Tree"],"Sky","आकाश = Sky."]
-]
-};
-
-/* =====================================
-   6. RANDOM ANSWER SHUFFLING
-===================================== */
-
-function questionFor(i){
-const pool=banks[data.course]||banks.English;
-const original=pool[(stageNo*3+i)%pool.length];
-
-const options=[...original[1]];
-
-// Fisher-Yates shuffle
-for(let j=options.length-1;j>0;j--){
-const k=Math.floor(Math.random()*(j+1));
-[options[j],options[k]]=[options[k],options[j]];
-}
-
-return[
-original[0],
-options,
-original[2],
-original[3]
-];
-}
-
-/* =====================================
-   7. NAVIGATION AND LEARNING
-===================================== */
-
-function nav(tab){
-data.tab=tab;
-render();
-}
-
-document.querySelectorAll("[data-tab]").forEach(b=>{
-b.onclick=()=>nav(b.dataset.tab);
-});
-
-function render(){
-stats();
-document.querySelectorAll("[data-tab]").forEach(b=>{
-b.classList.toggle("active",b.dataset.tab===data.tab);
-});
-
-const views={
-learn:learnView,
-friends:friendsView,
-rewards:rewardsView,
-profile:profileView,
-dashboard:dashboardView
-};
-
-app.innerHTML=(views[data.tab]||learnView)();
-
-if(data.tab==="friends")loadFriends();
-if(data.tab==="dashboard")loadAdmin();
-}
-
-function learnView(){
-const n=highestStage();
-let rows="";
-
-for(let i=Math.floor((n-1)/100)*100+1;i<=Math.floor((n-1)/100)*100+100;i++){
-const completed=done(i);
-const unlocked=i<=n;
-
-rows+=`
-<div class="stage ${unlocked?"":"locked"}">
-<div class="stage-icon">${completed?"✅":"✨"}</div>
-<div>
-<h3>Stage ${i}</h3>
-<p>${completed?"Completed":unlocked?"Ready to learn":"Locked"}</p>
-</div>
-<button class="${unlocked?"primary":"secondary"}" ${unlocked?"":"disabled"} data-start="${i}">
-${completed?"Replay":"Start"}
-</button>
-</div>`;
-}
-
-return `
-<section class="hero">
-<div>
-<div class="eyebrow">YOUR DAILY LANGUAGE QUEST</div>
-<h1>Small steps. Big fluency.</h1>
-<p>Ollie is ready to cheer for you!</p>
-<div class="row">
-<span class="pill">🌍 World ${Math.ceil(n/100)}</span>
-<span class="pill">🛡️ ${esc(data.shield)}</span>
-</div>
-</div>
-<div class="ollie-wrap">
-<img class="ollie" src="./ollie.png" alt="Ollie">
-<div class="speech">Let's learn!</div>
-</div>
-</section>
-
-<div class="section-head"><h2>Learning path</h2></div>
-
-<div class="panel">
-<label>Choose language</label>
-<select id="courseSelect">
-${["English","Spanish","Hindi"].map(x=>`
-<option ${data.course===x?"selected":""}>${x}</option>
-`).join("")}
-</select>
-<div class="track"><div class="fill" style="width:${(n-1)%100+1}%"></div></div>
-<p class="muted">${data.xp} XP earned · Next stage ${n}</p>
-</div>
-
-<div class="section-head"><h2>World ${Math.ceil(n/100)}</h2></div>
-${rows}
-`;
-}
-
-function start(n){
-stageNo=n;
-qi=0;
-score=0;
-chosen=-1;
-lockedAnswer=false;
-data.hearts=3;
-showQuestion();
-}
-
 function showQuestion(){
-const q=questionFor(qi);
-activeQuestion=q;
-
-app.innerHTML=`
-<div class="quiz">
-<div class="row">
-<button class="secondary" id="quit">✕ Exit</button>
-<div class="track" style="flex:1">
-<div class="fill" style="width:${qi/5*100}%"></div>
-</div>
-<b>${"❤️".repeat(data.hearts)}${"🖤".repeat(3-data.hearts)}</b>
-</div>
-
-<div class="panel">
-<div class="eyebrow">STAGE ${stageNo} · QUESTION ${qi+1}/5</div>
-<h2 class="question">${esc(q[0])}</h2>
-
-<div id="opts">
-${q[1].map((v,i)=>`
-<button class="option" data-opt="${i}">${esc(v)}</button>
-`).join("")}
-</div>
-
-<div id="feedback"></div>
-<div class="row" style="justify-content:flex-end;margin-top:14px">
-<button class="primary" id="check" disabled>Check answer</button>
-</div>
-</div>
-</div>
-`;
-
-$("quit").onclick=()=>nav("learn");
-
-document.querySelectorAll("[data-opt]").forEach(b=>{
-b.onclick=()=>{
-if(lockedAnswer)return;
-chosen=Number(b.dataset.opt);
-document.querySelectorAll("[data-opt]").forEach(x=>{
-x.classList.toggle("selected",x===b);
-});
-$("check").disabled=false;
-};
-});
-
-$("check").onclick=check;
+ selected=-1;
+ currentQuestion=questions[qIndex];
+ document.getElementById("feedback").className="hidden";
+ document.getElementById("feedback").textContent="";
+ document.getElementById("continueButton").disabled=true;
+ document.getElementById("continueButton").textContent="Check answer";
+ document.getElementById("lessonTag").textContent=mode==="checkpoint"?"CHECKPOINT UNIT TEST":`STAGE ${stageNumber} • ${language.toUpperCase()}`;
+ document.getElementById("questionCount").textContent=`Question ${qIndex+1} of ${questions.length}`;
+ document.getElementById("lessonProgress").style.width=((qIndex/questions.length)*100)+"%";
+ document.getElementById("prompt").textContent=currentQuestion.prompt;
+ document.getElementById("options").innerHTML="";
+ currentQuestion.options.forEach((option,i)=>{
+  const b=document.createElement("button");
+  b.className="option";
+  b.textContent=option;
+  b.onclick=()=>chooseOption(i);
+  document.getElementById("options").appendChild(b);
+ });
 }
-
-function check(){
-if(chosen<0||lockedAnswer||!activeQuestion)return;
-
-lockedAnswer=true;
-const q=activeQuestion;
-const correct=q[1][chosen]===q[2];
-
-document.querySelectorAll("[data-opt]").forEach((b,i)=>{
-b.disabled=true;
-if(q[1][i]===q[2])b.classList.add("correct");
-if(i===chosen&&!correct)b.classList.add("wrong");
-});
-
-if(correct){
-score++;
-sound("ok");
-$("feedback").className="feedback good";
-$("feedback").textContent="Amazing! Correct! 🎉 "+q[3];
-}else{
-data.hearts--;
-sound("bad");
-$("feedback").className="feedback bad";
-$("feedback").textContent="Not quite! "+q[3];
+function chooseOption(i){
+ if(document.getElementById("continueButton").textContent==="Continue")return;
+ selected=i;
+ document.querySelectorAll(".option").forEach((b,j)=>b.classList.toggle("selected",i===j));
+ document.getElementById("continueButton").disabled=false;
 }
-
-stats();
-
-const b=$("check");
-b.disabled=false;
-b.textContent=data.hearts===0?"Out of hearts":qi===4?"Finish stage":"Continue";
-
-b.onclick=()=>{
-if(data.hearts===0){heartChoice();return;}
-qi++;
-chosen=-1;
-lockedAnswer=false;
-activeQuestion=null;
-if(qi<5)showQuestion();
-else finish();
-};
+function checkAnswer(){
+ if(selected<0)return;
+ const chosen=currentQuestion.options[selected];
+ const correct=chosen===currentQuestion.answer;
+ document.querySelectorAll(".option").forEach((b,i)=>{
+  if(currentQuestion.options[i]===currentQuestion.answer)b.classList.add("correct");
+  else if(i===selected&&!correct)b.classList.add("wrong");
+ });
+ const fb=document.getElementById("feedback");
+ fb.className="feedback "+(correct?"good":"bad");
+ fb.textContent=correct?"✓ Excellent! That is correct.":"Not quite. Correct answer: "+currentQuestion.answer;
+ if(correct)correctCount++;
+ document.getElementById("continueButton").textContent="Continue";
 }
-
-/* =====================================
-   8. HEART SYSTEM
-===================================== */
-
-function heartChoice(){
-app.innerHTML=`
-<div class="panel quiz" style="text-align:center">
-<div style="font-size:55px">💔</div>
-<h2>Out of hearts!</h2>
-<p>You can buy one heart using 10 coins or restart this stage.</p>
-<div class="row">
-<button class="primary" id="buy">🪙 Buy heart · 10 coins</button>
-<button class="secondary" id="restart">Restart stage</button>
-</div>
-</div>`;
-
-$("buy").onclick=()=>{
-if(data.coins<10){
-alert("You need 10 coins.");
-return;
+function nextQuestion(){
+ if(document.getElementById("continueButton").textContent==="Check answer"){
+  checkAnswer();return;
+ }
+ qIndex++;
+ if(qIndex>=questions.length){
+  if(mode==="checkpoint")finishCheckpoint(false);
+  else finishStage();
+ }else showQuestion();
 }
-data.coins-=10;
-data.hearts=1;
-persist();
-qi=0;score=0;chosen=-1;lockedAnswer=false;
-showQuestion();
-};
-
-$("restart").onclick=()=>start(stageNo);
+function finishStage(){
+ const c=courseData();
+ if(!c.completed.includes(stageNumber)){
+  c.completed.push(stageNumber);
+  c.completed.sort((a,b)=>a-b);
+  c.xp+=20+correctCount*5;
+  c.coins+=10;
+  if(stageNumber%5===0)c.diamonds+=2;
+ }
+ save();
+ showScreen("resultScreen");
+ document.getElementById("resultEmoji").textContent="🦉🎉";
+ document.getElementById("resultTitle").textContent=`Stage ${stageNumber} completed!`;
+ document.getElementById("resultMessage").textContent=`You answered ${correctCount} out of ${questions.length} questions correctly.`;
+ document.getElementById("resultRewards").innerHTML=`<h2>+${20+correctCount*5} XP ⚡</h2><h2>+10 coins 🪙</h2>${stageNumber%5===0?"<h2>+2 diamonds 💎</h2>":""}`;
 }
-
-/* =====================================
-   9. REWARDS AND CELEBRATION
-===================================== */
-
-const giftTiers=[
-["🌟","Star sparkle",5,2],
-["🍪","Ollie's cookie",8,3],
-["🎨","Colour badge",12,5],
-["🎁","Mystery gift",18,8],
-["🏆","Golden trophy",25,12],
-["💎","Diamond chest",40,20],
-["👑","Royal crown",60,30],
-["🦉","Ollie's grand gift",100,50]
-];
-
-function finish(){
-if(done(stageNo)){
-app.innerHTML=`
-<div class="panel quiz">
-<h2>Stage replay complete!</h2>
-<p>Your score: ${score}/5</p>
-<button class="primary" onclick="location.reload()">Continue</button>
-</div>`;
-return;
+function finishCheckpoint(timedOut){
+ clearInterval(timerInterval);
+ const c=courseData();
+ const passed=correctCount>=30;
+ if(passed){
+  c.checkpoint=true;
+  c.xp+=100;
+  c.coins+=50;
+  c.diamonds+=5;
+ }
+ save();
+ showScreen("resultScreen");
+ document.getElementById("resultEmoji").textContent=passed?"🏆":"📘";
+ document.getElementById("resultTitle").textContent=passed?"Checkpoint passed!":"Keep practising!";
+ document.getElementById("resultMessage").textContent=
+  `${timedOut?"Time is up. ":""}Your score: ${correctCount}/40. ${passed?"You passed with at least 30 correct answers.":"You need 30 correct answers to pass. Review your earlier stages and try again."}`;
+ document.getElementById("resultRewards").innerHTML=passed?
+  "<h2>+100 XP ⚡</h2><h2>+50 coins 🪙</h2><h2>+5 diamonds 💎</h2>":
+  "<p>Checkpoint rewards are given after passing.</p>";
 }
-
-const gift=giftTiers[(stageNo-1)%giftTiers.length];
-
-data.done[stageKey(stageNo)]=true;
-data.xp+=score*10+gift[2];
-data.coins+=gift[2];
-data.gems+=gift[3];
-data.stage=stageNo+1;
-recordDay();
-persist();
-celebrate(gift);
+function leaveLesson(){
+ clearInterval(timerInterval);
+ showScreen("home");
+ renderHome();
 }
-
-function celebrate(g){
-const messages=[
-"Hurray! You did it! 🎉",
-"Amazing! You're brilliant! ✨",
-"Wow! Ollie is proud! 🦉",
-"You got it! Super learner! 🚀",
-"Fantastic work! 🌟"
-];
-
-sound("gift");
-
-app.innerHTML=`
-<div class="panel quiz" style="text-align:center">
-<div class="ollie-wrap" style="margin:auto">
-<img class="ollie celebrate" src="./ollie.png" alt="Ollie celebrating">
-<div class="speech">${messages[Math.floor(Math.random()*messages.length)]}</div>
-</div>
-<div class="eyebrow">STAGE ${stageNo} COMPLETED</div>
-<h1 style="color:var(--gold)">YOU DID IT!</h1>
-<p>You answered ${score}/5 correctly!</p>
-<div class="gift">
-<div class="big">${g[0]}</div>
-<h2>${g[1]}</h2>
-<b>+${g[2]} coins · +${g[3]} diamonds</b>
-<p>+${score*10+g[2]} XP</p>
-</div>
-<p>🛡️ ${esc(data.shield)} shield</p>
-<button class="primary" id="next">Continue →</button>
-</div>`;
-
-$("next").onclick=()=>nav("learn");
+function backHome(){
+ clearInterval(timerInterval);
+ showScreen("home");
+ renderHome();
 }
-
-/* =====================================
-   10. FRIEND SYSTEM
-===================================== */
-
-function friendsView(){
-return `
-<section class="hero">
-<div>
-<div class="eyebrow">FLUENTO FRIENDS</div>
-<h1>Learn together!</h1>
-<p>Find friends using their nickname or Fluento ID.</p>
-</div>
-<div style="font-size:50px">👥</div>
-</section>
-
-<div class="section-head"><h2>Find friends</h2></div>
-
-<div class="panel">
-<input id="friendSearch" placeholder="Enter nickname or Fluento ID">
-<button class="primary" id="searchFriend">Search learners</button>
-<div id="friendResult"></div>
-</div>
-
-<div class="section-head"><h2>Friend requests</h2></div>
-<div class="panel" id="requests">Loading...</div>
-
-<div class="section-head"><h2>Your friends</h2></div>
-<div class="panel" id="leaderboard">Loading...</div>
-`;
+function showScreen(which){
+ ["home","lesson","resultScreen"].forEach(id=>document.getElementById(id).classList.toggle("hidden",id!==which));
 }
-
-async function searchFriend(){
-const value=$("friendSearch").value.trim();
-if(!user||!db){
-$("friendResult").textContent="Sign in to find online friends.";
-return;
-}
-if(!value)return;
-
-let q=query(collection(db,"publicProfiles"),
-where("nickname","==",value),limit(10));
-
-let s=await getDocs(q);
-
-if(value.toUpperCase().startsWith("FL-")){
-q=query(collection(db,"publicProfiles"),
-where("friendCode","==",value.toUpperCase()),limit(10));
-s=await getDocs(q);
-}
-
-if(s.empty){
-$("friendResult").textContent="No learner found.";
-return;
-}
-
-$("friendResult").innerHTML=s.docs.map(d=>{
-const p=d.data();
-if(p.uid===user.uid)return "";
-return `
-<div class="friend">
-<div class="avatar">🦉</div>
-<div class="friendinfo">
-<b>${esc(p.nickname)}</b>
-<small>Stage ${p.stage||1} · ${p.xp||0} XP</small>
-</div>
-<button class="primary" data-send="${esc(p.uid)}">Add friend</button>
-</div>`;
-}).join("");
-
-document.querySelectorAll("[data-send]").forEach(b=>{
-b.onclick=()=>sendRequest(b.dataset.send);
-});
-}
-
-async function sendRequest(to){
-try{
-const existing=query(collection(db,"friendRequests"),
-where("from","==",user.uid),where("to","==",to),
-where("status","==","pending"));
-const s=await getDocs(existing);
-if(!s.empty){
-alert("Request already sent!");
-return;
-}
-await addDoc(collection(db,"friendRequests"),{
-from:user.uid,
-to:to,
-fromName:data.nickname,
-status:"pending",
-createdAt:serverTimestamp()
-});
-alert("Friend request sent!");
-}catch(e){alert(e.message);}
-}
-
-async function loadFriends(){
-if(!user||!db){
-$("requests").textContent="Sign in to use online friends.";
-$("leaderboard").textContent="Guest mode";
-return;
-}
-
-const rq=query(collection(db,"friendRequests"),
-where("to","==",user.uid),where("status","==","pending"));
-
-const rs=await getDocs(rq);
-
-$("requests").innerHTML=rs.empty?"No pending requests.":rs.docs.map(d=>`
-<div class="friend">
-<div class="friendinfo">
-<b>${esc(d.data().fromName)}</b>
-<small>Sent you a friend request</small>
-</div>
-<button class="primary" data-accept="${d.id}">Accept</button>
-<button class="danger" data-reject="${d.id}">Reject</button>
-</div>
-`).join("");
-
-document.querySelectorAll("[data-accept]").forEach(b=>{
-b.onclick=()=>respondRequest(b.dataset.accept,"accepted");
-});
-document.querySelectorAll("[data-reject]").forEach(b=>{
-b.onclick=()=>respondRequest(b.dataset.reject,"rejected");
-});
-
-const fq=query(collection(db,"friendships"),
-where("members","array-contains",user.uid));
-
-const fs=await getDocs(fq);
-let friends=[];
-
-for(const d of fs.docs){
-const other=d.data().members.find(x=>x!==user.uid);
-if(!other)continue;
-const p=await getDoc(doc(db,"publicProfiles",other));
-if(p.exists())friends.push(p.data());
-}
-
-friends.sort((a,b)=>(b.xp||0)-(a.xp||0));
-
-$("leaderboard").innerHTML=friends.length?
-friends.map((p,i)=>`
-<div class="friend">
-<div class="avatar">🦉</div>
-<div class="friendinfo">
-<b>#${i+1} ${esc(p.nickname)}</b>
-<small>Stage ${p.stage||1} · ${esc(p.shield||"None")} shield</small>
-</div>
-<b>${p.xp||0} XP</b>
-</div>
-`).join(""):"No friends yet. Search for a learner!";
-}
-
-async function respondRequest(id,status){
-const r=await getDoc(doc(db,"friendRequests",id));
-if(!r.exists()||r.data().to!==user.uid)return;
-
-await updateDoc(doc(db,"friendRequests",id),{
-status:status,
-respondedAt:serverTimestamp()
-});
-
-if(status==="accepted"){
-await setDoc(doc(db,"friendships",id),{
-members:[user.uid,r.data().from],
-createdAt:serverTimestamp()
-});
-}
-loadFriends();
-}
-
-/* =====================================
-   11. REWARDS
-===================================== */
-
-function rewardsView(){
-return `
-<section class="hero">
-<div>
-<div class="eyebrow">OLLIE'S TREASURE ROOM</div>
-<h1>Your rewards!</h1>
-<p>Keep learning to unlock special gifts.</p>
-</div>
-<div style="font-size:55px">🎁</div>
-</section>
-
-<div class="grid">
-<div class="metric"><strong>🪙 ${data.coins}</strong><span>Coins</span></div>
-<div class="metric"><strong>💎 ${data.gems}</strong><span>Diamonds</span></div>
-<div class="metric"><strong>🛡️ ${esc(data.shield)}</strong><span>Shield</span></div>
-<div class="metric"><strong>🔥 ${data.streak}</strong><span>Day streak</span></div>
-</div>
-
-<div class="section-head"><h2>Weekly shield ladder</h2></div>
-
-<div class="grid">
-${[
-["🥉","Bronze","7 days"],
-["🥈","Silver","14 days"],
-["🥇","Gold","21 days"],
-["💠","Platinum","28 days"],
-["💎","Diamond","35 days"]
-].map(x=>`
-<div class="panel">
-<div style="font-size:30px">${x[0]}</div>
-<b>${x[1]}</b>
-<p class="muted">${x[2]}</p>
-</div>`).join("")}
-</div>`;
-}
-
-/* =====================================
-   12. PROFILE
-===================================== */
-
-function profileView(){
-return `
-<section class="hero">
-<div>
-<div class="eyebrow">YOUR PROFILE</div>
-<h1>${esc(data.nickname)}</h1>
-<p>Fluento ID: ${user?"FL-"+user.uid.slice(0,8).toUpperCase():"GUEST"}</p>
-</div>
-<div style="font-size:50px">🦉</div>
-</section>
-
-<div class="grid">
-<div class="metric"><strong>${data.xp}</strong><span>XP</span></div>
-<div class="metric"><strong>${data.coins}</strong><span>Coins</span></div>
-<div class="metric"><strong>${data.gems}</strong><span>Diamonds</span></div>
-<div class="metric"><strong>${data.streak}</strong><span>Streak</span></div>
-<div class="metric"><strong>${highestStage()}</strong><span>Next stage</span></div>
-<div class="metric"><strong>${esc(data.shield)}</strong><span>Shield</span></div>
-</div>
-
-<div class="panel">
-<h2>Settings</h2>
-<label>Nickname</label>
-<input id="newNickname" value="${esc(data.nickname)}" maxlength="24">
-<button class="primary" id="saveNickname">Save nickname</button>
-<p>
-<label><input type="checkbox" id="soundToggle" style="width:auto" ${data.sound?"checked":""}> Sounds and background music</label>
-</p>
-</div>`;
-}
-
-/* =====================================
-   13. DIRECTOR DASHBOARD
-===================================== */
-
-function dashboardView(){
-if(!user||user.uid!==ADMIN_UID){
-return `<div class="notice">Director access is restricted.</div>`;
-}
-
-return `
-<section class="hero">
-<div>
-<div class="eyebrow">DIRECTOR CONTROL ROOM</div>
-<h1>Welcome, Nirmit!</h1>
-<p>Fluento learning analytics.</p>
-</div>
-<div style="font-size:50px">📊</div>
-</section>
-
-<div id="adminStats" class="grid">
-<div class="metric"><strong>Loading...</strong><span>Users</span></div>
-</div>
-
-<div class="section-head"><h2>Registered learners</h2></div>
-<div class="panel" style="overflow:auto">
-<table width="100%">
-<thead><tr>
-<th>Nickname</th><th>User ID</th><th>Stage</th><th>Shield</th><th>XP</th>
-</tr></thead>
-<tbody id="userRows"></tbody>
-</table>
-</div>
-
-<div class="notice">
-Private emails are available in Firebase Authentication → Users.
-Do not expose private email addresses in public client-side code.
-</div>`;
-}
-
-function loadAdmin(){
-if(!user||user.uid!==ADMIN_UID||!db)return;
-
-if(unsubscribeUsers)unsubscribeUsers();
-
-unsubscribeUsers=onSnapshot(collection(db,"publicProfiles"),snap=>{
-const profiles=snap.docs.map(d=>d.data());
-
-const active=profiles.filter(p=>{
-const date=p.updatedAt?.toDate?.();
-return date&&Date.now()-date.getTime()<7*86400000;
-}).length;
-
-const xp=profiles.reduce((a,p)=>a+(p.xp||0),0);
-
-$("adminStats").innerHTML=`
-<div class="metric"><strong>${profiles.length}</strong><span>Total learners</span></div>
-<div class="metric"><strong>${active}</strong><span>Active this week</span></div>
-<div class="metric"><strong>${xp}</strong><span>Total XP</span></div>
-<div class="metric"><strong>₹0</strong><span>Verified revenue</span></div>`;
-
-$("userRows").innerHTML=profiles.map(p=>`
-<tr>
-<td>${esc(p.nickname)}</td>
-<td>${esc(p.uid)}</td>
-<td>${p.stage||1}</td>
-<td>${esc(p.shield||"None")}</td>
-<td>${p.xp||0}</td>
-</tr>
-`).join("");
-});
-}
-
-/* =====================================
-   14. EVENT HANDLERS
-===================================== */
-
-document.addEventListener("click",e=>{
-const startBtn=e.target.closest("[data-start]");
-if(startBtn)start(Number(startBtn.dataset.start));
-
-if(e.target.id==="searchFriend")searchFriend();
-
-if(e.target.id==="saveNickname"){
-const v=$("newNickname").value.trim();
-if(v){
-data.nickname=v;
-persist();
-render();
-}
-}
-});
-
-document.addEventListener("change",e=>{
-if(e.target.id==="courseSelect"){
-data.course=e.target.value;
-persist();
-render();
-}
-
-if(e.target.id==="soundToggle"){
-data.sound=e.target.checked;
-if(!data.sound)stopAmbient();
-persist();
-}
-});
-
-/* =====================================
-   15. START APPLICATION
-===================================== */
-
-stats();
-
-setTimeout(()=>{
-$("splash").classList.add("hidden");
-},3000);
-
-if(!firebaseReady){
-$("authMessage").textContent=
-"Firebase configuration required for online accounts. Guest mode is available.";
-}
+init();
 </script>
 </body>
 </html>
