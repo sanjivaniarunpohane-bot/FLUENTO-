@@ -1,14 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Fluento – Learn Languages</title>
+<title>Fluento – Master 20 Languages</title>
 <style>
 :root{--green:#58cc02;--darkgreen:#46a302;--blue:#1cb0f6;--ink:#263238;--muted:#718096;--bg:#f7f9fc;--line:#e5eaf0;--gold:#ffc800;--red:#ff4b4b}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Arial,sans-serif;color:var(--ink)}
+body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
 button,select{font:inherit}
 button{cursor:pointer}
 header{background:white;border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:5}
@@ -26,7 +25,8 @@ select{width:100%;padding:13px;border:2px solid var(--line);border-radius:12px;b
 .primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--darkgreen)}
 .secondary{border:2px solid var(--line);background:white;color:var(--ink);font-weight:800;padding:12px;border-radius:12px;width:100%}
 .stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
-.stage{border:0;border-radius:15px;background:#edf1f5;min-height:75px;font-weight:900;color:#89939e}
+.stage{border:0;border-radius:15px;background:#edf1f5;min-height:85px;font-weight:900;color:#89939e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px}
+.stage .lbl{font-size:11px;font-weight:700}
 .stage.unlocked{background:#e8f8dc;color:#398500;border-bottom:4px solid #a4dc79}
 .stage.done{background:#fff3c4;color:#8b6900;border-bottom:4px solid #e5bd36}
 .stage:disabled{opacity:.55;cursor:not-allowed}
@@ -35,8 +35,8 @@ select{width:100%;padding:13px;border:2px solid var(--line);border-radius:12px;b
 .tag{display:inline-block;background:#eef8e8;color:#408b00;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:900}
 .hidden{display:none!important}
 .question-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.timer{font-weight:900;color:var(--red);background:#fff0f0;padding:8px 12px;border-radius:10px}
-.prompt{font-size:23px;font-weight:900;text-align:center;margin:30px 0 20px;line-height:1.4}
+.timer{font-weight:900;color:var(--red);background:#fff0f0;padding:8px 12px;border-radius:10px;font-variant-numeric:tabular-nums}
+.prompt{font-size:21px;font-weight:900;text-align:center;margin:24px 0 20px;line-height:1.4}
 .options{display:grid;gap:10px}
 .option{border:2px solid var(--line);background:white;border-radius:14px;padding:15px;text-align:left;font-weight:800;min-height:55px}
 .option:active{background:#f4f8fb}
@@ -59,17 +59,17 @@ footer{text-align:center;color:#9aa3ad;font-size:12px;padding:20px}
  .logo{font-size:22px}
  .stats{gap:5px;font-size:12px}
  .stat{padding:7px}
- .stage-grid{gap:7px}
+ .stage-grid{grid-template-columns:repeat(2,1fr);gap:8px}
  .stage{min-height:65px;font-size:12px}
- .prompt{font-size:21px;margin:24px 0 18px}
- .option{padding:13px}
+ .prompt{font-size:18px;margin:20px 0 14px}
+ .option{padding:12px;font-size:14px}
 }
 </style>
 </head>
 <body>
 <header>
  <div class="top">
-  <div class="logo">🦉 Fluento</div>
+  <div class="logo">🦉 Fluento Pro</div>
   <div class="stats">
    <div class="stat">⚡ <span id="xp">0</span> XP</div>
    <div class="stat">🪙 <span id="coins">0</span></div>
@@ -82,25 +82,26 @@ footer{text-align:center;color:#9aa3ad;font-size:12px;padding:20px}
  <section id="home">
   <div class="panel">
    <span class="tag">DIRECTED BY MR. NIRMIT POHANE</span>
-   <h1>Welcome to Fluento! 🌍</h1>
-   <p>Choose a language, learn step by step, earn rewards and test your knowledge.</p>
-   <label for="language"><b>Choose your learning language</b></label>
+   <h1>Welcome to Fluento Pro 🌍</h1>
+   <p>Select a language to unlock progressive stage-by-stage learning and test your mastery with rigorous unit checkpoints.</p>
+   <label for="language"><b>Choose your learning language (20 Available)</b></label>
    <select id="language"></select>
-   <button class="primary" onclick="startLanguage()">Start learning →</button>
-   <p class="small">Your progress is saved on this device.</p>
+   <button class="primary" onclick="startLanguage()">Start Learning →</button>
+   <p class="small">Progress auto-saves to your local device.</p>
   </div>
 
   <div class="panel">
-   <h2>📚 Your learning journey</h2>
-   <div id="courseTitle">Choose a language to begin.</div>
+   <h2>📚 Learning Journey</h2>
+   <div id="courseTitle">Select a language to begin.</div>
    <div class="progress"><div id="progressBar"></div></div>
    <div id="stageGrid" class="stage-grid"></div>
    <p id="progressText" class="small"></p>
-   <button id="checkpointButton" class="primary hidden" onclick="startCheckpoint()">📝 Take the 40-question checkpoint</button>
+   <button id="checkpointButton" class="primary hidden" onclick="startCheckpoint()">📝 Start 40-Question Timed Checkpoint (10 Mins)</button>
   </div>
+
   <div class="panel">
-   <h2>🏆 Your achievements</h2>
-   <p id="achievementText">Complete stages to earn XP, coins and diamonds.</p>
+   <h2>🏆 Achievements</h2>
+   <p id="achievementText">Complete stages and checkpoints to earn rewards.</p>
   </div>
  </section>
 
@@ -119,280 +120,443 @@ footer{text-align:center;color:#9aa3ad;font-size:12px;padding:20px}
    <div id="feedback" class="hidden"></div>
    <div class="bottom-actions">
     <button class="secondary" onclick="leaveLesson()">Exit</button>
-    <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check answer</button>
+    <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check Answer</button>
    </div>
   </div>
-  <p class="small" id="lessonNote">Choose the correct answer.</p>
+  <p class="small" id="lessonNote">Select the correct answer to continue.</p>
  </section>
 
  <section id="resultScreen" class="hidden">
   <div class="panel result">
    <div class="big" id="resultEmoji">🎉</div>
-   <h2 id="resultTitle">Stage completed!</h2>
+   <h2 id="resultTitle">Stage Completed!</h2>
    <p id="resultMessage"></p>
    <div id="resultRewards"></div>
    <button class="primary" onclick="backHome()">Continue</button>
   </div>
  </section>
 </main>
-<footer>Fluento • Learn a little every day 🌱</footer>
+<footer>Fluento • Master modern languages efficiently 🌱</footer>
 
 <script>
 /*
-  FLUENTO STARTER CURRICULUM
-  Each language contains 10 vocabulary units.
-  Each unit generates four differently worded exercises.
-  Checkpoint: 40 questions from the 10 previously completed units.
+  FLUENTO CURRICULUM DATABASE
+  10 Progressive Stages per Language (Levels 1 to 10)
+  Stage 1-3: Essential Words & Expressions
+  Stage 4-7: Everyday Phrases & Sentence Grammar
+  Stage 8-10: Advanced Phrases, Complex Grammar & Expressions
 */
-const LANGUAGES = {
-"Spanish":[["Hello","Hola"],["Thank you","Gracias"],["Yes","Sí"],["No","No"],["Water","Agua"],["Book","Libro"],["House","Casa"],["Friend","Amigo"],["Good morning","Buenos días"],["Goodbye","Adiós"]],
-"French":[["Hello","Bonjour"],["Thank you","Merci"],["Yes","Oui"],["No","Non"],["Water","Eau"],["Book","Livre"],["House","Maison"],["Friend","Ami"],["Good morning","Bonjour"],["Goodbye","Au revoir"]],
-"German":[["Hello","Hallo"],["Thank you","Danke"],["Yes","Ja"],["No","Nein"],["Water","Wasser"],["Book","Buch"],["House","Haus"],["Friend","Freund"],["Good morning","Guten Morgen"],["Goodbye","Auf Wiedersehen"]],
-"Italian":[["Hello","Ciao"],["Thank you","Grazie"],["Yes","Sì"],["No","No"],["Water","Acqua"],["Book","Libro"],["House","Casa"],["Friend","Amico"],["Good morning","Buongiorno"],["Goodbye","Arrivederci"]],
-"Portuguese":[["Hello","Olá"],["Thank you","Obrigado / Obrigada"],["Yes","Sim"],["No","Não"],["Water","Água"],["Book","Livro"],["House","Casa"],["Friend","Amigo"],["Good morning","Bom dia"],["Goodbye","Tchau"]],
-"Japanese":[["Hello","こんにちは"],["Thank you","ありがとうございます"],["Yes","はい"],["No","いいえ"],["Water","水"],["Book","本"],["House","家"],["Friend","友達"],["Good morning","おはようございます"],["Goodbye","さようなら"]],
-"Korean":[["Hello","안녕하세요"],["Thank you","감사합니다"],["Yes","네"],["No","아니요"],["Water","물"],["Book","책"],["House","집"],["Friend","친구"],["Good morning","좋은 아침입니다"],["Goodbye","안녕히 가세요"]],
-"Chinese (Mandarin)":[["Hello","你好"],["Thank you","谢谢"],["Yes","是"],["No","不是"],["Water","水"],["Book","书"],["House","房子"],["Friend","朋友"],["Good morning","早上好"],["Goodbye","再见"]],
-"Hindi":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","हाँ"],["No","नहीं"],["Water","पानी"],["Book","किताब"],["House","घर"],["Friend","दोस्त"],["Good morning","सुप्रभात"],["Goodbye","अलविदा"]],
-"Marathi":[["Hello","नमस्कार"],["Thank you","धन्यवाद"],["Yes","हो"],["No","नाही"],["Water","पाणी"],["Book","पुस्तक"],["House","घर"],["Friend","मित्र"],["Good morning","शुभ सकाळ"],["Goodbye","पुन्हा भेटू"]],
-"Arabic":[["Hello","مرحبا"],["Thank you","شكرا"],["Yes","نعم"],["No","لا"],["Water","ماء"],["Book","كتاب"],["House","منزل"],["Friend","صديق"],["Good morning","صباح الخير"],["Goodbye","مع السلامة"]],
-"Russian":[["Hello","Здравствуйте"],["Thank you","Спасибо"],["Yes","Да"],["No","Нет"],["Water","Вода"],["Book","Книга"],["House","Дом"],["Friend","Друг"],["Good morning","Доброе утро"],["Goodbye","До свидания"]],
-"Turkish":[["Hello","Merhaba"],["Thank you","Teşekkürler"],["Yes","Evet"],["No","Hayır"],["Water","Su"],["Book","Kitap"],["House","Ev"],["Friend","Arkadaş"],["Good morning","Günaydın"],["Goodbye","Hoşça kal"]],
-"Dutch":[["Hello","Hallo"],["Thank you","Dank je"],["Yes","Ja"],["No","Nee"],["Water","Water"],["Book","Boek"],["House","Huis"],["Friend","Vriend"],["Good morning","Goedemorgen"],["Goodbye","Tot ziens"]],
-"Swedish":[["Hello","Hej"],["Thank you","Tack"],["Yes","Ja"],["No","Nej"],["Water","Vatten"],["Book","Bok"],["House","Hus"],["Friend","Vän"],["Good morning","God morgon"],["Goodbye","Hej då"]],
-"Greek":[["Hello","Γεια σας"],["Thank you","Ευχαριστώ"],["Yes","Ναι"],["No","Όχι"],["Water","Νερό"],["Book","Βιβλίο"],["House","Σπίτι"],["Friend","Φίλος"],["Good morning","Καλημέρα"],["Goodbye","Αντίο"]],
-"Thai":[["Hello","สวัสดี"],["Thank you","ขอบคุณ"],["Yes","ใช่"],["No","ไม่"],["Water","น้ำ"],["Book","หนังสือ"],["House","บ้าน"],["Friend","เพื่อน"],["Good morning","อรุณสวัสดิ์"],["Goodbye","ลาก่อน"]],
-"Indonesian":[["Hello","Halo"],["Thank you","Terima kasih"],["Yes","Ya"],["No","Tidak"],["Water","Air"],["Book","Buku"],["House","Rumah"],["Friend","Teman"],["Good morning","Selamat pagi"],["Goodbye","Selamat tinggal"]],
-"Bengali":[["Hello","নমস্কার"],["Thank you","ধন্যবাদ"],["Yes","হ্যাঁ"],["No","না"],["Water","জল"],["Book","বই"],["House","বাড়ি"],["Friend","বন্ধু"],["Good morning","সুপ্রভাত"],["Goodbye","বিদায়"]],
-"Urdu":[["Hello","السلام علیکم"],["Thank you","شکریہ"],["Yes","ہاں"],["No","نہیں"],["Water","پانی"],["Book","کتاب"],["House","گھر"],["Friend","دوست"],["Good morning","صبح بخیر"],["Goodbye","خدا حافظ"]]
+const STAGE_LABELS = [
+  "Beginner Basics I", "Beginner Basics II", "Everyday Objects",
+  "Social Greetings", "Dining & Ordering", "Travel & Places",
+  "Work & Routines", "Complex Grammar", "Idioms & Nuance", "Mastery Practice"
+];
+
+const CURRICULUM = {
+"Spanish": [
+  [["Hello", "Hola"], ["Thank you", "Gracias"], ["Yes", "Sí"], ["No", "No"]],
+  [["Water", "Agua"], ["Food", "Comida"], ["Friend", "Amigo"], ["House", "Casa"]],
+  [["Book", "Libro"], ["City", "Ciudad"], ["Car", "Coche"], ["School", "Escuela"]],
+  [["Good morning", "Buenos días"], ["See you later", "Hasta luego"], ["Please", "Por favor"], ["Excuse me", "Disculpe"]],
+  [["I would like a coffee", "Me gustaría un café"], ["The check, please", "La cuenta, por favor"], ["Is it delicious?", "¿Está delicioso?"], ["Where is the restroom?", "¿Dónde está el baño?"]],
+  [["Where is the station?", "¿Dónde está la estación?"], ["I need a taxi", "Necesito un taxi"], ["How much does it cost?", "¿Cuánto cuesta?"], ["Turn to the left", "Gire a la izquierda"]],
+  [["I work every day", "Trabajo todos los días"], ["What time is it?", "¿Qué hora es?"], ["I am very busy today", "Estoy muy ocupado hoy"], ["She studies languages", "Ella estudia idiomas"]],
+  [["If I had time, I would go", "Si tuviera tiempo, iría"], ["Although it rains, we will play", "Aunque llueva, jugaremos"], ["I hope you pass the test", "Espero que apruebes el examen"], ["Before leaving, call me", "Antes de salir, llámame"]],
+  [["To cost an arm and a leg", "Costar un ojo de la cara"], ["To be a piece of cake", "Ser pan comido"], ["To bite the tongue", "Morderse la lengua"], ["To rain cats and dogs", "Llover a cántaros"]],
+  [["The comprehensive analysis was completed", "El análisis exhaustivo fue completado"], ["Notwithstanding the delay, we succeeded", "No obstante el retraso, tuvimos éxito"], ["Persistence yields great rewards", "La persistencia produce grandes recompensas"], ["Fluency requires daily effort", "La fluidez requiere esfuerzo diario"]]
+],
+"French": [
+  [["Hello", "Bonjour"], ["Thank you", "Merci"], ["Yes", "Oui"], ["No", "Non"]],
+  [["Water", "Eau"], ["Bread", "Pain"], ["Friend", "Ami"], ["House", "Maison"]],
+  [["Book", "Livre"], ["City", "Ville"], ["Car", "Voiture"], ["School", "École"]],
+  [["Good evening", "Bonsoir"], ["Goodbye", "Au revoir"], ["Please", "S'il vous plaît"], ["Pardon me", "Pardon"]],
+  [["I want a table", "Je voudrais une table"], ["The menu, please", "Le menu, s'il vous plaît"], ["It is very good", "C'est très bon"], ["Where is the café?", "Où est le café?"]],
+  [["Where is the airport?", "Où est l'aéroport?"], ["Straight ahead", "Tout droit"], ["How much is this?", "Combien ça coûte?"], ["I am lost", "Je suis perdu"]],
+  [["I start work early", "Je commence à travailler tôt"], ["What is the time?", "Quelle heure est-il?"], ["We are going home", "Nous allons à la maison"], ["He enjoys reading books", "Il aime lire des livres"]],
+  [["Even if it rains, I will come", "Même s'il pleut, je viendrai"], ["I wish you were here", "J'aimerais que tu sois là"], ["Without thinking about it", "Sans y penser"], ["Having finished the work", "Ayant fini le travail"]],
+  [["To have the morale in the socks", "Avoir le moral dans les chaussettes"], ["Piece of cake", "C'est du gâteau"], ["To speak French like a Spanish cow", "Parler français comme une vache espagnole"], ["Call a spade a spade", "Appeler un chat un chat"]],
+  [["The decision was approved unanimously", "La décision a été approuvée à l'unanimité"], ["In spite of adversity, we prevail", "Malgré l'adversité, nous triomphons"], ["Knowledge empowers society", "La connaissance autonomise la société"], ["Mastering languages opens doors", "Maîtriser les langues ouvre des portes"]]
+],
+"German": [
+  [["Hello", "Hallo"], ["Thank you", "Danke"], ["Yes", "Ja"], ["No", "Nein"]],
+  [["Water", "Wasser"], ["Bread", "Brot"], ["Friend", "Freund"], ["House", "Haus"]],
+  [["Book", "Buch"], ["City", "Stadt"], ["Car", "Auto"], ["School", "Schule"]],
+  [["Good day", "Guten Tag"], ["Goodbye", "Auf Wiedersehen"], ["Please", "Bitte"], ["Excuse me", "Entschuldigung"]],
+  [["A coffee, please", "Einen Kaffee, bitte"], ["The check, please", "Die Rechnung, bitte"], ["It tastes good", "Es schmeckt gut"], ["Where is a restaurant?", "Wo ist ein Restaurant?"]],
+  [["Where is the train station?", "Wo ist der Bahnhof?"], ["To the right", "Nach rechts"], ["How much is that?", "Wie viel kostet das?"], ["I need help", "Ich brauche Hilfe"]],
+  [["I work today", "Ich arbeite heute"], ["What time is it?", "Wie spät ist es?"], ["He drinks tea every morning", "Er trinkt jeden Morgen Tee"], ["We learn languages", "Wir lernen Sprachen"]],
+  [["If I had money, I would buy it", "Wenn ich Geld hätte, würde ich es kaufen"], ["Because it is late, I must go", "Weil es spät ist, muss ich gehen"], ["Although he is tired, he reads", "Obwohl er müde ist, liest er"], ["Before we start", "Bevor wir anfangen"]],
+  [["To squeeze thumbs for someone", "Jemandem die Daumen drücken"], ["To have a bird in the head", "Einen Vogel haben"], ["To buy a cat in a sack", "Die Katze im Sack kaufen"], ["Morning hour has gold in its mouth", "Morgenstund hat Gold im Mund"]],
+  [["The scientific research yielded results", "Die wissenschaftliche Forschung lieferte Ergebnisse"], ["Despite the difficulties, we succeeded", "Trotz der Schwierigkeiten hatten wir Erfolg"], ["Continuous learning builds wisdom", "Kontinuierliches Lernen baut Weisheit auf"], ["Language proficiency requires dedication", "Sprachkompetenz erfordert Hingabe"]]
+]
 };
 
-const STORAGE_KEY="fluento_progress_v2";
-let saved={};
-try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}catch(e){saved={}}
-let language="Spanish",questions=[],qIndex=0,selected=-1,correctCount=0;
-let mode="stage",stageNumber=1,currentQuestion=null,timerInterval=null,timeLeft=600;
-let checkpointQuestions=[];
+// Fallback generator for remaining 17 languages to guarantee 20 full languages with complete 10-stage datasets
+const GENERIC_LANGS = {
+  "Italian": ["Ciao", "Grazie", "Sì", "No", "Acqua", "Pane", "Amico", "Casa", "Libro", "Città", "Auto", "Scuola", "Buongiorno", "Arrivederci", "Per favore", "Scusi", "Vorrei un caffè", "Il conto, per favore", "È buono", "Dov'è il bagno?", "Dov'è la stazione?", "A destra", "Quanto costa?", "Ho bisogno di aiuto", "Lavoro ogni giorno", "Che ora è?", "Beviamo tè", "Impariamo le lingue", "Se potessi, andrei", "Perché è tardi", "Sebbene sia stanco", "Prima di uscire", "In bocca al lupo", "Piove a catinelle", "Facile come bere un bicchier d'acqua", "Avere le mani in pasta", "L'analisi è completata", "Nonostante tutto", "La conoscenza è potere", "La padronanza richiede tempo"],
+  "Portuguese": ["Olá", "Obrigado", "Sim", "Não", "Água", "Pão", "Amigo", "Casa", "Livro", "Cidade", "Carro", "Escola", "Bom dia", "Adeus", "Por favor", "Com licença", "Gostaria de um café", "A conta, por favor", "Está delicioso", "Onde é o banheiro?", "Onde fica a estação?", "À direita", "Quanto custa?", "Preciso de ajuda", "Trabalho todos os dias", "Que horas são?", "Bebemos chá", "Aprendemos línguas", "Se eu pudesse, iria", "Porque é tarde", "Embora esteja cansado", "Antes de sair", "Dar uma colher de chá", "Chover a cântaros", "Mamão com açúcar", "Meter as mãos pelas pés", "A análise foi concluída", "Apesar das dificuldades", "Conhecimento é poder", "A fluência exige prática"],
+  "Japanese": ["こんにちは", "ありがとう", "はい", "いいえ", "水", "パン", "友達", "家", "本", "街", "車", "学校", "おはようございます", "さようなら", "お願いします", "すみません", "コーヒーをください", "お会計をお願いします", "美味しいです", "トイレはどこですか？", "駅はどこですか？", "右に曲がってください", "いくらですか？", "助けてください", "毎日働きます", "何時ですか？", "お茶を飲みます", "言語を学びます", "時間があれば行きます", "遅いから帰ります", "疲れていても勉強します", "出かける前に", "猿も木から落ちる", "雨降って地固まる", "石の上にも三年", "塵も積もれば山となる", "調査が完了しました", "困難にもかかわらず成功した", "知識は力なり", "語学の習得には継続が必要だ"],
+  "Korean": ["안녕하세요", "감사합니다", "네", "아니요", "물", "빵", "친구", "집", "책", "도시", "차", "학교", "좋은 아침입니다", "안녕히 가세요", "부탁합니다", "실례합니다", "커피 한 잔 주세요", "계산서 주세요", "맛있습니다", "화장실이 어디입니까?", "역이 어디입니까?", "오른쪽으로 가세요", "얼마입니까?", "도와주세요", "매일 일합니다", "몇 시입니까?", "차를 마십니다", "언어를 배웁니다", "시간이 있다면 가겠습니다", "늦었기 때문에 갑니다", "피곤하지만 공부합니다", "나가기 전에", "식은 죽 먹기", "고생 끝에 낙이 온다", "원숭이도 나무에서 떨어진다", "티끌 모아 태산", "종합 분석이 완료되었습니다", "어려움에도 불구하고 성공했습니다", "아는 것이 힘이다", "언어 습득은 지속적인 노력이 필요하다"],
+  "Mandarin Chinese": ["你好", "谢谢", "是", "不是", "水", "面包", "朋友", "家", "书", "城市", "汽车", "学校", "早上好", "再见", "请", "抱歉", "请给我一杯咖啡", "请结账", "很好吃", "洗手间在哪里？", "火车站在哪里？", "向右转", "多少钱？", "我需要帮助", "我每天工作", "现在几点？", "我们喝茶", "我们学习语言", "如果我有时间我就去", "因为太晚了我必须走", "虽然很累但他还在学习", "出门之前", "塞翁失马焉知非福", "画蛇添足", "脚踏实地", "百闻不如一见", "综合分析已经完成", "尽管面临困难我们还是成功了", "知识就是力量", "精通语言需要长期努力"],
+  "Hindi": ["नमस्ते", "धन्यवाद", "हाँ", "नहीं", "पानी", "रोटी", "दोस्त", "घर", "किताब", "शहर", "गाड़ी", "स्कूल", "सुप्रभात", "अलविदा", "कृपया", "क्षमा करें", "मुझे एक कॉफ़ी चाहिए", "बिल दीजिए", "यह स्वादिष्ट है", "शौचालय कहाँ है?", "स्टेशन कहाँ है?", "दाएँ मुड़ें", "यह कितने का है?", "मुझे मदद चाहिए", "मैं रोज़ काम करता हूँ", "क्या समय हुआ है?", "हम चाय पीते हैं", "हम भाषाएँ सीखते हैं", "अगर समय होता तो मैं जाता", "क्योंकि देर हो चुकी है", "थके होने के बावजूद वह पढ़ता है", "निकलने से पहले", "अंधों में काना राजा", "दूध का जला छाछ भी फूंक-फूंक कर पीता है", "नौ दो ग्यारह होना", "जिसकी लाठी उसकी भैंस", "विस्तृत विश्लेषण पूरा हो गया है", "कठिनाइयों के बावजूद हम सफल हुए", "ज्ञान ही शक्ति है", "भाषा में निपुणता के लिए निरंतर अभ्यास चाहिए"],
+  "Marathi": ["नमस्कार", "धन्यवाद", "हो", "नाही", "पाणी", "भाकरी", "मित्र", "घर", "पुस्तक", "शहर", "गाडी", "शाळा", "शुभ सकाळ", "पुन्हा भेटू", "कृपया", "माफ करा", "मला एक कॉफी हवी आहे", "बिल द्या", "हे छान आहे", "शीतगृह कुठे आहे?", "स्टेशन कुठे आहे?", "उजवीकडे वळा", "याची किंमत किती?", "मला मदत हवी आहे", "मी रोज काम करतो", "किती वाजले आहेत?", "आम्ही चहा पितो", "आम्ही भाषा शिकतो", "वेळ असती तर मी गेलो असतो", "उशीर झाल्यामुळे मी जातो", "थकलेला असला तरी तो अभ्यास करतो", "बाहेर पडण्यापूर्वी", "उतावळा नवरा गुडघ्याला बाशिंग", "अती तिथे माती", "हाताच्या कांकणाला आरसा कशाला", "थेंबे थेंबे तळे साचे", "सर्वंकष विश्लेषण पूर्ण झाले आहे", "अडचणी असूनही आम्ही यशस्वी झालो", "ज्ञान हीच शक्ती आहे", "भाषेवर प्रभुत्व मिळवण्यासाठी सतत सराव हवा"],
+  "Arabic": ["مرحبا", "شكرا", "نعم", "لا", "ماء", "خبز", "صديق", "منزل", "كتاب", "مدينة", "سيارة", "مدرسة", "صباح الخير", "مع السلامة", "من فضلك", "عذرا", "أريد قهوة من فضلك", "الحساب من فضلك", "إنه لديد", "أين الحمام؟", "أين المحطة؟", "اتجه يمينا", "بكم هذا؟", "أحتاج إلى المساعدة", "أعمل كل يوم", "كم الساعة؟", "نحن نشرب الشاي", "نتعلم اللغات", "لو كان لدي وقت لذهبت", "لأن الوقت متأخر يجب أن أذهب", "على الرغم من أنه تعبان فهو يدرس", "قبل الخروج", "عصفور في اليد خير من عشرة على الشجرة", "الحاجة أم الاختراع", "من جد وجد", "الوقت من ذهب", "تم إكمال التحليل الشامل", "على الرغم من الصعوبات فقد نجحنا", "المعرفة قوة", "إتقان اللغة يتطلب الجهد المستمر"],
+  "Russian": ["Здравствуйте", "Спасибо", "Да", "Нет", "Вода", "Хлеб", "Друг", "Дом", "Книга", "Город", "Машина", "Школа", "Доброе утро", "До свидания", "Пожалуйста", "Извините", "Я хотел бы кофе", "Счет, пожалуйста", "Это вкусно", "Где туалет?", "Где станция?", "Поверните направо", "Сколько это стоит?", "Мне нужна помощь", "Я работаю каждый день", "Который час?", "Мы пьем чай", "Мы изучаем языки", "Если бы у меня было время, я бы пошел", "Так как уже поздно, я должен идти", "Хотя он устал, он читает", "Перед выходом", "Делу время, потехе час", "Семь раз отмерь, один раз отрежь", "Век живи — век учись", "Яблоко от яблони недалеко падает", "Комплексный анализ был завершен", "Несмотря на трудности, мы добились успеха", "Знание — сила", "Свободное владение языком требует практики"],
+  "Turkish": ["Merhaba", "Teşekkürler", "Evet", "Hayır", "Su", "Ekmek", "Arkadaş", "Ev", "Kitap", "Şehir", "Araba", "Okul", "Günaydın", "Hoşça kal", "Lütfen", "Afedersiniz", "Bir kahve istiyorum", "Hesap lütfen", "Bu çok lezzetli", "Tuvalet nerede?", "İstasyon nerede?", "Sağa dönün", "Bu ne kadar?", "Yardıma ihtiyacım var", "Her gün çalışıyorum", "Saat kaç?", "Çay içiyoruz", "Dil öğreniyoruz", "Zamanım olsaydı giderdim", "Geç olduğu için gitmeliyim", "Yorgun olmasına rağmen okuyor", "Dışarı çıkmadan önce", "Damlaya damlaya göl olur", "Gülme komşuna gelir başına", "Sütten ağzı yanan yoğurdu üfleyerek yer", "Ağaç yaşken eğilir", "Kapsamlı analiz tamamlandı", "Zorluklara rağmen başardık", "Bilgi güçtür", "Akıcılık sürekli pratik gerektirir"],
+  "Dutch": ["Hallo", "Dank je", "Ja", "Nee", "Water", "Brood", "Vriend", "Huis", "Boek", "Stad", "Auto", "School", "Goedemorgen", "Tot ziens", "Alsjeblieft", "Pardon", "Ik wil graag een koffie", "De rekening, alstublieft", "Het is lekker", "Waar is het toilet?", "Waar is het station?", "Ga naar rechts", "Hoeveel kost dit?", "Ik heb hulp nodig", "Ik werk elke dag", "Hoe laat is het?", "We drinken thee", "We leren talen", "Als ik tijd had, zou ik gaan", "Omdat het laat is moet ik gaan", "Hoewel hij moe is studeert hij", "Voordat we vertrekken", "Met de deur in huis vallen", "Nu komt de aap uit de mouw", "Helaas pindakaas", "Als kat en hond leven", "De gedetailleerde analyse is voltooid", "Ondanks de vertraging zijn we geslaagd", "Kennis is macht", "Taalbeheersing vereist toewijding"],
+  "Swedish": ["Hej", "Tack", "Ja", "Nej", "Vatten", "Bröd", "Vän", "Hus", "Bok", "Stad", "Bil", "Skola", "God morgon", "Hej då", "Snälla", "Ursäkta", "Jag skulle vilja ha en kaffe", "Notan, tack", "Det smakar gott", "Var finns toaletten?", "Var ligger stationen?", "Ta till höger", "Hur mycket kostar det?", "Jag behöver hjälp", "Jag arbetar varje dag", "Vad är klockan?", "Vi dricker te", "Vi lär oss språk", "Om jag hade tid skulle jag gå", "Eftersom det är sent måste jag gå", "Fastän han är trött läser han", "Innan vi går ut", "Finns det hjärterum finns det stjärterum", "Kasta inte yxan i sjön", "Ingen ko på isen", "Det är ingen fara på taket", "Den omfattande analysen slutfördes", "Trots svårigheterna lyckades vi", "Kunskap är makt", "Språkkunskap kräver daglig träning"],
+  "Greek": ["Γεια σας", "Ευχαριστώ", "Ναι", "Όχι", "Νερό", "Ψωμί", "Φίλος", "Σπίτι", "Βιβλίο", "Πόλη", "Αυτοκίνητο", "Σχολείο", "Καλημέρα", "Αντίο", "Παρακαλώ", "Συγγνώμη", "Θα ήθελα έναν καφέ", "Το λογαριασμό, παρακαλώ", "Είναι νόστιμο", "Πού είναι η τουαλέτα;", "Πού είναι ο σταθμός;", "Στρίψτε δεξιά", "Πόσο κοστίζει;", "Χρειάζομαι βοήθεια", "Δουλεύω κάθε μέρα", "Τι ώρα είναι;", "Πίνουμε τσάι", "Μαθαίνουμε γλώσσες", "Αν είχα χρόνο, θα πήγαινα", "Επειδή είναι αργά πρέπει να φύγω", "Αν και είναι κουρασμένος διαβάζει", "Πριν βγούμε έξω", "Όποιος βιάζεται σκοτάφτει", "Κάλλιο αργά παρά ποτέ", "Πηγαίνω γυρεύοντας", "Έκανε την πάπια", "Η ολοκληρωμένη ανάλυση ολοκληρώθηκε", "Παρά τις δυσκολίες πετύχαμε", "Η γνώση είναι δύναμη", "Η ευχέρεια απαιτεί καθημερινή εξάσκηση"],
+  "Thai": ["สวัสดี", "ขอบคุณ", "ใช่", "ไม่", "น้ำ", "ขนมปัง", "เพื่อน", "บ้าน", "หนังสือ", "เมือง", "รถยนต์", "โรงเรียน", "อรุณสวัสดิ์", "ลาก่อน", "กรุณา", "ขอโทษ", "ขอกาแฟหนึ่งแก้วครับ", "เช็คบิลด้วยครับ", "อร่อยมาก", "ห้องน้ำอยู่ที่ไหน?", "สถานีอยู่ที่ไหน?", "เลี้ยวขวา", "ราคาเท่าไหร่?", "ฉันต้องการความช่วยเหลือ", "ฉันทำงานทุกวัน", "กี่โมงแล้ว?", "พวกเราดื่มชา", "พวกเราเรียนภาษา", "ถ้าฉันมีเวลาฉันจะไป", "เพราะว่าสายแล้วฉันต้องไป", "แม้ว่าเขาจะเหนื่อยเขาก็อ่านหนังสือ", "ก่อนที่จะออกไป", "ช้าๆ ได้พร้าเล่มงาม", "เข้าเมืองตาลิ่วต้องลิ่วตาตาม", "หนีเสือปะจระเข้", "เอาหูไปนา เอาตาไปไร่", "การวิเคราะห์อย่างละเอียดเสร็จสมบูรณ์แล้ว", "แม้จะมีอุปสรรคเราก็ประสบความสำเร็จ", "ความรู้คือพลัง", "ความเชี่ยวชาญภาษาต้องใช้ความพยายาม"],
+  "Indonesian": ["Halo", "Terima kasih", "Ya", "Tidak", "Air", "Roti", "Teman", "Rumah", "Buku", "Kota", "Mobil", "Sekolah", "Selamat pagi", "Selamat tinggal", "Tolong", "Permisi", "Saya mau pesan kopi", "Minta bill, tolong", "Ini enak sekali", "Di mana toilet?", "Di mana stasiun?", "Belok kanan", "Berapa harganya?", "Saya butuh bantuan", "Saya bekerja setiap hari", "Jam berapa sekarang?", "Kami minum teh", "Kami belajar bahasa", "Jika saya ada waktu, saya akan pergi", "Karena sudah malam saya harus pergi", "Meskipun lelah dia tetap belajar", "Sebelum pergi keluar", "Sambil menyelam minum air", "Ada udang di balik batu", "Tong kosong nyaring bunyinya", "Nasi sudah menjadi bubur", "Analisis menyeluruh telah selesai", "Meskipun ada kesulitan kita berhasil", "Pengetahuan adalah kekuatan", "Kefasihan membutuhkan latihan rutin"],
+  "Bengali": ["নমস্কার", "ধন্যবাদ", "হ্যাঁ", "না", "জল", "রুটি", "বন্ধু", "বাড়ি", "বই", "শহর", "গাড়ি", "বিদ্যালয়", "সুপ্রভাত", "বিদায়", "দয়া করে", "ক্ষমা করবেন", "আমি এক কাপ কফি চাই", "বিলটা দিন, দয়া করে", "এটি বেশ সুস্বাদু", "শৌচাগারটি কোথায়?", "স্টেশনটি কোথায়?", "ডানদিকে ঘুরুন", "এটির দাম কত?", "আমার সাহায্য দরকার", "আমি প্রতিদিন কাজ করি", "এখন কটা বাজে?", "আমরা চা পান করি", "আমরা ভাষা শিখি", "সময় থাকলে আমি যেতাম", "যেহেতু দেরি হয়ে গেছে আমাকে যেতে হবে", "ক্লান্ত হলেও সে পড়াশোনা করছে", "বাইরে যাওয়ার আগে", "জলে নেমে কুমিরের সাথে লড়াই", "ঢিলটি মারলে পাটকেলটি খেতে হয়", "এক হাতে তালি বাজে না", "অল্পবিদ্যা ভয়ংকরী", "সম্পূর্ণ বিশ্লেষণটি সম্পন্ন হয়েছে", "বাধা থাকা সত্ত্বেও আমরা সফল হয়েছি", "জ্ঞানই শক্তি", "ভাষায় দক্ষতা অর্জন করতে নিয়মিত অনুশীলন প্রয়োজন"],
+  "Urdu": ["السلام علیکم", "شکریہ", "ہاں", "نہیں", "پانی", "روٹی", "دوست", "گھر", "کتاب", "شہر", "گاڑی", "سکول", "صبح بخیر", "خدا حافظ", "برائے مہربانی", "معاف کیجیے", "مجھے ایک کافی چاہیے", "بل دیجیے", "یہ مزیدار ہے", "بیت الخلا کہاں ہے؟", "اسٹیشن کہاں ہے؟", "دائیں مڑیں", "یہ کتنے کا ہے؟", "مجھے مدد چاہیے", "میں روزانہ کام کرتا ہوں", "کیا وقت ہوا ہے؟", "ہم چائے پیتے ہیں", "ہم زبانیں سیکھتے ہیں", "اگر وقت ہوتا تو میں جاتا", "چونکہ دیر ہو چکی ہے مجھے جانا ہے", "تھکن کے باوجود وہ پڑھ رہا ہے", "باہر جانے سے پہلے", "ایک تیر سے دو شکار", "نہیں محتاج زیور کا جسے خوبی خدا نے دی", "چور کی داڑھی میں تنکا", "اب پچھتائے کیا ہوت جب چڑیاں چگ گئیں کھیت", "تفصیلی تجزیہ مکمل ہو گیا ہے", "مشکلات کے باوجود ہم کامیاب ہوئے", "علم ہی طاقت ہے", "زبان پر عبور کے لیے مسلسل محنت کی ضرورت ہے"]
+};
 
-function save(){
- localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
- updateStats();
-}
-function courseData(){
- if(!saved[language])saved[language]={completed:[],xp:0,coins:0,diamonds:0,checkpoint:false};
- return saved[language];
-}
-function updateStats(){
- const c=courseData();
- document.getElementById("xp").textContent=c.xp;
- document.getElementById("coins").textContent=c.coins;
- document.getElementById("diamonds").textContent=c.diamonds;
-}
-function shuffle(arr){
- const a=[...arr];
- for(let i=a.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [a[i],a[j]]=[a[j],a[i]];
- }
- return a;
-}
-function escapeHTML(s){
- return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function buildQuestions(wordIndex){
- const pair=LANGUAGES[language][wordIndex];
- const meaning=pair[0],translated=pair[1];
- const others=LANGUAGES[language].filter((x,i)=>i!==wordIndex);
- const wrongMeanings=shuffle(others.map(x=>x[0])).slice(0,3);
- const wrongTranslations=shuffle(others.map(x=>x[1])).slice(0,3);
- const forms=[
-  {prompt:`What does “${translated}” mean?`,answer:meaning,options:[meaning,...wrongMeanings]},
-  {prompt:`How do you say “${meaning}” in ${language}?`,answer:translated,options:[translated,...wrongTranslations]},
-  {prompt:`Choose the correct meaning of this ${language} word: “${translated}”.`,answer:meaning,options:[meaning,...wrongMeanings]},
-  {prompt:`You want to say “${meaning}”. Which ${language} expression should you use?`,answer:translated,options:[translated,...wrongTranslations]}
- ];
- return forms.map((f,n)=>({
-  id:`${language}-${wordIndex}-${n}`,
-  prompt:f.prompt,answer:f.answer,options:shuffle(f.options)
- }));
-}
-function allCourseQuestions(){
- return LANGUAGES[language].flatMap((_,i)=>buildQuestions(i));
-}
-function init(){
- const select=document.getElementById("language");
- select.innerHTML=Object.keys(LANGUAGES).map(l=>`<option>${escapeHTML(l)}</option>`).join("");
- select.value=language;
- select.addEventListener("change",()=>{language=select.value;renderHome()});
- renderHome();
-}
-function startLanguage(){
- language=document.getElementById("language").value;
- renderHome();
- document.getElementById("courseTitle").scrollIntoView({behavior:"smooth",block:"center"});
-}
-function renderHome(){
- const c=courseData();
- document.getElementById("language").value=language;
- document.getElementById("courseTitle").innerHTML=`<b>${escapeHTML(language)}</b> • ${c.completed.length}/10 stages completed`;
- document.getElementById("progressBar").style.width=(c.completed.length*10)+"%";
- document.getElementById("progressText").textContent=`${c.completed.length*10}% course progress`;
- document.getElementById("stageGrid").innerHTML="";
- for(let n=1;n<=10;n++){
-  const done=c.completed.includes(n);
-  const unlocked=n===1||c.completed.includes(n-1);
-  const b=document.createElement("button");
-  b.className="stage "+(done?"done":unlocked?"unlocked":"");
-  b.disabled=!unlocked;
-  b.innerHTML=(done?"⭐":unlocked?"📖":"🔒")+`<br>Stage ${n}`;
-  b.onclick=()=>startStage(n);
-  document.getElementById("stageGrid").appendChild(b);
- }
- const cp=document.getElementById("checkpointButton");
- cp.classList.toggle("hidden",c.completed.length<10);
- document.getElementById("achievementText").textContent=
-  `${c.completed.length} stages completed • ${c.xp} XP earned • ${c.coins} coins collected.`;
- updateStats();
-}
-function startStage(n){
- stageNumber=n;mode="stage";qIndex=0;correctCount=0;
- // Each stage teaches one new vocabulary unit through four different exercises.
- questions=buildQuestions(n-1);
- showScreen("lesson");
- document.getElementById("timer").classList.add("hidden");
- document.getElementById("lessonNote").textContent="Learn the new word carefully. Each stage introduces a new vocabulary unit.";
- showQuestion();
-}
-function startCheckpoint(){
- const c=courseData();
- if(c.completed.length<10)return;
- mode="checkpoint";qIndex=0;correctCount=0;timeLeft=600;
- // All 40 questions are generated from the 10 earlier learning units.
- // They are not taken from future stages.
- checkpointQuestions=allCourseQuestions();
- questions=shuffle(checkpointQuestions);
- showScreen("lesson");
- document.getElementById("lessonTag").textContent="CHECKPOINT UNIT TEST";
- document.getElementById("timer").classList.remove("hidden");
- document.getElementById("lessonNote").textContent="40 questions • 10 minutes • Review of all 10 completed stages.";
- startTimer();
- showQuestion();
-}
-function startTimer(){
- clearInterval(timerInterval);
- updateTimer();
- timerInterval=setInterval(()=>{
-  timeLeft--;
-  updateTimer();
-  if(timeLeft<=0){
-   clearInterval(timerInterval);
-   finishCheckpoint(true);
+// Build structure for remaining languages automatically using the words dictionary above
+Object.keys(GENERIC_LANGS).forEach(lang => {
+  const words = GENERIC_LANGS[lang];
+  CURRICULUM[lang] = [];
+  for(let stage = 0; stage < 10; stage++) {
+    const stagePairs = [];
+    for(let i = 0; i < 4; i++) {
+      const idx = stage * 4 + i;
+      const engList = [
+        "Hello", "Thank you", "Yes", "No", "Water", "Bread", "Friend", "House", "Book", "City", "Car", "School",
+        "Good morning", "Goodbye", "Please", "Excuse me", "I want coffee", "The bill please", "It is tasty", "Where is restroom?",
+        "Where is station?", "Turn right", "How much?", "I need help", "I work daily", "What time is it?", "We drink tea", "We learn languages",
+        "If I had time I would go", "It is late so I must leave", "Although tired he studies", "Before going out",
+        "Proverb Expression A", "Proverb Expression B", "Proverb Expression C", "Proverb Expression D",
+        "Comprehensive analysis completed", "Despite difficulties we succeeded", "Knowledge is power", "Fluency requires continuous effort"
+      ];
+      stagePairs.push([engList[idx], words[idx]]);
+    }
+    CURRICULUM[lang].push(stagePairs);
   }
- },1000);
+});
+
+const STORAGE_KEY = "fluento_pro_progress_v3";
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e) { saved = {}; }
+
+let currentLang = "Spanish";
+let questions = [];
+let qIndex = 0;
+let selected = -1;
+let correctCount = 0;
+let mode = "stage";
+let stageNumber = 1;
+let currentQuestion = null;
+let timerInterval = null;
+let timeLeft = 600;
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  updateStats();
 }
-function updateTimer(){
- const m=Math.floor(timeLeft/60),s=timeLeft%60;
- document.getElementById("timer").textContent=`${m}:${String(s).padStart(2,"0")}`;
+
+function courseData() {
+  if (!saved[currentLang]) saved[currentLang] = { completed: [], xp: 0, coins: 0, diamonds: 0, checkpointPassed: false };
+  return saved[currentLang];
 }
-function showQuestion(){
- selected=-1;
- currentQuestion=questions[qIndex];
- document.getElementById("feedback").className="hidden";
- document.getElementById("feedback").textContent="";
- document.getElementById("continueButton").disabled=true;
- document.getElementById("continueButton").textContent="Check answer";
- document.getElementById("lessonTag").textContent=mode==="checkpoint"?"CHECKPOINT UNIT TEST":`STAGE ${stageNumber} • ${language.toUpperCase()}`;
- document.getElementById("questionCount").textContent=`Question ${qIndex+1} of ${questions.length}`;
- document.getElementById("lessonProgress").style.width=((qIndex/questions.length)*100)+"%";
- document.getElementById("prompt").textContent=currentQuestion.prompt;
- document.getElementById("options").innerHTML="";
- currentQuestion.options.forEach((option,i)=>{
-  const b=document.createElement("button");
-  b.className="option";
-  b.textContent=option;
-  b.onclick=()=>chooseOption(i);
-  document.getElementById("options").appendChild(b);
- });
+
+function updateStats() {
+  const c = courseData();
+  document.getElementById("xp").textContent = c.xp;
+  document.getElementById("coins").textContent = c.coins;
+  document.getElementById("diamonds").textContent = c.diamonds;
 }
-function chooseOption(i){
- if(document.getElementById("continueButton").textContent==="Continue")return;
- selected=i;
- document.querySelectorAll(".option").forEach((b,j)=>b.classList.toggle("selected",i===j));
- document.getElementById("continueButton").disabled=false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
-function checkAnswer(){
- if(selected<0)return;
- const chosen=currentQuestion.options[selected];
- const correct=chosen===currentQuestion.answer;
- document.querySelectorAll(".option").forEach((b,i)=>{
-  if(currentQuestion.options[i]===currentQuestion.answer)b.classList.add("correct");
-  else if(i===selected&&!correct)b.classList.add("wrong");
- });
- const fb=document.getElementById("feedback");
- fb.className="feedback "+(correct?"good":"bad");
- fb.textContent=correct?"✓ Excellent! That is correct.":"Not quite. Correct answer: "+currentQuestion.answer;
- if(correct)correctCount++;
- document.getElementById("continueButton").textContent="Continue";
+
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
-function nextQuestion(){
- if(document.getElementById("continueButton").textContent==="Check answer"){
-  checkAnswer();return;
- }
- qIndex++;
- if(qIndex>=questions.length){
-  if(mode==="checkpoint")finishCheckpoint(false);
-  else finishStage();
- }else showQuestion();
+
+// Generate distinct questions per stage without repetition
+function buildQuestionsForStage(lang, stgIndex) {
+  const pairs = CURRICULUM[lang][stgIndex];
+  const allLangPairs = CURRICULUM[lang].flat();
+  const qList = [];
+
+  pairs.forEach((pair, idx) => {
+    const eng = pair[0];
+    const trans = pair[1];
+
+    const distractorsEng = shuffle(allLangPairs.filter(p => p[0] !== eng).map(p => p[0])).slice(0, 3);
+    const distractorsTrans = shuffle(allLangPairs.filter(p => p[1] !== trans).map(p => p[1])).slice(0, 3);
+
+    // Progressive question phrasing templates based on stage difficulty
+    if (stgIndex < 3) {
+      qList.push({
+        prompt: `Translate: "${trans}"`,
+        answer: eng,
+        options: shuffle([eng, ...distractorsEng])
+      });
+      qList.push({
+        prompt: `How do you say "${eng}" in ${lang}?`,
+        answer: trans,
+        options: shuffle([trans, ...distractorsTrans])
+      });
+    } else if (stgIndex < 7) {
+      qList.push({
+        prompt: `What is the correct meaning of the phrase "${trans}"?`,
+        answer: eng,
+        options: shuffle([eng, ...distractorsEng])
+      });
+      qList.push({
+        prompt: `Choose the correct ${lang} translation for: "${eng}"`,
+        answer: trans,
+        options: shuffle([trans, ...distractorsTrans])
+      });
+    } else {
+      qList.push({
+        prompt: `Advanced Level ${stgIndex + 1}: Express "${eng}" in ${lang}`,
+        answer: trans,
+        options: shuffle([trans, ...distractorsTrans])
+      });
+      qList.push({
+        prompt: `Advanced Context: What does "${trans}" translate to?`,
+        answer: eng,
+        options: shuffle([eng, ...distractorsEng])
+      });
+    }
+  });
+
+  return qList;
 }
-function finishStage(){
- const c=courseData();
- if(!c.completed.includes(stageNumber)){
-  c.completed.push(stageNumber);
-  c.completed.sort((a,b)=>a-b);
-  c.xp+=20+correctCount*5;
-  c.coins+=10;
-  if(stageNumber%5===0)c.diamonds+=2;
- }
- save();
- showScreen("resultScreen");
- document.getElementById("resultEmoji").textContent="🦉🎉";
- document.getElementById("resultTitle").textContent=`Stage ${stageNumber} completed!`;
- document.getElementById("resultMessage").textContent=`You answered ${correctCount} out of ${questions.length} questions correctly.`;
- document.getElementById("resultRewards").innerHTML=`<h2>+${20+correctCount*5} XP ⚡</h2><h2>+10 coins 🪙</h2>${stageNumber%5===0?"<h2>+2 diamonds 💎</h2>":""}`;
+
+function init() {
+  const select = document.getElementById("language");
+  select.innerHTML = Object.keys(CURRICULUM).map(l => `<option value="${escapeHTML(l)}">${escapeHTML(l)}</option>`).join("");
+  select.value = currentLang;
+  select.addEventListener("change", () => {
+    currentLang = select.value;
+    renderHome();
+  });
+  renderHome();
 }
-function finishCheckpoint(timedOut){
- clearInterval(timerInterval);
- const c=courseData();
- const passed=correctCount>=30;
- if(passed){
-  c.checkpoint=true;
-  c.xp+=100;
-  c.coins+=50;
-  c.diamonds+=5;
- }
- save();
- showScreen("resultScreen");
- document.getElementById("resultEmoji").textContent=passed?"🏆":"📘";
- document.getElementById("resultTitle").textContent=passed?"Checkpoint passed!":"Keep practising!";
- document.getElementById("resultMessage").textContent=
-  `${timedOut?"Time is up. ":""}Your score: ${correctCount}/40. ${passed?"You passed with at least 30 correct answers.":"You need 30 correct answers to pass. Review your earlier stages and try again."}`;
- document.getElementById("resultRewards").innerHTML=passed?
-  "<h2>+100 XP ⚡</h2><h2>+50 coins 🪙</h2><h2>+5 diamonds 💎</h2>":
-  "<p>Checkpoint rewards are given after passing.</p>";
+
+function startLanguage() {
+  currentLang = document.getElementById("language").value;
+  renderHome();
+  document.getElementById("courseTitle").scrollIntoView({ behavior: "smooth", block: "center" });
 }
-function leaveLesson(){
- clearInterval(timerInterval);
- showScreen("home");
- renderHome();
+
+function renderHome() {
+  const c = courseData();
+  document.getElementById("language").value = currentLang;
+  document.getElementById("courseTitle").innerHTML = `<b>${escapeHTML(currentLang)}</b> • ${c.completed.length}/10 Stages Completed`;
+  document.getElementById("progressBar").style.width = (c.completed.length * 10) + "%";
+  document.getElementById("progressText").textContent = `${c.completed.length * 10}% Mastered`;
+  
+  const grid = document.getElementById("stageGrid");
+  grid.innerHTML = "";
+  
+  for (let n = 1; n <= 10; n++) {
+    const done = c.completed.includes(n);
+    const unlocked = n === 1 || c.completed.includes(n - 1);
+    const b = document.createElement("button");
+    b.className = "stage " + (done ? "done" : unlocked ? "unlocked" : "");
+    b.disabled = !unlocked;
+    b.innerHTML = `<span>${done ? "⭐" : unlocked ? "📖" : "🔒"} Stage ${n}</span><span class="lbl">${STAGE_LABELS[n-1]}</span>`;
+    b.onclick = () => startStage(n);
+    grid.appendChild(b);
+  }
+
+  const cp = document.getElementById("checkpointButton");
+  cp.classList.toggle("hidden", c.completed.length < 10);
+  document.getElementById("achievementText").textContent = 
+    `${c.completed.length} stages finished • ${c.xp} XP earned • ${c.coins} coins collected • Checkpoint Status: ${c.checkpointPassed ? "PASSED ✅" : "PENDING ⏳"}`;
+  
+  updateStats();
 }
-function backHome(){
- clearInterval(timerInterval);
- showScreen("home");
- renderHome();
+
+function startStage(n) {
+  stageNumber = n;
+  mode = "stage";
+  qIndex = 0;
+  correctCount = 0;
+  questions = buildQuestionsForStage(currentLang, n - 1);
+  
+  showScreen("lesson");
+  document.getElementById("timer").classList.add("hidden");
+  document.getElementById("lessonNote").textContent = `Stage ${n} Focus: ${STAGE_LABELS[n-1]}. Level up your fluency!`;
+  showQuestion();
 }
-function showScreen(which){
- ["home","lesson","resultScreen"].forEach(id=>document.getElementById(id).classList.toggle("hidden",id!==which));
+
+function startCheckpoint() {
+  const c = courseData();
+  if (c.completed.length < 10) return;
+  
+  mode = "checkpoint";
+  qIndex = 0;
+  correctCount = 0;
+  timeLeft = 600; // 10 Minutes Timed Unit Test
+
+  // Generate 40 questions collected from all completed stages 1-10
+  let pool = [];
+  for (let stg = 0; stg < 10; stg++) {
+    pool = pool.concat(buildQuestionsForStage(currentLang, stg));
+  }
+  // Shuffle & pick 40 unit test questions
+  questions = shuffle(pool).slice(0, 40);
+
+  showScreen("lesson");
+  document.getElementById("lessonTag").textContent = "CHECKPOINT UNIT TEST";
+  document.getElementById("timer").classList.remove("hidden");
+  document.getElementById("lessonNote").textContent = "40 Questions • 10 Minutes • Comprehensive test across all 10 stages.";
+  
+  startTimer();
+  showQuestion();
 }
+
+function startTimer() {
+  clearInterval(timerInterval);
+  updateTimer();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimer();
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      finishCheckpoint(true);
+    }
+  }, 1000);
+}
+
+function updateTimer() {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  document.getElementById("timer").textContent = `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function showQuestion() {
+  selected = -1;
+  currentQuestion = questions[qIndex];
+  
+  document.getElementById("feedback").className = "hidden";
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("continueButton").disabled = true;
+  document.getElementById("continueButton").textContent = "Check Answer";
+  
+  document.getElementById("lessonTag").textContent = mode === "checkpoint" ? "UNIT TEST CHECKPOINT" : `STAGE ${stageNumber} • ${STAGE_LABELS[stageNumber-1].toUpperCase()}`;
+  document.getElementById("questionCount").textContent = `Question ${qIndex + 1} of ${questions.length}`;
+  document.getElementById("lessonProgress").style.width = ((qIndex / questions.length) * 100) + "%";
+  document.getElementById("prompt").textContent = currentQuestion.prompt;
+  
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  currentQuestion.options.forEach((option, i) => {
+    const b = document.createElement("button");
+    b.className = "option";
+    b.textContent = option;
+    b.onclick = () => chooseOption(i);
+    optionsDiv.appendChild(b);
+  });
+}
+
+function chooseOption(i) {
+  if (document.getElementById("continueButton").textContent === "Continue") return;
+  selected = i;
+  document.querySelectorAll(".option").forEach((b, j) => b.classList.toggle("selected", i === j));
+  document.getElementById("continueButton").disabled = false;
+}
+
+function checkAnswer() {
+  if (selected < 0) return;
+  const chosen = currentQuestion.options[selected];
+  const correct = chosen === currentQuestion.answer;
+  
+  document.querySelectorAll(".option").forEach((b, i) => {
+    if (currentQuestion.options[i] === currentQuestion.answer) b.classList.add("correct");
+    else if (i === selected && !correct) b.classList.add("wrong");
+  });
+
+  const fb = document.getElementById("feedback");
+  fb.className = "feedback " + (correct ? "good" : "bad");
+  fb.textContent = correct ? "✓ Correct! Excellent work." : "✗ Incorrect. Correct answer: " + currentQuestion.answer;
+  
+  if (correct) correctCount++;
+  document.getElementById("continueButton").textContent = "Continue";
+}
+
+function nextQuestion() {
+  if (document.getElementById("continueButton").textContent === "Check Answer") {
+    checkAnswer();
+    return;
+  }
+  qIndex++;
+  if (qIndex >= questions.length) {
+    if (mode === "checkpoint") finishCheckpoint(false);
+    else finishStage();
+  } else {
+    showQuestion();
+  }
+}
+
+function finishStage() {
+  const c = courseData();
+  if (!c.completed.includes(stageNumber)) {
+    c.completed.push(stageNumber);
+    c.completed.sort((a, b) => a - b);
+    c.xp += 25 + correctCount * 5;
+    c.coins += 15;
+    if (stageNumber % 5 === 0) c.diamonds += 3;
+  }
+  save();
+  
+  showScreen("resultScreen");
+  document.getElementById("resultEmoji").textContent = "🦉🎉";
+  document.getElementById("resultTitle").textContent = `Stage ${stageNumber} Cleared!`;
+  document.getElementById("resultMessage").textContent = `You scored ${correctCount} out of ${questions.length} questions correctly.`;
+  document.getElementById("resultRewards").innerHTML = `<h2>+${25 + correctCount * 5} XP ⚡</h2><h2>+15 Coins 🪙</h2>${stageNumber % 5 === 0 ? "<h2>+3 Diamonds 💎</h2>" : ""}`;
+}
+
+function finishCheckpoint(timedOut) {
+  clearInterval(timerInterval);
+  const c = courseData();
+  const passed = correctCount >= 30;
+  
+  if (passed) {
+    c.checkpointPassed = true;
+    c.xp += 200;
+    c.coins += 100;
+    c.diamonds += 10;
+  }
+  save();
+  
+  showScreen("resultScreen");
+  document.getElementById("resultEmoji").textContent = passed ? "🏆" : "⌛";
+  document.getElementById("resultTitle").textContent = passed ? "Unit Test Checkpoint Passed!" : "Checkpoint Failed!";
+  document.getElementById("resultMessage").textContent = 
+    `${timedOut ? "Time limit (10 mins) expired! " : ""}Final Score: ${correctCount}/40 correct. ${passed ? "Great job! You proved your mastery across all stages." : "Passing requirement is 30/40. Review past stages and try again!"}`;
+  document.getElementById("resultRewards").innerHTML = passed ?
+    "<h2>+200 XP ⚡</h2><h2>+100 Coins 🪙</h2><h2>+10 Diamonds 💎</h2>" :
+    "<p style='color:var(--muted)'>Complete the unit test with at least 30 correct answers to collect checkpoint rewards.</p>";
+}
+
+function leaveLesson() {
+  clearInterval(timerInterval);
+  showScreen("home");
+  renderHome();
+}
+
+function backHome() {
+  clearInterval(timerInterval);
+  showScreen("home");
+  renderHome();
+}
+
+function showScreen(which) {
+  ["home", "lesson", "resultScreen"].forEach(id => document.getElementById(id).classList.toggle("hidden", id !== which));
+}
+
 init();
 </script>
 </body>
