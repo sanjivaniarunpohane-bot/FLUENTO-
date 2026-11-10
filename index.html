@@ -4,657 +4,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#58cc02">
-<title>Fluento – Ultimate Language Academy</title>
-
+<title>Fluento – Learn Languages</title>
 <style>
-:root{
- --green:#58cc02;--green2:#46a302;--blue:#1cb0f6;
- --ink:#263238;--muted:#718096;--bg:#f7f9fc;
- --card:#fff;--line:#e5eaf0;--gold:#ffc800;
- --red:#ff4b4b;--purple:#a855f7;
-}
-[data-theme="dark"]{
- --bg:#121824;--card:#1e293b;--ink:#f1f5f9;
- --muted:#a0aec0;--line:#334155;
-}
+:root{--green:#58cc02;--darkgreen:#46a302;--blue:#1cb0f6;--ink:#263238;--muted:#718096;--bg:#f7f9fc;--line:#e5eaf0;--gold:#ffc800;--red:#ff4b4b}
 *{box-sizing:border-box}
-body{
- margin:0;background:var(--bg);color:var(--ink);
- font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
- transition:.2s;
-}
-button,input,select{font:inherit}
+body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Arial,sans-serif;color:var(--ink)}
+button,select{font:inherit}
 button{cursor:pointer}
-header{
- position:sticky;top:0;z-index:10;
- background:var(--card);border-bottom:1px solid var(--line);
- padding:12px;
-}
-.top{
- max-width:900px;margin:auto;display:flex;
- justify-content:space-between;align-items:center;gap:8px;
-}
-.logo{font-size:25px;font-weight:950;color:var(--green)}
-.stats{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-.stat{
- background:var(--line);padding:7px 9px;border-radius:12px;
- font-size:13px;font-weight:900;white-space:nowrap;
-}
-main{max-width:850px;margin:18px auto;padding:0 13px 100px}
-.panel{
- background:var(--card);border:1px solid var(--line);
- border-radius:20px;padding:19px;margin-bottom:15px;
- box-shadow:0 3px 12px #00000008;
-}
-h1{font-size:25px;margin:0 0 7px}
-h2{font-size:19px;margin:0 0 10px}
+header{background:white;border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:5}
+.top{max-width:850px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-size:25px;font-weight:900;color:var(--green);letter-spacing:-1px}
+.stats{display:flex;gap:12px;font-weight:800;font-size:14px}
+.stat{background:#f3f6f9;padding:8px 10px;border-radius:12px}
+main{max-width:760px;margin:20px auto;padding:0 14px 40px}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 3px 12px #00000008}
+h1{font-size:26px;margin:0 0 8px}
+h2{font-size:20px;margin:0 0 12px}
 p{color:var(--muted);line-height:1.5}
-label{font-size:14px;font-weight:800}
-select,input{
- width:100%;padding:13px;border:2px solid var(--line);
- border-radius:12px;background:var(--card);color:var(--ink);
- margin:7px 0 13px;
-}
-.primary,.secondary{
- width:100%;border-radius:13px;padding:13px;
- font-weight:900;
-}
-.primary{
- background:var(--green);color:white;border:0;
- box-shadow:0 4px 0 var(--green2);
-}
-.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--green2)}
-.secondary{background:var(--card);color:var(--ink);border:2px solid var(--line)}
-button:disabled{opacity:.45;cursor:not-allowed}
-.tag{
- display:inline-block;background:#e8f8dc;color:#398500;
- padding:5px 10px;border-radius:30px;font-size:11px;font-weight:950;
-}
-.progress{height:11px;background:var(--line);border-radius:20px;overflow:hidden;margin:12px 0}
-.progress div{height:100%;width:0;background:var(--green);transition:.3s}
-.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.stage{
- min-height:76px;border:0;border-radius:14px;background:var(--line);
- color:var(--muted);font-weight:900;padding:7px;
-}
+select{width:100%;padding:13px;border:2px solid var(--line);border-radius:12px;background:white;margin:8px 0 14px}
+.primary{border:0;background:var(--green);color:white;font-weight:900;padding:14px 18px;border-radius:13px;width:100%;box-shadow:0 4px 0 var(--darkgreen)}
+.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--darkgreen)}
+.secondary{border:2px solid var(--line);background:white;color:var(--ink);font-weight:800;padding:12px;border-radius:12px;width:100%}
+.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+.stage{border:0;border-radius:15px;background:#edf1f5;min-height:75px;font-weight:900;color:#89939e}
 .stage.unlocked{background:#e8f8dc;color:#398500;border-bottom:4px solid #a4dc79}
 .stage.done{background:#fff3c4;color:#8b6900;border-bottom:4px solid #e5bd36}
-.stage small{display:block;font-size:10px;margin-top:4px}
-.nav{
- position:fixed;bottom:0;left:0;right:0;z-index:20;
- display:grid;grid-template-columns:repeat(5,1fr);
- background:var(--card);border-top:1px solid var(--line);
- padding:7px 5px calc(7px + env(safe-area-inset-bottom));
-}
-.nav button{
- border:0;background:none;color:var(--muted);
- font-size:11px;font-weight:850;padding:6px 2px;
- border-radius:10px;
-}
-.nav button.active{color:var(--green);background:var(--line)}
-.nav span{display:block;font-size:20px}
+.stage:disabled{opacity:.55;cursor:not-allowed}
+.progress{height:12px;border-radius:20px;background:#edf1f5;overflow:hidden;margin:12px 0}
+.progress>div{height:100%;background:var(--green);width:0%;transition:.3s}
+.tag{display:inline-block;background:#eef8e8;color:#408b00;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:900}
 .hidden{display:none!important}
-.question-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.timer{background:#fff0f0;color:#c62828;padding:8px 11px;border-radius:10px;font-weight:950}
-.ollie{
- display:flex;align-items:center;gap:12px;
- padding:12px;background:var(--line);border-radius:15px;margin:15px 0;
-}
-.owl{font-size:37px;animation:bounce 2s infinite}
-@keyframes bounce{50%{transform:translateY(-5px)}}
-.speech{font-weight:850;font-size:14px}
-.prompt{text-align:center;font-size:21px;font-weight:950;line-height:1.4;margin:22px 0}
+.question-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.timer{font-weight:900;color:var(--red);background:#fff0f0;padding:8px 12px;border-radius:10px}
+.prompt{font-size:23px;font-weight:900;text-align:center;margin:30px 0 20px;line-height:1.4}
 .options{display:grid;gap:10px}
-.option,.match-btn{
- padding:14px;border:2px solid var(--line);border-radius:13px;
- background:var(--card);color:var(--ink);font-weight:850;text-align:left;
- min-height:52px;
-}
-.option.selected,.match-btn.selected{border-color:var(--blue);background:#eaf8ff;color:#174d68}
-.option.correct,.match-btn.correct{border-color:var(--green);background:#eaffdf;color:#286b00}
-.option.wrong{border-color:var(--red);background:#fff0f0;color:#a81919}
-.feedback{padding:13px;border-radius:12px;margin-top:13px;font-weight:850}
-.good{background:#eaffdf;color:#327600}
-.bad{background:#fff0f0;color:#b52d2d}
-.actions{display:flex;gap:10px;margin-top:15px}
-.actions button{flex:1}
-.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.small{font-size:12px;color:var(--muted)}
+.option{border:2px solid var(--line);background:white;border-radius:14px;padding:15px;text-align:left;font-weight:800;min-height:55px}
+.option:active{background:#f4f8fb}
+.option.selected{border-color:var(--blue);background:#edf9ff}
+.option.correct{border-color:var(--green);background:#efffe6}
+.option.wrong{border-color:var(--red);background:#fff0f0}
+.feedback{padding:13px;border-radius:12px;margin:14px 0;font-weight:800}
+.feedback.good{background:#eaffdf;color:#327600}
+.feedback.bad{background:#fff0f0;color:#b52d2d}
+.bottom-actions{display:flex;gap:10px;margin-top:15px}
+.bottom-actions button{flex:1}
+.small{font-size:13px;color:var(--muted)}
 .result{text-align:center;padding:25px 10px}
-.big{font-size:55px}
-.reward{font-size:18px;font-weight:950;margin:8px}
-.friend{
- background:var(--line);border-radius:12px;padding:12px;margin:8px 0;
- display:flex;justify-content:space-between;gap:8px;align-items:center;
-}
-.banner{padding:12px;border-radius:12px;background:#e9f7ff;color:#17638c;font-weight:800;margin-bottom:14px}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:15px}
-@media(max-width:500px){
+.result .big{font-size:48px}
+.result h2{font-size:27px}
+footer{text-align:center;color:#9aa3ad;font-size:12px;padding:20px}
+@media(max-width:480px){
  main{margin:12px auto}
- .panel{padding:15px}
- .stage-grid{grid-template-columns:repeat(2,1fr)}
- .stage{min-height:65px}
- .stats{gap:3px}
- .stat{font-size:11px;padding:6px}
- .logo{font-size:21px}
- .prompt{font-size:19px}
+ .panel{padding:16px;border-radius:16px}
+ .logo{font-size:22px}
+ .stats{gap:5px;font-size:12px}
+ .stat{padding:7px}
+ .stage-grid{gap:7px}
+ .stage{min-height:65px;font-size:12px}
+ .prompt{font-size:21px;margin:24px 0 18px}
+ .option{padding:13px}
 }
 </style>
 </head>
-
 <body>
 <header>
  <div class="top">
-  <div class="logo"><span id="headerAvatar">🦉</span> Fluento</div>
+  <div class="logo">🦉 Fluento</div>
   <div class="stats">
-   <div class="stat">❤️ <span id="hearts">3</span></div>
-   <div class="stat">⚡ <span id="xp">0</span></div>
-   <div class="stat">🪙 <span id="coins">50</span></div>
-   <div class="stat">💎 <span id="diamonds">5</span></div>
+   <div class="stat">⚡ <span id="xp">0</span> XP</div>
+   <div class="stat">🪙 <span id="coins">0</span></div>
+   <div class="stat">💎 <span id="diamonds">0</span></div>
   </div>
  </div>
 </header>
 
 <main>
- <div id="notification" class="banner">🦉 Welcome back! Your next lesson is waiting.</div>
-
- <!-- LEARN -->
- <section id="tab-learn">
+ <section id="home">
   <div class="panel">
-   <span class="tag">DIRECTED BY NIRMIT POHANE</span>
-   <h1>Fluento Language Academy 🌍</h1>
-   <p>Learn new words, practise pronunciation, build sentences and unlock new stages.</p>
-   <label>Choose your learning language</label>
-   <select id="languageSelect" onchange="changeLanguage()"></select>
-   <button class="primary" onclick="renderHome()">Continue Learning →</button>
+   <span class="tag">DIRECTED BY MR. NIRMIT POHANE</span>
+   <h1>Welcome to Fluento! 🌍</h1>
+   <p>Choose a language, learn step by step, earn rewards and test your knowledge.</p>
+   <label for="language"><b>Choose your learning language</b></label>
+   <select id="language"></select>
+   <button class="primary" onclick="startLanguage()">Start learning →</button>
+   <p class="small">Your progress is saved on this device.</p>
   </div>
 
   <div class="panel">
-   <h2>📚 Your Learning Journey</h2>
-   <div id="courseTitle"></div>
+   <h2>📚 Your learning journey</h2>
+   <div id="courseTitle">Choose a language to begin.</div>
    <div class="progress"><div id="progressBar"></div></div>
+   <div id="stageGrid" class="stage-grid"></div>
    <p id="progressText" class="small"></p>
-   <div class="stage-grid" id="stageGrid"></div>
-   <button id="checkpointButton" class="primary hidden" style="margin-top:15px" onclick="startCheckpoint()">
-    📝 Unit Checkpoint • 40 Questions • 10 Minutes
-   </button>
+   <button id="checkpointButton" class="primary hidden" onclick="startCheckpoint()">📝 Take the 40-question checkpoint</button>
   </div>
-
   <div class="panel">
-   <h2>🏅 Your Achievements</h2>
-   <p id="achievementText"></p>
+   <h2>🏆 Your achievements</h2>
+   <p id="achievementText">Complete stages to earn XP, coins and diamonds.</p>
   </div>
  </section>
 
- <!-- PRACTICE -->
- <section id="tab-practice" class="hidden">
-  <div class="panel">
-   <h1>🎯 Practice Centre</h1>
-   <p>Revise the vocabulary you have already learned.</p>
-   <button class="primary" onclick="startPractice()">Start Vocabulary Revision</button>
-  </div>
- </section>
-
- <!-- LEAGUE -->
- <section id="tab-league" class="hidden">
-  <div class="panel">
-   <h1>🏆 Weekly League</h1>
-   <p>Your personal XP ranking on this device.</p>
-   <div id="leaderboardList"></div>
-   <p class="small">This is a local leaderboard. A real global league needs an online database and user accounts.</p>
-  </div>
- </section>
-
- <!-- FRIENDS -->
- <section id="tab-friends" class="hidden">
-  <div class="panel">
-   <h1>👥 Friends Network</h1>
-   <p>Your Fluento ID: <b id="myUserId"></b></p>
-   <input id="friendSearchId" placeholder="Enter your friend's real Fluento ID">
-   <button class="primary" onclick="addFriend()">Send Friend Request</button>
-   <p class="small">Friend requests need online accounts and a secure database. This offline demo does not create fake users.</p>
-  </div>
-  <div class="panel">
-   <h2>Your Friends</h2>
-   <div id="friendsList"></div>
-  </div>
- </section>
-
- <!-- PROFILE -->
- <section id="tab-profile" class="hidden">
-  <div class="panel" style="text-align:center">
-   <div id="displayProfileAvatar" style="font-size:60px">🦉</div>
-   <h1 id="displayProfileName">Learner</h1>
-   <p class="small">ID: <b id="profileId"></b> • Level <b id="userLevel">1</b></p>
-   <p>🔥 <span id="streak">1</span> day streak • ⚡ <span id="profileXp">0</span> XP</p>
-   <p>Completed stages: <b id="profileStages">0</b></p>
-  </div>
-  <div class="panel">
-   <h2>⚙️ Profile Settings</h2>
-   <label>Your name</label>
-   <input id="nameInput" maxlength="30" placeholder="Enter your name">
-   <label>Choose your avatar</label>
-   <select id="avatarSelect">
-    <option>🦉</option><option>🦊</option><option>🐼</option>
-    <option>🦁</option><option>🦅</option><option>🐯</option>
-   </select>
-   <button class="primary" onclick="saveProfile()">Save Profile</button>
-   <label style="display:block;margin-top:18px">App theme</label>
-   <select id="themeSelect" onchange="setTheme()">
-    <option value="light">Light Mode</option>
-    <option value="dark">Dark Mode</option>
-   </select>
-  </div>
-  <div class="panel">
-   <h2>📊 Learning Statistics</h2>
-   <p id="statistics"></p>
-  </div>
- </section>
-
- <!-- LESSON -->
- <section id="lessonScreen" class="hidden">
+ <section id="lesson" class="hidden">
   <div class="panel">
    <div class="question-head">
     <div>
      <span class="tag" id="lessonTag">STAGE 1</span>
-     <div class="small" id="questionCount"></div>
+     <div class="small" id="questionCount">Question 1 of 4</div>
     </div>
-    <div id="timer" class="timer hidden">10:00</div>
+    <div class="timer hidden" id="timer">10:00</div>
    </div>
    <div class="progress"><div id="lessonProgress"></div></div>
-   <div class="ollie">
-    <div class="owl" id="ollieAvatar">🦉</div>
-    <div class="speech" id="ollieSpeech">Let's learn something new!</div>
-   </div>
    <div class="prompt" id="prompt"></div>
-   <div id="audioContainer" class="hidden" style="text-align:center;margin-bottom:12px">
-    <button class="secondary" style="width:auto" onclick="playPronunciation()">🔊 Listen</button>
-   </div>
-   <div id="optionsContainer" class="options"></div>
-   <div id="typeContainer" class="hidden">
-    <input id="typeInput" placeholder="Type your answer">
-   </div>
-   <div id="matchContainer" class="hidden">
-    <p class="small">Select the matching pairs.</p>
-    <div class="match-grid" id="matchGrid"></div>
-   </div>
+   <div class="options" id="options"></div>
    <div id="feedback" class="hidden"></div>
-   <div class="actions">
+   <div class="bottom-actions">
     <button class="secondary" onclick="leaveLesson()">Exit</button>
-    <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check Answer</button>
+    <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check answer</button>
    </div>
   </div>
+  <p class="small" id="lessonNote">Choose the correct answer.</p>
  </section>
 
- <!-- HEARTS -->
- <section id="heartsScreen" class="hidden">
-  <div class="panel result">
-   <div class="big">💔</div>
-   <h2>Out of Hearts!</h2>
-   <p>You have used all three hearts in this lesson.</p>
-   <button class="primary" onclick="buyHeart()">Buy one heart • 10 coins 🪙</button>
-   <button class="secondary" style="margin-top:12px" onclick="restartStage()">Restart this stage</button>
-   <button class="secondary" style="margin-top:12px" onclick="leaveLesson()">Return home</button>
-  </div>
- </section>
-
- <!-- RESULTS -->
  <section id="resultScreen" class="hidden">
   <div class="panel result">
    <div class="big" id="resultEmoji">🎉</div>
-   <h2 id="resultTitle">Completed!</h2>
+   <h2 id="resultTitle">Stage completed!</h2>
    <p id="resultMessage"></p>
    <div id="resultRewards"></div>
-   <button class="primary" onclick="backHome()">Continue Journey →</button>
+   <button class="primary" onclick="backHome()">Continue</button>
   </div>
  </section>
 </main>
-
-<nav class="nav">
- <button class="active" onclick="switchTab('learn',this)"><span>📖</span>Learn</button>
- <button onclick="switchTab('practice',this)"><span>🎯</span>Practice</button>
- <button onclick="switchTab('league',this)"><span>🏆</span>League</button>
- <button onclick="switchTab('friends',this)"><span>👥</span>Friends</button>
- <button onclick="switchTab('profile',this)"><span>⚙️</span>Profile</button>
-</nav>
-
-<footer>Fluento • Director: Nirmit Pohane • Learn Languages. Unlock Your World.</footer>
+<footer>Fluento • Learn a little every day 🌱</footer>
 
 <script>
-/* ---------------- LANGUAGE STARTER DATA ----------------
-   English meanings are the base language.
-   Translation data should be reviewed by native speakers
-   before a public course launch.
---------------------------------------------------------- */
-
-const LANGUAGES={
-"English":[["Hello","Hello"],["Thank you","Thank you"],["Yes","Yes"],["No","No"],["Water","Water"],["Book","Book"],["House","House"],["Friend","Friend"],["Good morning","Good morning"],["Goodbye","Goodbye"]],
-"Hindi":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","हाँ"],["No","नहीं"],["Water","पानी"],["Book","किताब"],["House","घर"],["Friend","दोस्त"],["Good morning","सुप्रभात"],["Goodbye","अलविदा"]],
-"Marathi":[["Hello","नमस्कार"],["Thank you","धन्यवाद"],["Yes","हो"],["No","नाही"],["Water","पाणी"],["Book","पुस्तक"],["House","घर"],["Friend","मित्र"],["Good morning","शुभ सकाळ"],["Goodbye","पुन्हा भेटू"]],
-"Sanskrit":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","आम्"],["No","न"],["Water","जलम्"],["Book","पुस्तकम्"],["House","गृहम्"],["Friend","मित्रम्"],["Good morning","सुप्रभातम्"],["Goodbye","पुनः मिलामः"]],
+/*
+  FLUENTO STARTER CURRICULUM
+  Each language contains 10 vocabulary units.
+  Each unit generates four differently worded exercises.
+  Checkpoint: 40 questions from the 10 previously completed units.
+*/
+const LANGUAGES = {
 "Spanish":[["Hello","Hola"],["Thank you","Gracias"],["Yes","Sí"],["No","No"],["Water","Agua"],["Book","Libro"],["House","Casa"],["Friend","Amigo"],["Good morning","Buenos días"],["Goodbye","Adiós"]],
 "French":[["Hello","Bonjour"],["Thank you","Merci"],["Yes","Oui"],["No","Non"],["Water","Eau"],["Book","Livre"],["House","Maison"],["Friend","Ami"],["Good morning","Bonjour"],["Goodbye","Au revoir"]],
 "German":[["Hello","Hallo"],["Thank you","Danke"],["Yes","Ja"],["No","Nein"],["Water","Wasser"],["Book","Buch"],["House","Haus"],["Friend","Freund"],["Good morning","Guten Morgen"],["Goodbye","Auf Wiedersehen"]],
 "Italian":[["Hello","Ciao"],["Thank you","Grazie"],["Yes","Sì"],["No","No"],["Water","Acqua"],["Book","Libro"],["House","Casa"],["Friend","Amico"],["Good morning","Buongiorno"],["Goodbye","Arrivederci"]],
-"Portuguese":[["Hello","Olá"],["Thank you","Obrigado"],["Yes","Sim"],["No","Não"],["Water","Água"],["Book","Livro"],["House","Casa"],["Friend","Amigo"],["Good morning","Bom dia"],["Goodbye","Tchau"]],
+"Portuguese":[["Hello","Olá"],["Thank you","Obrigado / Obrigada"],["Yes","Sim"],["No","Não"],["Water","Água"],["Book","Livro"],["House","Casa"],["Friend","Amigo"],["Good morning","Bom dia"],["Goodbye","Tchau"]],
 "Japanese":[["Hello","こんにちは"],["Thank you","ありがとうございます"],["Yes","はい"],["No","いいえ"],["Water","水"],["Book","本"],["House","家"],["Friend","友達"],["Good morning","おはようございます"],["Goodbye","さようなら"]],
 "Korean":[["Hello","안녕하세요"],["Thank you","감사합니다"],["Yes","네"],["No","아니요"],["Water","물"],["Book","책"],["House","집"],["Friend","친구"],["Good morning","좋은 아침입니다"],["Goodbye","안녕히 가세요"]],
-"Chinese":[["Hello","你好"],["Thank you","谢谢"],["Yes","是"],["No","不是"],["Water","水"],["Book","书"],["House","房子"],["Friend","朋友"],["Good morning","早上好"],["Goodbye","再见"]],
+"Chinese (Mandarin)":[["Hello","你好"],["Thank you","谢谢"],["Yes","是"],["No","不是"],["Water","水"],["Book","书"],["House","房子"],["Friend","朋友"],["Good morning","早上好"],["Goodbye","再见"]],
+"Hindi":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","हाँ"],["No","नहीं"],["Water","पानी"],["Book","किताब"],["House","घर"],["Friend","दोस्त"],["Good morning","सुप्रभात"],["Goodbye","अलविदा"]],
+"Marathi":[["Hello","नमस्कार"],["Thank you","धन्यवाद"],["Yes","हो"],["No","नाही"],["Water","पाणी"],["Book","पुस्तक"],["House","घर"],["Friend","मित्र"],["Good morning","शुभ सकाळ"],["Goodbye","पुन्हा भेटू"]],
 "Arabic":[["Hello","مرحبا"],["Thank you","شكرا"],["Yes","نعم"],["No","لا"],["Water","ماء"],["Book","كتاب"],["House","منزل"],["Friend","صديق"],["Good morning","صباح الخير"],["Goodbye","مع السلامة"]],
 "Russian":[["Hello","Здравствуйте"],["Thank you","Спасибо"],["Yes","Да"],["No","Нет"],["Water","Вода"],["Book","Книга"],["House","Дом"],["Friend","Друг"],["Good morning","Доброе утро"],["Goodbye","До свидания"]],
 "Turkish":[["Hello","Merhaba"],["Thank you","Teşekkürler"],["Yes","Evet"],["No","Hayır"],["Water","Su"],["Book","Kitap"],["House","Ev"],["Friend","Arkadaş"],["Good morning","Günaydın"],["Goodbye","Hoşça kal"]],
 "Dutch":[["Hello","Hallo"],["Thank you","Dank je"],["Yes","Ja"],["No","Nee"],["Water","Water"],["Book","Boek"],["House","Huis"],["Friend","Vriend"],["Good morning","Goedemorgen"],["Goodbye","Tot ziens"]],
-"Indonesian":[["Hello","Halo"],["Thank you","Terima kasih"],["Yes","Ya"],["No","Tidak"],["Water","Air"],["Book","Buku"],["House","Rumah"],["Friend","Teman"],["Good morning","Selamat pagi"],["Goodbye","Selamat tinggal"]],
+"Swedish":[["Hello","Hej"],["Thank you","Tack"],["Yes","Ja"],["No","Nej"],["Water","Vatten"],["Book","Bok"],["House","Hus"],["Friend","Vän"],["Good morning","God morgon"],["Goodbye","Hej då"]],
+"Greek":[["Hello","Γεια σας"],["Thank you","Ευχαριστώ"],["Yes","Ναι"],["No","Όχι"],["Water","Νερό"],["Book","Βιβλίο"],["House","Σπίτι"],["Friend","Φίλος"],["Good morning","Καλημέρα"],["Goodbye","Αντίο"]],
 "Thai":[["Hello","สวัสดี"],["Thank you","ขอบคุณ"],["Yes","ใช่"],["No","ไม่"],["Water","น้ำ"],["Book","หนังสือ"],["House","บ้าน"],["Friend","เพื่อน"],["Good morning","อรุณสวัสดิ์"],["Goodbye","ลาก่อน"]],
-"Vietnamese":[["Hello","Xin chào"],["Thank you","Cảm ơn"],["Yes","Vâng"],["No","Không"],["Water","Nước"],["Book","Sách"],["House","Nhà"],["Friend","Bạn"],["Good morning","Chào buổi sáng"],["Goodbye","Tạm biệt"]],
-"Bengali":[["Hello","নমস্কার"],["Thank you","ধন্যবাদ"],["Yes","হ্যাঁ"],["No","না"],["Water","জল"],["Book","বই"],["House","বাড়ি"],["Friend","বন্ধু"],["Good morning","সুপ্রভাত"],["Goodbye","বিদায়"]]
+"Indonesian":[["Hello","Halo"],["Thank you","Terima kasih"],["Yes","Ya"],["No","Tidak"],["Water","Air"],["Book","Buku"],["House","Rumah"],["Friend","Teman"],["Good morning","Selamat pagi"],["Goodbye","Selamat tinggal"]],
+"Bengali":[["Hello","নমস্কার"],["Thank you","ধন্যবাদ"],["Yes","হ্যাঁ"],["No","না"],["Water","জল"],["Book","বই"],["House","বাড়ি"],["Friend","বন্ধু"],["Good morning","সুপ্রভাত"],["Goodbye","বিদায়"]],
+"Urdu":[["Hello","السلام علیکم"],["Thank you","شکریہ"],["Yes","ہاں"],["No","نہیں"],["Water","پانی"],["Book","کتاب"],["House","گھر"],["Friend","دوست"],["Good morning","صبح بخیر"],["Goodbye","خدا حافظ"]]
 };
 
-const STAGE_NAMES=[
- "First Words","Greetings","Everyday Words","Useful Expressions",
- "People & Places","Daily Conversation","Listening Practice",
- "Speaking Practice","Revision Challenge","Mastery Review"
-];
+const STORAGE_KEY="fluento_progress_v2";
+let saved={};
+try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}catch(e){saved={}}
+let language="Spanish",questions=[],qIndex=0,selected=-1,correctCount=0;
+let mode="stage",stageNumber=1,currentQuestion=null,timerInterval=null,timeLeft=600;
+let checkpointQuestions=[];
 
-const KEY="fluento_ultimate_v1";
-const defaultState={
- name:"Learner",avatar:"🦉",userId:"FL-"+Math.random().toString(36).slice(2,7).toUpperCase(),
- lang:"Spanish",xp:0,coins:50,diamonds:5,hearts:3,streak:1,
- theme:"light",friends:[],dailyXp:[0,0,0,0,0],accuracy:{right:0,total:0},
- courses:{}
-};
-let saved={...defaultState};
-try{
- const data=JSON.parse(localStorage.getItem(KEY)||"null");
- if(data)saved={...saved,...data};
-}catch(e){}
-if(!LANGUAGES[saved.lang])saved.lang="Spanish";
-
-let currentLang=saved.lang;
-let stageNumber=1,mode="stage",questions=[],qIndex=0;
-let currentQuestion=null,selectedOption=-1,correctCount=0;
-let mistakes=0,answered=false,timerInterval=null,timeLeft=600;
-let matchFirst=null,matchRemaining=0,matchComplete=false;
-
-function course(){
- if(!saved.courses[currentLang]){
-  saved.courses[currentLang]={completed:[],checkpointPassed:false};
- }
- return saved.courses[currentLang];
-}
 function save(){
- localStorage.setItem(KEY,JSON.stringify(saved));
+ localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
  updateStats();
 }
-function shuffle(a){
- const b=[...a];
- for(let i=b.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [b[i],b[j]]=[b[j],b[i]];
- }
- return b;
-}
-function esc(s){
- return String(s).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
+function courseData(){
+ if(!saved[language])saved[language]={completed:[],xp:0,coins:0,diamonds:0,checkpoint:false};
+ return saved[language];
 }
 function updateStats(){
- document.getElementById("hearts").textContent=saved.hearts;
- document.getElementById("xp").textContent=saved.xp;
- document.getElementById("coins").textContent=saved.coins;
- document.getElementById("diamonds").textContent=saved.diamonds;
- document.getElementById("headerAvatar").textContent=saved.avatar;
- document.getElementById("displayProfileAvatar").textContent=saved.avatar;
- document.getElementById("displayProfileName").textContent=saved.name;
- document.getElementById("profileId").textContent=saved.userId;
- document.getElementById("myUserId").textContent=saved.userId;
- document.getElementById("profileXp").textContent=saved.xp;
- document.getElementById("userLevel").textContent=1+Math.floor(saved.xp/250);
- document.getElementById("streak").textContent=saved.streak;
- document.getElementById("profileStages").textContent=Object.values(saved.courses).reduce((n,c)=>n+c.completed.length,0);
- document.getElementById("statistics").textContent=
-  `${saved.accuracy.right} correct answers from ${saved.accuracy.total} attempts.`;
+ const c=courseData();
+ document.getElementById("xp").textContent=c.xp;
+ document.getElementById("coins").textContent=c.coins;
+ document.getElementById("diamonds").textContent=c.diamonds;
+}
+function shuffle(arr){
+ const a=[...arr];
+ for(let i=a.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
+}
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function buildQuestions(wordIndex){
+ const pair=LANGUAGES[language][wordIndex];
+ const meaning=pair[0],translated=pair[1];
+ const others=LANGUAGES[language].filter((x,i)=>i!==wordIndex);
+ const wrongMeanings=shuffle(others.map(x=>x[0])).slice(0,3);
+ const wrongTranslations=shuffle(others.map(x=>x[1])).slice(0,3);
+ const forms=[
+  {prompt:`What does “${translated}” mean?`,answer:meaning,options:[meaning,...wrongMeanings]},
+  {prompt:`How do you say “${meaning}” in ${language}?`,answer:translated,options:[translated,...wrongTranslations]},
+  {prompt:`Choose the correct meaning of this ${language} word: “${translated}”.`,answer:meaning,options:[meaning,...wrongMeanings]},
+  {prompt:`You want to say “${meaning}”. Which ${language} expression should you use?`,answer:translated,options:[translated,...wrongTranslations]}
+ ];
+ return forms.map((f,n)=>({
+  id:`${language}-${wordIndex}-${n}`,
+  prompt:f.prompt,answer:f.answer,options:shuffle(f.options)
+ }));
+}
+function allCourseQuestions(){
+ return LANGUAGES[language].flatMap((_,i)=>buildQuestions(i));
 }
 function init(){
- const sel=document.getElementById("languageSelect");
- sel.innerHTML=Object.keys(LANGUAGES).map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join("");
- sel.value=currentLang;
- document.getElementById("nameInput").value=saved.name;
- document.getElementById("avatarSelect").value=saved.avatar;
- document.getElementById("themeSelect").value=saved.theme;
- document.body.dataset.theme=saved.theme;
- renderHome();renderFriends();renderLeaderboard();updateStats();
+ const select=document.getElementById("language");
+ select.innerHTML=Object.keys(LANGUAGES).map(l=>`<option>${escapeHTML(l)}</option>`).join("");
+ select.value=language;
+ select.addEventListener("change",()=>{language=select.value;renderHome()});
+ renderHome();
 }
-function changeLanguage(){
- currentLang=document.getElementById("languageSelect").value;
- saved.lang=currentLang;save();renderHome();
+function startLanguage(){
+ language=document.getElementById("language").value;
+ renderHome();
+ document.getElementById("courseTitle").scrollIntoView({behavior:"smooth",block:"center"});
 }
 function renderHome(){
- const c=course();
- const count=c.completed.length;
- document.getElementById("courseTitle").innerHTML=`<b>${esc(currentLang)}</b> • ${count}/10 stages completed`;
- document.getElementById("progressBar").style.width=(count*10)+"%";
- document.getElementById("progressText").textContent=`${count*10}% course progress`;
- const grid=document.getElementById("stageGrid");grid.innerHTML="";
+ const c=courseData();
+ document.getElementById("language").value=language;
+ document.getElementById("courseTitle").innerHTML=`<b>${escapeHTML(language)}</b> • ${c.completed.length}/10 stages completed`;
+ document.getElementById("progressBar").style.width=(c.completed.length*10)+"%";
+ document.getElementById("progressText").textContent=`${c.completed.length*10}% course progress`;
+ document.getElementById("stageGrid").innerHTML="";
  for(let n=1;n<=10;n++){
   const done=c.completed.includes(n);
   const unlocked=n===1||c.completed.includes(n-1);
   const b=document.createElement("button");
   b.className="stage "+(done?"done":unlocked?"unlocked":"");
   b.disabled=!unlocked;
-  b.innerHTML=`${done?"⭐":unlocked?"📖":"🔒"}<small>STAGE ${n}</small><small>${STAGE_NAMES[n-1]}</small>`;
-  b.onclick=()=>startStage(n);grid.appendChild(b);
+  b.innerHTML=(done?"⭐":unlocked?"📖":"🔒")+`<br>Stage ${n}`;
+  b.onclick=()=>startStage(n);
+  document.getElementById("stageGrid").appendChild(b);
  }
- document.getElementById("checkpointButton").classList.toggle("hidden",count<10);
+ const cp=document.getElementById("checkpointButton");
+ cp.classList.toggle("hidden",c.completed.length<10);
  document.getElementById("achievementText").textContent=
-  `${count} stages completed in ${currentLang}. Total XP: ${saved.xp}.`;
+  `${c.completed.length} stages completed • ${c.xp} XP earned • ${c.coins} coins collected.`;
  updateStats();
 }
-function changeTab(tab,button){
- ["learn","practice","league","friends","profile"].forEach(t=>{
-  document.getElementById("tab-"+t).classList.add("hidden");
- });
- document.getElementById("tab-"+tab).classList.remove("hidden");
- document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
- button.classList.add("active");
- if(tab==="profile")updateStats();
- if(tab==="league")renderLeaderboard();
- if(tab==="friends")renderFriends();
-}
-function switchTab(tab,button){changeTab(tab,button)}
-
-/* Every stage introduces a different vocabulary item.
-   Four distinct question formats are generated per item.
-   The checkpoint revises all 40 earlier questions. */
-function questionsForWord(index){
- const base=LANGUAGES[currentLang];
- const pair=base[index];
- const english=pair[0],foreign=pair[1];
- const other=base.filter((_,i)=>i!==index);
- const wrongEnglish=shuffle(other.map(p=>p[0])).slice(0,3);
- const wrongForeign=shuffle(other.map(p=>p[1])).slice(0,3);
-
- const items=[
-  {
-   id:`${currentLang}-${index}-meaning`,
-   type:"mcq",
-   prompt:`What is the English meaning of “${foreign}”?`,
-   answer:english,
-   options:shuffle([english,...wrongEnglish]),
-   audio:foreign
-  },
-  {
-   id:`${currentLang}-${index}-translation`,
-   type:"mcq",
-   prompt:`How do you say “${english}” in ${currentLang}?`,
-   answer:foreign,
-   options:shuffle([foreign,...wrongForeign]),
-   audio:foreign
-  },
-  {
-   id:`${currentLang}-${index}-typing`,
-   type:"type",
-   prompt:`Type the ${currentLang} translation for “${english}”.`,
-   answer:foreign,
-   audio:foreign
-  },
-  {
-   id:`${currentLang}-${index}-listening`,
-   type:"listening",
-   prompt:`Listen to the pronunciation. Choose its meaning.`,
-   answer:english,
-   options:shuffle([english,...wrongEnglish]),
-   audio:foreign
-  }
- ];
- return items;
-}
-function buildStageQuestions(n){
- return questionsForWord(n-1);
-}
 function startStage(n){
- clearInterval(timerInterval);
- stageNumber=n;mode="stage";qIndex=0;correctCount=0;mistakes=0;
- saved.hearts=3;save();
- questions=buildStageQuestions(n);
- showScreen("lessonScreen");
+ stageNumber=n;mode="stage";qIndex=0;correctCount=0;
+ // Each stage teaches one new vocabulary unit through four different exercises.
+ questions=buildQuestions(n-1);
+ showScreen("lesson");
  document.getElementById("timer").classList.add("hidden");
- setOllie("Stage "+n+"! Let's learn a new word.");
+ document.getElementById("lessonNote").textContent="Learn the new word carefully. Each stage introduces a new vocabulary unit.";
  showQuestion();
 }
 function startCheckpoint(){
- if(course().completed.length<10)return;
- clearInterval(timerInterval);
- mode="checkpoint";qIndex=0;correctCount=0;mistakes=0;
- timeLeft=600;
- // All ten units, four question types each: exactly 40 questions.
- questions=shuffle(LANGUAGES[currentLang].flatMap((_,i)=>questionsForWord(i)));
- showScreen("lessonScreen");
+ const c=courseData();
+ if(c.completed.length<10)return;
+ mode="checkpoint";qIndex=0;correctCount=0;timeLeft=600;
+ // All 40 questions are generated from the 10 earlier learning units.
+ // They are not taken from future stages.
+ checkpointQuestions=allCourseQuestions();
+ questions=shuffle(checkpointQuestions);
+ showScreen("lesson");
+ document.getElementById("lessonTag").textContent="CHECKPOINT UNIT TEST";
  document.getElementById("timer").classList.remove("hidden");
- setOllie("Checkpoint time! You have 10 minutes for 40 questions.");
- startTimer();showQuestion();
+ document.getElementById("lessonNote").textContent="40 questions • 10 minutes • Review of all 10 completed stages.";
+ startTimer();
+ showQuestion();
 }
 function startTimer(){
- clearInterval(timerInterval);updateTimer();
+ clearInterval(timerInterval);
+ updateTimer();
  timerInterval=setInterval(()=>{
-  timeLeft--;updateTimer();
-  if(timeLeft<=0){clearInterval(timerInterval);finishCheckpoint(true);}
+  timeLeft--;
+  updateTimer();
+  if(timeLeft<=0){
+   clearInterval(timerInterval);
+   finishCheckpoint(true);
+  }
  },1000);
 }
 function updateTimer(){
- document.getElementById("timer").textContent=
-  `${Math.floor(timeLeft/60)}:${String(timeLeft%60).padStart(2,"0")}`;
-}
-function setOllie(message){
- document.getElementById("ollieSpeech").textContent=message;
+ const m=Math.floor(timeLeft/60),s=timeLeft%60;
+ document.getElementById("timer").textContent=`${m}:${String(s).padStart(2,"0")}`;
 }
 function showQuestion(){
- answered=false;selectedOption=-1;matchFirst=null;matchComplete=false;
+ selected=-1;
  currentQuestion=questions[qIndex];
- const q=currentQuestion;
- const feedback=document.getElementById("feedback");
- feedback.className="hidden";feedback.textContent="";
- const btn=document.getElementById("continueButton");
- btn.disabled=true;btn.textContent="Check Answer";
- document.getElementById("lessonTag").textContent=
-  mode==="checkpoint"?"UNIT CHECKPOINT":`STAGE ${stageNumber} • ${currentLang}`;
- document.getElementById("questionCount").textContent=
-  `Question ${qIndex+1} of ${questions.length}`;
- document.getElementById("lessonProgress").style.width=(qIndex/questions.length*100)+"%";
- document.getElementById("prompt").textContent=q.prompt;
- ["optionsContainer","typeContainer","matchContainer","audioContainer"].forEach(id=>
-  document.getElementById(id).classList.add("hidden")
- );
- if(q.audio)document.getElementById("audioContainer").classList.remove("hidden");
- if(q.type==="mcq"||q.type==="listening"){
-  const box=document.getElementById("optionsContainer");
-  box.classList.remove("hidden");box.innerHTML="";
-  q.options.forEach((option,i)=>{
-   const b=document.createElement("button");
-   b.className="option";b.textContent=option;
-   b.onclick=()=>selectOption(i);box.appendChild(b);
-  });
- }else if(q.type==="type"){
-  document.getElementById("typeContainer").classList.remove("hidden");
-  const input=document.getElementById("typeInput");input.value="";
-  input.oninput=()=>btn.disabled=!input.value.trim();
- }else if(q.type==="match"){
-  document.getElementById("matchContainer").classList.remove("hidden");
-  setupMatch(q.pairs);
- }
+ document.getElementById("feedback").className="hidden";
+ document.getElementById("feedback").textContent="";
+ document.getElementById("continueButton").disabled=true;
+ document.getElementById("continueButton").textContent="Check answer";
+ document.getElementById("lessonTag").textContent=mode==="checkpoint"?"CHECKPOINT UNIT TEST":`STAGE ${stageNumber} • ${language.toUpperCase()}`;
+ document.getElementById("questionCount").textContent=`Question ${qIndex+1} of ${questions.length}`;
+ document.getElementById("lessonProgress").style.width=((qIndex/questions.length)*100)+"%";
+ document.getElementById("prompt").textContent=currentQuestion.prompt;
+ document.getElementById("options").innerHTML="";
+ currentQuestion.options.forEach((option,i)=>{
+  const b=document.createElement("button");
+  b.className="option";
+  b.textContent=option;
+  b.onclick=()=>chooseOption(i);
+  document.getElementById("options").appendChild(b);
+ });
 }
-function selectOption(i){
- if(answered)return;
- selectedOption=i;
+function chooseOption(i){
+ if(document.getElementById("continueButton").textContent==="Continue")return;
+ selected=i;
  document.querySelectorAll(".option").forEach((b,j)=>b.classList.toggle("selected",i===j));
  document.getElementById("continueButton").disabled=false;
 }
-function playPronunciation(){
- if(!currentQuestion?.audio)return;
- if(!("speechSynthesis" in window)){
-  alert("Text-to-speech is not supported in this browser.");return;
- }
- window.speechSynthesis.cancel();
- const utterance=new SpeechSynthesisUtterance(currentQuestion.audio);
- const map={
-  Spanish:"es-ES",French:"fr-FR",German:"de-DE",Italian:"it-IT",
-  Portuguese:"pt-PT",Japanese:"ja-JP",Korean:"ko-KR",Chinese:"zh-CN",
-  Hindi:"hi-IN",Marathi:"mr-IN",Sanskrit:"hi-IN",Arabic:"ar-SA",
-  Russian:"ru-RU",Turkish:"tr-TR",Dutch:"nl-NL",Indonesian:"id-ID",
-  Thai:"th-TH",Vietnamese:"vi-VN",Bengali:"bn-IN",English:"en-US"
- };
- utterance.lang=map[currentLang]||"en-US";
- speechSynthesis.speak(utterance);
-}
 function checkAnswer(){
- if(answered)return;
- const q=currentQuestion;
- let correct=false;
- if(q.type==="mcq"||q.type==="listening"){
-  if(selectedOption<0)return;
-  correct=q.options[selectedOption]===q.answer;
-  document.querySelectorAll(".option").forEach((b,i)=>{
-   if(q.options[i]===q.answer)b.classList.add("correct");
-   else if(i===selectedOption)b.classList.add("wrong");
-  });
- }else if(q.type==="type"){
-  const val=document.getElementById("typeInput").value.trim();
-  correct=normalise(val)===normalise(q.answer);
- }
- processAnswer(correct);
-}
-function normalise(s){
- return String(s).normalize("NFC").trim().toLocaleLowerCase()
- .replace(/[.!?،,؛؛]/g,"").replace(/\s+/g," ");
-}
-function processAnswer(correct){
- answered=true;
- saved.accuracy.total++;
- if(correct){
-  correctCount++;saved.accuracy.right++;
-  setOllie("Wonderful! You got it right! 🎉");
- }else{
-  if(mode==="stage"){
-   mistakes++;saved.hearts=Math.max(0,3-mistakes);
-  }
-  setOllie("Good try! Learn from the correction and keep going.");
- }
- save();
+ if(selected<0)return;
+ const chosen=currentQuestion.options[selected];
+ const correct=chosen===currentQuestion.answer;
+ document.querySelectorAll(".option").forEach((b,i)=>{
+  if(currentQuestion.options[i]===currentQuestion.answer)b.classList.add("correct");
+  else if(i===selected&&!correct)b.classList.add("wrong");
+ });
  const fb=document.getElementById("feedback");
  fb.className="feedback "+(correct?"good":"bad");
- fb.textContent=correct?"✓ Correct! Excellent work.":"✗ Correct answer: "+currentQuestion.answer;
+ fb.textContent=correct?"✓ Excellent! That is correct.":"Not quite. Correct answer: "+currentQuestion.answer;
+ if(correct)correctCount++;
  document.getElementById("continueButton").textContent="Continue";
- document.getElementById("continueButton").disabled=false;
- if(!correct&&mode==="stage"&&mistakes>=3){
-  document.getElementById("continueButton").textContent="Continue";
- }
 }
 function nextQuestion(){
- if(!answered){checkAnswer();return;}
- if(mode==="stage"&&mistakes>=3){
-  showScreen("heartsScreen");return;
+ if(document.getElementById("continueButton").textContent==="Check answer"){
+  checkAnswer();return;
  }
  qIndex++;
  if(qIndex>=questions.length){
@@ -663,121 +345,54 @@ function nextQuestion(){
  }else showQuestion();
 }
 function finishStage(){
- const c=course();
- const isNew=!c.completed.includes(stageNumber);
- let xpReward=0;
- if(isNew){
-  c.completed.push(stageNumber);c.completed.sort((a,b)=>a-b);
-  xpReward=30+correctCount*5;
-  saved.xp+=xpReward;saved.coins+=15;saved.diamonds+=1;
-  if(stageNumber===5||stageNumber===10)saved.diamonds+=2;
+ const c=courseData();
+ if(!c.completed.includes(stageNumber)){
+  c.completed.push(stageNumber);
+  c.completed.sort((a,b)=>a-b);
+  c.xp+=20+correctCount*5;
+  c.coins+=10;
+  if(stageNumber%5===0)c.diamonds+=2;
  }
- saved.dailyXp[4]=(saved.dailyXp[4]||0)+xpReward;
  save();
  showScreen("resultScreen");
- document.getElementById("resultEmoji").textContent="🎉🦉";
+ document.getElementById("resultEmoji").textContent="🦉🎉";
  document.getElementById("resultTitle").textContent=`Stage ${stageNumber} completed!`;
- document.getElementById("resultMessage").textContent=
-  `You answered ${correctCount} of ${questions.length} questions correctly.`;
- document.getElementById("resultRewards").innerHTML=isNew?
-  `<div class="reward">+${xpReward} XP ⚡</div>
-   <div class="reward">+15 Coins 🪙</div>
-   <div class="reward">+${stageNumber===5||stageNumber===10?3:1} Diamonds 💎</div>
-   <p>🎁 Stage reward unlocked!</p>`:
-  `<p>You have already earned this stage's first-time rewards. Great revision!</p>`;
- renderHome();
+ document.getElementById("resultMessage").textContent=`You answered ${correctCount} out of ${questions.length} questions correctly.`;
+ document.getElementById("resultRewards").innerHTML=`<h2>+${20+correctCount*5} XP ⚡</h2><h2>+10 coins 🪙</h2>${stageNumber%5===0?"<h2>+2 diamonds 💎</h2>":""}`;
 }
 function finishCheckpoint(timedOut){
  clearInterval(timerInterval);
- const passed=correctCount>=32;
+ const c=courseData();
+ const passed=correctCount>=30;
  if(passed){
-  const c=course();
-  if(!c.checkpointPassed){
-   c.checkpointPassed=true;saved.xp+=200;saved.coins+=100;saved.diamonds+=10;
-  }
-  save();
+  c.checkpoint=true;
+  c.xp+=100;
+  c.coins+=50;
+  c.diamonds+=5;
  }
+ save();
  showScreen("resultScreen");
  document.getElementById("resultEmoji").textContent=passed?"🏆":"📘";
- document.getElementById("resultTitle").textContent=passed?"Checkpoint Passed!":"Keep Practising!";
+ document.getElementById("resultTitle").textContent=passed?"Checkpoint passed!":"Keep practising!";
  document.getElementById("resultMessage").textContent=
-  `${timedOut?"Time is up. ":""}Your score: ${correctCount}/40. ${passed?"You passed!":"You need at least 32 correct answers to pass."}`;
+  `${timedOut?"Time is up. ":""}Your score: ${correctCount}/40. ${passed?"You passed with at least 30 correct answers.":"You need 30 correct answers to pass. Review your earlier stages and try again."}`;
  document.getElementById("resultRewards").innerHTML=passed?
-  "<div class='reward'>+200 XP ⚡</div><div class='reward'>+100 Coins 🪙</div><div class='reward'>+10 Diamonds 💎</div>":
-  "<p>Review your previous stages and try again.</p>";
- renderHome();
-}
-function buyHeart(){
- if(saved.coins<10){alert("You need 10 coins to buy a heart.");return;}
- saved.coins-=10;saved.hearts=1;mistakes=2;save();
- showScreen("lessonScreen");setOllie("One heart restored! You can continue.");
-}
-function restartStage(){
- startStage(stageNumber);
-}
-function startPractice(){
- const learned=course().completed;
- if(!learned.length){alert("Complete a stage first to unlock revision.");return;}
- mode="practice";qIndex=0;correctCount=0;
- questions=shuffle(learned.flatMap(n=>questionsForWord(n-1))).slice(0,Math.min(10,learned.length*4));
- showScreen("lessonScreen");
- document.getElementById("timer").classList.add("hidden");
- setOllie("Let's revise what you have learned!");
- showQuestion();
+  "<h2>+100 XP ⚡</h2><h2>+50 coins 🪙</h2><h2>+5 diamonds 💎</h2>":
+  "<p>Checkpoint rewards are given after passing.</p>";
 }
 function leaveLesson(){
  clearInterval(timerInterval);
- if("speechSynthesis" in window)speechSynthesis.cancel();
- showScreen("tab-learn");renderHome();
+ showScreen("home");
+ renderHome();
 }
 function backHome(){
  clearInterval(timerInterval);
- if("speechSynthesis" in window)speechSynthesis.cancel();
- showScreen("tab-learn");renderHome();
+ showScreen("home");
+ renderHome();
 }
-function showScreen(id){
- ["tab-learn","tab-practice","tab-league","tab-friends","tab-profile",
-  "lessonScreen","heartsScreen","resultScreen"].forEach(s=>
-  document.getElementById(s).classList.add("hidden")
- );
- document.getElementById(id).classList.remove("hidden");
+function showScreen(which){
+ ["home","lesson","resultScreen"].forEach(id=>document.getElementById(id).classList.toggle("hidden",id!==which));
 }
-function saveProfile(){
- const name=document.getElementById("nameInput").value.trim();
- if(name)saved.name=name;
- saved.avatar=document.getElementById("avatarSelect").value;
- save();alert("Profile saved!");
-}
-function setTheme(){
- saved.theme=document.getElementById("themeSelect").value;
- document.body.dataset.theme=saved.theme;save();
-}
-function renderLeaderboard(){
- const box=document.getElementById("leaderboardList");
- box.innerHTML=`<div class="friend">
-  <b>🥇 ${esc(saved.name)} (You)</b><b>⚡ ${saved.xp} XP</b>
- </div>`;
-}
-function renderFriends(){
- const box=document.getElementById("friendsList");
- if(!saved.friends.length){
-  box.innerHTML="<p>No friends added yet.</p>";return;
- }
- box.innerHTML=saved.friends.map(f=>`<div class="friend">
-  <b>${esc(f.id)}</b><span class="small">Friend request sent</span>
- </div>`).join("");
-}
-function addFriend(){
- const id=document.getElementById("friendSearchId").value.trim().toUpperCase();
- if(!id){alert("Enter a friend ID first.");return;}
- if(id===saved.userId){alert("You cannot add your own ID.");return;}
- if(saved.friends.some(f=>f.id===id)){alert("You already sent a request to this ID.");return;}
- saved.friends.push({id});
- document.getElementById("friendSearchId").value="";
- save();renderFriends();
- alert("Request saved locally. Real friend requests require online backend setup.");
-}
-function renderDailyGraph(){}
 init();
 </script>
 </body>
