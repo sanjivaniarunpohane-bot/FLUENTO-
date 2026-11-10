@@ -39,7 +39,63 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:25px}
 .reward{background:#fff;border:1px solid var(--line);border-radius:14px;text-align:center;padding:12px 4px}
 .reward b{display:block;font-size:25px}
 .smallnote{font-size:12px;color:var(--muted)}
-
+/* FLUENTO WORLD EXPANSION */
+.stage-gift{
+  background:linear-gradient(135deg,#fff6d8,#ffe5b5);
+  border:2px solid #ffc65c;
+  border-radius:18px;
+  padding:18px;
+  text-align:center;
+  margin:15px 0;
+  animation:giftPop .5s ease;
+}
+.stage-gift .gift-icon{font-size:65px}
+.stage-gift h2{color:#a56a12;margin:5px}
+.ollie-celebrate{
+  font-size:75px;
+  animation:ollieBounce .7s infinite alternate;
+}
+@keyframes ollieBounce{
+  from{transform:translateY(0) rotate(-5deg)}
+  to{transform:translateY(-13px) rotate(5deg)}
+}
+@keyframes giftPop{
+  0%{transform:scale(.7);opacity:0}
+  100%{transform:scale(1);opacity:1}
+}
+.reward-glow{
+  color:#b87900;
+  font-weight:950;
+  font-size:1.2rem;
+}
+.world-banner{
+  background:linear-gradient(120deg,#164e53,#147d78);
+  color:white;
+  padding:17px;
+  border-radius:17px;
+  margin:14px 0;
+}
+.world-banner h2{margin:0 0 5px}
+.world-banner p{margin:0;color:#e0f8ed}
+.celebration-overlay{
+  position:fixed;
+  inset:0;
+  z-index:30;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:#102c36c9;
+}
+.celebration-card{
+  width:100%;
+  max-width:390px;
+  background:white;
+  border-radius:25px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 15px 50px #0005;
+}
+.celebration-card button{margin-top:12px}
 </style>
 </head>
 <body>
