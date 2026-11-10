@@ -3,351 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#102c36">
-<meta name="description" content="Fluento — playful language learning with stages, quests, and progress.">
-<link rel="manifest" href="manifest.json">
-<title>Fluento — Learn a little every day</title>
+<meta name="theme-color" content="#090d2c">
+<meta name="description" content="Fluento — Learn, Play, Grow with Ollie.">
+<title>Fluento — Learn • Play • Grow</title>
 <style>
-:root{--ink:#17353c;--muted:#647b80;--bg:#f4faf8;--card:#fff;--teal:#147d78;--teal2:#dff5ee;--lime:#d7f36a;--orange:#ffb65c;--red:#d94f57;--line:#dce9e5;--shadow:0 8px 24px #153d3a12}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f3a642;outline-offset:2px}
-header{position:sticky;top:0;z-index:5;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px max(16px,calc((100vw - 1040px)/2));display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:9px;font-weight:950;font-size:1.35rem;letter-spacing:-.7px}.brandmark{display:grid;place-items:center;background:var(--teal);color:white;width:39px;height:39px;border-radius:13px;font-size:24px}
-.stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pill{background:#f3f8f6;border:1px solid var(--line);padding:7px 10px;border-radius:999px;font-size:.9rem;font-weight:800}
-main{max-width:1040px;margin:0 auto;padding:22px 16px 100px}.hero{background:linear-gradient(120deg,#0e6965,#15434d);color:white;border-radius:25px;padding:23px;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:var(--shadow)}.hero h1{font-size:clamp(1.5rem,4vw,2.4rem);line-height:1.08;margin:5px 0 9px}.hero p{margin:0;color:#e2f8f2;max-width:520px}.mascot{font-size:76px;flex-shrink:0;filter:drop-shadow(0 8px 8px #001c223d)}.eyebrow{text-transform:uppercase;font-weight:900;font-size:.75rem;letter-spacing:1.3px;color:#bdece2}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:26px 0 13px}.section-head h2{margin:0;font-size:1.35rem}.muted{color:var(--muted);font-size:.92rem}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:var(--shadow)}.course-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.course-row select{background:white;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--ink);font-weight:750}.progress-track{height:9px;background:#e5efec;border-radius:99px;overflow:hidden;margin-top:9px}.progress-fill{height:100%;background:var(--teal);border-radius:99px;transition:width .25s}
-.stage-list{display:grid;gap:13px}.stage{display:grid;grid-template-columns:56px 1fr auto;gap:13px;align-items:center;background:white;border:1px solid var(--line);border-radius:19px;padding:14px;box-shadow:var(--shadow)}.stage.locked{opacity:.68;background:#f0f5f3}.stage-icon{width:54px;height:54px;border-radius:17px;background:var(--teal2);display:grid;place-items:center;font-size:27px}.stage.locked .stage-icon{background:#e7ecea}.stage h3{margin:0 0 3px;font-size:1.04rem}.stage p{margin:0;color:var(--muted);font-size:.88rem}.stage-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.mini{font-size:.77rem;font-weight:800;background:#f1f7f5;padding:4px 7px;border-radius:7px}
-.primary,.secondary,.danger{padding:11px 15px;border-radius:12px;font-weight:900;transition:transform .1s}.primary{background:var(--teal);color:white}.primary:active,.secondary:active{transform:scale(.98)}.primary:disabled{background:#a6bcb7;cursor:not-allowed;opacity:.85;touch-action:manipulation}.secondary{background:var(--teal2);color:var(--teal)}.danger{background:#ffeaeb;color:#a62e36}
-.tabs{position:fixed;z-index:6;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:4px;background:#ffffffed;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px 8px max(8px,env(safe-area-inset-bottom))}.tabs button{flex:1;max-width:170px;padding:9px 4px;border-radius:12px;background:transparent;color:var(--muted);font-size:.78rem;font-weight:850}.tabs button.active{background:var(--teal2);color:var(--teal)}.tabs span{display:block;font-size:1.2rem}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.friend{display:flex;align-items:center;gap:12px}.avatar{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:#fce8d2;font-size:25px}.friend-info{flex:1;min-width:0}.friend-info strong{display:block}.friend-info small{color:var(--muted)}.rank{font-weight:950;color:var(--teal)}
-.quiz-shell{max-width:700px;margin:0 auto}.quiz-top{display:flex;align-items:center;gap:12px;margin-bottom:20px}.quiz-progress{flex:1}.close-btn{background:#edf4f1;border-radius:50%;width:40px;height:40px;font-size:20px}.question-card{background:white;border:1px solid var(--line);border-radius:23px;padding:22px;box-shadow:var(--shadow)}.question-card h2{font-size:clamp(1.3rem,4vw,1.9rem);margin:8px 0 18px}.question-type{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--teal);font-weight:950}.options{display:grid;gap:10px}.option{border:2px solid var(--line);border-radius:14px;padding:13px;text-align:left;background:white;font-weight:750;color:var(--ink);width:100%;touch-action:manipulation; -webkit-tap-highlight-color:transparent}.option:disabled{opacity:1;cursor:default}.option.selected{border-color:var(--teal);background:var(--teal2)}.option.correct{border-color:#3a9c68;background:#e3f8e9}.option.wrong{border-color:var(--red);background:#ffebec}.feedback{padding:12px;border-radius:12px;margin-top:14px;font-weight:800}.feedback.good{background:#e3f8e9;color:#17633b}.feedback.bad{background:#ffebec;color:#a62e36}.quiz-actions{display:flex;justify-content:flex-end;margin-top:18px}
-.wordbank{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.wordbank button{background:#f0f7f4;border:1px solid var(--line);padding:8px 10px;border-radius:10px;font-weight:800}.answer-line{min-height:48px;border-bottom:2px dashed #bed2cc;padding:8px;display:flex;gap:7px;flex-wrap:wrap}.answer-line button{background:var(--teal2);color:var(--teal);padding:7px 9px;border-radius:9px;font-weight:800}
-.achievement{font-size:27px}.profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.metric{padding:15px;border:1px solid var(--line);border-radius:16px;background:white}.metric strong{display:block;font-size:1.5rem}.metric span{font-size:.86rem;color:var(--muted)}.empty{text-align:center;padding:28px;color:var(--muted)}
-footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:25px}
-@media(max-width:560px){header{padding:10px 12px}.brand{font-size:1.1rem}.brandmark{width:34px;height:34px}.stats{gap:5px}.pill{padding:6px 7px;font-size:.78rem}.hero{padding:19px}.mascot{font-size:57px}.stage{grid-template-columns:46px 1fr;gap:10px}.stage-icon{width:46px;height:46px}.stage>button{grid-column:2;justify-self:start}.stage p{font-size:.83rem}.section-head{align-items:start;flex-direction:column}.question-card{padding:17px}}
-
-.welcome{position:fixed;inset:0;z-index:20;min-height:100vh;display:grid;place-items:center;text-align:center;padding:32px 18px;background:radial-gradient(circle at 80% 20%,#d7f36a88,transparent 28%),linear-gradient(135deg,#e7faf4,#f7fbff);border-radius:28px;margin:18px 0}
-.welcome h1{font-size:clamp(42px,10vw,72px);letter-spacing:-2px;margin:8px 0;color:#147d78;font-weight:950}
-.director{position:absolute;right:16px;top:12px;font-size:12px;font-weight:900;letter-spacing:.5px}
-.welcome-inner{position:relative;max-width:560px;width:100%}
-.welcome .owl{font-size:76px}
-.level-menu{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px}
-.level-menu button{white-space:nowrap;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-weight:800}
-.level-menu button.active{background:var(--teal);color:white}
-.identity{overflow-wrap:anywhere;background:#e8f6ef;border:1px dashed #147d78;border-radius:14px;padding:12px}
-.reward-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.reward{background:#fff;border:1px solid var(--line);border-radius:14px;text-align:center;padding:12px 4px}
-.reward b{display:block;font-size:25px}
-.smallnote{font-size:12px;color:var(--muted)}
-/* FLUENTO WORLD EXPANSION */
-.stage-gift{
-  background:linear-gradient(135deg,#fff6d8,#ffe5b5);
-  border:2px solid #ffc65c;
-  border-radius:18px;
-  padding:18px;
-  text-align:center;
-  margin:15px 0;
-  animation:giftPop .5s ease;
-}
-.stage-gift .gift-icon{font-size:65px}
-.stage-gift h2{color:#a56a12;margin:5px}
-.ollie-celebrate{
-  font-size:75px;
-  animation:ollieBounce .7s infinite alternate;
-}
-@keyframes ollieBounce{
-  from{transform:translateY(0) rotate(-5deg)}
-  to{transform:translateY(-13px) rotate(5deg)}
-}
-@keyframes giftPop{
-  0%{transform:scale(.7);opacity:0}
-  100%{transform:scale(1);opacity:1}
-}
-.reward-glow{
-  color:#b87900;
-  font-weight:950;
-  font-size:1.2rem;
-}
-.world-banner{
-  background:linear-gradient(120deg,#164e53,#147d78);
-  color:white;
-  padding:17px;
-  border-radius:17px;
-  margin:14px 0;
-}
-.world-banner h2{margin:0 0 5px}
-.world-banner p{margin:0;color:#e0f8ed}
-.celebration-overlay{
-  position:fixed;
-  inset:0;
-  z-index:30;
-  display:grid;
-  place-items:center;
-  padding:20px;
-  background:#102c36c9;
-}
-.celebration-card{
-  width:100%;
-  max-width:390px;
-  background:white;
-  border-radius:25px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 15px 50px #0005;
-}
-.celebration-card button{margin-top:12px}
+:root{--bg:#080c24;--panel:#111936;--panel2:#151f45;--ink:#f2f5ff;--muted:#a5b1d4;--cyan:#50eaff;--blue:#397bff;--purple:#a56bff;--pink:#ff6bd6;--gold:#ffd66b;--green:#53e6a3;--red:#ff6d88;--line:#33416d;--shadow:0 14px 45px #0008}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b2860 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#27154e 0,transparent 34%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+header{position:sticky;top:0;z-index:10;background:#080c24eF;backdrop-filter:blur(18px);border-bottom:1px solid #35416b;padding:11px max(14px,calc((100vw - 1200px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:1000;font-size:1.35rem;letter-spacing:-.7px}.brandmark{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#783bff,#00cfff);box-shadow:0 0 22px #5b6cff88}.stats{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.pill{background:#141d3c;border:1px solid #46558c;padding:6px 10px;border-radius:99px;font-size:.84rem;font-weight:850;box-shadow:inset 0 0 12px #253b7655}
+.layout{max-width:1200px;margin:auto;padding:18px 14px 100px;display:grid;grid-template-columns:205px minmax(0,1fr);gap:18px}.side{position:sticky;top:82px;align-self:start;background:#0e1532cc;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:var(--shadow)}.side button{display:flex;gap:10px;align-items:center;width:100%;padding:12px;border-radius:13px;background:transparent;text-align:left;color:var(--muted);font-weight:800;margin:3px 0}.side button.active,.side button:hover{background:#1a2b57;color:white;box-shadow:inset 0 0 18px #3478ff30}.side .tinybrand{padding:12px 8px 16px;text-align:center;color:var(--muted);font-size:.78rem}.main{min-width:0}.hero{border:1px solid #5365b0;border-radius:25px;padding:22px;background:linear-gradient(120deg,#141c53,#172d63 55%,#3a1760);box-shadow:0 0 32px #4368ff24;display:flex;align-items:center;justify-content:space-between;gap:16px;overflow:hidden}.hero h1{font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.08;margin:6px 0 9px}.hero p{color:#d2ddff;margin:0;max-width:570px}.eyebrow{font-size:.72rem;letter-spacing:1.5px;font-weight:950;color:var(--cyan);text-transform:uppercase}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 0 12px}.section-head h2{margin:0}.muted{color:var(--muted);font-size:.9rem}.panel{background:linear-gradient(145deg,#121c3a,#0e1732);border:1px solid var(--line);border-radius:19px;padding:16px;box-shadow:var(--shadow)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:11px}.metric{padding:14px;border:1px solid var(--line);border-radius:15px;background:#121e40}.metric strong{display:block;font-size:1.45rem}.metric span{color:var(--muted);font-size:.82rem}.track{height:9px;background:#263355;border-radius:99px;overflow:hidden;margin:10px 0}.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:99px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.row>*{min-width:0}.primary,.secondary,.danger{padding:10px 14px;border-radius:12px;font-weight:900}.primary{background:linear-gradient(110deg,#554cff,#087fca);box-shadow:0 0 17px #426bff55;color:white}.secondary{background:#1b2a50;border:1px solid #4a5d92;color:#dce9ff}.danger{background:#4b1d36;border:1px solid #9c385b;color:#ffdbe4}.primary:disabled,.secondary:disabled{opacity:.45;cursor:not-allowed}input,select,textarea{background:#0b1430;color:var(--ink);border:1px solid #465580;border-radius:11px;padding:10px;width:100%}textarea{min-height:110px;resize:vertical}.stage-list{display:grid;gap:9px}.stage{display:grid;grid-template-columns:45px 1fr auto;gap:11px;align-items:center;background:#111b39;border:1px solid var(--line);border-radius:15px;padding:11px}.stage.locked{opacity:.5}.stage-icon{height:44px;width:44px;border-radius:13px;display:grid;place-items:center;background:#25316b;font-size:23px}.stage h3{font-size:.98rem;margin:0}.stage p{font-size:.82rem;color:var(--muted);margin:2px 0 0}.quiz{max-width:720px;margin:auto}.quiztop{display:flex;align-items:center;gap:10px;margin-bottom:13px}.question{font-size:clamp(1.3rem,4vw,1.8rem);margin:12px 0 18px}.option{width:100%;text-align:left;padding:13px;border:1px solid #42517b;background:#121d3d;border-radius:13px;margin:5px 0;font-weight:800}.option.selected{border-color:var(--cyan);background:#18365b}.option.correct{border-color:var(--green);background:#123c3b}.option.wrong{border-color:var(--red);background:#461f3c}.option:disabled{opacity:1}.feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800}.good{background:#103c38;color:#9dffda}.bad{background:#4a1e35;color:#ffd2dd}.ollie-wrap{position:relative;width:175px;flex:0 0 175px;perspective:700px}.ollie{width:100%;display:block;border-radius:28px;filter:drop-shadow(0 0 25px #4b6bff77);transform-style:preserve-3d;animation:floaty 3s ease-in-out infinite;transition:transform .35s}.ollie.celebrate{animation:celebrate .55s ease-in-out 5}.speech{position:absolute;right:-12px;top:-12px;background:linear-gradient(120deg,#1b9de7,#7b45ff);border:1px solid #9deaff;border-radius:18px;padding:8px 11px;font-weight:950;box-shadow:0 0 20px #34cfff88;transform:rotate(3deg);max-width:160px;text-align:center}.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-15px;width:8px;height:13px;background:var(--gold);animation:fall 1.8s linear infinite}.confetti i:nth-child(2n){background:var(--cyan);animation-delay:.4s}.confetti i:nth-child(3n){background:var(--pink);animation-delay:.8s}@keyframes floaty{50%{transform:translateY(-8px) rotateY(7deg) rotateX(4deg)}}@keyframes celebrate{0%,100%{transform:translateY(0) rotate(0) scale(1)}25%{transform:translateY(-24px) rotate(-9deg) scale(1.06)}50%{transform:translateY(-7px) rotate(9deg) scale(1.1)}75%{transform:translateY(-19px) rotate(-5deg) scale(1.04)}}@keyframes fall{to{transform:translateY(520px) rotate(360deg);opacity:0}}.gift{border:1px solid #8267c6;background:linear-gradient(135deg,#241b58,#39265f);border-radius:17px;padding:15px;text-align:center;margin:13px 0}.gift .big{font-size:52px}.friend{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #2c3a60}.avatar{width:42px;height:42px;display:grid;place-items:center;background:#26315f;border-radius:14px;font-size:23px}.friendinfo{flex:1}.friendinfo small{display:block;color:var(--muted)}.shield{font-weight:900;color:var(--gold)}.hidden{display:none!important}.notice{padding:12px;border:1px solid #806c32;background:#342c1a;color:#ffe8a4;border-radius:13px;margin:12px 0;font-size:.87rem}.bottom{display:none}.authbox{max-width:470px;margin:7vh auto;padding:22px}.authbox h1{margin:5px 0}.authbox form{display:grid;gap:10px}.admin-table{width:100%;border-collapse:collapse;font-size:.84rem}.admin-table th,.admin-table td{text-align:left;padding:9px;border-bottom:1px solid #34436b;overflow-wrap:anywhere}.status{color:var(--green);font-weight:900}
+@media(max-width:760px){.layout{grid-template-columns:1fr;padding:12px 10px 95px}.side{display:none}.bottom{display:flex;position:fixed;z-index:10;bottom:0;left:0;right:0;background:#080d25f2;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:6px max(5px,env(safe-area-inset-right)) max(7px,env(safe-area-inset-bottom));justify-content:space-around}.bottom button{background:transparent;color:var(--muted);font-size:.7rem;font-weight:850;padding:5px}.bottom span{display:block;font-size:1.25rem}.hero{padding:16px}.ollie-wrap{width:112px;flex-basis:112px}.speech{font-size:.7rem;right:-5px}.stats{gap:4px}.pill{font-size:.72rem;padding:5px 7px}.brand{font-size:1.08rem}.stage{grid-template-columns:40px 1fr}.stage button{grid-column:2;justify-self:start}.admin-table{font-size:.72rem}}
 </style>
 </head>
 <body>
-<header>
- <div class="brand"><div class="brandmark">F</div>Fluento</div>
- <div class="stats"><div class="pill">🔥 <b id="streak">1</b></div><div class="pill">⚡ <b id="xp">0</b> XP</div><div class="pill">❤️ <b id="hearts">5</b></div></div>
-</header>
-<main id="app"></main>
-<div id="welcomeScreen" class="welcome" style="display:none"><div class="welcome-inner"><div class="director">DIRECTOR: NIRMIT</div><div class="owl">🦉</div><h1>FLUENTO</h1><h2>Learn a little. Grow every day.</h2><p>Languages, levels, friends, streaks and rewards — one lesson at a time.</p><button class="primary" onclick="enterFluento()">Start learning →</button></div></div>
-<nav class="tabs" aria-label="Main navigation">
- <button data-tab="learn" class="active"><span>🗺️</span>Learn</button>
- <button data-tab="friends"><span>👥</span>Friends</button>
- <button data-tab="quests"><span>🎯</span>Quests</button>
- <button data-tab="profile"><span>🏆</span>Profile</button>
-</nav>
-<script>
-const courses={
- Spanish:{flag:"🇪🇸",label:"Spanish",stages:[
- {title:"First Words",desc:"Greetings, yes/no, and polite phrases",icon:"👋",lessons:[
-  {q:"How do you say “Hello” in Spanish?",opts:["Hola","Adiós","Gracias","Agua"],a:"Hola",tip:"Hola means hello."},
-  {q:"What does “Gracias” mean?",opts:["Please","Thank you","Good night","Friend"],a:"Thank you",tip:"Gracias is a way to say thank you."},
-  {q:"Choose the Spanish word for “water”.",opts:["Pan","Agua","Casa","Libro"],a:"Agua",tip:"Agua means water."},
-  {q:"What does “Por favor” mean?",opts:["Please","Goodbye","Sorry","Welcome"],a:"Please",tip:"Por favor means please."},
-  {q:"Complete: Buenos ____ (Good morning).",opts:["días","libros","amigos","agua"],a:"días",tip:"Buenos días means good morning."},
-  {q:"Translate “Yes”.",opts:["No","Sí","Hola","Gracias"],a:"Sí",tip:"Sí means yes."}]},
- {title:"People & Friends",desc:"Introduce yourself and meet people",icon:"🧑‍🤝‍🧑",lessons:[
-  {q:"What does “amigo” mean?",opts:["Friend","School","Food","Book"],a:"Friend",tip:"Amigo means a male friend; amiga is a female friend."},
-  {q:"“Me llamo Ana” means…",opts:["I am hungry","My name is Ana","I am at home","See you tomorrow"],a:"My name is Ana",tip:"Me llamo… is used to give your name."},
-  {q:"Choose “How are you?”",opts:["¿Cómo estás?","¿Dónde está?","Gracias","Buenas noches"],a:"¿Cómo estás?",tip:"¿Cómo estás? asks how someone is."},
-  {q:"What is “familia”?",opts:["Family","City","Teacher","Water"],a:"Family",tip:"Familia means family."},
-  {q:"Complete: Soy tu ____ (I am your friend).",opts:["amigo","agua","casa","día"],a:"amigo",tip:"Amigo means friend."},
-  {q:"What does “Mucho gusto” mean?",opts:["Nice to meet you","Good morning","I don't know","Goodbye"],a:"Nice to meet you",tip:"Mucho gusto is used when meeting someone."}]},
- {title:"Food & Café",desc:"Order snacks and drinks",icon:"🥑",lessons:[
-  {q:"What does “pan” mean?",opts:["Bread","Milk","Apple","Rice"],a:"Bread",tip:"Pan means bread."},
-  {q:"Choose “I want water”.",opts:["Quiero agua","Tengo casa","Hola amigo","Soy libro"],a:"Quiero agua",tip:"Quiero means I want."},
-  {q:"What does “manzana” mean?",opts:["Apple","Orange","Bread","Cheese"],a:"Apple",tip:"Manzana means apple."},
-  {q:"“La cuenta, por favor” means…",opts:["The bill, please","Good morning","I am a student","One apple"],a:"The bill, please",tip:"Useful phrase when paying at a café."},
-  {q:"Which word means milk?",opts:["Leche","Agua","Pan","Sal"],a:"Leche",tip:"Leche means milk."},
-  {q:"Translate “I like coffee”.",opts:["Me gusta el café","Quiero una casa","Soy amigo","Buenas tardes"],a:"Me gusta el café",tip:"Me gusta means I like."}]},
- {title:"Everyday Life",desc:"Talk about routines and places",icon:"🏡",lessons:[
-  {q:"What does “casa” mean?",opts:["House","Street","Food","School"],a:"House",tip:"Casa means house."},
-  {q:"Choose “Good night”.",opts:["Buenas noches","Buenos días","Por favor","Hasta luego"],a:"Buenas noches",tip:"Buenas noches means good night."},
-  {q:"What does “libro” mean?",opts:["Book","Friend","Door","City"],a:"Book",tip:"Libro means book."},
-  {q:"“¿Dónde está el baño?” asks…",opts:["Where is the bathroom?","What is your name?","How old are you?","How much is it?"],a:"Where is the bathroom?",tip:"¿Dónde está…? means where is…?"},
-  {q:"Choose the word for “school”.",opts:["Escuela","Leche","Noche","Amigo"],a:"Escuela",tip:"Escuela means school."},
-  {q:"What does “Hasta luego” mean?",opts:["See you later","Thank you","Good morning","Excuse me"],a:"See you later",tip:"Hasta luego is a casual goodbye."}]},
- {title:"Checkpoint: Explorer",desc:"Mixed review of the first four stages",icon:"🚩",checkpoint:true,lessons:[
-  {q:"Translate “Thank you very much”.",opts:["Muchas gracias","Buenos días","Quiero pan","Me llamo"],a:"Muchas gracias",tip:"Muchas gracias means thank you very much."},
-  {q:"What does “Tengo hambre” mean?",opts:["I am hungry","I am happy","I am home","I am late"],a:"I am hungry",tip:"Tengo hambre is a common way to say I am hungry."},
-  {q:"Choose “Where is the school?”",opts:["¿Dónde está la escuela?","¿Cómo estás?","Me gusta el café","Buenas noches"],a:"¿Dónde está la escuela?",tip:"¿Dónde está…? means where is…?"},
-  {q:"What does “amiga” mean?",opts:["Female friend","Apple","Water","Book"],a:"Female friend",tip:"Amiga is a female friend."},
-  {q:"Choose the polite request for bread.",opts:["Pan, por favor","Adiós pan","Soy pan","Buenas pan"],a:"Pan, por favor",tip:"Por favor makes the request polite."},
-  {q:"What does “Hasta luego” mean?",opts:["See you later","Nice to meet you","Please","Family"],a:"See you later",tip:"You have completed the Explorer review!"}]},
- {title:"Travel & Adventure",desc:"Ask for help and explore new places",icon:"🧭",lessons:[
-  {q:"What does “estación” mean?",opts:["Station","Kitchen","Window","Friend"],a:"Station",tip:"Estación can mean station."},
-  {q:"Choose “I need help”.",opts:["Necesito ayuda","Tengo una manzana","Me gusta el libro","Soy de aquí"],a:"Necesito ayuda",tip:"Necesito means I need."},
-  {q:"What does “izquierda” mean?",opts:["Left","Right","Straight","Near"],a:"Left",tip:"Izquierda means left."},
-  {q:"Choose “How much does it cost?”",opts:["¿Cuánto cuesta?","¿Cómo te llamas?","¿Qué hora es?","¿Dónde vives?"],a:"¿Cuánto cuesta?",tip:"A handy question when shopping."},
-  {q:"What does “billete” mean in travel?",opts:["Ticket","Breakfast","Street","Map"],a:"Ticket",tip:"Billete often means ticket."},
-  {q:"Translate “I am looking for the hotel”.",opts:["Busco el hotel","Quiero agua","Soy estudiante","Tengo sueño"],a:"Busco el hotel",tip:"Busco means I am looking for."}]},
- {title:"Sentence Builder",desc:"Combine words into useful sentences",icon:"🧩",lessons:[
-  {q:"Choose “I speak a little Spanish”.",opts:["Hablo un poco de español","Estoy en casa","Me gusta la música","Necesito una mesa"],a:"Hablo un poco de español",tip:"Hablo means I speak."},
-  {q:"What does “¿Puedes repetir?” mean?",opts:["Can you repeat?","Can you pay?","Where are you?","Do you eat?"],a:"Can you repeat?",tip:"Useful when you don't understand."},
-  {q:"Choose “I don't understand”.",opts:["No entiendo","No quiero","No tengo","No gracias"],a:"No entiendo",tip:"No entiendo means I don't understand."},
-  {q:"What does “despacio” mean?",opts:["Slowly","Tomorrow","Always","Quickly"],a:"Slowly",tip:"Despacio means slowly."},
-  {q:"Choose “See you tomorrow”.",opts:["Hasta mañana","Hasta luego","Buenas noches","Mucho gusto"],a:"Hasta mañana",tip:"Mañana means tomorrow."},
-  {q:"What does “Estoy aprendiendo” mean?",opts:["I am learning","I am sleeping","I am eating","I am leaving"],a:"I am learning",tip:"Aprendiendo means learning."}]}
- ]},
- English:{flag:"🇬🇧",label:"English",stages:[
- {title:"Everyday Words",desc:"Greetings and useful basics",icon:"👋",lessons:[
- {q:"Choose a greeting.",opts:["Hello","Because","Under","Quickly"],a:"Hello",tip:"Hello is a greeting."},
- {q:"Which word means the opposite of “cold”?",opts:["Hot","Slow","Small","Quiet"],a:"Hot",tip:"Hot is the opposite of cold."},
- {q:"Complete: How ____ you?",opts:["are","is","am","be"],a:"are",tip:"The usual phrase is “How are you?”."},
- {q:"Choose the polite word.",opts:["Please","Never","Maybe","Under"],a:"Please",tip:"Please makes a request polite."},
- {q:"What is the plural of “book”?",opts:["Books","Bookes","Bookies","Book"],a:"Books",tip:"Add -s to most nouns."},
- {q:"Choose the correct spelling.",opts:["Friend","Freind","Frend","Friand"],a:"Friend",tip:"Remember: friend."}]},
- {title:"Build Sentences",desc:"Practice grammar and word order",icon:"🧱",lessons:[
- {q:"Choose the correct sentence.",opts:["She is happy.","She happy is.","Is happy she.","Happy she are."],a:"She is happy.",tip:"Subject + verb + adjective."},
- {q:"Complete: They ____ playing.",opts:["are","is","am","be"],a:"are",tip:"Use are with they."},
- {q:"Choose the past tense of “go”.",opts:["Went","Goed","Gone yesterday","Going"],a:"Went",tip:"Go → went → gone."},
- {q:"Choose the article: ____ apple.",opts:["An","A","The a","No article ever"],a:"An",tip:"Use an before a vowel sound."},
- {q:"Choose the synonym of “quick”.",opts:["Fast","Late","Weak","Soft"],a:"Fast",tip:"Quick and fast are synonyms."},
- {q:"Complete: I have lived here ____ 2022.",opts:["since","for","at","by"],a:"since",tip:"Use since with a starting point."}]},
- {title:"Checkpoint: Communicator",desc:"Mixed grammar and vocabulary review",icon:"🚩",checkpoint:true,lessons:[
- {q:"Choose the correct form.",opts:["He doesn't like tea.","He don't likes tea.","He doesn't likes tea.","He not like tea."],a:"He doesn't like tea.",tip:"After doesn't, use the base verb."},
- {q:"What is the opposite of “generous”?",opts:["Selfish","Kind","Helpful","Giving"],a:"Selfish",tip:"Selfish is the opposite of generous."},
- {q:"Choose the correct question.",opts:["Where do you live?","Where you live?","Where does you live?","Where are live you?"],a:"Where do you live?",tip:"Use do with you in the present simple."},
- {q:"Choose the past tense of “teach”.",opts:["Taught","Teached","Teaching","Teach"],a:"Taught",tip:"Teach → taught."},
- {q:"Complete: If it rains, we ____ inside.",opts:["will stay","stayed","staying","stays"],a:"will stay",tip:"First conditional: if + present, will + verb."},
- {q:"Choose the correctly punctuated sentence.",opts:["Let's eat, Grandma!","Lets eat Grandma!","Let's eat Grandma","Lets eat, Grandma"],a:"Let's eat, Grandma!",tip:"Punctuation can change meaning."}]}
- ]},
- Hindi:{flag:"🇮🇳",label:"Hindi",stages:[
- {title:"शुरुआती शब्द",desc:"नमस्ते और रोज़ के शब्द",icon:"🙏",lessons:[
- {q:"“नमस्ते” का अर्थ क्या है?",opts:["अभिवादन","पानी","किताब","घर"],a:"अभिवादन",tip:"नमस्ते अभिवादन के लिए कहा जाता है।"},
- {q:"“पानी” का अर्थ क्या है?",opts:["Water","Book","Friend","School"],a:"Water",tip:"पानी = Water"},
- {q:"“धन्यवाद” का अर्थ क्या है?",opts:["Thank you","Goodbye","Please","Friend"],a:"Thank you",tip:"धन्यवाद = Thank you"},
- {q:"“मित्र” का अर्थ क्या है?",opts:["Friend","Food","House","Book"],a:"Friend",tip:"मित्र = Friend"},
- {q:"“घर” का अर्थ क्या है?",opts:["House","School","Water","Day"],a:"House",tip:"घर = House"},
- {q:"“हाँ” का अर्थ क्या है?",opts:["Yes","No","Please","Hello"],a:"Yes",tip:"हाँ = Yes"}]},
- {title:"वाक्य अभ्यास",desc:"सरल वाक्य और रोज़ की बातचीत",icon:"💬",lessons:[
- {q:"“मेरा नाम रीना है” का अर्थ?",opts:["My name is Reena","I am hungry","I go home","Thank you"],a:"My name is Reena",tip:"मेरा नाम… है = My name is…"},
- {q:"“आप कैसे हैं?” का अर्थ?",opts:["How are you?","Where is it?","What is this?","Good night"],a:"How are you?",tip:"आप कैसे हैं? = How are you?"},
- {q:"“कृपया” का अर्थ क्या है?",opts:["Please","Sorry","Friend","Water"],a:"Please",tip:"कृपया = Please"},
- {q:"“विद्यालय” का अर्थ?",opts:["School","Home","Food","City"],a:"School",tip:"विद्यालय = School"},
- {q:"“अलविदा” का अर्थ?",opts:["Goodbye","Welcome","Thanks","Please"],a:"Goodbye",tip:"अलविदा = Goodbye"},
- {q:"“मुझे मदद चाहिए” का अर्थ?",opts:["I need help","I like tea","I am fine","I am a student"],a:"I need help",tip:"मुझे मदद चाहिए = I need help"}]}
- ]}
-};
+<header><div class="brand"><div class="brandmark">🦉</div>FLUENTO</div><div class="stats"><div class="pill">🔥 <b id="streak">0</b></div><div class="pill">⚡ <b id="xp">0</b></div><div class="pill">🪙 <b id="coins">0</b></div><div class="pill">💎 <b id="gems">0</b></div><div class="pill">❤️ <b id="hearts">3</b></div></div></header>
+<section id="authScreen" class="authbox panel"><div class="eyebrow">LEARN • PLAY • GROW</div><h1>Welcome to Fluento</h1><p class="muted">Sign in to sync your learning, rewards and friends across devices.</p><div class="notice">Use a nickname in public profiles. Your email is private and is never shown to friends.</div><form id="authForm"><input id="authName" placeholder="Your nickname (for new accounts)" maxlength="24"><input id="authEmail" type="email" autocomplete="email" placeholder="Email address" required><input id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="Password (8+ characters)" required><div class="row"><button class="primary" type="submit" id="signInBtn">Sign in</button><button class="secondary" type="button" id="signUpBtn">Create account</button></div></form><p id="authMessage" class="muted"></p><button class="secondary" id="guestBtn" type="button">Continue as guest (this device only)</button></section>
+<div id="appShell" class="hidden"><div class="layout"><aside class="side"><div class="tinybrand">🦉 OLLIE'S LEARNING CLUB</div><button data-tab="learn" class="active">🗺️ Learn</button><button data-tab="friends">👥 Friends</button><button data-tab="rewards">🎁 Rewards</button><button data-tab="profile">🏆 Profile</button><button data-tab="feedback">✉️ Feedback</button><button data-tab="dashboard" id="adminNav" class="hidden">📊 Director dashboard</button><button id="signOutBtn">↪ Sign out</button></aside><main id="app" class="main"></main></div><nav class="bottom"><button data-tab="learn"><span>🗺️</span>Learn</button><button data-tab="friends"><span>👥</span>Friends</button><button data-tab="rewards"><span>🎁</span>Gifts</button><button data-tab="profile"><span>🏆</span>Profile</button><button data-tab="feedback"><span>✉️</span>Feedback</button></nav></div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,updateProfile,sendEmailVerification} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+import {getFirestore,doc,setDoc,getDoc,updateDoc,collection,query,where,getDocs,addDoc,onSnapshot,serverTimestamp,limit,orderBy,runTransaction} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
-// Additional beginner courses: five themed stages, five questions per stage.
-const extraCourses = {
- French:{flag:"🇫🇷",label:"French",words:[
- ["Greetings","👋","Bonjour","Hello","Merci","Thank you","Au revoir","Goodbye","S’il vous plaît","Please","Oui","Yes"],
- ["Friends","🧑‍🤝‍🧑","ami","friend","amie","female friend","Comment ça va ?","How are you?","Je m’appelle Léa","My name is Léa","Enchanté","Nice to meet you"],
- ["Food","🥐","pain","bread","eau","water","pomme","apple","lait","milk","Je voudrais de l’eau","I would like water"],
- ["Places","🏡","maison","house","école","school","livre","book","ville","city","Où est la gare ?","Where is the station?"],
- ["Everyday","🌞","bonjour","hello","bonne nuit","good night","excusez-moi","excuse me","à demain","see you tomorrow","Je ne comprends pas","I don't understand"]]},
- German:{flag:"🇩🇪",label:"German",words:[
- ["Greetings","👋","Hallo","Hello","Danke","Thank you","Tschüss","Goodbye","Bitte","Please","Ja","Yes"],
- ["Friends","🧑‍🤝‍🧑","Freund","friend","Freundin","female friend","Wie geht’s?","How are you?","Ich heiße Mia","My name is Mia","Freut mich","Nice to meet you"],
- ["Food","🥨","Brot","bread","Wasser","water","Apfel","apple","Milch","milk","Ich möchte Wasser","I would like water"],
- ["Places","🏡","Haus","house","Schule","school","Buch","book","Stadt","city","Wo ist der Bahnhof?","Where is the station?"],
- ["Everyday","🌞","Guten Morgen","good morning","Gute Nacht","good night","Entschuldigung","excuse me","Bis morgen","see you tomorrow","Ich verstehe nicht","I don't understand"]]},
- Italian:{flag:"🇮🇹",label:"Italian",words:[
- ["Greetings","👋","Ciao","Hello","Grazie","Thank you","Arrivederci","Goodbye","Per favore","Please","Sì","Yes"],
- ["Friends","🧑‍🤝‍🧑","amico","friend","amica","female friend","Come stai?","How are you?","Mi chiamo Luca","My name is Luca","Piacere","Nice to meet you"],
- ["Food","🍕","pane","bread","acqua","water","mela","apple","latte","milk","Vorrei dell’acqua","I would like water"],
- ["Places","🏡","casa","house","scuola","school","libro","book","città","city","Dov’è la stazione?","Where is the station?"],
- ["Everyday","🌞","Buongiorno","good morning","Buonanotte","good night","Scusa","excuse me","A domani","see you tomorrow","Non capisco","I don't understand"]]},
- Portuguese:{flag:"🇧🇷",label:"Portuguese",words:[
- ["Greetings","👋","Olá","Hello","Obrigado/a","Thank you","Tchau","Goodbye","Por favor","Please","Sim","Yes"],
- ["Friends","🧑‍🤝‍🧑","amigo","friend","amiga","female friend","Tudo bem?","How are you?","Meu nome é Ana","My name is Ana","Prazer","Nice to meet you"],
- ["Food","🥭","pão","bread","água","water","maçã","apple","leite","milk","Quero água","I want water"],
- ["Places","🏡","casa","house","escola","school","livro","book","cidade","city","Onde fica a estação?","Where is the station?"],
- ["Everyday","🌞","Bom dia","good morning","Boa noite","good night","Com licença","excuse me","Até amanhã","see you tomorrow","Não entendo","I don't understand"]]},
- Japanese:{flag:"🇯🇵",label:"Japanese",words:[
- ["Greetings","👋","こんにちは","Hello","ありがとう","Thank you","さようなら","Goodbye","お願いします","Please","はい","Yes"],
- ["Friends","🧑‍🤝‍🧑","友だち","friend","元気ですか","How are you?","私はミアです","I am Mia","はじめまして","Nice to meet you","家族","family"],
- ["Food","🍙","パン","bread","水","water","りんご","apple","牛乳","milk","水をください","Water, please"],
- ["Places","🏡","家","house","学校","school","本","book","町","town","駅はどこですか","Where is the station?"],
- ["Everyday","🌞","おはよう","good morning","こんばんは","good evening","すみません","excuse me","また明日","see you tomorrow","わかりません","I don't understand"]]},
- Korean:{flag:"🇰🇷",label:"Korean",words:[
- ["Greetings","👋","안녕하세요","Hello","감사합니다","Thank you","안녕히 가세요","Goodbye","주세요","Please / give me","네","Yes"],
- ["Friends","🧑‍🤝‍🧑","친구","friend","잘 지내요?","How are you?","제 이름은 미아예요","My name is Mia","만나서 반가워요","Nice to meet you","가족","family"],
- ["Food","🍚","빵","bread","물","water","사과","apple","우유","milk","물 주세요","Water, please"],
- ["Places","🏡","집","house","학교","school","책","book","도시","city","역이 어디예요?","Where is the station?"],
- ["Everyday","🌞","좋은 아침","good morning","안녕히 주무세요","good night","실례합니다","excuse me","내일 봐요","see you tomorrow","모르겠어요","I don't know"]]}
+/* Replace every value below with the Firebase web-app config from Firebase Console. */
+const firebaseConfig={apiKey:"PASTE_API_KEY",authDomain:"PASTE_PROJECT.firebaseapp.com",projectId:"PASTE_PROJECT_ID",appId:"PASTE_APP_ID"};
+const ADMIN_UID="PASTE_YOUR_FIREBASE_AUTH_UID";
+const firebaseReady=Object.values(firebaseConfig).every(v=>v&&!String(v).startsWith("PASTE_"));
+let auth=null,db=null,user=null,guest=false,profile={},unsubscribeUsers=null;
+if(firebaseReady){const fb=initializeApp(firebaseConfig);auth=getAuth(fb);db=getFirestore(fb);}
+const $=id=>document.getElementById(id), app=$("app");
+const localKey="fluento-cloud-guest";
+const base={nickname:"Learner",course:"Spanish",xp:0,coins:0,gems:0,hearts:3,streak:0,done:{},worlds:1,shield:"None",practiceDays:[],stage:1,tab:"learn",sound:true};
+let data={...base,...JSON.parse(localStorage.getItem(localKey)||"{}")},stageNo=1,qi=0,score=0,chosen=-1,lockedAnswer=false,audio=null;
+const banks={
+ Spanish:[["How do you say Hello?",["Hola","Adiós","Gracias","Agua"],"Hola","Hola means hello."],["What does Gracias mean?",["Please","Thank you","Good night","Friend"],"Thank you","Gracias means thank you."],["Choose water in Spanish.",["Pan","Agua","Casa","Libro"],"Agua","Agua means water."],["What does Por favor mean?",["Please","Goodbye","Sorry","Welcome"],"Please","Por favor means please."],["Complete Buenos ____.",["días","libros","amigos","agua"],"días","Buenos días means good morning."]],
+ English:[["Choose a greeting.",["Hello","Because","Under","Quickly"],"Hello","Hello is a greeting."],["Opposite of cold?",["Hot","Slow","Small","Quiet"],"Hot","Hot is the opposite of cold."],["Complete: How ____ you?",["are","is","am","be"],"are","Use are with you."],["Choose a polite word.",["Please","Never","Maybe","Under"],"Please","Please makes a request polite."],["Past tense of go?",["Went","Goed","Going","Gone yesterday"],"Went","Go → went → gone."]],
+ Hindi:[["“नमस्ते” का अर्थ?",["अभिवादन","पानी","किताब","घर"],"अभिवादन","नमस्ते अभिवादन है।"],["“पानी” का अर्थ?",["Water","Book","Friend","School"],"Water","पानी = Water."],["“धन्यवाद” का अर्थ?",["Thank you","Goodbye","Please","Friend"],"Thank you","धन्यवाद = Thank you."],["“मित्र” का अर्थ?",["Friend","Food","House","Book"],"Friend","मित्र = Friend."],["“घर” का अर्थ?",["House","School","Water","Day"],"House","घर = House."]]
 };
-for (const [name,c] of Object.entries(extraCourses)) {
- const stages=c.words.map((w,si)=>({title:w[0],desc:["Greetings and polite phrases","Meet people and introduce yourself","Useful food and drink words","Find places around town","Everyday expressions"][si],icon:w[1],lessons:Array.from({length:5},(_,j)=>{
-  const pair=(j*2)%((w.length-2)/2), target=w[2+pair*2], meaning=w[3+pair*2];
-  const opts=[meaning,w[3+((pair+1)%((w.length-2)/2))*2],w[3+((pair+2)%((w.length-2)/2))*2],"Not sure"].filter((x,i,a)=>a.indexOf(x)===i);
-  while(opts.length<4)opts.push(["Goodbye","Thank you","Hello","Please"][opts.length%4]);
-  return {q:`What does “${target}” mean?`,opts:opts.slice(0,4),a:meaning,tip:`${target} means “${meaning}”.`};
- })}));
- courses[name]={flag:c.flag,label:c.label,stages};
-}
-
-const initial={course:"Spanish",xp:0,hearts:5,streak:1,done:{},earned:[],tab:"learn",name:"Learner",friends:[{name:"Aarav",emoji:"🦊",xp:120},{name:"Mira",emoji:"🐼",xp:95},{name:"Kabir",emoji:"🐯",xp:80}],today:0,lastDay:"",questsClaimed:[],userId:"",welcomeSeen:false,weekDays:[],medals:[],reminderHour:"19:00",lastRewardDay:""};
-let state;try{state={...initial,...JSON.parse(localStorage.getItem("fluento-save")||"{}")}}catch{state={...initial}}
-let current=null,qi=0,score=0,selected=null,wordAnswer=[];
-function save(){localStorage.setItem("fluento-save",JSON.stringify(state));updateStats()}
-function enterFluento(){state.welcomeSeen=true;if(!state.userId)state.userId="FL-"+Math.random().toString(36).slice(2,8).toUpperCase();save();render()}
-function currentStage(){const c=getCourse();return c.stages.filter((s,i)=>isDone(i)).length}
-function stageLabel(){return "Stage "+Math.min(currentStage()+1,getCourse().stages.length)+" · "+getCourse().label}
-function copyFluentoId(){if(!state.userId)state.userId="FL-"+Math.random().toString(36).slice(2,8).toUpperCase();save();if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(state.userId+" | "+stageLabel()).then(()=>alert("Fluento ID copied!")).catch(()=>prompt("Copy your Fluento ID:",state.userId));else prompt("Copy your Fluento ID:",state.userId)}
-function recordDailyPractice(){const today=new Date().toISOString().slice(0,10);if(state.lastDay!==today){const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);state.streak=state.lastDay===yesterday?(state.streak||0)+1:1;state.lastDay=today;state.weekDays=state.weekDays||[];state.weekDays.push(today);state.weekDays=[...new Set(state.weekDays)].slice(-7);state.lastRewardDay=today;if(state.weekDays.length>=7&&!state.medals?.includes("🥇")){state.medals=state.medals||[];state.medals.push("🥇");alert("Amazing! You earned the 7-day Gold medal 🥇");}else if(state.streak>=3&&!state.medals?.includes("🥈")){state.medals=state.medals||[];state.medals.push("🥈");}}}
-async function enableReminders(){if(!("Notification" in window)){alert("Notifications are not supported in this browser.");return;}const p=await Notification.requestPermission();if(p==="granted"){new Notification("Fluento reminders enabled",{body:"Keep your daily language streak alive! Open Fluento each day to practise."});alert("Notifications allowed. For reliable reminders while the app is closed, Fluento needs a push-notification server; this offline version cannot guarantee background reminders.");}else alert("Notifications were not allowed. You can enable them in your browser settings.");}
-function addFriendById(){const id=prompt("Enter your friend's Fluento ID:");if(!id)return;alert("ID lookup needs an online Fluento account server. For now, share your ID and stage with your friend; friends shown here are demo profiles.");}
-function updateStats(){document.getElementById("xp").textContent=state.xp;document.getElementById("hearts").textContent=state.hearts;document.getElementById("streak").textContent=state.streak}
-function doneKey(si){return state.course+"-"+si}
-function isDone(si){return !!state.done[doneKey(si)]}
-function isUnlocked(si){return si===0||isDone(si-1)}
-function getCourse(){return courses[state.course]}
-function setTab(tab){state.tab=tab;save();render()}
-document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
-function render(){
- updateStats();const welcome=document.getElementById("welcomeScreen"); if(welcome) welcome.style.display=state.welcomeSeen?"none":"grid"; const app=document.getElementById("app");
- if(state.tab==="learn")app.innerHTML=learnHTML();
- else if(state.tab==="friends")app.innerHTML=friendsHTML();
- else if(state.tab==="quests")app.innerHTML=questsHTML();
- else app.innerHTML=profileHTML();
- document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===state.tab));
-}
-function learnHTML(){let c=getCourse(),finished=c.stages.filter((s,i)=>isDone(i)).length,pct=Math.round(finished/c.stages.length*100);
- return `<section class="hero"><div><div class="eyebrow">YOUR DAILY LANGUAGE QUEST</div><h1>Small steps.<br>Big fluency.</h1><p>Learn at your pace with stages, checkpoints, and Ollie cheering you on.</p></div><div class="mascot" aria-label="Ollie the owl">🦉</div></section>
- <div class="section-head"><div><h2>Your learning path</h2><div class="muted">${c.flag} ${c.label} · ${finished}/${c.stages.length} stages completed</div></div></div>
- <div class="panel"><div class="course-row"><label for="courseSelect"><b>Learning language</b></label><select id="courseSelect">${Object.keys(courses).map(k=>`<option ${k===state.course?"selected":""}>${k}</option>`).join("")}</select><span class="muted">Choose a course</span></div><div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div><div class="muted" style="margin-top:7px">${pct}% path complete</div></div>
- <div class="section-head"><h2>Stages</h2><span class="muted">Complete all 5 questions in a stage to unlock the next</span></div>
- <div class="stage-list">${c.stages.map((s,i)=>{let d=isDone(i),u=isUnlocked(i);return `<article class="stage ${u?"":"locked"}"><div class="stage-icon">${d?"✅":u?s.icon:"🔒"}</div><div><h3>${i+1}. ${s.title}</h3><p>${s.desc}</p><div class="stage-meta"><span class="mini">${s.lessons.length} questions</span><span class="mini">${s.checkpoint?"🏁 Checkpoint":"⭐ "+(s.lessons.length*10)+" XP"}</span>${d?'<span class="mini">Completed</span>':""}</div></div><button class="${u?"primary":"secondary"}" ${u?"":"disabled"} onclick="startLesson(${i})">${d?"Practice":s.checkpoint?"Start checkpoint":u?"Start":"Locked"}</button></article>`}).join("")}</div>
- <footer>Fluento is an independent learning project with original branding.</footer>`;
-}
-function friendsHTML(){let list=[{name:state.name||"You",emoji:"🦉",xp:state.xp,you:true},...state.friends].sort((a,b)=>b.xp-a.xp);
- return `<div class="section-head"><div><h2>Friends Circle 👥</h2><div class="muted">Practice together and celebrate each other's progress.</div></div></div>
- <section class="hero"><div><div class="eyebrow">THIS WEEK</div><h1>Every XP counts!</h1><p>Keep your learning streak going. Demo friends are shown until online accounts are connected.</p></div><div class="mascot">🦉</div></section>
- <div class="panel"><h3>Your Fluento ID</h3><div class="identity"><b id="myFluentoId">${state.userId||"Tap Share ID to create one"}</b><p>${stageLabel()} · ${currentStage()} stages completed</p><button class="primary" onclick="copyFluentoId()">Share / copy my ID</button> <button class="secondary" onclick="addFriendById()">Add friend by ID</button><p class="smallnote">Friends can see your stage only when accounts are connected to an online server. This version stores your progress on this device.</p></div></div>
- <div class="section-head"><h2>Weekly leaderboard</h2><span class="muted">XP totals</span></div>
- <div class="panel">${list.map((f,i)=>`<div class="friend" style="padding:11px 0;border-bottom:1px solid var(--line)"><div class="avatar">${f.emoji}</div><div class="friend-info"><strong>${f.you?"You":escapeText(f.name)} ${f.you?"(you)":""}</strong><small>${f.you?"Your learning journey":"Fluento learner"}</small></div><div class="rank">#${i+1} · ${f.xp} XP</div></div>`).join("")}</div>
- <div class="section-head"><h2>Add a demo friend</h2></div><div class="panel"><p class="muted">This adds a sample profile on this device. It does not send a real invite.</p><div class="course-row"><input id="friendName" placeholder="Friend's nickname" maxlength="20" style="flex:1;min-width:140px;border:1px solid var(--line);padding:11px;border-radius:12px"><button class="primary" onclick="addFriend()">＋ Add friend</button></div></div>`;
-}
-function questsHTML(){let stages=getCourse().stages,completed=stages.filter((s,i)=>isDone(i)).length,allQuestions=stages.reduce((a,s)=>a+s.lessons.length,0),claimable=completed>=1;
- return `<div class="section-head"><div><h2>Daily quests 🎯</h2><div class="muted">Tiny goals that build a lasting habit.</div></div></div><div class="cards">
- <div class="panel"><div class="achievement">📚</div><h3>Lesson explorer</h3><p class="muted">Complete one stage today.</p><div class="progress-track"><div class="progress-fill" style="width:${Math.min(100,completed*100)}%"></div></div><p><b>${Math.min(completed,1)}/1 stage</b></p><button class="${claimable&&!state.questsClaimed.includes("explorer")?"primary":"secondary"}" ${claimable&&!state.questsClaimed.includes("explorer")?"":"disabled"} onclick="claimQuest('explorer',20)">Claim +20 XP</button></div>
- <div class="panel"><div class="achievement">🧠</div><h3>Curious mind</h3><p class="muted">Answer questions and collect XP.</p><p><b>${state.xp} XP collected</b></p><div class="progress-track"><div class="progress-fill" style="width:${Math.min(100,state.xp/100*100)}%"></div></div><p class="muted">Reach 100 XP to complete this quest.</p><button class="secondary" disabled>${state.xp>=100?"Goal reached":"Keep learning"}</button></div>
- <div class="panel"><div class="achievement">🔥</div><h3>Come back tomorrow</h3><p class="muted">Return regularly to build your streak.</p><p><b>${state.streak} day streak</b></p><span class="mini">Streak tracking is stored on this device</span></div></div>`;
-}
-function profileHTML(){let completed=Object.keys(state.done).filter(k=>state.done[k]).length;return `<div class="panel"><h2>🔥 Weekly rewards</h2><p>Practise each day to build your streak and earn medals.</p><div class="reward-row"><div class="reward"><b>🔥</b><span>Daily streak</span></div><div class="reward"><b>🥈</b><span>Silver</span></div><div class="reward"><b>🥇</b><span>Gold</span></div><div class="reward"><b>💎</b><span>Diamond</span></div></div><p><b>Current streak:</b> ${state.streak||0} days · <b>Medals:</b> ${(state.medals||[]).join(" ")||"Keep practising!"}</p><button class="primary" onclick="enableReminders()">Enable reminders</button><p class="smallnote">This version awards streaks and medals locally. It does not delete earned medals for missed days; reminder delivery while the app is closed requires a push server.</p></div><div class="section-head"><div><h2>Your profile 🏆</h2><div class="muted">A record of the progress on this device.</div></div></div><div class="panel"><div class="course-row"><div class="mascot" style="font-size:55px">🦉</div><div style="flex:1"><label for="playerName"><b>Your nickname</b></label><input id="playerName" value="${escapeAttr(state.name||"Learner")}" maxlength="24" style="display:block;width:100%;margin-top:6px;padding:11px;border:1px solid var(--line);border-radius:12px"><button class="secondary" style="margin-top:9px" onclick="saveName()">Save nickname</button></div></div></div><div class="section-head"><h2>Your stats</h2></div><div class="profile-grid"><div class="metric"><strong>⚡ ${state.xp}</strong><span>Total XP</span></div><div class="metric"><strong>🔥 ${state.streak}</strong><span>Day streak</span></div><div class="metric"><strong>✅ ${completed}</strong><span>Stages completed</span></div><div class="metric"><strong>🏅 ${state.earned.length}</strong><span>Badges earned</span></div></div><div class="section-head"><h2>Achievements</h2></div><div class="cards"><div class="panel"><div class="achievement">🌱</div><h3>First Steps</h3><p class="muted">Finish your first stage.</p><span class="mini">${completed>=1?"Unlocked":"Not yet unlocked"}</span></div><div class="panel"><div class="achievement">⭐</div><h3>XP Collector</h3><p class="muted">Earn 100 XP.</p><span class="mini">${state.xp>=100?"Unlocked":"Not yet unlocked"}</span></div><div class="panel"><div class="achievement">🏁</div><h3>Checkpoint Champion</h3><p class="muted">Complete a checkpoint stage.</p><span class="mini">${getCourse().stages.some((s,i)=>s.checkpoint&&isDone(i))?"Unlocked":"Not yet unlocked"}</span></div></div><div class="section-head"><h2>Settings</h2></div><div class="panel"><p class="muted">Your progress is saved locally in this browser. Clearing browser data may erase it.</p><button class="danger" onclick="resetProgress()">Reset progress</button></div>`}
-function escapeText(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-function escapeAttr(s){return escapeText(s).replace(/'/g,"&#39;")}
-document.addEventListener("change",e=>{if(e.target.id==="courseSelect"){state.course=e.target.value;save();render()}});
-function startLesson(i){if(!isUnlocked(i))return;current=i;qi=0;score=0;selected=null;showQuestion()}
-function showQuestion(){const app=document.getElementById("app"),s=getCourse().stages[current],q=s.lessons[qi];app.innerHTML=`<div class="quiz-shell"><div class="quiz-top"><button class="close-btn" onclick="exitQuiz()" aria-label="Exit lesson">×</button><div class="quiz-progress"><div class="progress-track"><div class="progress-fill" style="width:${qi/s.lessons.length*100}%"></div></div></div><b>❤️ ${state.hearts}</b></div><div class="question-card"><div class="question-type">${s.checkpoint?"🏁 Checkpoint":`Stage ${current+1}`} · Question ${qi+1}/${s.lessons.length}</div><h2>${q.q}</h2><div class="options">${q.opts.map((o,i)=>`<button class="option ${selected===o?"selected":""}" type="button" onclick="chooseAnswer(this)">${escapeText(o)}</button>`).join("")}</div><div id="feedback"></div><div class="quiz-actions"><button class="primary" id="checkBtn" onclick="checkAnswer()" disabled>Check answer</button></div></div><p class="muted" style="text-align:center;margin-top:16px">Ollie says: “You can do it. One question at a time!” 🦉</p></div>`}
-function chooseAnswer(button){
- if(!button || !button.classList.contains("option") || button.disabled) return;
- selected=button.textContent.trim();
- document.querySelectorAll(".option").forEach(b=>b.classList.toggle("selected",b===button));
- const btn=document.getElementById("checkBtn");
- if(btn){btn.disabled=false;btn.textContent="Check answer";btn.onclick=checkAnswer;}
-}
-function checkAnswer(){
- if(typeof selected!=="string" || !selected) return;
- const q=getCourse().stages[current].lessons[qi];
- const chosen=selected;
- const ok=chosen===q.a;
- const fb=document.getElementById("feedback");
- fb.className="feedback "+(ok?"good":"bad");
- fb.textContent=(ok?"Correct! +10 XP. ":"Not quite. ")+q.tip;
- document.querySelectorAll(".option").forEach(b=>{
-   b.disabled=true;
-   if(b.textContent===q.a)b.classList.add("correct");
-   else if(b.textContent===chosen)b.classList.add("wrong");
- });
- const btn=document.getElementById("checkBtn");
- btn.textContent=qi===getCourse().stages[current].lessons.length-1?"Finish stage":"Continue";
- btn.onclick=nextQuestion;
- btn.disabled=false;
- selected=ok ? "__correct__" : "__incorrect__";
-}
-function nextQuestion(){
- if(selected==="__correct__"){score++;state.xp+=10;}
- else if(selected==="__incorrect__"){state.hearts=Math.max(0,state.hearts-1);}
- qi++;selected=null;save();
- if(qi<getCourse().stages[current].lessons.length)showQuestion();
- else finishLesson();
-}
-function finishLesson(){let key=doneKey(current),wasDone=!!state.done[key],s=getCourse().stages[current];if(!wasDone){state.done[key]=true;state.xp+=Math.max(0,score*2);if(!state.earned.includes("first")&&Object.values(state.done).some(Boolean))state.earned.push("first");if(s.checkpoint)state.earned.push("checkpoint");}save();document.getElementById("app").innerHTML=`<div class="quiz-shell"><div class="question-card" style="text-align:center"><div style="font-size:74px">${score>=s.lessons.length*.75?"🎉":"🦉"}</div><div class="eyebrow" style="color:var(--teal)">STAGE COMPLETE</div><h2>${score>=s.lessons.length*.75?"Brilliant work!":"Nice effort — keep practising!"}</h2><p>You answered <b>${score} of ${s.lessons.length}</b> questions correctly.</p><div class="profile-grid"><div class="metric"><strong>+${score*10+score*2}</strong><span>XP earned this round</span></div><div class="metric"><strong>${Math.round(score/s.lessons.length*100)}%</strong><span>Accuracy</span></div></div><p class="muted">Ollie says: “Every try helps you grow!”</p><button class="primary" style="width:100%;margin-top:10px" onclick="state.tab='learn';save();render()">Back to learning path</button>${current+1<getCourse().stages.length&&isUnlocked(current+1)?`<button class="secondary" style="width:100%;margin-top:9px" onclick="startLesson(${current+1})">Continue to next stage →</button>`:""}</div></div>`}
-function exitQuiz(){current=null;state.tab="learn";render()}
-function addFriend(){let el=document.getElementById("friendName"),name=el.value.trim();if(!name){el.focus();return}if(state.friends.some(f=>f.name.toLowerCase()===name.toLowerCase())){alert("That nickname is already in your demo circle.");return}state.friends.push({name,emoji:["🐸","🐨","🦊","🐼","🐯","🐧"][state.friends.length%6],xp:Math.floor(Math.random()*90)});save();render()}
-function claimQuest(id,xp){if(state.questsClaimed.includes(id))return;state.questsClaimed.push(id);state.xp+=xp;save();render()}
-function saveName(){let el=document.getElementById("playerName");state.name=el.value.trim()||"Learner";save();render()}
-function resetProgress(){if(confirm("Reset your XP, stages, and local progress? This cannot be undone.")){state={...initial,friends:[...initial.friends],done:{},earned:[],questsClaimed:[],userId:"",welcomeSeen:false,weekDays:[],medals:[],reminderHour:"19:00",lastRewardDay:""};save();render()}}
-updateStats();render();
-if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+const giftTiers=[["🌟","Star sparkle",5,2],["🍪","Ollie's cookie",8,3],["🎨","Colour badge",12,5],["🎁","Mystery gift",18,8],["🏆","Golden trophy",25,12],["💎","Diamond chest",40,20],["👑","Royal crown",60,30],["🦉","Ollie's grand gift",100,50]];
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function saveLocal(){localStorage.setItem(localKey,JSON.stringify(data));stats();}
+function stats(){$("xp").textContent=data.xp||0;$("coins").textContent=data.coins||0;$("gems").textContent=data.gems||0;$("hearts").textContent=data.hearts??3;$("streak").textContent=data.streak||0;}
+function key(n){return `${data.course}:${n}`;}function done(n){return !!data.done[key(n)];}
+function shieldFor(days){return days>=35?"Diamond":days>=28?"Platinum":days>=21?"Gold":days>=14?"Silver":days>=7?"Bronze":"None";}
+function recordDay(){const d=new Date().toISOString().slice(0,10);if(!data.practiceDays.includes(d)){data.practiceDays=[...data.practiceDays,d].slice(-60);const y=new Date(Date.now()-86400000).toISOString().slice(0,10);data.streak=data.lastPractice===y?(data.streak||0)+1:1;data.lastPractice=d;data.shield=shieldFor(data.streak);}}
+function sound(kind){if(!data.sound)return;try{const C=AudioContext||webkitAudioContext;audio??=new C();audio.resume();const p={ok:[523,659,784],bad:[220,185],gift:[523,659,784,1046],tap:[440]}[kind]||[440];p.forEach((f,i)=>{let o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.12;o.frequency.value=f;g.gain.setValueAtTime(.001,t);g.gain.linearRampToValueAtTime(.08,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.16);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+.18);});}catch{}}
+async function cloudSave(){if(!user||guest||!db)return;const publicData={uid:user.uid,nickname:data.nickname,friendCode:`FL-${user.uid.slice(0,8).toUpperCase()}`,course:data.course,xp:data.xp,coins:data.coins,gems:data.gems,stage:highestStage(),shield:data.shield,streak:data.streak,updatedAt:serverTimestamp()};await setDoc(doc(db,"publicProfiles",user.uid),publicData,{merge:true});await setDoc(doc(db,"privateProfiles",user.uid),{email:user.email||"",createdAt:profile.createdAt||serverTimestamp()},{merge:true});await setDoc(doc(db,"userProgress",user.uid),{...data,updatedAt:serverTimestamp()},{merge:true});}
+function highestStage(){let n=1;while(done(n))n++;return n;}
+async function loadCloud(){if(!user||!db)return;const snap=await getDoc(doc(db,"userProgress",user.uid));if(snap.exists())data={...base,...snap.data(),...data,...snap.data()};const p=await getDoc(doc(db,"publicProfiles",user.uid));profile=p.exists()?p.data():{};if(!profile.nickname){await updateProfile(user,{displayName:data.nickname});}await cloudSave();if(user.uid===ADMIN_UID)$("adminNav").classList.remove("hidden");}
+function showApp(){ $("authScreen").classList.add("hidden");$("appShell").classList.remove("hidden");render(); }
+function showAuth(){ $("authScreen").classList.remove("hidden");$("appShell").classList.add("hidden"); }
+$("authForm").addEventListener("submit",async e=>{e.preventDefault();if(!firebaseReady){$("authMessage").textContent="Add your Firebase config first, then reload.";return;}try{const c=await signInWithEmailAndPassword(auth,$("authEmail").value.trim(),$("authPassword").value);user=c.user;guest=false;await loadCloud();showApp();}catch(err){$("authMessage").textContent=err.message;}});
+$("signUpBtn").onclick=async()=>{if(!firebaseReady){$("authMessage").textContent="Add Firebase config first.";return;}try{const email=$("authEmail").value.trim(),pw=$("authPassword").value,name=$("authName").value.trim()||"Learner";if(pw.length<8)throw Error("Use a password with at least 8 characters.");const c=await createUserWithEmailAndPassword(auth,email,pw);user=c.user;await updateProfile(user,{displayName:name});await sendEmailVerification(user);data.nickname=name;guest=false;await loadCloud();showApp();$("authMessage").textContent="Verification email sent. Please verify your email."; }catch(err){$("authMessage").textContent=err.message;}};
+$("guestBtn").onclick=()=>{guest=true;user=null;data={...base,...JSON.parse(localStorage.getItem(localKey)||"{}")};showApp();};
+$("signOutBtn").onclick=async()=>{if(auth&&user)await signOut(auth);user=null;guest=false;showAuth();};
+if(auth)onAuthStateChanged(auth,async u=>{if(u){user=u;guest=false;try{await loadCloud();showApp();}catch(e){$("authMessage").textContent="Could not load profile: "+e.message;}}});
+function persist(){saveLocal();cloudSave().catch(e=>console.warn("Cloud sync:",e));}
+function nav(tab){data.tab=tab;persist();render();}
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>nav(b.dataset.tab)));
+function render(){stats();document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===data.tab));const views={learn:learnView,friends:friendsView,rewards:rewardsView,profile:profileView,feedback:feedbackView,dashboard:dashboardView};app.innerHTML=(views[data.tab]||learnView)();}
+function learnView(){let n=highestStage(),end=Math.max(100,Math.ceil(n/100)*100);let rows="";for(let i=Math.max(1,Math.floor((n-1)/100)*100+1);i<=Math.min(end,Math.floor((n-1)/100)*100+100);i++){let isD=done(i),unlocked=i<=n;rows+=`<article class="stage ${unlocked?"":"locked"}"><div class="stage-icon">${isD?"✅":i%10===0?"🏁":"✨"}</div><div><h3>Stage ${i} ${i%10===0?"· Checkpoint":""}</h3><p>${isD?"Completed · replay anytime":unlocked?"Complete this lesson to earn a gift":"Complete the previous stage to unlock"}</p></div><button class="${unlocked?"primary":"secondary"}" ${unlocked?"":"disabled"} data-start="${i}">${isD?"Replay": "Start"}</button></article>`;}
+return `<section class="hero"><div><div class="eyebrow">YOUR DAILY LANGUAGE QUEST</div><h1>Small steps. Big fluency.</h1><p>Ollie is ready to cheer for every new word you learn. Complete 100 stages to unlock the next world.</p><div class="row" style="margin-top:14px"><span class="pill">🌍 World ${Math.ceil(n/100)}</span><span class="pill">🛡️ ${esc(data.shield)} Shield</span></div></div><div class="ollie-wrap"><img class="ollie" src="./ollie.png" alt="Ollie the blue owl"><div class="speech">Let's learn! ✨</div></div></section><div class="section-head"><h2>Learning path</h2><span class="muted">${esc(data.course)} · ${Object.keys(data.done).filter(k=>k.startsWith(data.course+":")&&data.done[k]).length} completed</span></div><div class="panel"><div class="row"><b>Language</b><select id="courseSelect" style="max-width:180px"><option>Spanish</option><option>English</option><option>Hindi</option></select><span class="muted">100 stages per world</span></div><div class="track"><div class="fill" style="width:${((n-1)%100+1)}%"></div></div><p class="muted">Next stage: ${n} · ${data.xp} XP earned</p></div><div class="section-head"><h2>World ${Math.ceil(n/100)} · Stages ${Math.floor((n-1)/100)*100+1}–${Math.floor((n-1)/100)*100+100}</h2></div><div class="stage-list">${rows}</div>`;}
+function start(n){stageNo=n;qi=0;score=0;chosen=-1;lockedAnswer=false;data.hearts=3;stats();showQuestion();}
+function questionFor(i){const pool=banks[data.course]||banks.English;return pool[(stageNo*3+i)%pool.length];}
+function showQuestion(){const q=questionFor(qi);app.innerHTML=`<div class="quiz"><div class="quiztop"><button class="secondary" id="quit">✕ Exit</button><div class="track" style="flex:1"><div class="fill" style="width:${qi/5*100}%"></div></div><b>${"❤️".repeat(data.hearts)}${"🖤".repeat(3-data.hearts)}</b></div><div class="panel"><div class="eyebrow">WORLD ${Math.ceil(stageNo/100)} · STAGE ${stageNo} · QUESTION ${qi+1}/5</div><h2 class="question">${esc(q[0])}</h2><div id="opts">${q[1].map((v,i)=>`<button class="option" data-opt="${i}">${esc(v)}</button>`).join("")}</div><div id="feedback"></div><div class="row" style="justify-content:flex-end;margin-top:13px"><button class="primary" id="check" disabled>Check answer</button></div></div></div>`;$("quit").onclick=()=>nav("learn");document.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{if(lockedAnswer)return;chosen=+b.dataset.opt;document.querySelectorAll("[data-opt]").forEach(x=>x.classList.toggle("selected",x===b));$("check").disabled=false;});$("check").onclick=check;}
+function check(){if(chosen<0||lockedAnswer)return;lockedAnswer=true;const q=questionFor(qi),correct=q[1][chosen]===q[2];document.querySelectorAll("[data-opt]").forEach((b,i)=>{b.disabled=true;if(q[1][i]===q[2])b.classList.add("correct");else if(i===chosen)b.classList.add("wrong");});if(correct){score++;sound("ok");$("feedback").className="feedback good";$("feedback").textContent="Correct! "+q[3];}else{data.hearts--;sound("bad");$("feedback").className="feedback bad";$("feedback").textContent="Not quite. "+q[3];}stats();const b=$("check");b.disabled=false;b.textContent=data.hearts===0?"Out of hearts":qi===4?"Finish stage":"Continue";b.onclick=()=>{if(data.hearts===0){heartChoice();return;}qi++;chosen=-1;lockedAnswer=false;if(qi<5)showQuestion();else finish();};}
+function heartChoice(){app.innerHTML=`<div class="quiz panel" style="text-align:center"><div style="font-size:55px">💔</div><h2>Out of hearts!</h2><p class="muted">You can buy one heart using 10 coins or restart this stage. Your progress in this stage will restart.</p><div class="row" style="justify-content:center"><button class="primary" id="buy">🪙 Buy 1 heart · 10 coins</button><button class="secondary" id="restart">↻ Restart stage</button></div><p class="muted">Coins are earned by completing stages; no real-money purchase is needed.</p></div>`;$("buy").onclick=()=>{if(data.coins<10){alert("You need 10 coins. Restart this stage or earn coins from another completed stage.");return;}data.coins-=10;data.hearts=1;persist();qi=0;score=0;chosen=-1;lockedAnswer=false;showQuestion();};$("restart").onclick=()=>start(stageNo);}
+function finish(){const already=done(stageNo);if(!already){const gift=giftTiers[(stageNo-1)%giftTiers.length];data.done[key(stageNo)]=true;data.xp+=score*10+gift[2];data.coins+=gift[2];data.gems+=gift[3];data.stage=stageNo+1;recordDay();persist();celebrate(gift);}else{app.innerHTML=`<div class="panel quiz"><h2>Stage replay complete!</h2><p>You scored ${score}/5. Rewards are only given once per stage.</p><button class="primary" id="back">Back to learning</button></div>`;$("back").onclick=()=>nav("learn");}}
+function celebrate(g){const msg=["Hurray! You did it! 🎉","Amazing! You're brilliant! ✨","Wow! Ollie is proud of you! 🦉","You got it! Super learner! 🚀","Fantastic work! Keep shining! 🌟"][Math.floor(Math.random()*5)];sound("gift");app.innerHTML=`<div class="quiz panel" style="text-align:center;position:relative;overflow:hidden"><div class="confetti">${Array.from({length:18},()=>"<i></i>").join("")}</div><div class="ollie-wrap" style="margin:auto"><img class="ollie celebrate" src="./ollie.png" alt="Ollie celebrating"><div class="speech">${msg}</div></div><div class="eyebrow">STAGE ${stageNo} COMPLETED</div><h1 style="color:var(--gold)">YOU DID IT!</h1><p>You answered ${score}/5 correctly. Ollie has a special gift for you.</p><div class="gift"><div class="big">${g[0]}</div><h2>${g[1]}</h2><b>+${g[2]} coins · +${g[3]} diamonds · +${score*10+g[2]} XP</b></div><p class="muted">Your weekly shield: ${esc(data.shield)} · ${data.streak} day streak</p><button class="primary" id="next">Continue to next stage →</button>`;$("next").onclick=()=>nav("learn");}
+function friendsView(){return `<div class="hero"><div><div class="eyebrow">FLUENTO FRIENDS</div><h1>Learn together.</h1><p>Find friends by their Fluento ID, send requests and compare progress.</p></div><div style="font-size:54px">👥</div></div><div class="section-head"><h2>Find a learner</h2></div><div class="panel"><div class="row"><input id="friendSearch" placeholder="Enter exact Fluento ID" style="flex:1"><button class="primary" id="searchFriend">Search</button></div><div id="friendResult"></div><p class="muted">Your email address is private. Friends see only your nickname, stage, shield and learning stats.</p></div><div class="section-head"><h2>Friend requests</h2></div><div class="panel" id="requests">Sign in with Firebase to use real friend requests.</div><div class="section-head"><h2>Your friends leaderboard</h2></div><div class="panel" id="leaderboard">Your accepted friends appear here.</div>`;}
+async function loadFriends(){if(!user||!db){$("leaderboard").textContent="Guest mode has no online friends.";return;}const q=query(collection(db,"friendships"),where("members","array-contains",user.uid));const snap=await getDocs(q);let rows=[];for(const d of snap.docs){const f=d.data(),other=f.members.find(x=>x!==user.uid);if(!other)continue;const p=await getDoc(doc(db,"publicProfiles",other));if(p.exists())rows.push(p.data());}rows.sort((a,b)=>(b.xp||0)-(a.xp||0));$("leaderboard").innerHTML=rows.length?rows.map((p,i)=>`<div class="friend"><div class="avatar">🦉</div><div class="friendinfo"><b>#${i+1} ${esc(p.nickname)}</b><small>Stage ${p.stage||1} · ${esc(p.shield||"None")} shield</small></div><b>${p.xp||0} XP · 💎${p.gems||0}</b></div>`).join(""):"No friends yet. Search by Fluento ID.";const rq=query(collection(db,"friendRequests"),where("to","==",user.uid),where("status","==","pending"));const rs=await getDocs(rq);$("requests").innerHTML=rs.empty?"No pending requests.":rs.docs.map(d=>`<div class="row"><span>${esc(d.data().fromName)} wants to connect</span><button class="primary" data-accept="${d.id}">Accept</button></div>`).join("");document.querySelectorAll("[data-accept]").forEach(b=>b.onclick=()=>acceptRequest(b.dataset.accept));}
+async function searchFriend(){const id=$("friendSearch").value.trim();if(!user||!db){$("friendResult").textContent="Sign in to search real accounts.";return;}if(!id)return;const q=query(collection(db,"publicProfiles"),where("friendCode","==",id),limit(1));const s=await getDocs(q);if(s.empty){$("friendResult").textContent="No learner found with that ID.";return;}const p=s.docs[0].data();if(p.uid===user.uid){$("friendResult").textContent="That's your own ID.";return;}$("friendResult").innerHTML=`<div class="friend"><div class="friendinfo"><b>${esc(p.nickname)}</b><small>Stage ${p.stage||1} · ${esc(p.shield||"No")} shield · ${p.xp||0} XP</small></div><button class="primary" id="sendReq">Send request</button></div>`;$("sendReq").onclick=async()=>{await addDoc(collection(db,"friendRequests"),{from:user.uid,to:p.uid,fromName:data.nickname,status:"pending",createdAt:serverTimestamp()});$("friendResult").textContent="Friend request sent!";};}
+async function acceptRequest(id){const r=await getDoc(doc(db,"friendRequests",id));if(!r.exists()||r.data().to!==user.uid)return;await updateDoc(doc(db,"friendRequests",id),{status:"accepted"});await addDoc(collection(db,"friendships"),{members:[user.uid,r.data().from],createdAt:serverTimestamp()});loadFriends();}
+function rewardsView(){const gifts=Object.entries(data.giftHistory||{});return `<div class="hero"><div><div class="eyebrow">OLLIE'S TREASURE ROOM</div><h1>Your rewards.</h1><p>Collect coins, diamonds, XP and weekly shields as you progress.</p></div><div style="font-size:58px">🎁</div></div><div class="grid" style="margin-top:15px"><div class="metric"><strong>🪙 ${data.coins}</strong><span>Coins</span></div><div class="metric"><strong>💎 ${data.gems}</strong><span>Diamonds</span></div><div class="metric"><strong>🛡️ ${esc(data.shield)}</strong><span>Weekly shield</span></div></div><div class="section-head"><h2>Shield ladder</h2></div><div class="grid">${[["🥉","Bronze","7 day streak"],["🥈","Silver","14 day streak"],["🥇","Gold","21 day streak"],["💠","Platinum","28 day streak"],["💎","Diamond","35 day streak"]].map(x=>`<div class="panel"><div style="font-size:30px">${x[0]}</div><b>${x[1]}</b><p class="muted">${x[2]}</p></div>`).join("")}</div>`;}
+function profileView(){return `<div class="hero"><div><div class="eyebrow">YOUR LEARNING IDENTITY</div><h1>${esc(data.nickname)}</h1><p>Fluento ID: <b>${user?"FL-"+user.uid.slice(0,8).toUpperCase():"GUEST"}</b></p></div><div style="font-size:54px">🦉</div></div><div class="grid" style="margin-top:15px"><div class="metric"><strong>${data.xp} ⚡</strong><span>XP</span></div><div class="metric"><strong>${data.coins} 🪙</strong><span>Coins</span></div><div class="metric"><strong>${data.gems} 💎</strong><span>Diamonds</span></div><div class="metric"><strong>${data.streak} 🔥</strong><span>Day streak</span></div><div class="metric"><strong>${highestStage()}</strong><span>Next stage</span></div><div class="metric"><strong>${esc(data.shield)}</strong><span>Shield</span></div></div><div class="section-head"><h2>Profile settings</h2></div><div class="panel"><label>Nickname<input id="newNickname" maxlength="24" value="${esc(data.nickname)}"></label><div class="row" style="margin-top:10px"><button class="primary" id="saveNickname">Save nickname</button><label><input type="checkbox" id="soundToggle" ${data.sound?"checked":""} style="width:auto"> Sounds on</label></div><p class="muted">Only your nickname and learning statistics are shared with accepted friends.</p></div>`;}
+function feedbackView(){return `<div class="hero"><div><div class="eyebrow">HELP FLUENTO GROW</div><h1>Send feedback.</h1><p>Tell the Fluento team what works and what we should improve.</p></div><div style="font-size:55px">✉️</div></div><div class="panel" style="margin-top:15px"><label>Feedback type<select id="feedbackType"><option>Suggestion</option><option>Bug report</option><option>Lesson correction</option><option>Other</option></select></label><label style="display:block;margin-top:10px">Your message<textarea id="feedbackText" maxlength="1500" placeholder="Write your feedback here..."></textarea></label><button class="primary" style="margin-top:12px" id="sendFeedback">Send feedback</button><p id="feedbackStatus" class="muted"></p></div>`;}
+async function sendFeedback(){const msg=$("feedbackText").value.trim();if(msg.length<5){$("feedbackStatus").textContent="Please write a little more detail.";return;}if(!user||!db){$("feedbackStatus").textContent="Sign in to submit feedback.";return;}await addDoc(collection(db,"feedback"),{uid:user.uid,nickname:data.nickname,type:$("feedbackType").value,message:msg,createdAt:serverTimestamp(),status:"new"});$("feedbackStatus").textContent="Thanks! Your feedback was sent."; $("feedbackText").value="";}
+function dashboardView(){if(!user||user.uid!==ADMIN_UID)return `<div class="notice">Director dashboard is available only to the account whose UID is configured as ADMIN_UID.</div>`;return `<div class="hero"><div><div class="eyebrow">DIRECTOR CONTROL ROOM</div><h1>Welcome, Nirmit.</h1><p>Live registration and engagement overview. User email addresses are visible only to this admin account.</p></div><div style="font-size:52px">📊</div></div><div id="adminStats" class="grid" style="margin-top:15px"><div class="metric"><strong>Loading…</strong><span>Users</span></div></div><div class="section-head"><h2>Registered users</h2><span class="status">● Live updates</span></div><div class="panel" style="overflow:auto"><table class="admin-table"><thead><tr><th>Nickname</th><th>Email</th><th>Stage</th><th>Shield</th><th>XP</th></tr></thead><tbody id="userRows"><tr><td colspan="5">Loading user list…</td></tr></tbody></table></div><div class="section-head"><h2>Latest feedback</h2></div><div class="panel" id="adminFeedback">Loading…</div><div class="notice">This dashboard shows registrations and learning activity. Revenue remains zero until you add a compliant payment provider and a trusted server-side payment webhook. Never calculate payments from browser-side values.</div>`;}
+async function loadAdmin(){if(!user||user.uid!==ADMIN_UID||!db)return;if(unsubscribeUsers)unsubscribeUsers();unsubscribeUsers=onSnapshot(collection(db,"publicProfiles"),async snap=>{let profiles=snap.docs.map(d=>d.data());$("adminStats").innerHTML=`<div class="metric"><strong>${profiles.length}</strong><span>Total registered learners</span></div><div class="metric"><strong>${profiles.filter(p=>p.updatedAt?.toDate&&Date.now()-p.updatedAt.toDate().getTime()<7*864e5).length}</strong><span>Active in last 7 days</span></div><div class="metric"><strong>${profiles.reduce((a,p)=>a+(p.xp||0),0)}</strong><span>Total learner XP</span></div><div class="metric"><strong>₹0</strong><span>Verified revenue (not connected)</span></div>`;let rows=[];for(const p of profiles){let priv=await getDoc(doc(db,"privateProfiles",p.uid));rows.push(`<tr><td>${esc(p.nickname)}</td><td>${esc(priv.exists()?priv.data().email:"")}</td><td>${p.stage||1}</td><td>${esc(p.shield||"None")}</td><td>${p.xp||0}</td></tr>`);}$("userRows").innerHTML=rows.join("")||'<tr><td colspan="5">No users yet.</td></tr>';});const fq=query(collection(db,"feedback"),orderBy("createdAt","desc"),limit(10));onSnapshot(fq,s=>{$("adminFeedback").innerHTML=s.empty?"No feedback yet.":s.docs.map(d=>`<div class="friend"><div class="friendinfo"><b>${esc(d.data().type)} · ${esc(d.data().nickname)}</b><small>${esc(d.data().message)}</small></div></div>`).join("");});}
+document.addEventListener("click",e=>{const startBtn=e.target.closest("[data-start]");if(startBtn)start(+startBtn.dataset.start);});
+document.addEventListener("change",e=>{if(e.target.id==="courseSelect"){data.course=e.target.value;persist();render();}if(e.target.id==="soundToggle"){data.sound=e.target.checked;persist();}});
+document.addEventListener("click",e=>{if(e.target.id==="searchFriend")searchFriend();if(e.target.id==="sendFeedback")sendFeedback();if(e.target.id==="saveNickname"){const v=$("newNickname").value.trim();if(v){data.nickname=v;persist();render();}}});
+document.addEventListener("click",e=>{if(e.target.id==="adminNav"||e.target.closest('[data-tab="dashboard"]')){data.tab="dashboard";render();loadAdmin();}});
+const originalRender=render;
+render=function(){originalRender();if(data.tab==="friends")loadFriends().catch(console.warn);if(data.tab==="dashboard")loadAdmin().catch(console.warn);};
+stats();
+if(!firebaseReady){$("authMessage").textContent="Firebase setup needed for real accounts. You can still try Guest mode on this device.";}
+else if(!auth.currentUser){/* auth observer below controls the screen */}
+if(firebaseReady){onAuthStateChanged(auth,async u=>{if(u){user=u;guest=false;try{await loadCloud();showApp();}catch(e){console.error(e);showApp();}}});}
 </script>
 </body></html>
