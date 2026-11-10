@@ -1,399 +1,348 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Fluento – Learn Languages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b18">
+<title>FLUENTO — Ultimate Language Academy</title>
+
 <style>
-:root{--green:#58cc02;--darkgreen:#46a302;--blue:#1cb0f6;--ink:#263238;--muted:#718096;--bg:#f7f9fc;--line:#e5eaf0;--gold:#ffc800;--red:#ff4b4b}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Arial,sans-serif;color:var(--ink)}
-button,select{font:inherit}
-button{cursor:pointer}
-header{background:white;border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:5}
-.top{max-width:850px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.logo{font-size:25px;font-weight:900;color:var(--green);letter-spacing:-1px}
-.stats{display:flex;gap:12px;font-weight:800;font-size:14px}
-.stat{background:#f3f6f9;padding:8px 10px;border-radius:12px}
-main{max-width:760px;margin:20px auto;padding:0 14px 40px}
-.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 3px 12px #00000008}
-h1{font-size:26px;margin:0 0 8px}
-h2{font-size:20px;margin:0 0 12px}
-p{color:var(--muted);line-height:1.5}
-select{width:100%;padding:13px;border:2px solid var(--line);border-radius:12px;background:white;margin:8px 0 14px}
-.primary{border:0;background:var(--green);color:white;font-weight:900;padding:14px 18px;border-radius:13px;width:100%;box-shadow:0 4px 0 var(--darkgreen)}
-.primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--darkgreen)}
-.secondary{border:2px solid var(--line);background:white;color:var(--ink);font-weight:800;padding:12px;border-radius:12px;width:100%}
-.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
-.stage{border:0;border-radius:15px;background:#edf1f5;min-height:75px;font-weight:900;color:#89939e}
-.stage.unlocked{background:#e8f8dc;color:#398500;border-bottom:4px solid #a4dc79}
-.stage.done{background:#fff3c4;color:#8b6900;border-bottom:4px solid #e5bd36}
-.stage:disabled{opacity:.55;cursor:not-allowed}
-.progress{height:12px;border-radius:20px;background:#edf1f5;overflow:hidden;margin:12px 0}
-.progress>div{height:100%;background:var(--green);width:0%;transition:.3s}
-.tag{display:inline-block;background:#eef8e8;color:#408b00;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:900}
-.hidden{display:none!important}
-.question-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.timer{font-weight:900;color:var(--red);background:#fff0f0;padding:8px 12px;border-radius:10px}
-.prompt{font-size:23px;font-weight:900;text-align:center;margin:30px 0 20px;line-height:1.4}
-.options{display:grid;gap:10px}
-.option{border:2px solid var(--line);background:white;border-radius:14px;padding:15px;text-align:left;font-weight:800;min-height:55px}
-.option:active{background:#f4f8fb}
-.option.selected{border-color:var(--blue);background:#edf9ff}
-.option.correct{border-color:var(--green);background:#efffe6}
-.option.wrong{border-color:var(--red);background:#fff0f0}
-.feedback{padding:13px;border-radius:12px;margin:14px 0;font-weight:800}
-.feedback.good{background:#eaffdf;color:#327600}
-.feedback.bad{background:#fff0f0;color:#b52d2d}
-.bottom-actions{display:flex;gap:10px;margin-top:15px}
-.bottom-actions button{flex:1}
-.small{font-size:13px;color:var(--muted)}
-.result{text-align:center;padding:25px 10px}
-.result .big{font-size:48px}
-.result h2{font-size:27px}
-footer{text-align:center;color:#9aa3ad;font-size:12px;padding:20px}
-@media(max-width:480px){
- main{margin:12px auto}
- .panel{padding:16px;border-radius:16px}
- .logo{font-size:22px}
- .stats{gap:5px;font-size:12px}
- .stat{padding:7px}
- .stage-grid{gap:7px}
- .stage{min-height:65px;font-size:12px}
- .prompt{font-size:21px;margin:24px 0 18px}
- .option{padding:13px}
+:root {
+  --bg: #080b18;
+  --panel: #11182b;
+  --panel2: #18223a;
+  --cyan: #00e5ff;
+  --purple: #9b5cff;
+  --pink: #ff4fc3;
+  --green: #58e68b;
+  --gold: #ffd166;
+  --red: #ff5573;
+  --white: #f5f7ff;
+  --muted: #9ba8c7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, #19264c 0, transparent 35%),
+    radial-gradient(circle at 90% 80%, #30154c 0, transparent 35%),
+    var(--bg);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.app {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-shadow: 0 0 15px var(--cyan);
+}
+
+.director {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.stats {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--panel);
+  padding: 10px 13px;
+  border: 1px solid #293653;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.panel {
+  background: rgba(17, 24, 43, .95);
+  border: 1px solid #283957;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 25px #0005;
+}
+
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.ollie {
+  width: 145px;
+  height: 145px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+  filter: drop-shadow(0 0 18px #00e5ff77);
+  animation: float 3s ease-in-out infinite;
+}
+
+.ollie.sad {
+  filter: grayscale(1) opacity(.7);
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+h1 {
+  font-size: clamp(25px, 5vw, 42px);
+  margin: 12px 0;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.primary {
+  color: #07111d;
+  background: linear-gradient(100deg, var(--cyan), #6c9bff);
+  padding: 14px 25px;
+  border-radius: 12px;
+  margin: 8px;
+  box-shadow: 0 0 18px #00e5ff55;
+}
+
+.secondary {
+  color: white;
+  background: var(--panel2);
+  border: 1px solid #344969;
+  padding: 13px 20px;
+  border-radius: 12px;
+  margin: 8px;
+}
+
+.danger {
+  background: #5c2037;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 12px;
+  margin: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 15px;
+}
+
+.stage {
+  background: linear-gradient(145deg, #172440, #10172a);
+  border: 1px solid #30415f;
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+}
+
+.stage h3 {
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.progress {
+  height: 10px;
+  background: #26334d;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  transition: width .3s;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.answer {
+  padding: 16px 10px;
+  border-radius: 12px;
+  background: #202d49;
+  border: 1px solid #405273;
+  color: white;
+}
+
+.answer:active {
+  transform: scale(.97);
+}
+
+.answer.correct {
+  background: #145d42;
+  border-color: var(--green);
+}
+
+.answer.wrong {
+  background: #64283c;
+  border-color: var(--red);
+}
+
+.question {
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  margin: 25px 0;
+}
+
+.heart {
+  color: var(--red);
+  font-size: 21px;
+  letter-spacing: 5px;
+}
+
+.reward {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media(max-width: 520px) {
+  .app { padding: 10px; }
+  .answers { grid-template-columns: 1fr; }
+  .logo { font-size: 25px; }
+  .panel { padding: 16px; }
 }
 </style>
 </head>
+
 <body>
+<div class="app">
+
 <header>
- <div class="top">
-  <div class="logo">🦉 Fluento</div>
-  <div class="stats">
-   <div class="stat">⚡ <span id="xp">0</span> XP</div>
-   <div class="stat">🪙 <span id="coins">0</span></div>
-   <div class="stat">💎 <span id="diamonds">0</span></div>
+  <div>
+    <div class="logo">FLUENTO</div>
+    <div class="director">DIRECTED BY MR. NIRMIT POHANE</div>
   </div>
- </div>
+
+  <div class="stats">
+    <div class="stat">🪙 <span id="coins">0</span></div>
+    <div class="stat">💎 <span id="diamonds">0</span></div>
+    <div class="stat">🔥 <span id="streak">0</span></div>
+    <div class="stat">🛡️ <span id="shields">0</span></div>
+  </div>
 </header>
 
-<main>
- <section id="home">
-  <div class="panel">
-   <span class="tag">DIRECTED BY MR. NIRMIT POHANE</span>
-   <h1>Welcome to Fluento! 🌍</h1>
-   <p>Choose a language, learn step by step, earn rewards and test your knowledge.</p>
-   <label for="language"><b>Choose your learning language</b></label>
-   <select id="language"></select>
-   <button class="primary" onclick="startLanguage()">Start learning →</button>
-   <p class="small">Your progress is saved on this device.</p>
+<section id="home" class="panel hero">
+  <img src="ollie.png" class="ollie" id="ollie" alt="Ollie mascot">
+  <h1>Welcome to FLUENTO!</h1>
+  <p id="ollieMessage">Hi! I'm Ollie. Let's learn a new language together!</p>
+  <br>
+  <button class="primary" onclick="showStages()">START LEARNING 🚀</button>
+</section>
+
+<section id="stages" class="panel hidden">
+  <h2>🌍 Language Academy</h2>
+  <p>Select your language and begin your journey.</p>
+  <br>
+  <button class="secondary" onclick="selectLanguage('English')">🇬🇧 English</button>
+  <button class="secondary" onclick="selectLanguage('Spanish')">🇪🇸 Spanish</button>
+  <button class="secondary" onclick="selectLanguage('Hindi')">🇮🇳 Hindi</button>
+  <div class="grid" id="stageGrid"></div>
+  <button class="secondary" onclick="goHome()">← Home</button>
+</section>
+
+<section id="game" class="panel hidden">
+  <div class="row">
+    <h2 id="stageTitle">Stage 1</h2>
+    <div class="heart" id="hearts">❤️❤️❤️</div>
   </div>
 
-  <div class="panel">
-   <h2>📚 Your learning journey</h2>
-   <div id="courseTitle">Choose a language to begin.</div>
-   <div class="progress"><div id="progressBar"></div></div>
-   <div id="stageGrid" class="stage-grid"></div>
-   <p id="progressText" class="small"></p>
-   <button id="checkpointButton" class="primary hidden" onclick="startCheckpoint()">📝 Take the 40-question checkpoint</button>
+  <div class="progress">
+    <div class="progress-fill" id="progressFill"></div>
   </div>
-  <div class="panel">
-   <h2>🏆 Your achievements</h2>
-   <p id="achievementText">Complete stages to earn XP, coins and diamonds.</p>
-  </div>
- </section>
 
- <section id="lesson" class="hidden">
-  <div class="panel">
-   <div class="question-head">
-    <div>
-     <span class="tag" id="lessonTag">STAGE 1</span>
-     <div class="small" id="questionCount">Question 1 of 4</div>
-    </div>
-    <div class="timer hidden" id="timer">10:00</div>
-   </div>
-   <div class="progress"><div id="lessonProgress"></div></div>
-   <div class="prompt" id="prompt"></div>
-   <div class="options" id="options"></div>
-   <div id="feedback" class="hidden"></div>
-   <div class="bottom-actions">
-    <button class="secondary" onclick="leaveLesson()">Exit</button>
-    <button class="primary" id="continueButton" onclick="nextQuestion()" disabled>Check answer</button>
-   </div>
-  </div>
-  <p class="small" id="lessonNote">Choose the correct answer.</p>
- </section>
+  <p class="center" id="questionCount">Question 1</p>
+  <div class="question" id="questionText"></div>
+  <div class="answers" id="answerButtons"></div>
+  <p class="center" id="feedback"></p>
+</section>
 
- <section id="resultScreen" class="hidden">
-  <div class="panel result">
-   <div class="big" id="resultEmoji">🎉</div>
-   <h2 id="resultTitle">Stage completed!</h2>
-   <p id="resultMessage"></p>
-   <div id="resultRewards"></div>
-   <button class="primary" onclick="backHome()">Continue</button>
-  </div>
- </section>
-</main>
-<footer>Fluento • Learn a little every day 🌱</footer>
+<section id="heartChoice" class="panel center hidden">
+  <h2>💔 No Hearts Left!</h2>
+  <img src="ollie.png" class="ollie" alt="Ollie">
+  <p>You can buy one heart or restart this stage.</p>
+  <h2>❤️ One heart = 15 coins</h2>
+  <button class="primary" onclick="buyHeart()">Buy 1 Heart — 15 🪙</button>
+  <button class="secondary" onclick="restartStage()">Restart Stage</button>
+</section>
 
-<script>
-/*
-  FLUENTO STARTER CURRICULUM
-  Each language contains 10 vocabulary units.
-  Each unit generates four differently worded exercises.
-  Checkpoint: 40 questions from the 10 previously completed units.
-*/
-const LANGUAGES = {
-"Spanish":[["Hello","Hola"],["Thank you","Gracias"],["Yes","Sí"],["No","No"],["Water","Agua"],["Book","Libro"],["House","Casa"],["Friend","Amigo"],["Good morning","Buenos días"],["Goodbye","Adiós"]],
-"French":[["Hello","Bonjour"],["Thank you","Merci"],["Yes","Oui"],["No","Non"],["Water","Eau"],["Book","Livre"],["House","Maison"],["Friend","Ami"],["Good morning","Bonjour"],["Goodbye","Au revoir"]],
-"German":[["Hello","Hallo"],["Thank you","Danke"],["Yes","Ja"],["No","Nein"],["Water","Wasser"],["Book","Buch"],["House","Haus"],["Friend","Freund"],["Good morning","Guten Morgen"],["Goodbye","Auf Wiedersehen"]],
-"Italian":[["Hello","Ciao"],["Thank you","Grazie"],["Yes","Sì"],["No","No"],["Water","Acqua"],["Book","Libro"],["House","Casa"],["Friend","Amico"],["Good morning","Buongiorno"],["Goodbye","Arrivederci"]],
-"Portuguese":[["Hello","Olá"],["Thank you","Obrigado / Obrigada"],["Yes","Sim"],["No","Não"],["Water","Água"],["Book","Livro"],["House","Casa"],["Friend","Amigo"],["Good morning","Bom dia"],["Goodbye","Tchau"]],
-"Japanese":[["Hello","こんにちは"],["Thank you","ありがとうございます"],["Yes","はい"],["No","いいえ"],["Water","水"],["Book","本"],["House","家"],["Friend","友達"],["Good morning","おはようございます"],["Goodbye","さようなら"]],
-"Korean":[["Hello","안녕하세요"],["Thank you","감사합니다"],["Yes","네"],["No","아니요"],["Water","물"],["Book","책"],["House","집"],["Friend","친구"],["Good morning","좋은 아침입니다"],["Goodbye","안녕히 가세요"]],
-"Chinese (Mandarin)":[["Hello","你好"],["Thank you","谢谢"],["Yes","是"],["No","不是"],["Water","水"],["Book","书"],["House","房子"],["Friend","朋友"],["Good morning","早上好"],["Goodbye","再见"]],
-"Hindi":[["Hello","नमस्ते"],["Thank you","धन्यवाद"],["Yes","हाँ"],["No","नहीं"],["Water","पानी"],["Book","किताब"],["House","घर"],["Friend","दोस्त"],["Good morning","सुप्रभात"],["Goodbye","अलविदा"]],
-"Marathi":[["Hello","नमस्कार"],["Thank you","धन्यवाद"],["Yes","हो"],["No","नाही"],["Water","पाणी"],["Book","पुस्तक"],["House","घर"],["Friend","मित्र"],["Good morning","शुभ सकाळ"],["Goodbye","पुन्हा भेटू"]],
-"Arabic":[["Hello","مرحبا"],["Thank you","شكرا"],["Yes","نعم"],["No","لا"],["Water","ماء"],["Book","كتاب"],["House","منزل"],["Friend","صديق"],["Good morning","صباح الخير"],["Goodbye","مع السلامة"]],
-"Russian":[["Hello","Здравствуйте"],["Thank you","Спасибо"],["Yes","Да"],["No","Нет"],["Water","Вода"],["Book","Книга"],["House","Дом"],["Friend","Друг"],["Good morning","Доброе утро"],["Goodbye","До свидания"]],
-"Turkish":[["Hello","Merhaba"],["Thank you","Teşekkürler"],["Yes","Evet"],["No","Hayır"],["Water","Su"],["Book","Kitap"],["House","Ev"],["Friend","Arkadaş"],["Good morning","Günaydın"],["Goodbye","Hoşça kal"]],
-"Dutch":[["Hello","Hallo"],["Thank you","Dank je"],["Yes","Ja"],["No","Nee"],["Water","Water"],["Book","Boek"],["House","Huis"],["Friend","Vriend"],["Good morning","Goedemorgen"],["Goodbye","Tot ziens"]],
-"Swedish":[["Hello","Hej"],["Thank you","Tack"],["Yes","Ja"],["No","Nej"],["Water","Vatten"],["Book","Bok"],["House","Hus"],["Friend","Vän"],["Good morning","God morgon"],["Goodbye","Hej då"]],
-"Greek":[["Hello","Γεια σας"],["Thank you","Ευχαριστώ"],["Yes","Ναι"],["No","Όχι"],["Water","Νερό"],["Book","Βιβλίο"],["House","Σπίτι"],["Friend","Φίλος"],["Good morning","Καλημέρα"],["Goodbye","Αντίο"]],
-"Thai":[["Hello","สวัสดี"],["Thank you","ขอบคุณ"],["Yes","ใช่"],["No","ไม่"],["Water","น้ำ"],["Book","หนังสือ"],["House","บ้าน"],["Friend","เพื่อน"],["Good morning","อรุณสวัสดิ์"],["Goodbye","ลาก่อน"]],
-"Indonesian":[["Hello","Halo"],["Thank you","Terima kasih"],["Yes","Ya"],["No","Tidak"],["Water","Air"],["Book","Buku"],["House","Rumah"],["Friend","Teman"],["Good morning","Selamat pagi"],["Goodbye","Selamat tinggal"]],
-"Bengali":[["Hello","নমস্কার"],["Thank you","ধন্যবাদ"],["Yes","হ্যাঁ"],["No","না"],["Water","জল"],["Book","বই"],["House","বাড়ি"],["Friend","বন্ধু"],["Good morning","সুপ্রভাত"],["Goodbye","বিদায়"]],
-"Urdu":[["Hello","السلام علیکم"],["Thank you","شکریہ"],["Yes","ہاں"],["No","نہیں"],["Water","پانی"],["Book","کتاب"],["House","گھر"],["Friend","دوست"],["Good morning","صبح بخیر"],["Goodbye","خدا حافظ"]]
-};
+<section id="celebration" class="panel center hidden">
+  <img src="ollie.png" class="ollie" alt="Ollie celebrating">
+  <h1 id="celebrationTitle">Amazing!</h1>
+  <p id="celebrationMessage">You completed the stage!</p>
+  <h2 class="reward" id="stageReward">+5 Coins 🪙</h2>
+  <button class="primary" onclick="nextStage()">Continue →</button>
+</section>
 
-const STORAGE_KEY="fluento_progress_v2";
-let saved={};
-try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}catch(e){saved={}}
-let language="Spanish",questions=[],qIndex=0,selected=-1,correctCount=0;
-let mode="stage",stageNumber=1,currentQuestion=null,timerInterval=null,timeLeft=600;
-let checkpointQuestions=[];
+<section id="rewards" class="panel">
+  <h2>🏆 Your Rewards</h2>
+  <p>Consecutive practice days: <b id="rewardStreak">0</b></p>
+  <p>Coins: <b id="rewardCoins">0</b></p>
+  <p>Diamonds: <b id="rewardDiamonds">0</b></p>
+  <p>Shields: <b id="rewardShields">0</b></p>
+</section>
 
-function save(){
- localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
- updateStats();
-}
-function courseData(){
- if(!saved[language])saved[language]={completed:[],xp:0,coins:0,diamonds:0,checkpoint:false};
- return saved[language];
-}
-function updateStats(){
- const c=courseData();
- document.getElementById("xp").textContent=c.xp;
- document.getElementById("coins").textContent=c.coins;
- document.getElementById("diamonds").textContent=c.diamonds;
-}
-function shuffle(arr){
- const a=[...arr];
- for(let i=a.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [a[i],a[j]]=[a[j],a[i]];
- }
- return a;
-}
-function escapeHTML(s){
- return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function buildQuestions(wordIndex){
- const pair=LANGUAGES[language][wordIndex];
- const meaning=pair[0],translated=pair[1];
- const others=LANGUAGES[language].filter((x,i)=>i!==wordIndex);
- const wrongMeanings=shuffle(others.map(x=>x[0])).slice(0,3);
- const wrongTranslations=shuffle(others.map(x=>x[1])).slice(0,3);
- const forms=[
-  {prompt:`What does “${translated}” mean?`,answer:meaning,options:[meaning,...wrongMeanings]},
-  {prompt:`How do you say “${meaning}” in ${language}?`,answer:translated,options:[translated,...wrongTranslations]},
-  {prompt:`Choose the correct meaning of this ${language} word: “${translated}”.`,answer:meaning,options:[meaning,...wrongMeanings]},
-  {prompt:`You want to say “${meaning}”. Which ${language} expression should you use?`,answer:translated,options:[translated,...wrongTranslations]}
- ];
- return forms.map((f,n)=>({
-  id:`${language}-${wordIndex}-${n}`,
-  prompt:f.prompt,answer:f.answer,options:shuffle(f.options)
- }));
-}
-function allCourseQuestions(){
- return LANGUAGES[language].flatMap((_,i)=>buildQuestions(i));
-}
-function init(){
- const select=document.getElementById("language");
- select.innerHTML=Object.keys(LANGUAGES).map(l=>`<option>${escapeHTML(l)}</option>`).join("");
- select.value=language;
- select.addEventListener("change",()=>{language=select.value;renderHome()});
- renderHome();
-}
-function startLanguage(){
- language=document.getElementById("language").value;
- renderHome();
- document.getElementById("courseTitle").scrollIntoView({behavior:"smooth",block:"center"});
-}
-function renderHome(){
- const c=courseData();
- document.getElementById("language").value=language;
- document.getElementById("courseTitle").innerHTML=`<b>${escapeHTML(language)}</b> • ${c.completed.length}/10 stages completed`;
- document.getElementById("progressBar").style.width=(c.completed.length*10)+"%";
- document.getElementById("progressText").textContent=`${c.completed.length*10}% course progress`;
- document.getElementById("stageGrid").innerHTML="";
- for(let n=1;n<=10;n++){
-  const done=c.completed.includes(n);
-  const unlocked=n===1||c.completed.includes(n-1);
-  const b=document.createElement("button");
-  b.className="stage "+(done?"done":unlocked?"unlocked":"");
-  b.disabled=!unlocked;
-  b.innerHTML=(done?"⭐":unlocked?"📖":"🔒")+`<br>Stage ${n}`;
-  b.onclick=()=>startStage(n);
-  document.getElementById("stageGrid").appendChild(b);
- }
- const cp=document.getElementById("checkpointButton");
- cp.classList.toggle("hidden",c.completed.length<10);
- document.getElementById("achievementText").textContent=
-  `${c.completed.length} stages completed • ${c.xp} XP earned • ${c.coins} coins collected.`;
- updateStats();
-}
-function startStage(n){
- stageNumber=n;mode="stage";qIndex=0;correctCount=0;
- // Each stage teaches one new vocabulary unit through four different exercises.
- questions=buildQuestions(n-1);
- showScreen("lesson");
- document.getElementById("timer").classList.add("hidden");
- document.getElementById("lessonNote").textContent="Learn the new word carefully. Each stage introduces a new vocabulary unit.";
- showQuestion();
-}
-function startCheckpoint(){
- const c=courseData();
- if(c.completed.length<10)return;
- mode="checkpoint";qIndex=0;correctCount=0;timeLeft=600;
- // All 40 questions are generated from the 10 earlier learning units.
- // They are not taken from future stages.
- checkpointQuestions=allCourseQuestions();
- questions=shuffle(checkpointQuestions);
- showScreen("lesson");
- document.getElementById("lessonTag").textContent="CHECKPOINT UNIT TEST";
- document.getElementById("timer").classList.remove("hidden");
- document.getElementById("lessonNote").textContent="40 questions • 10 minutes • Review of all 10 completed stages.";
- startTimer();
- showQuestion();
-}
-function startTimer(){
- clearInterval(timerInterval);
- updateTimer();
- timerInterval=setInterval(()=>{
-  timeLeft--;
-  updateTimer();
-  if(timeLeft<=0){
-   clearInterval(timerInterval);
-   finishCheckpoint(true);
-  }
- },1000);
-}
-function updateTimer(){
- const m=Math.floor(timeLeft/60),s=timeLeft%60;
- document.getElementById("timer").textContent=`${m}:${String(s).padStart(2,"0")}`;
-}
-function showQuestion(){
- selected=-1;
- currentQuestion=questions[qIndex];
- document.getElementById("feedback").className="hidden";
- document.getElementById("feedback").textContent="";
- document.getElementById("continueButton").disabled=true;
- document.getElementById("continueButton").textContent="Check answer";
- document.getElementById("lessonTag").textContent=mode==="checkpoint"?"CHECKPOINT UNIT TEST":`STAGE ${stageNumber} • ${language.toUpperCase()}`;
- document.getElementById("questionCount").textContent=`Question ${qIndex+1} of ${questions.length}`;
- document.getElementById("lessonProgress").style.width=((qIndex/questions.length)*100)+"%";
- document.getElementById("prompt").textContent=currentQuestion.prompt;
- document.getElementById("options").innerHTML="";
- currentQuestion.options.forEach((option,i)=>{
-  const b=document.createElement("button");
-  b.className="option";
-  b.textContent=option;
-  b.onclick=()=>chooseOption(i);
-  document.getElementById("options").appendChild(b);
- });
-}
-function chooseOption(i){
- if(document.getElementById("continueButton").textContent==="Continue")return;
- selected=i;
- document.querySelectorAll(".option").forEach((b,j)=>b.classList.toggle("selected",i===j));
- document.getElementById("continueButton").disabled=false;
-}
-function checkAnswer(){
- if(selected<0)return;
- const chosen=currentQuestion.options[selected];
- const correct=chosen===currentQuestion.answer;
- document.querySelectorAll(".option").forEach((b,i)=>{
-  if(currentQuestion.options[i]===currentQuestion.answer)b.classList.add("correct");
-  else if(i===selected&&!correct)b.classList.add("wrong");
- });
- const fb=document.getElementById("feedback");
- fb.className="feedback "+(correct?"good":"bad");
- fb.textContent=correct?"✓ Excellent! That is correct.":"Not quite. Correct answer: "+currentQuestion.answer;
- if(correct)correctCount++;
- document.getElementById("continueButton").textContent="Continue";
-}
-function nextQuestion(){
- if(document.getElementById("continueButton").textContent==="Check answer"){
-  checkAnswer();return;
- }
- qIndex++;
- if(qIndex>=questions.length){
-  if(mode==="checkpoint")finishCheckpoint(false);
-  else finishStage();
- }else showQuestion();
-}
-function finishStage(){
- const c=courseData();
- if(!c.completed.includes(stageNumber)){
-  c.completed.push(stageNumber);
-  c.completed.sort((a,b)=>a-b);
-  c.xp+=20+correctCount*5;
-  c.coins+=10;
-  if(stageNumber%5===0)c.diamonds+=2;
- }
- save();
- showScreen("resultScreen");
- document.getElementById("resultEmoji").textContent="🦉🎉";
- document.getElementById("resultTitle").textContent=`Stage ${stageNumber} completed!`;
- document.getElementById("resultMessage").textContent=`You answered ${correctCount} out of ${questions.length} questions correctly.`;
- document.getElementById("resultRewards").innerHTML=`<h2>+${20+correctCount*5} XP ⚡</h2><h2>+10 coins 🪙</h2>${stageNumber%5===0?"<h2>+2 diamonds 💎</h2>":""}`;
-}
-function finishCheckpoint(timedOut){
- clearInterval(timerInterval);
- const c=courseData();
- const passed=correctCount>=30;
- if(passed){
-  c.checkpoint=true;
-  c.xp+=100;
-  c.coins+=50;
-  c.diamonds+=5;
- }
- save();
- showScreen("resultScreen");
- document.getElementById("resultEmoji").textContent=passed?"🏆":"📘";
- document.getElementById("resultTitle").textContent=passed?"Checkpoint passed!":"Keep practising!";
- document.getElementById("resultMessage").textContent=
-  `${timedOut?"Time is up. ":""}Your score: ${correctCount}/40. ${passed?"You passed with at least 30 correct answers.":"You need 30 correct answers to pass. Review your earlier stages and try again."}`;
- document.getElementById("resultRewards").innerHTML=passed?
-  "<h2>+100 XP ⚡</h2><h2>+50 coins 🪙</h2><h2>+5 diamonds 💎</h2>":
-  "<p>Checkpoint rewards are given after passing.</p>";
-}
-function leaveLesson(){
- clearInterval(timerInterval);
- showScreen("home");
- renderHome();
-}
-function backHome(){
- clearInterval(timerInterval);
- showScreen("home");
- renderHome();
-}
-function showScreen(which){
- ["home","lesson","resultScreen"].forEach(id=>document.getElementById(id).classList.toggle("hidden",id!==which));
-}
-init();
-</script>
-</body>
-</html>
+<footer class="center small">
+  FLUENTO © 2026 — Learn. Play. Achieve.
+</footer>
+
+</div>
