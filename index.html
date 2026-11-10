@@ -3,346 +3,672 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b18">
-<title>FLUENTO — Ultimate Language Academy</title>
-
+<meta name="theme-color" content="#070b20">
+<title>FLUENTO — Learn • Play • Grow</title>
 <style>
-:root {
-  --bg: #080b18;
-  --panel: #11182b;
-  --panel2: #18223a;
-  --cyan: #00e5ff;
-  --purple: #9b5cff;
-  --pink: #ff4fc3;
-  --green: #58e68b;
-  --gold: #ffd166;
-  --red: #ff5573;
-  --white: #f5f7ff;
-  --muted: #9ba8c7;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 15% 10%, #19264c 0, transparent 35%),
-    radial-gradient(circle at 90% 80%, #30154c 0, transparent 35%),
-    var(--bg);
-  color: var(--white);
-  font-family: Arial, sans-serif;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.app {
-  max-width: 1100px;
-  margin: auto;
-  padding: 18px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: var(--cyan);
-  text-shadow: 0 0 15px var(--cyan);
-}
-
-.director {
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 2px;
-  margin-top: 4px;
-}
-
-.stats {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-
-.stat {
-  background: var(--panel);
-  padding: 10px 13px;
-  border: 1px solid #293653;
-  border-radius: 12px;
-  font-size: 14px;
-}
-
-.panel {
-  background: rgba(17, 24, 43, .95);
-  border: 1px solid #283957;
-  border-radius: 20px;
-  padding: 22px;
-  margin-bottom: 18px;
-  box-shadow: 0 0 25px #0005;
-}
-
-.hero {
-  text-align: center;
-  padding: 30px 20px;
-}
-
-.ollie {
-  width: 145px;
-  height: 145px;
-  object-fit: contain;
-  margin: 10px auto;
-  display: block;
-  filter: drop-shadow(0 0 18px #00e5ff77);
-  animation: float 3s ease-in-out infinite;
-}
-
-.ollie.sad {
-  filter: grayscale(1) opacity(.7);
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-h1 {
-  font-size: clamp(25px, 5vw, 42px);
-  margin: 12px 0;
-}
-
-h2 {
-  margin-bottom: 15px;
-}
-
-p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.primary {
-  color: #07111d;
-  background: linear-gradient(100deg, var(--cyan), #6c9bff);
-  padding: 14px 25px;
-  border-radius: 12px;
-  margin: 8px;
-  box-shadow: 0 0 18px #00e5ff55;
-}
-
-.secondary {
-  color: white;
-  background: var(--panel2);
-  border: 1px solid #344969;
-  padding: 13px 20px;
-  border-radius: 12px;
-  margin: 8px;
-}
-
-.danger {
-  background: #5c2037;
-  color: white;
-  padding: 13px 20px;
-  border-radius: 12px;
-  margin: 8px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 15px;
-}
-
-.stage {
-  background: linear-gradient(145deg, #172440, #10172a);
-  border: 1px solid #30415f;
-  border-radius: 16px;
-  padding: 18px;
-  text-align: center;
-}
-
-.stage h3 {
-  color: var(--cyan);
-  margin-bottom: 8px;
-}
-
-.progress {
-  height: 10px;
-  background: #26334d;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 15px 0;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--cyan), var(--purple));
-  transition: width .3s;
-}
-
-.answers {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.answer {
-  padding: 16px 10px;
-  border-radius: 12px;
-  background: #202d49;
-  border: 1px solid #405273;
-  color: white;
-}
-
-.answer:active {
-  transform: scale(.97);
-}
-
-.answer.correct {
-  background: #145d42;
-  border-color: var(--green);
-}
-
-.answer.wrong {
-  background: #64283c;
-  border-color: var(--red);
-}
-
-.question {
-  font-size: 23px;
-  font-weight: bold;
-  text-align: center;
-  margin: 25px 0;
-}
-
-.heart {
-  color: var(--red);
-  font-size: 21px;
-  letter-spacing: 5px;
-}
-
-.reward {
-  color: var(--gold);
-  font-weight: bold;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.center {
-  text-align: center;
-}
-
-.small {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-@media(max-width: 520px) {
-  .app { padding: 10px; }
-  .answers { grid-template-columns: 1fr; }
-  .logo { font-size: 25px; }
-  .panel { padding: 16px; }
-}
+:root{--bg:#070b20;--panel:#111a39;--panel2:#19264d;--cyan:#54efff;--purple:#9d6bff;--pink:#ff68cf;--gold:#ffd76b;--green:#5ce6a8;--red:#ff6d8b;--muted:#aab6d6;--line:#354879}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0%,#1a326c 0,transparent 38%),radial-gradient(ellipse at 90% 15%,#35145c 0,transparent 35%),var(--bg);color:#f5f7ff;font:15px/1.5 system-ui,Arial,sans-serif}
+button,select,input{font:inherit}
+button{cursor:pointer;border:0;color:inherit;font-weight:800}
+.top{position:sticky;top:0;z-index:5;background:#070b20ed;backdrop-filter:blur(15px);border-bottom:1px solid #54efff55;padding:12px max(14px,calc((100vw - 1050px)/2));display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{font-size:26px;font-weight:1000;letter-spacing:2px;color:var(--cyan);text-shadow:0 0 16px #54efff99}
+.director{font-size:10px;color:var(--muted);letter-spacing:1.5px}
+.stats{display:flex;gap:7px;flex-wrap:wrap}
+.pill{background:#152044;border:1px solid #52669d;padding:6px 10px;border-radius:30px;font-weight:850;font-size:13px}
+.wrap{max-width:1050px;margin:auto;padding:18px 14px 50px}
+.hero,.panel{background:linear-gradient(145deg,#121e42,#0c1430);border:1px solid var(--line);border-radius:21px;padding:20px;box-shadow:0 14px 35px #0007,0 0 18px #397dff18;margin-bottom:16px}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:15px;background:linear-gradient(120deg,#111d50,#153368 60%,#35165a);border-color:#54efff88}
+.hero h1{font-size:clamp(26px,5vw,42px);line-height:1.1;margin:8px 0}
+.hero p,.muted{color:var(--muted)}
+.mascot{font-size:100px;filter:drop-shadow(0 0 18px #54efff88);animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px) rotate(4deg)}}
+.eyebrow{color:var(--cyan);font-weight:900;letter-spacing:1.5px;font-size:11px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{padding:11px 16px;border-radius:12px;margin:4px 4px 4px 0}
+.primary{background:linear-gradient(105deg,#684cff,#1685e9,#00b9c9);border:1px solid #8af5ff;box-shadow:0 0 17px #397dff66}
+.secondary{background:#1a2a52;border:1px solid #52699f}
+.danger{background:#54243b;border:1px solid #a94a6c}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:11px}
+.metric,.stage{background:#111d3d;border:1px solid var(--line);border-radius:15px;padding:14px}
+.metric strong{display:block;font-size:23px}
+.metric span{color:var(--muted);font-size:13px}
+.stage{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.stage h3{margin:0}
+.stage p{margin:2px 0;color:var(--muted);font-size:12px}
+.track{height:9px;background:#29385f;border-radius:20px;overflow:hidden;margin:12px 0}
+.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));width:0}
+.question{font-size:clamp(22px,4vw,30px);font-weight:900;margin:20px 0}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.answer{background:#1a2a50;border:1px solid #4b6195;padding:15px;border-radius:13px;text-align:left}
+.answer.selected{border-color:var(--cyan);background:#1d3c60}
+.answer.correct{background:#124c3e;border-color:var(--green)}
+.answer.wrong{background:#54243b;border-color:var(--red)}
+.answer:disabled{opacity:1}
+.hidden{display:none!important}
+.center{text-align:center}
+.heart{color:#ff7794;letter-spacing:4px;font-size:20px}
+.notice{background:#342d1c;border:1px solid #8e783b;color:#ffe8a6;padding:12px;border-radius:12px}
+.gift{font-size:58px}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}
+select{background:#101b3a;color:white;border:1px solid #52699f;padding:11px;border-radius:10px}
+@media(max-width:600px){.hero{align-items:flex-start}.mascot{font-size:65px}.answers{grid-template-columns:1fr}.wrap{padding:12px}}
 </style>
 </head>
 
 <body>
-<div class="app">
 
-<header>
+<header class="top">
   <div>
-    <div class="logo">FLUENTO</div>
+    <div class="logo">🦉 FLUENTO</div>
     <div class="director">DIRECTED BY MR. NIRMIT POHANE</div>
   </div>
-
   <div class="stats">
-    <div class="stat">🪙 <span id="coins">0</span></div>
-    <div class="stat">💎 <span id="diamonds">0</span></div>
-    <div class="stat">🔥 <span id="streak">0</span></div>
-    <div class="stat">🛡️ <span id="shields">0</span></div>
+    <span class="pill">🔥 <b id="streak">0</b></span>
+    <span class="pill">⚡ <b id="xp">0</b></span>
+    <span class="pill">🪙 <b id="coins">0</b></span>
+    <span class="pill">💎 <b id="gems">0</b></span>
+    <span class="pill">🛡️ <b id="shields">0</b></span>
   </div>
 </header>
 
-<section id="home" class="panel hero">
-  <img src="ollie.png" class="ollie" id="ollie" alt="Ollie mascot">
-  <h1>Welcome to FLUENTO!</h1>
-  <p id="ollieMessage">Hi! I'm Ollie. Let's learn a new language together!</p>
-  <br>
-  <button class="primary" onclick="showStages()">START LEARNING 🚀</button>
-</section>
+<main class="wrap">
 
-<section id="stages" class="panel hidden">
-  <h2>🌍 Language Academy</h2>
-  <p>Select your language and begin your journey.</p>
-  <br>
-  <button class="secondary" onclick="selectLanguage('English')">🇬🇧 English</button>
-  <button class="secondary" onclick="selectLanguage('Spanish')">🇪🇸 Spanish</button>
-  <button class="secondary" onclick="selectLanguage('Hindi')">🇮🇳 Hindi</button>
-  <div class="grid" id="stageGrid"></div>
-  <button class="secondary" onclick="goHome()">← Home</button>
-</section>
-
-<section id="game" class="panel hidden">
-  <div class="row">
-    <h2 id="stageTitle">Stage 1</h2>
-    <div class="heart" id="hearts">❤️❤️❤️</div>
+<section id="home">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">LEARN • PLAY • GROW</div>
+      <h1>Your language adventure starts here.</h1>
+      <p>Learn a little every day with Ollie. Complete stages, earn rewards and build your streak!</p>
+      <div class="row" style="margin-top:14px">
+        <button class="btn primary" id="startLearning">START LEARNING 🚀</button>
+        <button class="btn secondary" id="goRewards">🎁 My rewards</button>
+      </div>
+    </div>
+    <div class="mascot" id="ollie">🦉</div>
   </div>
 
-  <div class="progress">
-    <div class="progress-fill" id="progressFill"></div>
+  <div class="grid">
+    <div class="metric"><strong id="homeStage">1</strong><span>Next stage</span></div>
+    <div class="metric"><strong id="homeDone">0</strong><span>Stages completed</span></div>
+    <div class="metric"><strong id="homeHearts">❤️❤️❤️</strong><span>Hearts ready for next stage</span></div>
+  </div>
+</section>
+
+<section id="learn" class="hidden">
+  <div class="panel">
+    <div class="eyebrow">YOUR LEARNING PATH</div>
+    <h2>Choose your language</h2>
+    <div class="row">
+      <select id="language">
+        <option>English</option>
+        <option>Spanish</option>
+        <option>Hindi</option>
+      </select>
+      <button class="btn secondary" id="backHome">Home</button>
+    </div>
+    <p class="muted">Each stage has 5 fresh questions. New stages introduce more challenging question types.</p>
   </div>
 
-  <p class="center" id="questionCount">Question 1</p>
-  <div class="question" id="questionText"></div>
-  <div class="answers" id="answerButtons"></div>
-  <p class="center" id="feedback"></p>
+  <div class="panel">
+    <h2>Stages</h2>
+    <div id="stageList" class="grid"></div>
+  </div>
+</section>
+
+<section id="game" class="hidden">
+  <div class="panel">
+    <div class="row" style="justify-content:space-between">
+      <button class="btn secondary" id="exitGame">✕ Exit</button>
+      <b id="stageLabel">Stage 1</b>
+      <b class="heart" id="heartLabel">❤️❤️❤️</b>
+    </div>
+    <div class="track"><div class="fill" id="progress"></div></div>
+    <div class="muted" id="questionNumber">Question 1 of 5</div>
+    <div class="question" id="questionText"></div>
+    <div class="answers" id="answers"></div>
+    <p id="feedback" class="muted"></p>
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn primary" id="checkAnswer" disabled>Check answer</button>
+    </div>
+  </div>
 </section>
 
 <section id="heartChoice" class="panel center hidden">
-  <h2>💔 No Hearts Left!</h2>
-  <img src="ollie.png" class="ollie" alt="Ollie">
-  <p>You can buy one heart or restart this stage.</p>
-  <h2>❤️ One heart = 15 coins</h2>
-  <button class="primary" onclick="buyHeart()">Buy 1 Heart — 15 🪙</button>
-  <button class="secondary" onclick="restartStage()">Restart Stage</button>
+  <div class="mascot">🦉</div>
+  <h2>You're out of hearts!</h2>
+  <p class="muted">Buy one heart for 15 coins to continue, or restart this stage with 3 hearts.</p>
+  <button class="btn primary" id="buyHeart">❤️ Buy 1 heart · 15 coins</button>
+  <button class="btn secondary" id="restartStage">↻ Restart stage</button>
+  <p class="muted" id="coinMessage"></p>
 </section>
 
-<section id="celebration" class="panel center hidden">
-  <img src="ollie.png" class="ollie" alt="Ollie celebrating">
-  <h1 id="celebrationTitle">Amazing!</h1>
-  <p id="celebrationMessage">You completed the stage!</p>
-  <h2 class="reward" id="stageReward">+5 Coins 🪙</h2>
-  <button class="primary" onclick="nextStage()">Continue →</button>
+<section id="complete" class="panel center hidden">
+  <div class="mascot" id="celebrateOllie">🦉</div>
+  <div class="eyebrow">STAGE COMPLETED</div>
+  <h1 id="completeTitle">Amazing work!</h1>
+  <p id="completeMessage" class="muted"></p>
+  <div class="gift">🎁</div>
+  <h2 id="completeReward">+5 coins</h2>
+  <button class="btn primary" id="continueLearning">Continue →</button>
 </section>
 
-<section id="rewards" class="panel">
-  <h2>🏆 Your Rewards</h2>
-  <p>Consecutive practice days: <b id="rewardStreak">0</b></p>
-  <p>Coins: <b id="rewardCoins">0</b></p>
-  <p>Diamonds: <b id="rewardDiamonds">0</b></p>
-  <p>Shields: <b id="rewardShields">0</b></p>
+<section id="rewards" class="hidden">
+  <div class="panel">
+    <div class="eyebrow">OLLIE'S TREASURE ROOM</div>
+    <h1>Your rewards 🎁</h1>
+    <p class="muted">Practise for 7 consecutive days to earn 3 hearts, 30 coins and 1 shield.</p>
+    <div class="grid" style="margin-top:15px">
+      <div class="metric"><strong id="rCoins">0</strong><span>Coins</span></div>
+      <div class="metric"><strong id="rGems">0</strong><span>Diamonds</span></div>
+      <div class="metric"><strong id="rShields">0</strong><span>Shields</span></div>
+      <div class="metric"><strong id="rStreak">0</strong><span>Day streak</span></div>
+      <div class="metric"><strong id="rHearts">3</strong><span>Bonus hearts</span></div>
+    </div>
+    <div class="notice" style="margin-top:15px">
+      If you miss a calendar day, your streak resets and 30 coins plus 1 shield are deducted (balances cannot go below zero). Ollie will look sad when you return.
+    </div>
+    <button class="btn secondary" id="rewardHome">← Home</button>
+  </div>
 </section>
 
-<footer class="center small">
-  FLUENTO © 2026 — Learn. Play. Achieve.
-</footer>
+<div class="footer">FLUENTO © 2026 · Learn. Play. Achieve.</div>
+</main>
 
-</div>
+<script>
+(()=>{
+'use strict';
+
+const $=id=>document.getElementById(id);
+const KEY='fluento_final_v1';
+
+const defaults={
+  coins:0,
+  gems:0,
+  xp:0,
+  streak:0,
+  lastPractice:'',
+  shieldCount:0,
+  completed:{},
+  history:[],
+  language:'English',
+  bonusHearts:0,
+  weeklyCycles:0,
+  lastWeeklyCycle:0,
+  sad:false
+};
+
+let data;
+try {
+  data={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};
+} catch(e) {
+  data={...defaults};
+}
+
+let stage=1;
+let questionIndex=0;
+let hearts=3;
+let score=0;
+let questions=[];
+let selected=-1;
+let current=null;
+let locked=false;
+
+const banks={
+English:[
+['apple','सफरचंद'],['book','पुस्तक'],['beautiful','सुंदर'],
+['quickly','लवकर'],['courage','धैर्य'],['honest','प्रामाणिक'],
+['journey','प्रवास'],['discover','शोधणे'],['careful','काळजीपूर्वक'],
+['knowledge','ज्ञान'],['improve','सुधारणे'],['challenge','आव्हान'],
+['bright','तेजस्वी'],['freedom','स्वातंत्र्य'],['environment','पर्यावरण'],
+['decision','निर्णय'],['achieve','साध्य करणे'],['although','जरी'],
+['ancient','प्राचीन'],['solution','उपाय'],['generous','उदार'],
+['predict','अंदाज लावणे'],['reliable','विश्वासार्ह'],
+['opportunity','संधी'],['determination','दृढनिश्चय']
+],
+Spanish:[
+['hola','hello'],['gracias','thank you'],['agua','water'],
+['casa','house'],['libro','book'],['amigo','friend'],
+['comida','food'],['escuela','school'],['feliz','happy'],
+['perro','dog'],['gato','cat'],['mañana','tomorrow / morning'],
+['siempre','always'],['aprender','to learn'],['viaje','journey'],
+['hermoso','beautiful'],['rápidamente','quickly'],['valiente','brave'],
+['conocimiento','knowledge'],['lograr','to achieve'],['desafío','challenge'],
+['medioambiente','environment'],['oportunidad','opportunity'],
+['decisión','decision'],['determinar','to determine']
+],
+Hindi:[
+['नमस्ते','hello'],['धन्यवाद','thank you'],['पुस्तक','book'],
+['पानी','water'],['विद्यालय','school'],['मित्र','friend'],
+['सुंदर','beautiful'],['तेज़','fast'],['साहस','courage'],
+['ज्ञान','knowledge'],['पर्यावरण','environment'],['स्वतंत्रता','freedom'],
+['प्रयास','effort'],['सफलता','success'],['समाधान','solution'],
+['अवसर','opportunity'],['निर्णय','decision'],['ईमानदार','honest'],
+['प्राचीन','ancient'],['दृढ़ता','determination'],['खोज करना','to discover'],
+['सुधारना','to improve'],['चुनौती','challenge'],
+['विश्वसनीय','reliable'],['उदार','generous']
+]
+};
+
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(data));
+  updateStats();
+}
+
+function updateStats(){
+  $('coins').textContent=data.coins;
+  $('gems').textContent=data.gems;
+  $('xp').textContent=data.xp;
+  $('streak').textContent=data.streak;
+  $('shields').textContent=data.shieldCount;
+  $('homeStage').textContent=nextStage();
+  $('homeDone').textContent=Object.keys(data.completed).length;
+  $('homeHearts').textContent='❤️❤️❤️';
+  $('rCoins').textContent=data.coins;
+  $('rGems').textContent=data.gems;
+  $('rShields').textContent=data.shieldCount;
+  $('rStreak').textContent=data.streak;
+  $('rHearts').textContent=data.bonusHearts;
+}
+
+function nextStage(){
+  let n=1;
+  while(data.completed[n]) n++;
+  return n;
+}
+
+function show(id){
+  ['home','learn','game','heartChoice','complete','rewards']
+  .forEach(x=>$(x).classList.toggle('hidden',x!==id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){
+    let j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function recordPractice(){
+  let today=new Date().toLocaleDateString('en-CA');
+
+  if(data.lastPractice===today) return;
+
+  let prev=data.lastPractice
+    ?new Date(data.lastPractice+'T12:00:00')
+    :null;
+
+  let now=new Date(today+'T12:00:00');
+  let gap=prev?Math.round((now-prev)/86400000):0;
+
+  data.sad=false;
+
+  if(!data.lastPractice){
+    data.streak=1;
+  } else if(gap===1){
+    data.streak++;
+  } else if(gap>1){
+    data.coins=Math.max(0,data.coins-30);
+    data.shieldCount=Math.max(0,data.shieldCount-1);
+    data.streak=1;
+    data.sad=true;
+    data.weeklyCycles++;
+  }
+
+  data.lastPractice=today;
+
+  if(data.streak>0 && data.streak%7===0){
+    let cycle=Math.floor(data.streak/7)+data.weeklyCycles;
+
+    if(data.lastWeeklyCycle!==cycle){
+      data.bonusHearts+=3;
+      data.coins+=30;
+      data.shieldCount++;
+      data.lastWeeklyCycle=cycle;
+      data.weeklyBonus=true;
+    } else {
+      data.weeklyBonus=false;
+    }
+  } else {
+    data.weeklyBonus=false;
+  }
+}
+
+function makeQuestions(){
+  let lang=data.language;
+  let bank=banks[lang];
+  let history=new Set(data.history);
+  let pool=[];
+  let diff=Math.min(5,Math.floor((stage-1)/4)+1);
+
+  bank.forEach(item=>{
+    let [word,meaning]=item;
+    let id=lang+'|'+word+'|'+meaning;
+
+    if(history.has(id)) return;
+
+    let wrong=shuffle(
+      bank.filter(x=>x[0]!==word).map(x=>x[1])
+    ).slice(0,3);
+
+    let prompt;
+    let answer=meaning;
+
+    if(lang==='English'){
+      prompt=diff===1
+        ?'What is the Marathi meaning of “'+word+'”?'
+        :diff===2
+        ?'Choose the correct meaning of “'+word+'”.'
+        :diff===3
+        ?'Which option best matches “'+word+'” in this context?'
+        :diff===4
+        ?'Vocabulary challenge: select the accurate meaning of “'+word+'”.'
+        :'Advanced vocabulary: identify the closest meaning of “'+word+'”.';
+    } else {
+      prompt=diff===1
+        ?'What does “'+word+'” mean in English?'
+        :diff===2
+        ?'Translate “'+word+'” into English.'
+        :diff===3
+        ?'Choose the best English meaning for “'+word+'”.'
+        :diff===4
+        ?'Vocabulary challenge: translate “'+word+'” accurately.'
+        :'Advanced vocabulary: choose the closest English meaning of “'+word+'”.';
+    }
+
+    pool.push({
+      id,
+      prompt,
+      answer,
+      options:shuffle([answer,...wrong])
+    });
+  });
+
+  if(pool.length<5){
+    data.history=[];
+
+    pool=bank.map(([word,meaning])=>({
+      id:lang+'|'+word+'|'+meaning,
+      prompt:lang==='English'
+        ?'What is the Marathi meaning of “'+word+'”?'
+        :'Translate “'+word+'” into English.',
+      answer:meaning,
+      options:[]
+    }));
+
+    pool=pool.map(q=>({
+      ...q,
+      options:shuffle([
+        q.answer,
+        ...shuffle(
+          bank.filter(x=>x[0]!==q.id.split('|')[1]).map(x=>x[1])
+        ).slice(0,3)
+      ])
+    }));
+  }
+
+  return shuffle(pool).slice(0,5);
+}
+
+function startLearning(){
+  data.language=$('language').value||data.language;
+  save();
+  show('learn');
+  renderStages();
+}
+
+function renderStages(){
+  let n=nextStage();
+  $('stageList').innerHTML='';
+
+  for(let i=Math.max(1,n-4);i<=n+5;i++){
+    let done=!!data.completed[i];
+    let lockedStage=i>n;
+
+    let card=document.createElement('div');
+    card.className='stage';
+
+    card.innerHTML=`
+      <div>
+        <h3>${done?'✅':'⭐'} Stage ${i}</h3>
+        <p>${done?'Completed':lockedStage?'Complete earlier stages first':'5 questions · Level '+Math.min(5,Math.floor((i-1)/4)+1)}</p>
+      </div>
+      <button class="btn ${lockedStage?'secondary':'primary'}"
+        ${lockedStage?'disabled':''}
+        data-stage="${i}">
+        ${done?'Replay':'Start'}
+      </button>`;
+
+    $('stageList').appendChild(card);
+  }
+}
+
+function beginStage(n){
+  stage=n;
+  questionIndex=0;
+  score=0;
+  hearts=3;
+  questions=makeQuestions();
+  selected=-1;
+  locked=false;
+  showQuestion();
+}
+
+function showQuestion(){
+  if(questionIndex>=questions.length){
+    finishStage();
+    return;
+  }
+
+  current=questions[questionIndex];
+  selected=-1;
+  locked=false;
+
+  $('stageLabel').textContent=
+    'Stage '+stage+' · Level '+Math.min(5,Math.floor((stage-1)/4)+1);
+
+  $('heartLabel').textContent=
+    '❤️'.repeat(hearts)+'🖤'.repeat(3-hearts);
+
+  $('questionNumber').textContent=
+    'Question '+(questionIndex+1)+' of 5';
+
+  $('progress').style.width=(questionIndex/5*100)+'%';
+  $('questionText').textContent=current.prompt;
+  $('feedback').textContent='';
+  $('checkAnswer').disabled=true;
+  $('checkAnswer').textContent='Check answer';
+  $('checkAnswer').onclick=checkAnswer;
+
+  $('answers').innerHTML='';
+
+  current.options.forEach((v,i)=>{
+    let b=document.createElement('button');
+    b.className='answer';
+    b.textContent=v;
+    b.dataset.index=i;
+
+    b.onclick=()=>{
+      if(locked) return;
+
+      selected=i;
+
+      document.querySelectorAll('.answer').forEach(x=>
+        x.classList.toggle('selected',x===b)
+      );
+
+      $('checkAnswer').disabled=false;
+    };
+
+    $('answers').appendChild(b);
+  });
+
+  show('game');
+}
+
+function checkAnswer(){
+  if(selected<0||locked) return;
+
+  locked=true;
+
+  if(current&&!data.history.includes(current.id)){
+    data.history.push(current.id);
+    if(data.history.length>5000){
+      data.history=data.history.slice(-5000);
+    }
+  }
+
+  let buttons=[...document.querySelectorAll('.answer')];
+  let chosen=current.options[selected];
+  let correct=chosen===current.answer;
+
+  buttons.forEach((b,i)=>{
+    b.disabled=true;
+
+    if(current.options[i]===current.answer){
+      b.classList.add('correct');
+    }
+
+    if(i===selected&&!correct){
+      b.classList.add('wrong');
+    }
+  });
+
+  if(correct){
+    score++;
+    data.xp+=10;
+    $('feedback').textContent='Correct! Amazing work! ✨';
+    $('feedback').style.color='var(--green)';
+  } else {
+    hearts--;
+    $('feedback').textContent='Not quite. The correct answer is: '+current.answer;
+    $('feedback').style.color='var(--red)';
+  }
+
+  $('heartLabel').textContent=
+    '❤️'.repeat(hearts)+'🖤'.repeat(3-hearts);
+
+  save();
+
+  $('checkAnswer').disabled=false;
+  $('checkAnswer').textContent='Next question';
+  $('checkAnswer').onclick=nextQuestion;
+}
+
+function nextQuestion(){
+  if(hearts<=0){
+    $('coinMessage').textContent='You have '+data.coins+' coins.';
+    show('heartChoice');
+    return;
+  }
+
+  questionIndex++;
+  showQuestion();
+}
+
+function finishStage(){
+  if(!data.completed[stage]){
+    data.completed[stage]=true;
+    data.coins+=5;
+    data.gems+=1;
+    data.xp+=5;
+
+    recordPractice();
+    save();
+
+    $('completeTitle').textContent=
+      data.sad?'Welcome back!':'Hurray! You did it! 🎉';
+
+    $('completeMessage').textContent=
+      'You scored '+score+'/5. '+
+      (data.sad
+        ?'Ollie missed you yesterday. Your streak restarted and the missed-day penalty was applied.'
+        :'Ollie is celebrating your progress!');
+
+    $('completeReward').textContent=
+      '+5 coins · +1 diamond · '+
+      (data.weeklyBonus
+        ?'+3 hearts · +30 coins · +1 shield bonus!'
+        :'Keep practising for your 7-day reward!');
+
+    $('celebrateOllie').textContent=data.sad?'🥺🦉':'🎉🦉';
+
+  } else {
+    $('completeTitle').textContent='Stage replay complete!';
+    $('completeMessage').textContent=
+      'You scored '+score+'/5. Stage coins are awarded only the first time.';
+    $('completeReward').textContent='Replay complete';
+  }
+
+  show('complete');
+}
+
+function buyHeart(){
+  if(data.coins<15){
+    $('coinMessage').textContent='Not enough coins. You need 15 coins.';
+    return;
+  }
+
+  data.coins-=15;
+  hearts=1;
+  save();
+
+  questionIndex++;
+
+  if(questionIndex>=questions.length){
+    finishStage();
+    return;
+  }
+
+  showQuestion();
+}
+
+function restart(){
+  beginStage(stage);
+}
+
+$('startLearning').onclick=startLearning;
+$('goRewards').onclick=()=>{
+  updateStats();
+  show('rewards');
+};
+$('backHome').onclick=()=>show('home');
+$('rewardHome').onclick=()=>show('home');
+$('continueLearning').onclick=()=>{
+  show('learn');
+  renderStages();
+};
+$('exitGame').onclick=()=>{
+  show('learn');
+  renderStages();
+};
+$('checkAnswer').onclick=checkAnswer;
+$('buyHeart').onclick=buyHeart;
+$('restartStage').onclick=restart;
+
+$('language').onchange=e=>{
+  data.language=e.target.value;
+  save();
+};
+
+$('stageList').onclick=e=>{
+  let b=e.target.closest('[data-stage]');
+  if(b&&!b.disabled){
+    beginStage(Number(b.dataset.stage));
+  }
+};
+
+updateStats();
+$('language').value=data.language;
+
+if(data.sad){
+  $('ollie').textContent='🥺🦉';
+}
+
+})();
+</script>
+
+</body>
+</html>
